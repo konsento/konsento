@@ -1,10 +1,35 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
     %title Konsento
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    / =============== VENDOR STYLES ===============
+    = stylesheet_link_tag 'base'
+    / =============== VIEW VENDOR STYLES ===============
+    -# = stylesheet_link_tag_for_action
+    / =============== APP STYLES ===============
+    = stylesheet_link_tag 'application', media: 'all', id: "maincss"
     = csrf_meta_tags
-  %body
-    = yield
+  %body.layout-h
+    .wrapper
+      / top navbar
+      %header.topnavbar-wrapper= render partial: "layouts/partials/topnavbar"
+      / offsidebar
+      %aside.offsidebar.hide= render partial: "layouts/partials/offsidebar"
+      / Main section
+      %section
+        / Page content
+        .content-wrapper
+          = yield
+      / Page footer
+      %footer= render partial: "layouts/partials/footer"
+
+    - if content_for? :body_end
+      = yield :body_end
+
+    / =============== VENDOR SCRIPTS ===============
+    = javascript_include_tag 'base'
+    / =============== APP SCRIPTS ===============
+    = javascript_include_tag 'application'

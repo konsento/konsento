@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'clearance'
 gem 'haml-rails'
 gem 'bower-rails'
+gem 'cocoon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
