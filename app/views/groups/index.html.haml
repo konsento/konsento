@@ -1,0 +1,22 @@
+.row
+  .panel.panel-default
+    %table.table.table-striped
+      %thead
+        %tr
+          %th.h4{:style => "width: 50%"} Grupos
+      %tbody
+        - @groups.each do |group|
+          %tr
+            %td
+              %h4
+                %a{:href => ""}
+                  %strong= group.title
+              .text-muted.text-sm
+                %span
+                  %strong.mr-sm> 5 subgrupos
+                %span.mh-sm
+                %span
+                  %strong.mr-sm> 323 tópicos
+            %td.text-right.hidden-xs.hidden-sm
+              .text-muted
+                %small Última atualização em 11 de agosto de 2015
