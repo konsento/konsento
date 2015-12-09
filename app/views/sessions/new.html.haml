@@ -1,0 +1,12 @@
+#sign_in.block-center.mt-xl
+  .panel.panel-dark.panel-flat
+    .panel-heading.text-center
+      %img.logo{:alt => "Kosento", :src => image_path('konsento.png')}
+      %h1 Konsento
+    .panel-body
+      %p.text-center.pv= t('.title')
+      - flash.each do |key, message|
+        .alert.alert-warning.fade.in
+          = message
+
+      = render partial: '/sessions/form'
