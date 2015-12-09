@@ -14,6 +14,18 @@
  *= require chosen/chosen.min
  */
 
+.content-wrapper{
+  margin-top: 0px !important;
+  border-top: none !important;
+}
+
+#breadcrumbs-wrapper{
+  height: 40px;
+  background: #fff;
+  padding-left: 20px;
+  border-bottom: #ccc 1px solid;
+}
+
 footer {
   text-align: center;
 }
