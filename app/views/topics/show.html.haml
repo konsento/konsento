@@ -1,0 +1,119 @@
+.row
+  .panel.panel-default
+    .panel-body
+      %h1= @topic.title
+      .col-md-6
+        %p Tópico
+        / Nav tabs
+        %ul.nav.nav-tabs{:role => "tablist"}
+          %li.active{:role => "presentation"}
+            %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consenso", :role => "tab"} Consenso
+
+        / Tab panes
+        .tab-content
+          #consenso.tab-pane.active{:role => "tabpanel"}
+            %div
+              %p
+                Duis ut urna diam, ac sagittis neque. Nunc vitae ipsum elit, non lacinia dui. Curabitur porttitor fermentum dapibus. Vivamus feugiat faucibus enim. Quisque vehicula rutrum justo, sed aliquam sem fringilla nec. Lorem ipsum dolor
+                sit amet, consectetur adipiscing elit.
+              .text-right
+                .btn-group
+                  %button.btn.btn-labeled.btn-default{:type => "button"}
+                    %span.btn-label>
+                      %i.icon-speech
+                    3 comentários
+                  %button.btn.btn-labeled.btn-default{:type => "button"}
+                    %span.btn-label>
+                      %i.icon-people
+                    3 participações
+                .btn-group
+                  %button.btn.btn-default{:type => "button"}
+                    %span
+                      %i.icon-like
+                  %button.btn.btn-default{:type => "button"}
+                    %span
+                      %i.icon-options
+                  %button.btn.btn-default{:type => "button"}
+                    %span
+                      %i.icon-dislike
+
+
+
+      .col-md-6
+        %p Alteração para proposta selecionada
+        / Nav tabs
+        %ul.nav.nav-tabs{:role => "tablist"}
+          %li.active{:role => "presentation"}
+            %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"} Popular
+          %li{:role => "presentation"}
+            %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#top", :role => "tab"} Topo
+          %li{:role => "presentation"}
+            %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recents", :role => "tab"} Recentes
+
+        / Tab panes
+        .tab-content
+          #popular.tab-pane.active{:role => "tabpanel"}
+            %div
+              %p
+                Duis ut urna diam, ac sagittis neque. Nunc vitae ipsum elit, non lacinia dui. Curabitur porttitor fermentum dapibus. Vivamus feugiat faucibus enim. Quisque vehicula rutrum justo, sed aliquam sem fringilla nec. Lorem ipsum dolor
+                sit amet, consectetur adipiscing elit.
+              .text-right
+                .btn-group
+                  %button.btn.btn-labeled.btn-default{:type => "button"}
+                    %span.btn-label>
+                      %i.icon-speech
+                    3 comentários
+                  %button.btn.btn-labeled.btn-default{:type => "button"}
+                    %span.btn-label>
+                      %i.icon-people
+                    3 participações
+                .btn-group
+                  %button.btn.btn-default{:type => "button"}
+                    %span
+                      %i.icon-like
+                  %button.btn.btn-default{:type => "button"}
+                    %span
+                      %i.icon-options
+                  %button.btn.btn-default{:type => "button"}
+                    %span
+                      %i.icon-dislike
+          #top.tab-pane{:role => "tabpanel"}
+          #recents.tab-pane{:role => "tabpanel"}
+
+.row
+  .panel.panel-default
+    .panel-heading
+      %em.fa.fa-pencil.mr>
+      Escreva um comentário
+    .panel-body
+      %form.form-horizontal{:action => "/"}
+        .form-group
+          .col-md-12
+            %textarea#post-comment.form-control{:name => "post-comment", :placeholder => "Comente aqui...", :rows => "4"}
+        .form-group
+          .col-md-12
+            %button.btn.btn-effect-ripple.btn-primary{:type => "submit"} Comentar
+            
+.row
+  .panel.panel-default
+    .panel-heading 1 Comentário
+    .panel-body
+      .media
+        .media-left
+          %a{:href => "#"}
+            %img.media-object.img-circle.thumb64{:src => "https://angle-on-rails.herokuapp.com/assets/angle/user/01-82e817a0e77d8c69f19246bb3aaed7047b26501a5bb69aaae99e95896bcc964a.jpg"}/
+        .media-body
+          %h4#media-heading.media-heading
+            %a{:href => ""} Susan Grant
+            %small 10 min
+            %a.anchorjs-link{:href => "#media-heading"}
+              %span.anchorjs-icon
+          %p Donec ac massa tortor. In hac habitasse platea dictumst. Nam blandit fringilla faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi eget metus semper congue.
+          %p Fusce ullamcorper placerat tortor, placerat consequat diam cursus posuere.
+
+          .text-right
+            %button.btn.btn-labeled.btn-default{:type => "button"}
+              %span.btn-label>
+                %i.icon-action-undo
+              10 respostas
+      %hr
