@@ -7,7 +7,7 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{:href => "#/"}
+    =link_to root_path, class: "navbar-brand" do
       .brand-logo
         %img.img-responsive{:alt => "App Logo", :src => image_path('konsento-logo.png')}
       .brand-logo-collapsed

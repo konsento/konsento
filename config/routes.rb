@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
- root 'main#index'
+ root 'groups#index'
+ 
  resources :groups
  resources :topics
 end
