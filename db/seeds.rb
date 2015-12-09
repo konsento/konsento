@@ -7,7 +7,9 @@ ActiveRecord::Base.transaction do
 
   req =  RequirementValue.create(user: user, join_requirement: join, value: 12345678900)
 
-  group = Group.create(parent_id: nil, title: "Global", description: "Global group.")
+  group = Group.create(parent: nil, title: "Global", description: "Global group.")
+
+  subgroup = Group.create(parent: group, title: "National", description: "Global subgroup.")
 
 
   topic = Topic.create(user: user, group: group, title: "Sample Topic")
