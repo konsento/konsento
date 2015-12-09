@@ -8,7 +8,7 @@ default: &default
 
 development: &development
   <<: *default
-  database: kosento_development
+  database: konsento_development
 
 test: &test
   <<: *default
@@ -19,4 +19,4 @@ production: &production
   pool: 20
   host: localhost # <%= ENV['KONSENTO_DATABASE_HOST'] %>
   password: konsentopassword # <%= ENV['KONSENTO_DATABASE_PASSWORD'] %>
-  database: kosento_production
+  database: konsento_production
