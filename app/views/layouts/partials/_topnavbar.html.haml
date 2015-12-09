@@ -7,11 +7,9 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    =link_to root_path, class: "navbar-brand" do
-      .brand-logo
-        %img.img-responsive{:alt => "App Logo", :src => image_path('konsento-logo.png')}
-      .brand-logo-collapsed
-        %img.img-responsive{:alt => "App Logo", :src => image_path('konsento-logo.png')}
+    =link_to root_path, id: "foo" do
+      %img{:alt => "App Logo", :src => image_path('konsento-logo.png')}
+      .name Konsento
   / END navbar header
   / START Nav wrapper
   .navbar-collapse.collapse
