@@ -14,10 +14,10 @@
  *= require chosen/chosen.min
  */
 
-#foo {
+#brand {
   display: flex;
   margin-top: 5px;
-  
+
   img {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -31,7 +31,7 @@
     font-size: 29px;
   }
 }
-#foo:hover{
+#brand:hover{
   text-decoration: none !important;
 }
 .content-wrapper{
