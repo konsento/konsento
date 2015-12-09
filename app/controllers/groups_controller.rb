@@ -8,6 +8,8 @@ class GroupsController < ApplicationController
 
   # GET /groups/1
   def show
+    add_breadcrumb @group.title, group_path(@group)
+
   end
 
   # GET /groups/new

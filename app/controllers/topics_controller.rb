@@ -8,6 +8,8 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
+    add_breadcrumb @topic.group.title, group_path(@topic.group)
+    add_breadcrumb @topic.title, topic_path(@topic)
   end
 
   # GET /topics/new
