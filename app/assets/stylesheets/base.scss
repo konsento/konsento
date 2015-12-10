@@ -35,6 +35,31 @@
 #brand:hover{
   text-decoration: none !important;
 }
+
+.offsidebar{
+  .user-block{
+    padding: 10px 0px;
+    text-align: center;
+  }
+  .user-block-info{
+    color: #7D848F;
+  }
+
+  .item-link{
+    em{
+      color: #515253;
+    }
+    span{
+      color: #515253;
+      margin-left: 15px;
+    }
+    a:hover span, a:hover em{
+      color: #5d9cec;
+    }
+  }
+
+}
+
 .content-wrapper{
   margin-top: 0px !important;
   border-top: none !important;
@@ -51,7 +76,7 @@
 
 #sign_in{
   width: 450px;
-  
+
   .logo{
     height: 150px;
   }

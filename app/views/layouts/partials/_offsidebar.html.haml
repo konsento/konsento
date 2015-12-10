@@ -1,17 +1,27 @@
 / START Off Sidebar (right)
 %nav
-  %div{:role => "tabpanel"}
-    / Nav tabs
-    %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
-      %li.active{:role => "presentation"}
-        %a{"aria-controls" => "app-settings", "data-toggle" => "tab", :href => "#app-settings", :role => "tab"}
-          %em.icon-equalizer.fa-lg
-      %li{:role => "presentation"}
-        %a{"aria-controls" => "app-chat", "data-toggle" => "tab", :href => "#app-chat", :role => "tab"}
-          %em.icon-people.fa-lg
-    / Tab panes
-    .tab-content
-      #app-settings.tab-pane.fade.in.active{:role => "tabpanel"}
-        %h3.text-center.text-thin Tab 1
-      #app-chat.tab-pane.fade{:role => "tabpanel"}
-        %h3.text-center.text-thin Tab 2
+  %h3.text-center.text-thin
+    Perfil
+  %ul.nav
+    %li.user-block
+      / User picture
+      .user-block-picture
+        .user-block-status
+          %img.img-thumbnail.img-circle{:alt => "Avatar", :height => "60", :src => image_path('konsento.png'), :width => "60"}/
+          .circle.circle-success.circle-lg
+      / Name and Job
+      .user-block-info
+        .user-block-username username
+        .user-block-email email@email.com
+    %li.item-link
+      %a{:href => "#", :title => "Editar Perfil"}
+        %em.icon-pencil
+        %span Editar Perfil
+    %li.item-link
+      %a{:href => "#", :title => "Editar Informações"}
+        %em.icon-tag
+        %span Editar Informações
+    %li.item-link
+      %a{:href => "#", :title => "Sair"}
+        %em.icon-logout
+        %span Sair

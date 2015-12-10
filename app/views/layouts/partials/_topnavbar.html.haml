@@ -63,11 +63,25 @@
             / END list group
         / END Dropdown menu
       / END Alert menu
-      / START Contacts button
+
+      %li.dropdown.dropdown-list
+        %a{"data-toggle" => "dropdown", :href => "#"}
+          %em.icon-user
+        %ul.dropdown-menu
+          %li
+            %a{:href => "#"}
+              Entrar
+          %li.dropdown-header
+            Não é cadastrado?
+          %li
+            %a{:href => "#"}
+              Cadastrar
+
+      / START User button
       %li
         %a{"data-no-persist" => "true", "data-toggle-state" => "offsidebar-open", :href => "#"}
-          %em.icon-notebook
-      / END Contacts menu
+          %em.icon-user
+      / END User menu
     / END Right Navbar
   / END Nav wrapper
   / START Search form
