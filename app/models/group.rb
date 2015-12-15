@@ -4,4 +4,13 @@ class Group < ActiveRecord::Base
     has_many :subscriptions
     has_many :topics
     has_and_belongs_to_many :join_requirements
+
+    def parents
+      ancestry = [parent]
+
+      while ancestry.last.try(:parent) && ancestry.size <= 10
+        ancestry << ancestry.last.parent
+      end
+      ancestry.compact
+    end
 end

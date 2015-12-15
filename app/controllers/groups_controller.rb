@@ -8,7 +8,11 @@ class GroupsController < ApplicationController
 
   # GET /groups/1
   def show
-    add_breadcrumb @group.title, group_path(@group)
+    @group.parents.each do |parent|
+      add_breadcrumb parent.title, group_path(parent)
+    end
+
+    add_breadcrumb @group.title
 
   end
 
