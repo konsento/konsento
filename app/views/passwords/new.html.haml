@@ -1,9 +1,16 @@
-#clearance.password-reset
-  %h2= t(".title")
-  %p= t(".description")
-  = form_for :password, url: passwords_path do |form|
-    .text-field
-      = form.label :email
-      = form.text_field :email, type: 'email'
-    .submit-field
-      = form.submit
+#sign_in.block-center.mt-xl
+  .panel.panel-dark.panel-flat
+    .panel-heading.text-center
+      %img.logo{:alt => "Konsento", :src => image_path('konsento.png')}
+      %h1 Konsento
+    .panel-body
+      #clearance.password-reset
+        %p= t(".description")
+
+        = simple_form_for passwords_path, class: 'mb-lg' do |f|
+          .from-group.has-feedback.mb-lg
+            = f.input_field :email, placeholder: "Email", class: 'form-control'
+            %span.fa.fa-envelope.form-control-feedback.text-muted
+
+          = link_to "Voltar", sign_in_path, class:'btn btn-default pull-left col-md-6'
+          = f.button :submit, value: "Alterar Senha", class: 'btn btn-success pull-right col-md-6'
