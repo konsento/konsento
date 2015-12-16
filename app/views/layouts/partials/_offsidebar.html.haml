@@ -11,8 +11,10 @@
           .circle.circle-success.circle-lg
       / Name and Job
       .user-block-info
-        .user-block-username username
-        .user-block-email email@email.com
+        .user-block-username
+          = current_user.username
+        .user-block-email
+          = current_user.email
     %li.item-link
       %a{:href => "#", :title => "Editar Perfil"}
         %em.icon-pencil
@@ -22,6 +24,6 @@
         %em.icon-tag
         %span Editar Informações
     %li.item-link
-      %a{:href => "#", :title => "Sair"}
+      =link_to sign_out_path, :method => :delete do
         %em.icon-logout
         %span Sair

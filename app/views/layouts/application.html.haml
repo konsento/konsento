@@ -18,8 +18,9 @@
       %header.topnavbar-wrapper= render partial: "layouts/partials/topnavbar"
       / Breandcrumbs Bar
       = render partial: "layouts/partials/breadcrumbsbar"
-      / offsidebar
-      %aside.offsidebar.hide= render partial: "layouts/partials/offsidebar"
+      - if signed_in?
+        / offsidebar
+        %aside.offsidebar.hide= render partial: "layouts/partials/offsidebar"
       / Main section
       %section
         / Page content
