@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  layout "pages", :only => [ :new ]
 
   # GET /users
   def index
@@ -24,9 +25,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to sign_in_path, notice: 'Usuário criado com sucesso.'
     else
-      render :new
+      redirect_to sign_up_path, notice: 'Error'
     end
   end
 
@@ -53,6 +54,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params[:user]
+      params.require(:user).permit(:username, :email, :password)
     end
 end

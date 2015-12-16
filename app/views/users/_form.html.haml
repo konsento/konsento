@@ -1,6 +1,15 @@
-.text-field
-  = form.label :email
-  = form.text_field :email, type: 'email'
-.password-field
-  = form.label :password
-  = form.password_field :password
+= simple_form_for @user, class: 'mb-lg' do |f|
+  .from-group.has-feedback.mb-lg
+    = f.input_field :username, placeholder: "Usuário", class: 'form-control'
+    %span.fa.fa-user.form-control-feedback.text-muted
+
+  .from-group.has-feedback.mb-lg
+    = f.input_field :email, placeholder: "Email", class: 'form-control'
+    %span.fa.fa-envelope.form-control-feedback.text-muted
+
+  .from-group.has-feedback.mb-lg
+    = f.input_field :password, placeholder: "Senha", class: 'form-control'
+    %span.fa.fa-lock.form-control-feedback.text-muted
+
+  = link_to "Voltar", root_path, class:'btn btn-default pull-left col-md-6'
+  = f.button :submit, class: 'btn btn-success pull-right col-md-6'

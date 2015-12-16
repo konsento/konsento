@@ -1,8 +1,13 @@
-#clearance.sign-up
-  %h2= t(".title")
-  = form_for @user do |form|
-    = render partial: '/users/form', object: form
-    .submit-field
-      = form.submit
-    .other-links
-      = link_to t(".sign_in"), sign_in_path
+#sign_in.block-center.mt-xl
+  .panel.panel-dark.panel-flat
+    .panel-heading.text-center
+      %img.logo{:alt => "Konsento", :src => image_path('konsento.png')}
+      %h1 Konsento
+    .panel-body
+      %p.text-center.pv= t('.title')
+      - flash.each do |key, message|
+        .alert.alert-danger.fade.in
+          = message
+      = render partial: '/users/form'
+
+      = link_to "Entrar", sign_in_path, class:'btn btn-info pull-left col-md-12'

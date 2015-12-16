@@ -8,5 +8,6 @@
       - flash.each do |key, message|
         .alert.alert-warning.fade.in
           = message
-
       = render partial: '/sessions/form'
+
+      = link_to "Registrar-se", sign_up_path, class:'btn btn-info pull-left col-md-12'
