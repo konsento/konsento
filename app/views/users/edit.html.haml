@@ -1,0 +1,20 @@
+.row
+  .panel.panel-default
+    .panel-body
+      .col-md-6.col-md-offset-3
+        %h2
+          .text-center
+            Editar Perfil
+        %p
+          Digite sua senha nos campos abaixo para alterá-la.
+        = simple_form_for current_user, class: 'mb-lg' do |f|
+          .from-group.has-feedback.mb-lg
+            = f.input_field :password, placeholder: "Senha", class: 'form-control'
+            %span.fa.fa-lock.form-control-feedback.text-muted
+
+          .from-group.has-feedback.mb-lg
+            = f.input_field :password_confirmation, placeholder: "Digite a senha novamente", class: 'form-control'
+            %span.fa.fa-lock.form-control-feedback.text-muted
+
+          = link_to "Voltar", root_path, class:'btn btn-default pull-left col-md-6'
+          = f.button :submit, value: "Atualizar", class: 'btn btn-success pull-right col-md-6'

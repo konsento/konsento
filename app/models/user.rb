@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   has_many :requirement_values
   has_many :topics
   has_many :invitations
+
+  validates :password, confirmation: true
 end

@@ -16,7 +16,7 @@
         .user-block-email
           = current_user.email
     %li.item-link
-      %a{:href => "#", :title => "Editar Perfil"}
+      =link_to edit_user_path(current_user) do
         %em.icon-pencil
         %span Editar Perfil
     %li.item-link
