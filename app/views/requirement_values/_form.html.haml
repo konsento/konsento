@@ -1,0 +1,11 @@
+= simple_form_for current_user, url: requirement_values_path, method: :post, class: 'mb-lg' do |f|
+  = f.error_notification
+  - current_user.empty_requirement_values.each do |r|
+    = f.simple_fields_for 'requirement_values[]', r do |rv|
+      = rv.input :join_requirement_id, as: :hidden
+      = rv.input :user_id, as: :hidden
+      .from-group.has-feedback.mb-lg
+        = rv.input_field :value, placeholder: r.join_requirement.title, class: 'form-control'
+
+  = link_to "Voltar", root_path, class:'btn btn-default pull-left col-md-6'
+  = f.button :submit, value: "Salvar e inscrever-se", class: 'btn btn-success pull-right col-md-6'

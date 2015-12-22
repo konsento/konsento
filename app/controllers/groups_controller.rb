@@ -8,6 +8,10 @@ class GroupsController < ApplicationController
 
   # GET /groups/1
   def show
+    unless @subscription = Subscription.find_by(user: current_user, group: @group)
+      @subscription = Subscription.new(user: current_user, group: @group)
+    end
+
     @group.parents.each do |parent|
       add_breadcrumb parent.title, group_path(parent)
     end

@@ -17,4 +17,11 @@ Rails.application.routes.draw do
   #Resouces
   resources :groups
   resources :topics
+  resources :subscriptions, only: [:create, :destroy]
+
+  #Get
+  get '/requirement_values/:group_id/:user_id/new', to: 'requirement_values#new'
+
+  #Post
+  post '/requirement_values/:group_id/:user_id/', to: 'requirement_values#create', as: 'requirement_values'
 end
