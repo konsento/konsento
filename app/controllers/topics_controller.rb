@@ -10,6 +10,8 @@ class TopicsController < ApplicationController
   def show
     add_breadcrumb @topic.group.title, group_path(@topic.group)
     add_breadcrumb @topic.title, topic_path(@topic)
+    puts current_user.inspect
+    @comment = Comment.new(commentable: @topic, user: current_user)
   end
 
   # GET /topics/new

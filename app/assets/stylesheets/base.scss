@@ -101,6 +101,15 @@
   border-bottom: 1px #eee solid;
 }
 
+.comment-item{
+  .media-body{
+    padding-left: 10px;
+  }
+  small.timestamp{
+    padding-left: 10px;
+  }
+}
+
 footer {
   text-align: center;
 }

@@ -1,0 +1,18 @@
+.comment-item.media
+  .media-left
+    %a{:href => "#"}
+      %img.media-object.img-circle.thumb64{src: image_path('konsento.png')}
+  .media-body
+    %h4#media-heading.media-heading
+      %a{:href => ""}= comment.user.username
+      %small.timestamp= comment.created_at
+      %a.anchorjs-link{:href => "#media-heading"}
+        %span.anchorjs-icon
+    %p= comment.content
+
+    /.text-right
+    /  %button.btn.btn-labeled.btn-default{:type => "button"}
+    /    %span.btn-label>
+    /      %i.icon-action-undo
+    /    10 respostas
+%hr

@@ -43,34 +43,19 @@
       %em.fa.fa-pencil.mr>
       Escreva um comentário
     .panel-body
-      %form.form-horizontal{:action => "/"}
+      = simple_form_for @comment, class: 'form-horizontal' do |f|
+        = f.input :user_id, as: :hidden
+        = f.input :commentable_id, as: :hidden
+        = f.input :commentable_type, as: :hidden
         .form-group
           .col-md-12
-            %textarea#post-comment.form-control{:name => "post-comment", :placeholder => "Comente aqui...", :rows => "4"}
+            = f.input :content, as: :text, id: 'post-comment', class: 'form-control', placeholder: 'Comente aqui...', input_html: {rows: 4}, label: false
         .form-group
           .col-md-12
-            %button.btn.btn-effect-ripple.btn-primary{:type => "submit"} Comentar
-
+            = f.button :submit, class: 'btn btn-effect-ripple btn-primary', value: 'Comentar'
 .row
   .panel.panel-default
-    .panel-heading 1 Comentário
+    .panel-heading #{@topic.comments.size} Comentário
     .panel-body
-      .media
-        .media-left
-          %a{:href => "#"}
-            %img.media-object.img-circle.thumb64{:src => "https://angle-on-rails.herokuapp.com/assets/angle/user/01-82e817a0e77d8c69f19246bb3aaed7047b26501a5bb69aaae99e95896bcc964a.jpg"}/
-        .media-body
-          %h4#media-heading.media-heading
-            %a{:href => ""} Susan Grant
-            %small 10 min
-            %a.anchorjs-link{:href => "#media-heading"}
-              %span.anchorjs-icon
-          %p Donec ac massa tortor. In hac habitasse platea dictumst. Nam blandit fringilla faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi eget metus semper congue.
-          %p Fusce ullamcorper placerat tortor, placerat consequat diam cursus posuere.
-
-          .text-right
-            %button.btn.btn-labeled.btn-default{:type => "button"}
-              %span.btn-label>
-                %i.icon-action-undo
-              10 respostas
-      %hr
+      - @topic.comments.each do |c|
+        = render partial: "comments/comment", locals: {comment: c}

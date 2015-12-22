@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :topics
   resources :subscriptions, only: [:create, :destroy]
+  resources :comments, only: [:create]
 
   #Get
   get '/requirement_values/:group_id/:user_id/new', to: 'requirement_values#new'
