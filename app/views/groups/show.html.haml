@@ -1,8 +1,9 @@
-.row.subscribe-button
-  - if @subscription.persisted?
-    = render partial: 'subscriptions/unsubscribe_button'
-  - else
-    = render partial: 'subscriptions/subscribe_button'
+- if signed_in?
+  .row.subscribe-button
+    - if @subscription.persisted?
+      = render partial: 'subscriptions/unsubscribe_button'
+    - else
+      = render partial: 'subscriptions/subscribe_button'
 
 
 .row

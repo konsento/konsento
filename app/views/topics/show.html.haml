@@ -43,16 +43,25 @@
       %em.fa.fa-pencil.mr>
       Escreva um comentário
     .panel-body
-      = simple_form_for @comment, class: 'form-horizontal' do |f|
-        = f.input :user_id, as: :hidden
-        = f.input :commentable_id, as: :hidden
-        = f.input :commentable_type, as: :hidden
-        .form-group
-          .col-md-12
-            = f.input :content, as: :text, id: 'post-comment', class: 'form-control', placeholder: 'Comente aqui...', input_html: {rows: 4}, label: false
-        .form-group
-          .col-md-12
-            = f.button :submit, class: 'btn btn-effect-ripple btn-primary', value: 'Comentar'
+      - if signed_in?
+        = simple_form_for @comment, class: 'form-horizontal' do |f|
+          = f.input :user_id, as: :hidden
+          = f.input :commentable_id, as: :hidden
+          = f.input :commentable_type, as: :hidden
+          .form-group
+            .col-md-12
+              = f.input :content, as: :text, id: 'post-comment', class: 'form-control', placeholder: 'Comente aqui...', input_html: {rows: 4}, label: false
+          .form-group
+            .col-md-12
+              = f.button :submit, class: 'btn btn-effect-ripple btn-primary', value: 'Comentar'
+      - else
+        .text-center
+          Faça seu
+          = link_to 'cadastro', sign_in_path
+          ou
+          = link_to 'entre', sign_in_path
+          para comentar.
+
 .row
   .panel.panel-default
     .panel-heading #{@topic.comments.size} Comentário
