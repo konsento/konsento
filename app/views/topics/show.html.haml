@@ -12,30 +12,8 @@
         / Tab panes
         .tab-content
           #consenso.tab-pane.active{:role => "tabpanel"}
-            %div
-              %p
-                Duis ut urna diam, ac sagittis neque. Nunc vitae ipsum elit, non lacinia dui. Curabitur porttitor fermentum dapibus. Vivamus feugiat faucibus enim. Quisque vehicula rutrum justo, sed aliquam sem fringilla nec. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit.
-              .text-right
-                .btn-group
-                  %button.btn.btn-labeled.btn-default{:type => "button"}
-                    %span.btn-label>
-                      %i.icon-speech
-                    3
-                  %button.btn.btn-labeled.btn-default{:type => "button"}
-                    %span.btn-label>
-                      %i.icon-people
-                    3
-                .btn-group
-                  %button.btn.btn-default{:type => "button"}
-                    %span
-                      %i.icon-like
-                  %button.btn.btn-default{:type => "button"}
-                    %span
-                      %i.icon-options
-                  %button.btn.btn-default{:type => "button"}
-                    %span
-                      %i.icon-dislike
+            - @topic.consensus.each do |p|
+              = render partial: "proposals/proposal", locals: {proposal: p}
 
 
 
@@ -53,30 +31,9 @@
         / Tab panes
         .tab-content
           #popular.tab-pane.active{:role => "tabpanel"}
-            %div
-              %p
-                Duis ut urna diam, ac sagittis neque. Nunc vitae ipsum elit, non lacinia dui. Curabitur porttitor fermentum dapibus. Vivamus feugiat faucibus enim. Quisque vehicula rutrum justo, sed aliquam sem fringilla nec. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit.
-              .text-right
-                .btn-group
-                  %button.btn.btn-labeled.btn-default{:type => "button"}
-                    %span.btn-label>
-                      %i.icon-speech
-                    3
-                  %button.btn.btn-labeled.btn-default{:type => "button"}
-                    %span.btn-label>
-                      %i.icon-people
-                    3
-                .btn-group
-                  %button.btn.btn-default{:type => "button"}
-                    %span
-                      %i.icon-like
-                  %button.btn.btn-default{:type => "button"}
-                    %span
-                      %i.icon-options
-                  %button.btn.btn-default{:type => "button"}
-                    %span
-                      %i.icon-dislike
+            - @topic.popular.each do |p|
+              = render partial: "proposals/proposal", locals: {proposal: p}
+
           #top.tab-pane{:role => "tabpanel"}
           #recents.tab-pane{:role => "tabpanel"}
 

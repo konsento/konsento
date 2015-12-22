@@ -6,4 +6,20 @@ class Topic < ActiveRecord::Base
   has_many :proposals
   has_and_belongs_to_many :tags
   has_many :comments, as: :commentable
+
+  def consensus
+    self.proposals.first(3)
+  end
+
+  def popular
+    self.proposals.last(3)
+  end
+
+  def top
+    self.proposals.last(3)
+  end
+
+  def rising
+    self.proposals.last(3)
+  end
 end
