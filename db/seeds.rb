@@ -9,6 +9,8 @@ ActiveRecord::Base.transaction do
 
   group = Group.create(parent: nil, title: "Global", description: "Global group.")
 
+  group.join_requirements << join
+
   subgroup = Group.create(parent: group, title: "National", description: "Global subgroup.")
 
   topic = Topic.create(user: user1, group: group, title: "Sample Topic")
