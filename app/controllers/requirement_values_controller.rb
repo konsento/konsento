@@ -2,6 +2,10 @@ class RequirementValuesController < ApplicationController
   before_action :set_requirement_value, only: [:show, :edit, :update, :destroy]
   before_action :is_user_valid, only: [:new, :create]
 
+  def index
+    @requirement_values = current_user.requirement_values
+  end
+
   # GET /requirement_values/1
   def show
   end

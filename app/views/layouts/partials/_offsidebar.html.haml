@@ -20,9 +20,9 @@
         %em.icon-pencil
         %span Editar Perfil
     %li.item-link
-      %a{:href => "#", :title => "Editar Informações"}
+      =link_to index_requirement_values_path do
         %em.icon-tag
-        %span Editar Informações
+        %span Visualizar Requerimentos
     %li.item-link
       =link_to sign_out_path, :method => :delete do
         %em.icon-logout

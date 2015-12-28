@@ -1,19 +1,11 @@
-%h1 Listing requirement_values
-
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @requirement_values.each do |requirement_value|
-      %tr
-        %td= link_to 'Show', requirement_value
-        %td= link_to 'Edit', edit_requirement_value_path(requirement_value)
-        %td= link_to 'Destroy', requirement_value, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Requirement value', new_requirement_value_path
+.row
+  .panel.panel-default.col-md-6.col-md-offset-3
+    .panel-body
+      %h2
+        .text-center
+          Visualizar Requerimentos
+      - @requirement_values.each do |r|
+        %b
+          = r.join_requirement.title
+        %p
+          = r.value

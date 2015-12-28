@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create]
 
   #Get
+  get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'
   get '/requirement_values/:group_id/:user_id/new', to: 'requirement_values#new'
 
   #Post
