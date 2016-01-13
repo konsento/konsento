@@ -14,6 +14,11 @@
  *= require chosen/chosen.min
  */
 
+body.modal-open{
+  padding-right: 0px !important;
+  overflow: hidden;
+}
+
 #brand {
   display: flex;
   margin-top: 5px;
@@ -102,12 +107,19 @@
 }
 
 .comment-item{
+  padding: 10px;
+
   .media-body{
     padding-left: 10px;
   }
   small.timestamp{
     padding-left: 10px;
   }
+}
+
+.comment-item:nth-child(even){
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .agree-button.current {
@@ -121,6 +133,15 @@
 .disagree-button.current {
   color: #f00;
 }
+
+#modal {
+  .modal-comments{
+    max-height: 340px;
+    overflow-y: auto;
+  }
+}
+
+
 
 footer {
   text-align: center;

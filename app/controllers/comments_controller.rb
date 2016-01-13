@@ -24,7 +24,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to @comment.commentable, notice: 'Comment was successfully created.'
+      if @comment.commentable.instance_of? Topic
+        redirect_to @comment.commentable, notice: 'Comment was successfully created.'
+      else
+        redirect_to @comment.commentable.topic, notice: 'Comment was successfully created.'
+      end
     end
   end
 

@@ -1,5 +1,10 @@
 class Js::ProposalsController < ApplicationController
-  before_action :set_proposal, only: [:agree, :abstain, :disagree]
+  before_action :set_proposal, only: [:agree, :abstain, :disagree, :comments]
+
+  def comments
+    @comment = Comment.new(commentable: @proposal, user: current_user)
+  end
+
   def agree
     @proposal.vote_agree(current_user)
   end

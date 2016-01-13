@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   namespace :js,  defaults: {format: :js} do
     resources :proposals, only: [] do
       member do
+        post :comments
         post :agree
         post :abstain
         post :disagree

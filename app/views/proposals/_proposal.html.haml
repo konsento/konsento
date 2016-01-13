@@ -3,10 +3,10 @@
     = proposal.content
   .text-right
     .btn-group
-      %button.btn.btn-labeled.btn-default{:type => "button"}
+      = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do
         %span.btn-label>
           %i.icon-speech
-        3
+        = proposal.comments.size
       %button.btn.btn-labeled.btn-default{:type => "button"}
         %span.btn-label>
           %i.icon-people

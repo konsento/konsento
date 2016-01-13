@@ -1,0 +1,11 @@
+$('.modal-title').html("Comentários")
+$('.modal-body').html('');
+$('.modal-body').append("<div class='modal-comments'></div>");
+
+<% @proposal.comments.each do |c| %>
+  $('.modal-comments').append("<%= escape_javascript(render partial: 'comments/comment', locals: {comment: c}) %>");
+<% end %>
+
+$('.modal-body').append("<%= escape_javascript(render partial: 'comments/form', locals: {commentable: @comment}) %>");
+$('#modal').modal('show');
+$('#modal').modal('handleUpdate');
