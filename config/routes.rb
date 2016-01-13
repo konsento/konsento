@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :js do
+  get 'proposals/yes'
+  end
+
   # Root
   root 'groups#index'
 
@@ -26,4 +30,15 @@ Rails.application.routes.draw do
 
   #Post
   post '/requirement_values/:group_id/:user_id/', to: 'requirement_values#create', as: 'requirement_values'
+
+  #JS
+  namespace :js,  defaults: {format: :js} do
+    resources :proposals, only: [] do
+      member do
+        post :agree
+        post :abstain
+        post :disagree
+      end
+    end
+  end
 end

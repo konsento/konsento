@@ -8,7 +8,7 @@ class Topic < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   def consensus
-    self.proposals.first(3)
+    proposals = self.proposals.includes(:votes).first(3)
   end
 
   def popular

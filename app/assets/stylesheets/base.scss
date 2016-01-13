@@ -110,6 +110,18 @@
   }
 }
 
+.agree-button.current {
+  color: #0f0;
+}
+
+.abstain-button.current {
+  color: #00f;
+}
+
+.disagree-button.current {
+  color: #f00;
+}
+
 footer {
   text-align: center;
 }

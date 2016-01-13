@@ -12,12 +12,13 @@
           %i.icon-people
         3
     .btn-group
-      %button.btn.btn-default{:type => "button"}
+      - user_vote = proposal.vote_for_user(current_user)
+      = link_to agree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 1) do
         %span
           %i.icon-like
-      %button.btn.btn-default{:type => "button"}
+      = link_to abstain_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 0) do
         %span
           %i.icon-options
-      %button.btn.btn-default{:type => "button"}
+      = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) do
         %span
           %i.icon-dislike
