@@ -1,21 +1,23 @@
 ActiveRecord::Base.transaction do
-  user1 = User.create(username: "ruiz", email: "ruiz@email.com", password: "123456")
-  user2 = User.create(username: "anon", email: "anon@email.com", password: "123456")
-  user3 = User.create(username: "tanaka", email: "tanaka@email.com", password: "123456")
+  user1 = User.create!(username: "ruiz", email: "ruiz@email.com", password: "123456")
+  user2 = User.create!(username: "anon", email: "anon@email.com", password: "123456")
+  user3 = User.create!(username: "tanaka", email: "tanaka@email.com", password: "123456")
 
-  join = JoinRequirement.create(title: "CPF");
+  join = JoinRequirement.create!(title: "CPF");
 
-  req =  RequirementValue.create(user: user1, join_requirement: join, value: 12345678900)
+  req =  RequirementValue.create!(user: user1, join_requirement: join, value: '12345678900')
 
-  group = Group.create(parent: nil, title: "Global", description: "Global group.")
+  group = Group.create!(parent: nil, title: "Global", description: "Global group.")
 
   group.join_requirements << join
 
-  subgroup = Group.create(parent: group, title: "National", description: "Global subgroup.")
+  user1.subscriptions.create!(group: group)
+
+  subgroup = Group.create!(parent: group, title: "National", description: "Global subgroup.")
 
   topic = Topic.create(user: user1, group: group, title: "Sample Topic")
 
-  proposal1 = Proposal.create(
+  proposal1 = Proposal.create!(
     user: user1,
     topic: topic,
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
@@ -23,7 +25,8 @@ ActiveRecord::Base.transaction do
      et, lacinia eget velit. Praesent faucibus dignissim arcu, nec mattis quam
      vulputate eu. Nam est neque, ultrices nec tellus amet."
   )
-  proposal2 = Proposal.create(
+
+  proposal2 = Proposal.create!(
     user: user1,
     topic: topic,
     content: "Interdum et malesuada fames ac ante ipsum primis in faucibus.
@@ -31,7 +34,8 @@ ActiveRecord::Base.transaction do
     vel enim cursus ullamcorper. Lorem ipsum dolor sit amet, consectetur
     adipiscing elit. Cras venenatis felis ut nulla al consequat. "
   )
-  proposal3 = Proposal.create(
+
+  proposal3 = Proposal.create!(
     user: user1,
     topic: topic,
     content: "Nulla facilisi. Nulla in porta arcu. Phasellus bibendum cursus
@@ -39,7 +43,8 @@ ActiveRecord::Base.transaction do
     felis suscipit. Nullam sollicitudin mattis egestas. Donec convallis et risus
      varius porttitor. Sed id fermentum lorem amet Aliquam."
   )
-  proposal4 = Proposal.create(
+
+  proposal4 = Proposal.create!(
     user: user1,
     topic: topic,
     content: " Interdum et malesuada fames ac ante ipsum primis in faucibus.
@@ -47,7 +52,8 @@ ActiveRecord::Base.transaction do
     Vestibulum enim ligula, mollis vel ultricies eu, aliquet quis ex. Maecenas
     bibendum rutrum rhoncus. In sapien tortor, consectetur. "
   )
-  proposal5 = Proposal.create(
+
+  proposal5 = Proposal.create!(
     user: user1,
     topic: topic,
     content: "Suspendisse eget laoreet purus. Aliquam facilisis nulla non justo
@@ -55,7 +61,8 @@ ActiveRecord::Base.transaction do
     montes, nascetur ridiculus mus. Pellentesque a semper lectus. Aliquam rutrum
      mauris ac elit accumsan, vitae convallis tincidunt."
   )
-  proposal6 = Proposal.create(
+
+  proposal6 = Proposal.create!(
     user: user1,
     topic: topic,
     content: "Donec gravida feugiat aliquam. Proin sapien urna, malesuada a nibh

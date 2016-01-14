@@ -6,6 +6,7 @@ class CreateRequirementValues < ActiveRecord::Migration
       t.string :value, null: false
       t.timestamps null: false
     end
+
     add_index :requirement_values, [:user_id, :join_requirement_id], unique: true
   end
 end
