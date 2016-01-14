@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :add_root_breadcrumb
+  before_action :set_js_data
 
   include Clearance::Controller
   # Prevent CSRF attacks by raising an exception.
@@ -9,5 +10,14 @@ class ApplicationController < ActionController::Base
   private
   def add_root_breadcrumb
       add_breadcrumb "Início", :root_path
+  end
+
+  def set_js_data
+    gon.push(
+      root_url: root_url,
+      controller: params[:controller].classify,
+      action: params[:action].classify,
+      params: params
+    )
   end
 end
