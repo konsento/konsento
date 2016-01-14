@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :js do
-  get 'proposals/yes'
-  end
-
   # Root
   root 'groups#index'
 
