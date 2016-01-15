@@ -23,7 +23,7 @@ ActiveRecord::Base.transaction do
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
         faucibus metus eu faucibus posuere. In massa tellus, auctor sit amet pretium
          et, lacinia eget velit. Praesent faucibus dignissim arcu, nec mattis quam
-         vulputate eu. Nam est neque, ultrices nec tellus amet."
+         vulputate eu. Nam est neque, ultrices nec tellus amet.".squish
       },
       {
         user: user1,
@@ -31,7 +31,7 @@ ActiveRecord::Base.transaction do
         content: "Interdum et malesuada fames ac ante ipsum primis in faucibus.
         Integer euismod mollis erat, ac euismod nisi varius quis. Integer eu diam
         vel enim cursus ullamcorper. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Cras venenatis felis ut nulla al consequat. "
+        adipiscing elit. Cras venenatis felis ut nulla al consequat. ".squish
       },
       {
         user: user1,
@@ -39,7 +39,7 @@ ActiveRecord::Base.transaction do
         content: "Nulla facilisi. Nulla in porta arcu. Phasellus bibendum cursus
         pellentesque. In tincidunt purus et ipsum facilisis, sit amet dignissim
         felis suscipit. Nullam sollicitudin mattis egestas. Donec convallis et risus
-         varius porttitor. Sed id fermentum lorem amet Aliquam."
+         varius porttitor. Sed id fermentum lorem amet Aliquam.".squish
       },
       {
         user: user1,
@@ -47,7 +47,7 @@ ActiveRecord::Base.transaction do
         content: " Interdum et malesuada fames ac ante ipsum primis in faucibus.
         Proin quis lobortis sem. Mauris sed lorem sem. Curabitur et mattis est.
         Vestibulum enim ligula, mollis vel ultricies eu, aliquet quis ex. Maecenas
-        bibendum rutrum rhoncus. In sapien tortor, consectetur. "
+        bibendum rutrum rhoncus. In sapien tortor, consectetur.".squish
       },
       {
         user: user1,
@@ -55,7 +55,7 @@ ActiveRecord::Base.transaction do
         content: "Suspendisse eget laoreet purus. Aliquam facilisis nulla non justo
         hendrerit mattis. Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Pellentesque a semper lectus. Aliquam rutrum
-         mauris ac elit accumsan, vitae convallis tincidunt."
+         mauris ac elit accumsan, vitae convallis tincidunt.".squish
       },
       {
         user: user1,
@@ -63,7 +63,7 @@ ActiveRecord::Base.transaction do
         content: "Donec gravida feugiat aliquam. Proin sapien urna, malesuada a nibh
          sed, accumsan sagittis ipsum. Pellentesque euismod sagittis nunc ac
          interdum. Sed et sodales magna. Sed congue, dolor nec dignissim mattis,
-         purus purus maximus dolore, non dictum metus dolor ac erat."
+         purus purus maximus dolore, non dictum metus dolor ac erat.".squish
       }
     ]
   )
