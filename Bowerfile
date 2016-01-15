@@ -1,6 +1,7 @@
 asset 'animate.css', '~> 3.4.0'
 asset 'animo.js', 'ThrivingKings/animo.js#1.0.3'
 asset 'bootstrap', '3.3.5'
+asset 'bootstrap-tagsinput', '~> 0.7.1'
 asset 'chosen', '~> 1.4.2'
 asset 'fontawesome', '~> 4.4.0'
 asset 'jquery', '~> 2.1.4'
