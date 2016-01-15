@@ -6,11 +6,11 @@
       = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do
         %span.btn-label>
           %i.icon-speech
-        = proposal.comments.size
+        = proposal.comments.count
       %button.btn.btn-labeled.btn-default{:type => "button"}
         %span.btn-label>
           %i.icon-people
-        3
+        = proposal.votes.count
     .btn-group
       - user_vote = proposal.vote_for_user(current_user)
       = link_to agree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 1) do
