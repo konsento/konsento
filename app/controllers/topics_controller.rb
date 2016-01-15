@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :create]
 
   # GET /topics/1
   def show

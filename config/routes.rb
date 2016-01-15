@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   resources :proposals, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
+  resources :invitations, only: [:index, :create] do
+    post :send_email, on: :member
+    get '/register/:token' => 'invitations#registration_form', on: :collection, as: :registration_form
+    post '/register/:token' => 'invitations#register', on: :collection, as: :register
+  end
 
   # Get
   get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'

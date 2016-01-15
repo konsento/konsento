@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
   has_many :requirement_values
   has_many :join_requirements, through: :requirement_values
   has_many :topics
-  has_many :invitations
+  has_many :invitations, inverse_of: :user, dependent: :destroy
   has_many :groups, through: :subscriptions
+
+  before_create { |record| record.available_invitations = 10 }
 
   validates :password, confirmation: true
 

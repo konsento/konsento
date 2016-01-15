@@ -16,14 +16,18 @@
         .user-block-email
           = current_user.email
     %li.item-link
-      =link_to edit_user_path(current_user) do
+      = link_to edit_user_path(current_user) do
         %em.icon-pencil
         %span Editar Perfil
     %li.item-link
-      =link_to index_requirement_values_path do
+      = link_to invitations_path do
+        %em.icon-paper-plane
+        %span Convites
+    %li.item-link
+      = link_to index_requirement_values_path do
         %em.icon-tag
         %span Visualizar Requerimentos
     %li.item-link
-      =link_to sign_out_path, :method => :delete do
+      = link_to sign_out_path, :method => :delete do
         %em.icon-logout
         %span Sair
