@@ -7,6 +7,19 @@ class Proposal < ActiveRecord::Base
   has_many :references
   has_many :comments, as: :commentable
 
+
+  def popular
+    self.children
+  end
+
+  def controversial
+    self.children
+  end
+
+  def recent
+    self.children
+  end
+
   def vote_agree(user)
     self.vote(user, 1)
   end

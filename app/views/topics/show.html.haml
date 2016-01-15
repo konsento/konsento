@@ -7,11 +7,11 @@
         / Nav tabs
         %ul.nav.nav-tabs{:role => "tablist"}
           %li.active{:role => "presentation"}
-            %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consenso", :role => "tab"} Consenso
+            %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consensus", :role => "tab"} Consenso
 
         / Tab panes
         .tab-content
-          #consenso.tab-pane.active{:role => "tabpanel"}
+          #consensus.tab-pane.active{:role => "tabpanel"}
             - @topic.consensus.each do |p|
               = render partial: "proposals/proposal", locals: {proposal: p}
 
@@ -24,18 +24,15 @@
           %li.active{:role => "presentation"}
             %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"} Popular
           %li{:role => "presentation"}
-            %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#top", :role => "tab"} Topo
+            %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#controversial", :role => "tab"} Controverso
           %li{:role => "presentation"}
             %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recents", :role => "tab"} Recentes
 
         / Tab panes
         .tab-content
           #popular.tab-pane.active{:role => "tabpanel"}
-            - @topic.popular.each do |p|
-              = render partial: "proposals/proposal", locals: {proposal: p}
-
-          #top.tab-pane{:role => "tabpanel"}
-          #recents.tab-pane{:role => "tabpanel"}
+          #controversial.tab-pane{:role => "tabpanel"}
+          #recent.tab-pane{:role => "tabpanel"}
 
 .row
   .panel.panel-default

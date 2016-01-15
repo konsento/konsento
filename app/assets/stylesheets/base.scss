@@ -96,13 +96,22 @@ body.modal-open{
   }
 }
 
+#consensus .proposal:hover {
+  background: #EAF6FF;
+  cursor: pointer;
+}
+
+#consensus .proposal.active {
+  background: #DAECF9;
+}
+
 .subscribe-button{
   margin-bottom: 20px;
 }
 
 .proposal {
   margin-bottom: 15px;
-  padding-bottom: 15px;
+  padding: 5px;
   border-bottom: 1px #eee solid;
 }
 

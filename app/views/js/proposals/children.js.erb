@@ -1,0 +1,14 @@
+$('#popular').html('')
+<% @proposal.popular.each do |p| %>
+  $('#popular').append("<%= escape_javascript(render partial: 'proposals/proposal', locals: {proposal: p}) %>");
+<% end %>
+
+$('#controversial').html('')
+<% @proposal.controversial.each do |p| %>
+  $('#controversial').append("<%= escape_javascript(render partial: 'proposals/proposal', locals: {proposal: p}) %>");
+<% end %>
+
+$('#recent').html('')
+<% @proposal.recent.each do |p| %>
+  $('#recent').append("<%= escape_javascript(render partial: 'proposals/proposal', locals: {proposal: p}) %>");
+<% end %>
