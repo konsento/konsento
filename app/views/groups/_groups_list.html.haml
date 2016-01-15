@@ -9,13 +9,19 @@
                 %strong= g.title
             .text-muted.text-sm
               %span
-                %strong.mr-sm> 623 subgrupos
+                %strong.mr-sm>
+                  = g.children.count
+                  subgrupo(s)
               %span.mh-sm
               %span
-                %strong.mr-sm> 323 tópicos
+                %strong.mr-sm>
+                  = g.topics.count
+                  tópico(s)
           %td.text-right.hidden-xs.hidden-sm
             .text-muted
-              %small Última atualização em 11 de agosto de 2015
+              %small
+                Criado em
+                = g.updated_at
 - else
   .text-center
     Não há grupos nesta categoria
