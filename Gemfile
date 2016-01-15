@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 gem 'pg'
 
+gem 'acts-as-taggable-on'
 gem 'bower-rails'
 gem 'breadcrumbs_on_rails'
 gem 'clearance'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020220052) do
+ActiveRecord::Schema.define(version: 20160115003330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,18 +107,25 @@ ActiveRecord::Schema.define(version: 20151020220052) do
 
   add_index "subscriptions", ["user_id", "group_id"], name: "index_subscriptions_on_user_id_and_group_id", unique: true, using: :btree
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
   create_table "tags", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "taggings_count", default: 0
   end
 
-  create_table "tags_topics", id: false, force: :cascade do |t|
-    t.integer "tag_id",   null: false
-    t.integer "topic_id", null: false
-  end
-
-  add_index "tags_topics", ["topic_id", "tag_id"], name: "index_tags_topics_on_topic_id_and_tag_id", unique: true, using: :btree
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -171,8 +178,6 @@ ActiveRecord::Schema.define(version: 20151020220052) do
   add_foreign_key "requirement_values", "users"
   add_foreign_key "subscriptions", "groups"
   add_foreign_key "subscriptions", "users"
-  add_foreign_key "tags_topics", "tags"
-  add_foreign_key "tags_topics", "topics"
   add_foreign_key "topics", "groups"
   add_foreign_key "topics", "topics", column: "parent_id"
   add_foreign_key "topics", "users"
