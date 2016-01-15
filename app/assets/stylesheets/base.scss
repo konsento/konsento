@@ -39,6 +39,10 @@ body.modal-open{
   }
 }
 
+textarea {
+    resize: none;
+}
+
 #brand:hover{
   text-decoration: none !important;
 }
