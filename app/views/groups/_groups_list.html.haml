@@ -1,12 +1,12 @@
-- if subgroups.size > 0
+- if groups.size > 0
   %table.table.table-striped
     %tbody
-      - subgroups.each do |s|
+      - groups.each do |g|
         %tr
           %td
             %h4
-              =link_to s do
-                %strong= s.title
+              =link_to g do
+                %strong= g.title
             .text-muted.text-sm
               %span
                 %strong.mr-sm> 623 subgrupos

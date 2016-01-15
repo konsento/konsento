@@ -35,4 +35,4 @@
         #controversial.tab-pane{:role => "tabpanel"}
           = render partial: "topics_list", locals: {topics: @group.controversial}
         #subgroups.tab-pane{:role => "tabpanel"}
-          = render partial: "groups_list", locals: {subgroups: @group.children}
+          = render partial: "groups_list", locals: {groups: @group.children}
