@@ -7,6 +7,8 @@ class Proposal < ActiveRecord::Base
   has_many :references
   has_many :comments, as: :commentable
 
+  validates :content, presence: true
+
   def vote_agree(user)
     self.vote(user, 1)
   end

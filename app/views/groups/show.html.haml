@@ -2,9 +2,16 @@
   .row.subscribe-button
     - if @subscription.persisted?
       = render partial: 'subscriptions/unsubscribe_button'
+      = link_to new_group_topic_path(@group), class: 'btn btn-primary btn-xs btn-labeled' do
+        %span.btn-label
+          %i.fa.fa-edit
+        Novo tópico
     - else
       = render partial: 'subscriptions/subscribe_button'
-
+      = link_to '#', class: 'btn btn-primary btn-xs btn-labeled', disabled: true do
+        %span.btn-label
+          %i.fa.fa-edit
+        Novo tópico
 
 .row
   .panel.panel-default

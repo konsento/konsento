@@ -4,6 +4,12 @@ pt-BR:
       topic:
         one: 'Tópico'
         other: 'Tópicos'
+      proposal:
+        one: 'Proposta'
+        other: 'Propostas'
     attributes:
       topic:
         title: 'Título'
+        tag_list: 'Tags'
+      proposal:
+        content: 'Conteúdo'

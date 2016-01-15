@@ -1,10 +1,26 @@
-= form_for @topic do |f|
-  - if @topic.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@topic.errors.count, "error")} prohibited this topic from being saved:"
-      %ul
-        - @topic.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for [@topic.group, @topic] do |f|
+  .row
+    .col-lg-12
+      = f.input :title
 
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-lg-12
+      %h4= Proposal.model_name.human(count: 2)
+      %hr
+
+  .row
+    .col-lg-12
+      #proposals
+        = f.simple_fields_for :proposals do |proposal|
+          = render 'proposal_fields', f: proposal
+        .links
+          = link_to_add_association 'Adicionar Proposta', f, :proposals, class: 'btn btn-success btn-sm'
+  %hr
+  .row
+    .col-lg-12
+      = f.input :tag_list, input_html: {'data-role': 'tagsinput'}
+
+  .row
+    .col-lg-12
+      %hr
+      = f.button :submit

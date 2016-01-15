@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :join_requirements, through: :requirement_values
   has_many :topics
   has_many :invitations
+  has_many :groups, through: :subscriptions
 
   validates :password, confirmation: true
 
