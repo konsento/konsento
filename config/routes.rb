@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: [:show]
+  resources :proposals, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
 
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
         post :agree
         post :abstain
         post :disagree
+        post :propose
       end
     end
   end

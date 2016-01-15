@@ -22,3 +22,6 @@
       = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) do
         %span
           %i.icon-dislike
+    = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
+      %span
+        %i.icon-pencil

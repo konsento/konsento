@@ -1,0 +1,9 @@
+$('.modal-title').html("Escrever nova proposta")
+$('.modal-body').html('');
+
+$('.modal-body').append(
+  "<%= escape_javascript(render partial: 'proposals/propose', locals: {proposal: @proposal, new_proposal: @new_proposal}) %>"
+);
+
+$('#modal').modal('show');
+$('#modal').modal('handleUpdate');

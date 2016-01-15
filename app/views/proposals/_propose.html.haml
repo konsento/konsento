@@ -1,0 +1,14 @@
+%h4
+  Original
+%p
+  = proposal.content
+%h4
+  Nova
+= simple_form_for new_proposal, class: 'form-horizontal' do |f|
+  = f.input :user_id, as: :hidden
+  = f.input :parent_id, as: :hidden
+  = f.input :topic_id, as: :hidden
+  .form-group
+    = f.input :content, as: :text, id: 'post-comment', class: 'form-control', placeholder: 'Comente aqui...', input_html: {rows: 4}, label: false
+  .form-group
+    = f.button :submit, class: 'btn btn-effect-ripple btn-primary', value: 'Propor'

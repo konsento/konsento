@@ -1,5 +1,5 @@
 class Js::ProposalsController < ApplicationController
-  before_action :set_proposal, only: [:agree, :abstain, :disagree, :comments, :children]
+  before_action :set_proposal
 
   def comments
     @comment = Comment.new(commentable: @proposal, user: current_user)
@@ -18,6 +18,12 @@ class Js::ProposalsController < ApplicationController
   end
 
   def children
+  end
+
+  def propose
+    @new_proposal = @proposal.dup
+    @new_proposal.user = current_user
+    @new_proposal.parent = @proposal
   end
 
   private
