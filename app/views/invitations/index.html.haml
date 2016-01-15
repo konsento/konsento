@@ -1,0 +1,39 @@
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title= Invitation.model_name.human(count: 2)
+      .panel-body
+        #invite-form
+          = simple_form_for Invitation.new do |f|
+            = f.label :email
+            .input-group
+              = f.input_field :email, class: 'form-control', autofocus: true
+              %span.input-group-btn
+                = f.button :submit
+            = f.hint :email
+          %p= "Convites restantes: #{current_user.available_invitations}"
+
+        .table-responsive
+          %table.table.table-condensed
+            %thead
+              %tr
+                %th= Invitation.human_attribute_name(:email)
+                %th= Invitation.human_attribute_name(:registered)
+                %th= t 'actions'
+            %tbody
+              - @invitations.each do |invitation|
+                %tr
+                  %td= invitation.email
+                  %td= t invitation.registered.to_s
+                  %td
+                    - if invitation.registered
+                      = link_to '#', class: 'btn btn-warning btn-xs btn-labeled disabled' do
+                        .btn-label
+                          %em.icon-paper-plane
+                        Reenviar Email
+                    - else
+                      = link_to send_email_invitation_path(invitation), class: 'btn btn-warning btn-xs btn-labeled', 'data-confirm': t('crud.confirm'), method: :post do
+                        .btn-label
+                          %em.icon-paper-plane
+                        Reenviar Email

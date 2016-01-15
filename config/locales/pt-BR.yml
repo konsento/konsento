@@ -1,4 +1,11 @@
 pt-BR:
+  actions: 'Ações'
+  'false': 'Não'
+  'true': 'Sim'
+
+  crud:
+    confirm: 'Você tem certeza?'
+
   activerecord:
     models:
       topic:
@@ -7,9 +14,31 @@ pt-BR:
       proposal:
         one: 'Proposta'
         other: 'Propostas'
+      invitation:
+        one: 'Convite'
+        other: 'Convites'
+
     attributes:
       topic:
         title: 'Título'
         tag_list: 'Tags'
       proposal:
         content: 'Conteúdo'
+      invitation:
+        email: 'Email'
+        registered: 'Registrado'
+      user:
+        email: 'Email'
+        username: 'Usuário'
+        password: 'Senha'
+        password_confirmation: 'Confirme a senha'
+
+  simple_form:
+    hints:
+      invitation:
+        email: 'Separe os emails com vírgula para enviar mais de um.'
+
+  helpers:
+    submit:
+      invitation:
+        create: 'Convidar'
