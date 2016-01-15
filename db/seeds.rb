@@ -67,4 +67,8 @@ ActiveRecord::Base.transaction do
       }
     ]
   )
+
+  topic.proposals.third.update(parent: Proposal.first)
+  topic.proposals.fourth.update(parent: Proposal.first)
+  topic.proposals.fifth.update(parent: Proposal.second)
 end
