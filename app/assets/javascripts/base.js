@@ -23,6 +23,8 @@
 //= require cocoon
 //--- Moment.js
 //= require moment/min/moment-with-locales
+//--- Bootstrap Tagsinput
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput
 
 $(document).ready(function(){
   moment.locale('pt-BR');

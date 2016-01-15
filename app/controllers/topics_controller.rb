@@ -1,11 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
-  # GET /topics
-  def index
-    @topics = Topic.all
-  end
-
   # GET /topics/1
   def show
     add_breadcrumb @topic.group.title, group_path(@topic.group)
@@ -13,39 +8,24 @@ class TopicsController < ApplicationController
     @comment = Comment.new(commentable: @topic, user: current_user)
   end
 
-  # GET /topics/new
+  # GET /groups/{group_id}/topics/new
   def new
-    @topic = Topic.new
+    @topic = Group.find(params[:group_id]).topics.build
+    @topic.proposals.build
+
+    add_breadcrumb @topic.group.title, group_path(@topic.group)
   end
 
-  # GET /topics/1/edit
-  def edit
-  end
-
-  # POST /topics
+  # POST /groups/{group_id}/topics
   def create
-    @topic = Topic.new(topic_params)
-
-    if @topic.save
-      redirect_to @topic, notice: 'Topic was successfully created.'
-    else
-      render :new
+    @topic = Group.find(params[:group_id]).topics.create(topic_params) do |t|
+      t.user = current_user
+      t.proposals.each { |p| p.user = current_user }
     end
-  end
 
-  # PATCH/PUT /topics/1
-  def update
-    if @topic.update(topic_params)
-      redirect_to @topic, notice: 'Topic was successfully updated.'
-    else
-      render :edit
-    end
-  end
+    add_breadcrumb @topic.group.title, group_path(@topic.group)
 
-  # DELETE /topics/1
-  def destroy
-    @topic.destroy
-    redirect_to topics_url, notice: 'Topic was successfully destroyed.'
+    respond_with @topic
   end
 
   private
@@ -56,6 +36,10 @@ class TopicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def topic_params
-      params[:topic]
+      params.require(:topic).permit(:title, :tag_list, proposals_attributes: [
+        :id,
+        :content,
+        :_destroy
+      ])
     end
 end

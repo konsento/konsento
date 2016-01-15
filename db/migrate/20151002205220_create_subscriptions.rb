@@ -6,6 +6,7 @@ class CreateSubscriptions < ActiveRecord::Migration
       t.string :role
       t.timestamps null: false
     end
+
     add_index :subscriptions, [:user_id, :group_id], unique: true
   end
 end

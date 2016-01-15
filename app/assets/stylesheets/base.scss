@@ -12,6 +12,8 @@
  *= require whirl/dist/whirl
  * --- Chosen
  *= require chosen/chosen.min
+ * --- Bootstrap Tagsinput
+ *= require bootstrap-tagsinput/dist/bootstrap-tagsinput
  */
 
 body.modal-open{
@@ -150,8 +152,10 @@ body.modal-open{
   }
 }
 
-
-
 footer {
   text-align: center;
+}
+
+.bootstrap-tagsinput {
+  width: 100%;
 }

@@ -14,20 +14,23 @@ Rails.application.routes.draw do
   get '/sign_up' => 'users#new', as: 'sign_up'
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
 
-  #Resouces
-  resources :groups
-  resources :topics
+  # Resouces
+  resources :groups do
+    resources :topics, only: [:new, :create]
+  end
+
+  resources :topics, only: [:show]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
 
-  #Get
+  # Get
   get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'
   get '/requirement_values/:group_id/:user_id/new', to: 'requirement_values#new'
 
-  #Post
+  # Post
   post '/requirement_values/:group_id/:user_id/', to: 'requirement_values#create', as: 'requirement_values'
 
-  #JS
+  # JS
   namespace :js,  defaults: {format: :js} do
     resources :proposals, only: [] do
       member do
