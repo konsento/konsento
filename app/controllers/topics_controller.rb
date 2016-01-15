@@ -14,6 +14,7 @@ class TopicsController < ApplicationController
     @topic.proposals.build
 
     add_breadcrumb @topic.group.title, group_path(@topic.group)
+    add_breadcrumb 'Novo tópico'
   end
 
   # POST /groups/{group_id}/topics
@@ -24,6 +25,7 @@ class TopicsController < ApplicationController
     end
 
     add_breadcrumb @topic.group.title, group_path(@topic.group)
+    add_breadcrumb 'Novo tópico'
 
     respond_with @topic
   end

@@ -1,7 +1,7 @@
 = simple_form_for [@topic.group, @topic] do |f|
   .row
     .col-lg-12
-      = f.input :title
+      = f.input :title, input_html: {autofocus: true}
 
   .row
     .col-lg-12

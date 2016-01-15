@@ -8,22 +8,29 @@
 //= require konsento
 //--- Controllers
 //= require topics/show
+//= require topics/new
 
 (function($, undefined) {
   $(function() {
     var controller = window.Konsento.prototype[gon.controller];
 
     if (controller !== undefined) {
-      var actionClass = controller.prototype[gon.action]
+      var action = gon.action;
+
+      if (action === 'Create') {
+        action = 'New'
+      }
+
+      if (action === 'Update') {
+        action = 'Edit'
+      }
+
+      var actionClass = controller.prototype[action]
 
       if (actionClass !== undefined) {
         window.action_instance = new actionClass(gon.params);
         window.action_instance.run();
       }
-
-      // if ($.isFunction(activeController['init'])) {
-      //   activeController['init']();
-      // }
     }
   });
 })(jQuery);
