@@ -1,0 +1,21 @@
+- if subgroups.size > 0
+  %table.table.table-striped
+    %tbody
+      - subgroups.each do |s|
+        %tr
+          %td
+            %h4
+              =link_to s do
+                %strong= s.title
+            .text-muted.text-sm
+              %span
+                %strong.mr-sm> 623 subgrupos
+              %span.mh-sm
+              %span
+                %strong.mr-sm> 323 tópicos
+          %td.text-right.hidden-xs.hidden-sm
+            .text-muted
+              %small Última atualização em 11 de agosto de 2015
+- else
+  .text-center
+    Não há grupos nesta categoria

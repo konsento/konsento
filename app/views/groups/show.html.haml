@@ -19,54 +19,20 @@
       / Nav tabs
       %ul.nav.nav-tabs{:role => "tablist"}
         %li.active{:role => "presentation"}
-          %a{"aria-controls" => "hot", "data-toggle" => "tab", :href => "#hot", :role => "tab"} Em destaque
+          %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"} Popular
         %li{:role => "presentation"}
           %a{"aria-controls" => "rising", "data-toggle" => "tab", :href => "#rising", :role => "tab"} Subindo
         %li{:role => "presentation"}
           %a{"aria-controls" => "controversial", "data-toggle" => "tab", :href => "#controversial", :role => "tab"} Controversos
         %li{:role => "presentation"}
-          %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#top", :role => "tab"} No topo
-        %li{:role => "presentation"}
           %a{"aria-controls" => "subgroups", "data-toggle" => "tab", :href => "#subgroups", :role => "tab"} Subgrupos
       / Tab panes
       .tab-content
-        #hot.tab-pane.active{:role => "tabpanel"}
-          %table.table.table-striped
-            %tbody
-              - @group.topics.each do |topic|
-                %tr
-                  %td
-                    %h4
-                      =link_to topic do
-                        %strong= topic.title
-                    .text-muted.text-sm
-                      %span
-                        %strong.mr-sm> 623 mensagens
-                      %span.mh-sm
-                      %span
-                        %strong.mr-sm> 323 participantes
-                  %td.text-right.hidden-xs.hidden-sm
-                    .text-muted
-                      %small Última atualização em 07 de outubro de 2015
+        #popular.tab-pane.active{:role => "tabpanel"}
+          = render partial: "topics_list", locals: {topics: @group.popular}
         #rising.tab-pane{:role => "tabpanel"}
-          rising
-        #controversial.tab-pane{:role => "tabpanel"} controversial
-        #top.tab-pane{:role => "tabpanel"} top
+          = render partial: "topics_list", locals: {topics: @group.rising}
+        #controversial.tab-pane{:role => "tabpanel"}
+          = render partial: "topics_list", locals: {topics: @group.controversial}
         #subgroups.tab-pane{:role => "tabpanel"}
-          %table.table.table-striped
-            %tbody
-              - @group.children.each do |subgroup|
-                %tr
-                  %td
-                    %h4
-                      =link_to subgroup do
-                        %strong= subgroup.title
-                    .text-muted.text-sm
-                      %span
-                        %strong.mr-sm> 5 subgrupos
-                      %span.mh-sm
-                      %span
-                        %strong.mr-sm> 323 tópicos
-                  %td.text-right.hidden-xs.hidden-sm
-                    .text-muted
-                      %small Última atualização em 11 de agosto de 2015
+          = render partial: "groups_list", locals: {subgroups: @group.children}

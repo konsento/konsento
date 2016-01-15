@@ -13,4 +13,17 @@ class Group < ActiveRecord::Base
       end
       ancestry.compact
     end
+
+    def popular
+      self.topics
+    end
+
+    def rising
+      self.topics
+    end
+
+    def controversial
+      self.topics
+    end
+
 end
