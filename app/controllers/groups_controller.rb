@@ -1,9 +1,18 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :search_topics]
 
   # GET /groups
   def index
     @groups = Group.where(parent: nil)
+  end
+
+  # GET /groups/1/search_topics
+  def search_topics
+    @title = @group.title
+    @q = search_params[:q].to_s.squish
+    @results = Topic.search(@q).where(group: @group).page(params[:topic_page])
+
+    render 'search/index'
   end
 
   # GET /groups/1
@@ -64,5 +73,9 @@ class GroupsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def group_params
       params[:group]
+    end
+
+    def search_params
+      params.require(:search).permit(:q)
     end
 end

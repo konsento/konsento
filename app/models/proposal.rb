@@ -1,4 +1,10 @@
 class Proposal < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search,
+                  ignoring: :accents,
+                  against: [:content]
+
   belongs_to :user
   has_many :children, inverse_of: :parent, class_name: 'Proposal', foreign_key: :parent_id
   belongs_to :parent, inverse_of: :children, class_name: 'Proposal', foreign_key: :parent_id

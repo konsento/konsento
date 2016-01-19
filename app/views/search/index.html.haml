@@ -2,17 +2,21 @@
   .col-lg-12
     .panel.panel-default
       .panel-heading
-        %h3.panel-title= "Busca por \"#{@q}\""
+        - title = "Busca por \"#{@q}\""
+        - title << " em #{@title}" if @title
+        %h3.panel-title= title
       .panel-body
-        %div
+        - if @results.is_a? Hash
           %ul.nav.nav-tabs
-            %li.active
-              = link_to "#{Topic.model_name.human(count: 2)} (#{@topics.size})", '#topics', 'data-toggle': 'tab'
-            %li
-              = link_to "#{Group.model_name.human(count: 2)} (#{@groups.size})", '#groups', 'data-toggle': 'tab'
+            - @results.each_with_index do |(key, results), i|
+              %li{class: i.zero? ? 'active' : ''}
+                - model_name = results.model.model_name.human(count: 2)
+                = link_to "#{model_name} (#{results.size})", "##{key}", 'data-toggle': 'tab'
 
           .tab-content
-            .tab-pane.active#topics
-              = render partial: 'results', locals: {results: @topics}
-            .tab-pane#groups
-              = render partial: 'results', locals: {results: @groups}
+            - @results.each_with_index do |(key, results), i|
+              .tab-pane{id: key, class: i.zero? ? 'active' : ''}
+                = render partial: 'results', locals: {results: results}
+
+        - else
+          = render partial: 'search/results', locals: {results: @results}

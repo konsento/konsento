@@ -17,9 +17,13 @@ Rails.application.routes.draw do
   # Resouces
   resources :groups do
     resources :topics, only: [:new, :create]
+    get '/search_topics' => 'groups#search_topics', on: :member
   end
 
-  resources :topics, only: [:show]
+  resources :topics, only: [:show] do
+    get '/search_proposals' => 'topics#search_proposals', on: :member
+  end
+
   resources :proposals, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]

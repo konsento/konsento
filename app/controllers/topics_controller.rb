@@ -1,6 +1,15 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :search_proposals]
   before_action :require_login, only: [:new, :create]
+
+  # GET /topics/1/search_proposals
+  def search_proposals
+    @title = @topic.title
+    @q = search_params[:q].to_s.squish
+    @results = Proposal.search(@q).where(topic: @topic).page(params[:proposal_page])
+
+    render 'search/index'
+  end
 
   # GET /topics/1
   def show
@@ -47,5 +56,9 @@ class TopicsController < ApplicationController
         :content,
         :_destroy
       ])
+    end
+
+    def search_params
+      params.require(:search).permit(:q)
     end
 end
