@@ -7,12 +7,12 @@
         %div
           %ul.nav.nav-tabs
             %li.active
-              = link_to Group.model_name.human(count: 2), '#groups', 'data-toggle': 'tab'
+              = link_to "#{Topic.model_name.human(count: 2)} (#{@topics.size})", '#topics', 'data-toggle': 'tab'
             %li
-              = link_to Topic.model_name.human(count: 2), '#topics', 'data-toggle': 'tab'
+              = link_to "#{Group.model_name.human(count: 2)} (#{@groups.size})", '#groups', 'data-toggle': 'tab'
 
           .tab-content
-            .tab-pane.active#groups
-              = render partial: 'results', locals: {results: @groups}
-            .tab-pane#topics
+            .tab-pane.active#topics
               = render partial: 'results', locals: {results: @topics}
+            .tab-pane#groups
+              = render partial: 'results', locals: {results: @groups}
