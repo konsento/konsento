@@ -44,7 +44,7 @@ ActiveRecord::Base.transaction do
       {
         user: user1,
         topic: topic,
-        content: " Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        content: "Ligula et malesuada fames ac ante ipsum primis in faucibus.
         Proin quis lobortis sem. Mauris sed lorem sem. Curabitur et mattis est.
         Vestibulum enim ligula, mollis vel ultricies eu, aliquet quis ex. Maecenas
         bibendum rutrum rhoncus. In sapien tortor, consectetur.".squish
@@ -68,7 +68,7 @@ ActiveRecord::Base.transaction do
     ]
   )
 
-  topic.proposals.third.update(parent: Proposal.first)
   topic.proposals.fourth.update(parent: Proposal.first)
-  topic.proposals.fifth.update(parent: Proposal.second)
+  topic.proposals.fifth.update(parent: Proposal.first)
+  topic.proposals.last.update(parent: Proposal.second)
 end
