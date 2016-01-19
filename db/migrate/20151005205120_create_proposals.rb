@@ -5,6 +5,7 @@ class CreateProposals < ActiveRecord::Migration
       t.references :parent, index: true
       t.references :topic, null: false, foreign_key: true
       t.text :content, null: false
+      t.integer :proposal_index, null: false
       t.timestamps null: false
     end
 

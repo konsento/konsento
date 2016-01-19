@@ -22,7 +22,10 @@ class TopicsController < ApplicationController
   def create
     @topic = Group.find(params[:group_id]).topics.create(topic_params) do |t|
       t.user = current_user
-      t.proposals.each { |p| p.user = current_user }
+      t.proposals.each_with_index do |p, i|
+        p.proposal_index = i
+        p.user = current_user
+      end
     end
 
     add_breadcrumb @topic.group.title, group_path(@topic.group)

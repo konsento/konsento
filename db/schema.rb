@@ -65,12 +65,13 @@ ActiveRecord::Schema.define(version: 20160115003330) do
   end
 
   create_table "proposals", force: :cascade do |t|
-    t.integer  "user_id",    null: false
+    t.integer  "user_id",        null: false
     t.integer  "parent_id"
-    t.integer  "topic_id",   null: false
-    t.text     "content",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "topic_id",       null: false
+    t.text     "content",        null: false
+    t.integer  "proposal_index", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "proposals", ["parent_id"], name: "index_proposals_on_parent_id", using: :btree

@@ -20,6 +20,7 @@ ActiveRecord::Base.transaction do
       {
         user: user1,
         topic: topic,
+        proposal_index: 0,
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
         faucibus metus eu faucibus posuere. In massa tellus, auctor sit amet pretium
          et, lacinia eget velit. Praesent faucibus dignissim arcu, nec mattis quam
@@ -28,6 +29,7 @@ ActiveRecord::Base.transaction do
       {
         user: user1,
         topic: topic,
+        proposal_index: 1,
         content: "Interdum et malesuada fames ac ante ipsum primis in faucibus.
         Integer euismod mollis erat, ac euismod nisi varius quis. Integer eu diam
         vel enim cursus ullamcorper. Lorem ipsum dolor sit amet, consectetur
@@ -36,6 +38,7 @@ ActiveRecord::Base.transaction do
       {
         user: user1,
         topic: topic,
+        proposal_index: 2,
         content: "Nulla facilisi. Nulla in porta arcu. Phasellus bibendum cursus
         pellentesque. In tincidunt purus et ipsum facilisis, sit amet dignissim
         felis suscipit. Nullam sollicitudin mattis egestas. Donec convallis et risus
@@ -44,6 +47,7 @@ ActiveRecord::Base.transaction do
       {
         user: user1,
         topic: topic,
+        proposal_index: 0,
         content: "Ligula et malesuada fames ac ante ipsum primis in faucibus.
         Proin quis lobortis sem. Mauris sed lorem sem. Curabitur et mattis est.
         Vestibulum enim ligula, mollis vel ultricies eu, aliquet quis ex. Maecenas
@@ -52,6 +56,7 @@ ActiveRecord::Base.transaction do
       {
         user: user1,
         topic: topic,
+        proposal_index: 0,
         content: "Suspendisse eget laoreet purus. Aliquam facilisis nulla non justo
         hendrerit mattis. Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Pellentesque a semper lectus. Aliquam rutrum
@@ -60,6 +65,7 @@ ActiveRecord::Base.transaction do
       {
         user: user1,
         topic: topic,
+        proposal_index: 1,
         content: "Donec gravida feugiat aliquam. Proin sapien urna, malesuada a nibh
          sed, accumsan sagittis ipsum. Pellentesque euismod sagittis nunc ac
          interdum. Sed et sodales magna. Sed congue, dolor nec dignissim mattis,

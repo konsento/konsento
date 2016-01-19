@@ -10,15 +10,24 @@ class Proposal < ActiveRecord::Base
   validates :content, presence: true
 
   def popular
-    self.children
+    Proposal.where(
+      topic: self.topic,
+      proposal_index: self.proposal_index
+    ).where.not(id: self.id)
   end
 
   def controversial
-    self.children
+    Proposal.where(
+      topic: self.topic,
+      proposal_index: self.proposal_index
+    ).where.not(id: self.id)
   end
 
   def recent
-    self.children
+    Proposal.where(
+      topic: self.topic,
+      proposal_index: self.proposal_index
+    ).where.not(id: self.id)
   end
 
   def vote_agree(user)
