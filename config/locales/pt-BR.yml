@@ -8,6 +8,9 @@ pt-BR:
 
   activerecord:
     models:
+      group:
+        one: 'Grupo'
+        other: 'Grupos'
       topic:
         one: 'Tópico'
         other: 'Tópicos'

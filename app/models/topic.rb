@@ -1,4 +1,11 @@
 class Topic < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search,
+                  ignoring: :accents,
+                  against: [:title], 
+                  associated_against: {proposals: [:content]}
+
   acts_as_taggable
 
   belongs_to :user
