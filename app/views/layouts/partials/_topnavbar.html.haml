@@ -1,14 +1,14 @@
 / START Top Navbar
-%nav.navbar.topnavbar{:role => "navigation"}
+%nav.navbar.topnavbar{role: 'navigation'}
   / START navbar header
   .navbar-header
-    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+    %button.navbar-toggle{'data-target': '.navbar-collapse', 'data-toggle': 'collapse', type: 'button'}
       %span.sr-only Toggle navigation
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    =link_to root_path, id: "brand" do
-      %img{:alt => "Konsento", :src => image_path('konsento-logo.png')}
+    = link_to root_path, id: 'brand' do
+      %img{alt: 'Konsento', src: image_path('konsento-logo.png')}
       .name Konsento
   / END navbar header
   / START Nav wrapper
@@ -17,12 +17,12 @@
     %ul.nav.navbar-nav.navbar-right
       / Search icon
       %li
-        %a{"data-search-open" => "", :href => "#"}
+        %a{'data-search-open': '', href: '#'}
           %em.icon-magnifier
       - if signed_in?
         / START Alert menu
         %li.dropdown.dropdown-list
-          %a{"data-toggle" => "dropdown", :href => "#"}
+          %a{'data-toggle': 'dropdown', href: '#'}
             %em.icon-bell
             .label.label-danger 1
           / START Dropdown menu
@@ -31,7 +31,7 @@
               / START list group
               .list-group
                 / list item
-                %a.list-group-item{:href => "#"}
+                %a.list-group-item{href: '#'}
                   .media-box
                     .pull-left
                       %em.fa.fa-comment.fa-2x
@@ -40,7 +40,7 @@
                       %p.m0.text-muted
                         %small 10 novos comentários
                 / last list item
-                %a.list-group-item{:href => "#"}
+                %a.list-group-item{href: '#'}
                   %small Mais notificações
                   %span.label.label-success.pull-right 0
               / END list group
@@ -48,31 +48,29 @@
         / END Alert menu
         / START User button
         %li
-          %a{"data-no-persist" => "true", "data-toggle-state" => "offsidebar-open", :href => "#"}
+          %a{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open', href: '#'}
             %em.icon-user
         / END User menu
       - else
         %li.dropdown.dropdown-list
-          %a{"data-toggle" => "dropdown", :href => "#"}
+          %a{'data-toggle': 'dropdown', href: '#'}
             %em.icon-user
           %ul.dropdown-menu
             %li
-              %a{:href => sign_in_path}
+              %a{href: sign_in_path}
                 Entrar
             %li.dropdown-header
               Não é cadastrado?
             %li
-              %a{:href => sign_up_path}
+              %a{href: sign_up_path}
                 Cadastrar
 
 
     / END Right Navbar
   / END Nav wrapper
   / START Search form
-  %form.navbar-form{:action => "search.html", :role => "search"}
+  = simple_form_for :search, url: search_path, method: :get, html: {class: 'navbar-form'} do |f|
     .form-group.has-feedback
-      %input.form-control{:placeholder => "Digite o que procura e aperte enter...", :type => "text"}/
-      .fa.fa-times.form-control-feedback{"data-search-dismiss" => ""}
-    %button.hidden.btn.btn-default{:type => "submit"} Submit
-  / END Search form
-/ END Top Navbar
+      = f.input_field :q, class: 'form-control', placeholder: 'Digite o que procura e aperte enter...'
+      .fa.fa-times.form-control-feedback{'data-search-dismiss': true}
+    = f.button :submit, 'Search', class: 'hidden'

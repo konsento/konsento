@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'
   get '/requirement_values/:group_id/:user_id/new', to: 'requirement_values#new'
 
+  get '/search', to: 'search#index'
+
   # Post
   post '/requirement_values/:group_id/:user_id/', to: 'requirement_values#create', as: 'requirement_values'
 

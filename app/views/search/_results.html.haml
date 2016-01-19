@@ -1,0 +1,10 @@
+- if results.any?
+  %p.lead= "#{results.size} resultado(s)"
+  - results.each do |result|
+    = search_result_title result
+    %p= search_result_content result
+    %hr
+
+  .panel-footer= paginate results, param_name: "#{results.first.model_name.singular}_page", remote: true
+- else
+  %p.lead Nenhum resultado encontrado para sua busca.

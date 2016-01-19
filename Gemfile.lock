@@ -89,6 +89,12 @@ GEM
       ruby_parser (~> 3.5)
     i18n (0.7.0)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-i18n (0.3.2)
+      kaminari
+      rails
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -101,6 +107,10 @@ GEM
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -193,7 +203,10 @@ DEPENDENCIES
   gon
   haml-rails
   has_secure_token
+  kaminari
+  kaminari-i18n
   pg
+  pg_search
   pry-rails
   rails (= 4.2.5)
   rails-i18n (~> 4.0)

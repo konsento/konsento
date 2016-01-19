@@ -54,7 +54,6 @@
         $(navbarFormSelector)
           .removeClass('open')      // Close control
           .find('input[type="text"]').blur() // remove focus
-          .val('')                    // Empty input
           ;
       }
     };
