@@ -4,4 +4,5 @@ class Vote < ActiveRecord::Base
   validates :opinion, inclusion: { in: [-1, 0, 1] }
 
   scope :agree, -> { where(opinion: 1) }
+  scope :disagree, -> { where(opinion: -1) }
 end

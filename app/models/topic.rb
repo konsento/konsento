@@ -41,7 +41,7 @@ class Topic < ActiveRecord::Base
         end
       end
       unless proposals_in_consensus.empty?
-        proposal =  most_agreed_proposal(proposals_in_consensus)
+        proposal =  best_consensus_proposal(proposals_in_consensus)
       end
     end
     proposal
@@ -69,6 +69,17 @@ class Topic < ActiveRecord::Base
   end
 
   private
+  # Selects most agreed proposal, searches for proposals with the
+  # same positive votes number and uses negative votes as tiebreaker
+  def best_consensus_proposal(proposals_in_consensus)
+    last_consensus_proposal = proposals_in_consensus.max_by do |p|
+      p.votes.agree.size
+    end
+    consensus_proposals = proposals_in_consensus.select do |p|
+      p.votes.agree.size == last_consensus_proposal.votes.agree.size
+    end
+    consensus_proposals.min_by { |p| p.votes.disagree.size}
+  end
 
   def user_is_subscribed_to_group
     unless user.groups.include?(group)
