@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
     add_breadcrumb @topic.group.title, group_path(@topic.group)
     add_breadcrumb @topic.title, topic_path(@topic)
     @comment = Comment.new(commentable: @topic, user: current_user)
+    @is_user_subscribed = @topic.group.is_user_subscribed?(current_user)
   end
 
   # GET /groups/{group_id}/topics/new

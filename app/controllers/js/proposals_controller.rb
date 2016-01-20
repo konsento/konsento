@@ -3,6 +3,7 @@ class Js::ProposalsController < ApplicationController
 
   def comments
     @comment = Comment.new(commentable: @proposal, user: current_user)
+    @is_user_subscribed = @proposal.topic.group.is_user_subscribed?(current_user)
   end
 
   def agree

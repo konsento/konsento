@@ -31,4 +31,8 @@ class Group < ActiveRecord::Base
   def controversial
     self.topics
   end
+
+  def is_user_subscribed?(user)
+    self.subscriptions.where(user: user).exists?
+  end
 end

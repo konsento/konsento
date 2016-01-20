@@ -1,4 +1,4 @@
-- if signed_in?
+- if signed_in? && @is_user_subscribed
   = simple_form_for commentable, class: 'form-horizontal' do |f|
     = f.input :user_id, as: :hidden
     = f.input :commentable_id, as: :hidden
@@ -9,8 +9,11 @@
       = f.button :submit, class: 'btn btn-effect-ripple btn-primary', value: 'Comentar'
 - else
   .text-center
-    Faça seu
-    = link_to 'cadastro', sign_in_path
-    ou
-    = link_to 'entre', sign_in_path
-    para comentar.
+    - if signed_in? && !@is_user_subscribed
+      Se inscreva no grupo para comentar.
+    - unless signed_in?
+      Faça seu
+      = link_to 'cadastro', sign_in_path
+      ou
+      = link_to 'entre', sign_in_path
+      para comentar.
