@@ -2,16 +2,23 @@ ActiveRecord::Base.transaction do
   user1 = User.create!(username: "ruiz", email: "ruiz@email.com", password: "123456")
   user2 = User.create!(username: "anon", email: "anon@email.com", password: "123456")
   user3 = User.create!(username: "tanaka", email: "tanaka@email.com", password: "123456")
+  user4 = User.create!(username: "sandoval", email: "sandoval@email.com", password: "123456")
 
   join = JoinRequirement.create!(title: "CPF");
 
-  req =  RequirementValue.create!(user: user1, join_requirement: join, value: '12345678900')
+  RequirementValue.create!(user: user1, join_requirement: join, value: '12345678900')
+  RequirementValue.create!(user: user2, join_requirement: join, value: '12345678901')
+  RequirementValue.create!(user: user3, join_requirement: join, value: '12345678902')
+  RequirementValue.create!(user: user4, join_requirement: join, value: '12345678903')
 
   group = Group.create!(parent: nil, title: "Global", description: "Global group.")
 
   group.join_requirements << join
 
   user1.subscriptions.create!(group: group)
+  user2.subscriptions.create!(group: group)
+  user3.subscriptions.create!(group: group)
+  user4.subscriptions.create!(group: group)
 
   subgroup = Group.create!(parent: group, title: "National", description: "Global subgroup.")
 
@@ -77,4 +84,21 @@ ActiveRecord::Base.transaction do
   topic.proposals.fourth.update(parent: Proposal.first)
   topic.proposals.fifth.update(parent: Proposal.first)
   topic.proposals.last.update(parent: Proposal.second)
+
+
+  Vote.create!(user: user1, proposal: Proposal.first, opinion: 1)
+  Vote.create!(user: user1, proposal: Proposal.first.children.first, opinion: 1)
+  Vote.create!(user: user1, proposal: Proposal.first.children.second, opinion: 0)
+
+  Vote.create!(user: user2, proposal: Proposal.first, opinion: -1)
+  Vote.create!(user: user2, proposal: Proposal.first.children.first, opinion: 1)
+  Vote.create!(user: user2, proposal: Proposal.first.children.second, opinion: 0)
+
+  Vote.create!(user: user3, proposal: Proposal.first, opinion: 1)
+  Vote.create!(user: user3, proposal: Proposal.first.children.first, opinion: 1)
+  Vote.create!(user: user3, proposal: Proposal.first.children.second, opinion: -1)
+
+  Vote.create!(user: user4, proposal: Proposal.first, opinion: 0)
+  Vote.create!(user: user4, proposal: Proposal.first.children.first, opinion: -1)
+  Vote.create!(user: user4, proposal: Proposal.first.children.second, opinion: -1)
 end
