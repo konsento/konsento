@@ -21,8 +21,8 @@ class Topic < ActiveRecord::Base
   validate :user_is_subscribed_to_group
 
   def proposal_consensus(proposal_index)
-    total_votes_minimum_percent = 50
-    agree_votes_minimum_percent = 50
+    total_votes_minimum_percent = self.group.total_votes_percent
+    agree_votes_minimum_percent = self.group.agree_votes_percent
 
     proposal = nil
     proposals = self.proposals.where(proposal_index: proposal_index)

@@ -4,6 +4,8 @@ class CreateGroups < ActiveRecord::Migration
       t.references :parent, index: true
       t.string :title, null: false
       t.text :description
+      t.float :total_votes_percent, null: false
+      t.float :agree_votes_percent, null: false
       t.timestamps null: false
     end
 

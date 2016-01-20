@@ -11,7 +11,13 @@ ActiveRecord::Base.transaction do
   RequirementValue.create!(user: user3, join_requirement: join, value: '12345678902')
   RequirementValue.create!(user: user4, join_requirement: join, value: '12345678903')
 
-  group = Group.create!(parent: nil, title: "Global", description: "Global group.")
+  group = Group.create!(
+    parent: nil,
+    title: "Global",
+    description: "Global group.",
+    total_votes_percent: 50,
+    agree_votes_percent: 50
+  )
 
   group.join_requirements << join
 
@@ -20,7 +26,13 @@ ActiveRecord::Base.transaction do
   user3.subscriptions.create!(group: group)
   user4.subscriptions.create!(group: group)
 
-  subgroup = Group.create!(parent: group, title: "National", description: "Global subgroup.")
+  subgroup = Group.create!(
+    parent: group,
+    title: "National",
+    description: "Global subgroup.",
+    total_votes_percent: 50,
+    agree_votes_percent: 50
+  )
 
   topic = Topic.create!(user: user1, group: group, title: "Sample Topic",
     proposals_attributes: [

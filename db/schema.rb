@@ -32,10 +32,12 @@ ActiveRecord::Schema.define(version: 20160119004732) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "parent_id"
-    t.string   "title",       null: false
+    t.string   "title",               null: false
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.float    "total_votes_percent", null: false
+    t.float    "agree_votes_percent", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
