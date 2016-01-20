@@ -1,38 +1,40 @@
 .row
   .panel.panel-default
     .panel-body
-      %h1= @topic.title
-      .col-md-6
-        %p Tópico
-        / Nav tabs
-        %ul.nav.nav-tabs{:role => "tablist"}
-          %li.active{:role => "presentation"}
-            %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consensus", :role => "tab"} Consenso
+      #topic{'data-topic-id' => @topic.id}
+        %h1= @topic.title
+        .col-md-6
+          %p Tópico
+          / Nav tabs
+          %ul.nav.nav-tabs{:role => "tablist"}
+            %li.active{:role => "presentation"}
+              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consensus", :role => "tab"} Consenso
 
-        / Tab panes
-        .tab-content
-          #consensus.tab-pane.active{:role => "tabpanel"}
-            - @topic.consensus.each do |p|
-              = render partial: "proposals/proposal", locals: {proposal: p}
+          / Tab panes
+          .tab-content
+            #consensus.tab-pane.active{:role => "tabpanel"}
+              - @topic.proposals_count.times do |i|
+                - p = @topic.proposal_consensus(i)
+                = render partial: "proposals/proposal", locals: {proposal_index: i, proposal: p}
 
 
 
-      .col-md-6
-        %p Alteração para proposta selecionada
-        / Nav tabs
-        %ul.nav.nav-tabs{:role => "tablist"}
-          %li.active{:role => "presentation"}
-            %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"} Popular
-          %li{:role => "presentation"}
-            %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#controversial", :role => "tab"} Controverso
-          %li{:role => "presentation"}
-            %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recents", :role => "tab"} Recentes
+        .col-md-6
+          %p Alteração para proposta selecionada
+          / Nav tabs
+          %ul.nav.nav-tabs{:role => "tablist"}
+            %li.active{:role => "presentation"}
+              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"} Popular
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#controversial", :role => "tab"} Controverso
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recents", :role => "tab"} Recentes
 
-        / Tab panes
-        .tab-content
-          #popular.tab-pane.active{:role => "tabpanel"}
-          #controversial.tab-pane{:role => "tabpanel"}
-          #recent.tab-pane{:role => "tabpanel"}
+          / Tab panes
+          .tab-content
+            #popular.tab-pane.active{:role => "tabpanel"}
+            #controversial.tab-pane{:role => "tabpanel"}
+            #recent.tab-pane{:role => "tabpanel"}
 
 .row
   .panel.panel-default

@@ -44,9 +44,9 @@ Rails.application.routes.draw do
 
   # JS
   namespace :js,  defaults: {format: :js} do
+    get '/proposals/:topic_id/:proposal_index', to: 'proposals#show_by_index'
     resources :proposals, only: [] do
       member do
-        get :children
         post :comments
         post :agree
         post :abstain

@@ -1,28 +1,32 @@
-.proposal{'data-id': proposal.id}
-  %p
-    = proposal.content
-  .text-right
-    .btn-group
-      = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do
-        %span.btn-label>
-          %i.icon-speech
-        = proposal.comments.count
-      %button.btn.btn-labeled.btn-default{:type => "button"}
-        %span.btn-label>
-          %i.icon-people
-        = proposal.votes.count
-    - if signed_in?
+.proposal{'data-proposal-index': proposal_index}
+  - if(proposal != nil)
+    %p
+      = proposal.content
+    .text-right
       .btn-group
-        - user_vote = proposal.vote_for_user(current_user)
-        = link_to agree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 1) do
+        = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do
+          %span.btn-label>
+            %i.icon-speech
+          = proposal.comments.count
+        %button.btn.btn-labeled.btn-default{:type => "button"}
+          %span.btn-label>
+            %i.icon-people
+          = proposal.votes.count
+      - if signed_in?
+        .btn-group
+          - user_vote = proposal.vote_for_user(current_user)
+          = link_to agree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 1) do
+            %span
+              %i.icon-like
+          = link_to abstain_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 0) do
+            %span
+              %i.icon-options
+          = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) do
+            %span
+              %i.icon-dislike
+        = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
           %span
-            %i.icon-like
-        = link_to abstain_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 0) do
-          %span
-            %i.icon-options
-        = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) do
-          %span
-            %i.icon-dislike
-      = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
-        %span
-          %i.icon-pencil
+            %i.icon-pencil
+  - else
+    %p.text-center
+      Ainda não há consenso para esta proposta.

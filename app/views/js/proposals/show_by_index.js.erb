@@ -1,0 +1,14 @@
+$('#popular').html('')
+<% @topic.popular(@proposal_index).each do |p| %>
+  $('#popular').append("<%= escape_javascript(render partial: 'proposals/proposal', locals: {proposal_index: nil, proposal: p}) %>");
+<% end %>
+
+$('#controversial').html('')
+<% @topic.controversial(@proposal_index).each do |p| %>
+  $('#controversial').append("<%= escape_javascript(render partial: 'proposals/proposal', locals: {proposal_index: nil, proposal: p}) %>");
+<% end %>
+
+$('#recent').html('')
+<% @topic.recent(@proposal_index).each do |p| %>
+  $('#recent').append("<%= escape_javascript(render partial: 'proposals/proposal', locals: {proposal_index: nil, proposal: p}) %>");
+<% end %>

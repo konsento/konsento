@@ -11,8 +11,9 @@ class @Konsento::Topic::Show
       if(e.target.tagName == 'P' || e.target.tagName == 'DIV')
         $('#consensus .proposal').removeClass('active')
         $(this).addClass('active')
-        id = $(this).data('id')
-        _this.loadChildren(id)
+        topicId = $('#topic').data('topic-id')
+        proposalIndex = $(this).data('proposal-index')
+        _this.loadChildren(topicId, proposalIndex)
 
-  loadChildren: (parentId) ->
-    $.getScript "#{gon.rootUrl}js/proposals/#{parentId}/children"
+  loadChildren: (topicId, proposalIndex) ->
+    $.getScript "#{gon.rootUrl}js/proposals/#{topicId}/#{proposalIndex}"

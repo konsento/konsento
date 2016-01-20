@@ -3,7 +3,7 @@ class Topic < ActiveRecord::Base
 
   pg_search_scope :search,
                   ignoring: :accents,
-                  against: [:title], 
+                  against: [:title],
                   associated_against: {proposals: [:content]}
 
   acts_as_taggable
@@ -20,20 +20,52 @@ class Topic < ActiveRecord::Base
   validates :title, :proposals, presence: true
   validate :user_is_subscribed_to_group
 
-  def consensus
-    proposals = self.proposals.includes(:votes).first(3)
+  def proposal_consensus(proposal_index)
+    total_votes_minimum_percent = 50
+    agree_votes_minimum_percent = 50
+
+    proposal = nil
+    proposals = self.proposals.where(proposal_index: proposal_index)
+    users_votes_count = proposals.joins(:votes).group('votes.user_id').size.size
+    group_subscriptions_count = self.group.subscriptions.count
+
+    total_votes_percent = (users_votes_count * 100) / group_subscriptions_count
+
+    if total_votes_percent >= total_votes_minimum_percent
+      proposals_in_consensus = []
+      proposals.each do |p|
+        agree_votes = p.votes.agree.size
+        agree_votes_percent = (agree_votes * 100) / users_votes_count
+        if agree_votes_percent >= agree_votes_minimum_percent
+          proposals_in_consensus << p
+        end
+      end
+      unless proposals_in_consensus.empty?
+        proposal =  most_agreed_proposal(proposals_in_consensus)
+      end
+    end
+    proposal
   end
 
-  def popular
-    self.proposals.last(3)
+  def popular(proposal_index)
+    p_consensus = self.proposal_consensus(proposal_index)
+    proposals = self.proposals.where(proposal_index: proposal_index)
+    unless p_consensus.nil?
+      proposals = proposals.where.not(id: p_consensus.id)
+    end
+    proposals
   end
 
-  def top
-    self.proposals.last(3)
+  def controversial(proposal_index)
+    self.popular(proposal_index)
   end
 
-  def rising
-    self.proposals.last(3)
+  def recent(proposal_index)
+    self.popular(proposal_index)
+  end
+
+  def proposals_count
+    self.proposals.where(parent_id: nil).count
   end
 
   private

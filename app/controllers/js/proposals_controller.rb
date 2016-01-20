@@ -1,5 +1,5 @@
 class Js::ProposalsController < ApplicationController
-  before_action :set_proposal
+  before_action :set_proposal, except: [:show_by_index]
 
   def comments
     @comment = Comment.new(commentable: @proposal, user: current_user)
@@ -17,7 +17,9 @@ class Js::ProposalsController < ApplicationController
     @proposal.vote_disagree(current_user)
   end
 
-  def children
+  def show_by_index
+    @topic = Topic.find(params[:topic_id])
+    @proposal_index = params[:proposal_index]
   end
 
   def propose
