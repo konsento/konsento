@@ -1,6 +1,7 @@
 .row
   .panel.panel-default
     .panel-heading
-      %h4{:style => "width: 50%"} Grupos
+      %h4{:style => "width: 50%"}
+        = Group.model_name.human(count: 2)
     .panel-body
       = render partial: "groups_list", locals: {groups: @groups}

@@ -1,10 +1,10 @@
 = simple_form_for :session, url: session_path, class: 'mb-lg' do |f|
   .from-group.has-feedback.mb-lg
-    = f.input_field :email, placeholder: "Email", class: 'form-control'
+    = f.input_field :email, placeholder: User.human_attribute_name(:email), class: 'form-control'
     %span.fa.fa-envelope.form-control-feedback.text-muted
 
   .from-group.has-feedback.mb-lg
-    = f.input_field :password, placeholder: "Senha", class: 'form-control'
+    = f.input_field :password, placeholder: User.human_attribute_name(:password), class: 'form-control'
     %span.fa.fa-lock.form-control-feedback.text-muted
 
   .clearfix

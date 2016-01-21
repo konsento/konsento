@@ -5,13 +5,13 @@
       = link_to new_group_topic_path(@group), class: 'btn btn-primary btn-xs btn-labeled' do
         %span.btn-label
           %i.fa.fa-edit
-        Novo tópico
+        = t '.new_topic'
     - else
       = render partial: 'subscriptions/subscribe_button'
       = link_to '#', class: 'btn btn-primary btn-xs btn-labeled', disabled: true do
         %span.btn-label
           %i.fa.fa-edit
-        Novo tópico
+        = t '.new_topic'
 
 .row
   .panel.panel-default
@@ -19,13 +19,17 @@
       / Nav tabs
       %ul.nav.nav-tabs{role: 'tablist'}
         %li.active{role: 'presentation'}
-          %a{'aria-controls': 'popular', 'data-toggle': "tab", href: '#popular', role: 'tab'} Popular
+          %a{'aria-controls': 'popular', 'data-toggle': "tab", href: '#popular', role: 'tab'}
+            = t 'filters.popular'
         %li{role: 'presentation'}
-          %a{'aria-controls': 'recent', 'data-toggle': 'tab', href: '#recent', role: 'tab'} Recente
+          %a{'aria-controls': 'recent', 'data-toggle': 'tab', href: '#recent', role: 'tab'}
+            = t 'filters.recents'
         %li{role: 'presentation'}
-          %a{'aria-controls': 'controversial', 'data-toggle': 'tab', href: '#controversial', role: 'tab'} Controversos
+          %a{'aria-controls': 'controversial', 'data-toggle': 'tab', href: '#controversial', role: 'tab'}
+            = t 'filters.controversial'
         %li{role: 'presentation'}
-          %a{'aria-controls': 'subgroups', 'data-toggle': 'tab', href: '#subgroups', role: 'tab'} Subgrupos
+          %a{'aria-controls': 'subgroups', 'data-toggle': 'tab', href: '#subgroups', role: 'tab'}
+            = t '.subgroups'
       / Tab panes
       .tab-content
         #popular.tab-pane.active{role: 'tabpanel'}

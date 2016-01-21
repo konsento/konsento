@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   private
   def add_root_breadcrumb
-      add_breadcrumb "Início", :root_path
+      add_breadcrumb t('home'), :root_path
   end
 
   def set_js_data

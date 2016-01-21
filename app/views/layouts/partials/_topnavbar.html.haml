@@ -58,12 +58,12 @@
           %ul.dropdown-menu
             %li
               %a{href: sign_in_path}
-                Entrar
+                =  t 'layouts.application.sign_in'
             %li.dropdown-header
-              Não é cadastrado?
+              = t '.not_signed_up'
             %li
               %a{href: sign_up_path}
-                Cadastrar
+                = t '.sign_up'
 
 
     / END Right Navbar
@@ -71,6 +71,6 @@
   / START Search form
   = simple_form_for :search, url: search_form_url, method: :get, html: {class: 'navbar-form'} do |f|
     .form-group.has-feedback
-      = f.input_field :q, class: 'form-control', placeholder: 'Digite o que procura e aperte enter...'
+      = f.input_field :q, class: 'form-control', placeholder: t('search_description')
       .fa.fa-times.form-control-feedback{'data-search-dismiss': true}
     = f.button :submit, 'Search', class: 'hidden'

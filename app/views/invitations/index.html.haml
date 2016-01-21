@@ -12,7 +12,7 @@
               %span.input-group-btn
                 = f.button :submit
             = f.hint :email
-          %p= "Convites restantes: #{current_user.available_invitations}"
+          %p= t '.remaining_invitations', available_invitations: current_user.available_invitations
 
         .table-responsive
           %table.table.table-condensed
@@ -31,9 +31,9 @@
                       = link_to '#', class: 'btn btn-warning btn-xs btn-labeled disabled' do
                         .btn-label
                           %em.icon-paper-plane
-                        Reenviar Email
+                        = t '.resend_email'
                     - else
                       = link_to send_email_invitation_path(invitation), class: 'btn btn-warning btn-xs btn-labeled', 'data-confirm': t('crud.confirm'), method: :post do
                         .btn-label
                           %em.icon-paper-plane
-                        Reenviar Email
+                        = t '.resend_email'

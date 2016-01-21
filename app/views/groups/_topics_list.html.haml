@@ -9,13 +9,18 @@
                 %strong= t.title
             .text-muted.text-sm
               %span
-                %strong.mr-sm>= "#{t.proposals.size} proposta(s)"
+                %strong.mr-sm
+                  = t.proposals.size
+                  = t '.proposals'
               %span.mh-sm
               %span
-                %strong.mr-sm>= "#{t.participants.size} participante(s)"
+                %strong.mr-sm
+                  = t.participants.size
+                  = t '.participants'
           %td.text-right.hidden-xs.hidden-sm
             .text-muted
-              %small= "Última atualização em #{t.updated_at}"
+              %small
+                = t '.last_update', timestamp: t.updated_at
 - else
   .text-center
-    Não há tópicos nesta categoria
+    = t '.topics_not_found'

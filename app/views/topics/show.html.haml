@@ -4,11 +4,12 @@
       #topic{'data-topic-id' => @topic.id}
         %h1= @topic.title
         .col-md-6
-          %p Tópico
+          %p= Topic.model_name.human
           / Nav tabs
           %ul.nav.nav-tabs{:role => "tablist"}
             %li.active{:role => "presentation"}
-              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consensus", :role => "tab"} Consenso
+              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consensus", :role => "tab"}
+                = t '.consensus'
 
           / Tab panes
           .tab-content
@@ -20,15 +21,18 @@
 
 
         .col-md-6
-          %p Alteração para proposta selecionada
+          %p= t '.suggestions_to_selected_proposal'
           / Nav tabs
           %ul.nav.nav-tabs{:role => "tablist"}
             %li.active{:role => "presentation"}
-              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"} Popular
+              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"}
+                = t 'filters.popular'
             %li{:role => "presentation"}
-              %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#controversial", :role => "tab"} Controverso
+              %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#controversial", :role => "tab"}
+                = t 'filters.controversial'
             %li{:role => "presentation"}
-              %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recent", :role => "tab"} Recentes
+              %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recent", :role => "tab"}
+                = t 'filters.recent'
 
           / Tab panes
           .tab-content
@@ -40,13 +44,13 @@
   .panel.panel-default
     .panel-heading
       %em.fa.fa-pencil.mr>
-      Escreva um comentário
+      = t '.write_comment'
     .panel-body
       = render partial: "comments/form", locals: {commentable: @comment}
 
 .row
   .panel.panel-default
-    .panel-heading #{@topic.comments.size} Comentário
+    .panel-heading= "#{@topic.comments.size} #{Comment.model_name.human(count: 2)}"
     .panel-body
       - @topic.comments.each do |c|
         = render partial: "comments/comment", locals: {comment: c}

@@ -14,7 +14,7 @@
         = f.simple_fields_for :proposals do |proposal|
           = render 'proposal_fields', f: proposal
         .links
-          = link_to_add_association 'Adicionar Proposta', f, :proposals, class: 'btn btn-success btn-sm'
+          = link_to_add_association t('.add_proposal'), f, :proposals, class: 'btn btn-success btn-sm'
   %hr
   .row
     .col-lg-12

@@ -1,7 +1,7 @@
 / START Off Sidebar (right)
 %nav
   %h3.text-center.text-thin
-    Perfil
+    = t '.profile'
   %ul.nav
     %li.user-block
       / User picture
@@ -18,16 +18,17 @@
     %li.item-link
       = link_to edit_user_path(current_user) do
         %em.icon-pencil
-        %span Editar Perfil
+        %span= t '.edit_profile'
     %li.item-link
       = link_to invitations_path do
         %em.icon-paper-plane
-        %span Convites
+        %span
+          = Invitation.model_name.human(count: 2)
     %li.item-link
       = link_to index_requirement_values_path do
         %em.icon-tag
-        %span Visualizar Requerimentos
+        %span= RequirementValue.model_name.human(count: 2)
     %li.item-link
       = link_to sign_out_path, :method => :delete do
         %em.icon-logout
-        %span Sair
+        %span= t 'layouts.application.sign_out'

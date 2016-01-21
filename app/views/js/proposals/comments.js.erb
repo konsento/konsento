@@ -1,4 +1,4 @@
-$('.modal-title').html("Comentários")
+$('.modal-title').html("<%= Comment.model_name.human(count: 2) %>")
 $('.modal-body').html('');
 $('.modal-body').append("<div class='modal-comments'></div>");
 

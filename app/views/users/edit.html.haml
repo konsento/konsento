@@ -3,16 +3,16 @@
     .panel-body
       %h2
         .text-center
-          Editar Perfil
+          = t '.title'
       %p
-        Digite sua senha nos campos abaixo para alterá-la.
+        = t '.description'
       = simple_form_for current_user, class: 'mb-lg' do |f|
         .from-group.has-feedback.mb-lg
           = f.input_field :password, placeholder: "Senha", class: 'form-control'
           %span.fa.fa-lock.form-control-feedback.text-muted
 
         .from-group.has-feedback.mb-lg
-          = f.input_field :password_confirmation, placeholder: "Digite a senha novamente", class: 'form-control'
+          = f.input_field :password_confirmation, placeholder: t('.retype_password'), class: 'form-control'
           %span.fa.fa-lock.form-control-feedback.text-muted
 
         = link_to "Voltar", root_path, class:'btn btn-default pull-left col-md-6'

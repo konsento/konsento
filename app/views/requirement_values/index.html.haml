@@ -3,7 +3,7 @@
     .panel-body
       %h2
         .text-center
-          Visualizar Requerimentos
+          = RequirementValue.model_name.human(count: 2)
       - @requirement_values.each do |r|
         %b
           = r.join_requirement.title

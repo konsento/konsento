@@ -1,15 +1,15 @@
 %h4
-  Original
+  = t '.original'
 %p
   = proposal.content
 %h4
-  Nova
+  = t '.new'
 = simple_form_for new_proposal, class: 'form-horizontal' do |f|
   = f.input :user_id, as: :hidden
   = f.input :parent_id, as: :hidden
   = f.input :topic_id, as: :hidden
   = f.input :proposal_index, as: :hidden
   .form-group
-    = f.input :content, as: :text, id: 'post-comment', class: 'form-control', placeholder: 'Comente aqui...', input_html: {rows: 4}, label: false
+    = f.input :content, as: :text, id: 'post-comment', class: 'form-control', input_html: {rows: 4}, label: false
   .form-group
-    = f.button :submit, class: 'btn btn-effect-ripple btn-primary', value: 'Propor'
+    = f.button :submit, class: 'btn btn-effect-ripple btn-primary'

@@ -6,6 +6,86 @@ pt-BR:
   crud:
     confirm: 'Você tem certeza?'
 
+  home: 'Início'
+
+  search_description: 'Digite o que procura e aperte enter...'
+
+  layouts:
+    partials:
+      offsidebar:
+        profile: 'Perfil'
+        edit_profile: 'Perfil'
+      topnavbar:
+        not_signed_up: 'Não é cadastrado?'
+        sign_up: 'Cadastrar-se'
+
+  invitations:
+    index:
+      resend_email: 'Reenviar Email'
+      remaining_invitations: 'Convites restantes: %{available_invitations}'
+
+  subscriptions:
+      subscribe_button:
+        subscribe: 'Inscrever-se'
+
+      unsubscribe_button:
+        unsubscribe: 'Cancelar inscrição'
+
+  groups:
+    show:
+      new_topic: 'Novo tópico'
+      subgroups: 'Subgrupos'
+
+    topics_list:
+      proposals: 'proposta(s)'
+      participants: 'paticipante(s)'
+      last_update: 'Última atualização em %{timestamp}'
+      topics_not_found: 'Não há tópicos nesta categoria'
+
+    groups_list:
+      subgroups: 'subgrupos(s)'
+      topics: 'tópicos(s)'
+      created_at: 'Criado em %{timestamp}'
+      groups_not_found: 'Não há grupos nesta categoria'
+
+  users:
+    edit:
+      title: 'Editar Perfil'
+      description: 'Digite sua senha nos campos abaixo para alterá-la.'
+      retype_password: 'Digite a senha novamente'
+
+  js:
+    proposals:
+      propose:
+        title: 'Escrever nova proposta'
+
+  proposals:
+    proposal:
+      no_consensus: 'Ainda não há consenso para esta proposta'
+    propose:
+      original: 'Original'
+      new: 'Nova'
+
+  topics:
+    form:
+      add_proposal: 'Adicionar Proposta'
+    new:
+      new_topic: 'Novo Tópico'
+    show:
+      suggestions_to_selected_proposal: 'Sugestões para proposta selecionada'
+      consensus: 'Consenso'
+      write_comment: 'Escreva um comentário'
+
+  comments:
+    form:
+      authenticate_to_comment: 'Faça seu %{sign_up_link} ou %{sign_in_link} para comentar.'
+      subscribe_to_comment: 'Se inscreva no grupo para comentar'
+
+  filters:
+    popular: 'Popular'
+    controversial: 'Controversos'
+    recents: 'Recentes'
+
   activerecord:
     models:
       group:
@@ -20,6 +100,12 @@ pt-BR:
       invitation:
         one: 'Convite'
         other: 'Convites'
+      requirement_value:
+        one: 'Requerimento'
+        other: 'Requerimentos'
+      comment:
+        one: 'Comentário'
+        other: 'Comentários'
 
     attributes:
       topic:
@@ -43,5 +129,9 @@ pt-BR:
 
   helpers:
     submit:
+      proposal:
+        create: 'Propor'
       invitation:
         create: 'Convidar'
+      comment:
+        create: 'Comentar'

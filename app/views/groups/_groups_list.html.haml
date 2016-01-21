@@ -11,17 +11,16 @@
               %span
                 %strong.mr-sm>
                   = g.children.size
-                  subgrupo(s)
+                  = t '.subgroups'
               %span.mh-sm
               %span
                 %strong.mr-sm>
                   = g.topics.size
-                  tópico(s)
+                  = t '.topics'
           %td.text-right.hidden-xs.hidden-sm
             .text-muted
               %small
-                Criado em
-                = g.updated_at
+                = t '.created_at', timestamp: g.updated_at
 - else
   .text-center
-    Não há grupos nesta categoria
+    = t '.groups_not_found'
