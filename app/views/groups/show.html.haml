@@ -15,24 +15,24 @@
 
 .row
   .panel.panel-default
-    %div{:role => "tabpanel"}
+    %div{role: 'tabpanel'}
       / Nav tabs
-      %ul.nav.nav-tabs{:role => "tablist"}
-        %li.active{:role => "presentation"}
-          %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"} Popular
-        %li{:role => "presentation"}
-          %a{"aria-controls" => "rising", "data-toggle" => "tab", :href => "#rising", :role => "tab"} Subindo
-        %li{:role => "presentation"}
-          %a{"aria-controls" => "controversial", "data-toggle" => "tab", :href => "#controversial", :role => "tab"} Controversos
-        %li{:role => "presentation"}
-          %a{"aria-controls" => "subgroups", "data-toggle" => "tab", :href => "#subgroups", :role => "tab"} Subgrupos
+      %ul.nav.nav-tabs{role: 'tablist'}
+        %li.active{role: 'presentation'}
+          %a{'aria-controls': 'popular', 'data-toggle': "tab", href: '#popular', role: 'tab'} Popular
+        %li{role: 'presentation'}
+          %a{'aria-controls': 'recent', 'data-toggle': 'tab', href: '#recent', role: 'tab'} Recente
+        %li{role: 'presentation'}
+          %a{'aria-controls': 'controversial', 'data-toggle': 'tab', href: '#controversial', role: 'tab'} Controversos
+        %li{role: 'presentation'}
+          %a{'aria-controls': 'subgroups', 'data-toggle': 'tab', href: '#subgroups', role: 'tab'} Subgrupos
       / Tab panes
       .tab-content
-        #popular.tab-pane.active{:role => "tabpanel"}
-          = render partial: "topics_list", locals: {topics: @group.popular}
-        #rising.tab-pane{:role => "tabpanel"}
-          = render partial: "topics_list", locals: {topics: @group.rising}
-        #controversial.tab-pane{:role => "tabpanel"}
-          = render partial: "topics_list", locals: {topics: @group.controversial}
-        #subgroups.tab-pane{:role => "tabpanel"}
-          = render partial: "groups_list", locals: {groups: @group.children}
+        #popular.tab-pane.active{role: 'tabpanel'}
+          = render partial: 'topics_list', locals: {topics: @group.topics.popular}
+        #recent.tab-pane{role: 'tabpanel'}
+          = render partial: 'topics_list', locals: {topics: @group.topics.recent}
+        #controversial.tab-pane{role: 'tabpanel'}
+          = render partial: 'topics_list', locals: {topics: @group.topics.controversial}
+        #subgroups.tab-pane{role: 'tabpanel'}
+          = render partial: 'groups_list', locals: {groups: @group.children}

@@ -1,21 +1,21 @@
-- if topics.size > 0
+- if topics.any?
   %table.table.table-striped
     %tbody
       - topics.each do |t|
         %tr
           %td
             %h4
-              =link_to t do
+              = link_to t do
                 %strong= t.title
             .text-muted.text-sm
               %span
-                %strong.mr-sm> 623 mensagens
+                %strong.mr-sm>= "#{t.proposals.size} proposta(s)"
               %span.mh-sm
               %span
-                %strong.mr-sm> 323 participantes
+                %strong.mr-sm>= "#{t.participants.size} participante(s)"
           %td.text-right.hidden-xs.hidden-sm
             .text-muted
-              %small Última atualização em 07 de outubro de 2015
+              %small= "Última atualização em #{t.updated_at}"
 - else
   .text-center
     Não há tópicos nesta categoria

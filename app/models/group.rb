@@ -17,19 +17,8 @@ class Group < ActiveRecord::Base
     while ancestry.last.try(:parent) && ancestry.size <= 10
       ancestry << ancestry.last.parent
     end
+
     ancestry.compact
-  end
-
-  def popular
-    self.topics
-  end
-
-  def rising
-    self.topics
-  end
-
-  def controversial
-    self.topics
   end
 
   def is_user_subscribed?(user)

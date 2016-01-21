@@ -14,8 +14,17 @@ class Topic < ActiveRecord::Base
   belongs_to :parent, inverse_of: :children, class_name: 'Topic', foreign_key: :parent_id
   has_many :proposals, dependent: :destroy
   has_many :comments, as: :commentable
+  has_many :participants, -> { uniq }, through: :proposals, source: :user
 
   accepts_nested_attributes_for :proposals, reject_if: :all_blank
+
+  scope :recent, -> { order(updated_at: :desc) }
+
+  scope :popular, -> do
+    joins(:proposals).group('topics.id').order('COUNT(DISTINCT(proposals.user_id)) DESC')
+  end
+
+  scope :controversial, -> { joins(:proposals).group('topics.id').order('COUNT(proposals.id) DESC') }
 
   validates :title, :proposals, presence: true
   validate :user_is_subscribed_to_group

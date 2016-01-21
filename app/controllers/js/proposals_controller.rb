@@ -19,8 +19,13 @@ class Js::ProposalsController < ApplicationController
   end
 
   def show_by_index
-    @topic = Topic.find(params[:topic_id])
-    @proposal_index = params[:proposal_index]
+    topic = Topic.find(params[:topic_id])
+
+    @is_user_subscribed = topic.group.is_user_subscribed?(current_user)
+
+    @popular = topic.popular(params[:proposal_index])
+    @controversial = topic.controversial(params[:proposal_index])
+    @recent = topic.recent(params[:proposal_index])
   end
 
   def propose
