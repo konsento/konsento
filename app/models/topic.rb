@@ -56,23 +56,6 @@ class Topic < ActiveRecord::Base
     proposal
   end
 
-  def popular(proposal_index)
-    p_consensus = self.proposal_consensus(proposal_index)
-    proposals = self.proposals.where(proposal_index: proposal_index)
-    unless p_consensus.nil?
-      proposals = proposals.where.not(id: p_consensus.id)
-    end
-    proposals
-  end
-
-  def controversial(proposal_index)
-    self.popular(proposal_index)
-  end
-
-  def recent(proposal_index)
-    self.popular(proposal_index)
-  end
-
   def proposals_count
     self.proposals.where(parent_id: nil).count
   end

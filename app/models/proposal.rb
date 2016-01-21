@@ -13,6 +13,27 @@ class Proposal < ActiveRecord::Base
   has_many :references
   has_many :comments, as: :commentable
 
+  scope :recent, -> (index = nil) do
+    q = order(updated_at: :desc)
+    q = q.where(proposal_index: index) if index
+    q
+  end
+
+  scope :popular, -> (index = nil) do
+    q = joins(:votes).group('proposals.id').order('COUNT(votes.id) DESC')
+    q = where(proposal_index: index) if index
+    q
+  end
+
+  scope :controversial, -> (index = nil) do
+    q = joins('LEFT JOIN votes agree ON (proposals.id = agree.proposal_id AND agree.opinion = 1)').
+        joins('LEFT JOIN votes disagree ON (proposals.id = disagree.proposal_id AND disagree.opinion = -1)').
+        group('proposals.id').
+        order('(LEAST(@SUM(agree.opinion), @SUM(disagree.opinion))/GREATEST(@SUM(agree.opinion), @SUM(disagree.opinion))) ASC')
+    q = q.where(proposal_index: index) if index
+    q
+  end
+
   validates :content, presence: true
 
   def popular

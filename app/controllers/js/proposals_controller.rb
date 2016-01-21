@@ -23,9 +23,12 @@ class Js::ProposalsController < ApplicationController
 
     @is_user_subscribed = topic.group.is_user_subscribed?(current_user)
 
-    @popular = topic.popular(params[:proposal_index])
-    @controversial = topic.controversial(params[:proposal_index])
-    @recent = topic.recent(params[:proposal_index])
+    consensus = [topic.proposal_consensus(params[:proposal_index])]
+    @recent = topic.proposals.recent(params[:proposal_index]) - consensus
+    @popular = topic.proposals.popular(params[:proposal_index]) - consensus
+    @controversial = topic.proposals.controversial(params[:proposal_index]) - consensus
+
+    puts "\n\n\n\n\n#{@recent.size} #{@popular.size} #{@controversial.size}\n\n\n\n"
   end
 
   def propose
