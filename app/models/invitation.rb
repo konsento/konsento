@@ -32,7 +32,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def send_email
-    InvitationMailer.invite(self).deliver_now
+    InvitationMailer.invite(self).deliver_later
   end
 
   private
