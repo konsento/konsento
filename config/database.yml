@@ -18,5 +18,6 @@ production: &production
   <<: *default
   pool: 20
   host: <%= ENV['KONSENTO_DATABASE_HOST'] %>
+  username: <%= ENV['KONSENTO_DATABASE_USERNAME'] %>
   password: <%= ENV['KONSENTO_DATABASE_PASSWORD'] %>
-  database: konsento_production
+  database: <%= ENV['KONSENTO_DATABASE_NAME'] %>
