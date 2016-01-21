@@ -1,3 +1,4 @@
 %p= "Você foi convidado por #{@invitation.user.username} para conhecer o Konsento, uma plataforma de democracia direta digital de consenso progressivo."
 
-%p= "Para se registrar, #{link_to('clique aqui', registration_form_invitations_url(token: @invitation.token)).html_safe}."
+%p Para se registrar, clique no link abaixo:
+%p= registration_form_invitations_url(token: @invitation.token)
