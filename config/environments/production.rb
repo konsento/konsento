@@ -77,5 +77,18 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = {host: 'ec2-52-32-213-43.us-west-2.compute.amazonaws.com'}
+  # Mailer
+  config.action_mailer.default_url_options = {host: 'konsento.org'}
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: ENV['KONSENTO_SMTP_ADDRESS'],
+    port: ENV['KONSENTO_SMTP_PORT'],
+    domain: ENV['KONSENTO_SMTP_DOMAIN'],
+    user_name: ENV['KONSENTO_SMTP_USERNAME'],
+    password: ENV['KONSENTO_SMTP_PASSWORD'],
+    authentication: ENV['KONSENTO_SMTP_AUTHENTICATION'],
+    enable_starttls_auto: ENV['KONSENTO_SMTP_STARTTLS_AUTO'].present?
+  }
 end
