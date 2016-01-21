@@ -15,3 +15,5 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 set :bundle_binstubs, nil
+
+before 'deploy:compile_assets', 'bower:install'
