@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    @groups = Group.where(parent: nil)
+    @groups = Group.where(parent: nil).page(params[:page_subgroups])
   end
 
   # GET /groups/1/search_topics
