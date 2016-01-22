@@ -21,6 +21,9 @@
             .text-muted
               %small
                 = t '.created_at', timestamp: g.updated_at
+
+  = paginate groups, param_name: 'page_subgroups', remote: true
+
 - else
   .text-center
     = t '.groups_not_found'

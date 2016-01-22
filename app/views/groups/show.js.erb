@@ -1,0 +1,4 @@
+$('#popular').html("<%= escape_javascript render(partial: 'topics_list', locals: {topics: @popular, page_param_name: 'page_popular'}) %>");
+$('#recent').html("<%= escape_javascript render(partial: 'topics_list', locals: {topics: @recent, page_param_name: 'page_recent'}) %>");
+$('#controversial').html("<%= escape_javascript render(partial: 'topics_list', locals: {topics: @controversial, page_param_name: 'page_controversial'}) %>");
+$('#subgroups').html("<%= escape_javascript render(partial: 'groups_list', locals: {groups: @subgroups}) %>");

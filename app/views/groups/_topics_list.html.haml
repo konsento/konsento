@@ -21,6 +21,9 @@
             .text-muted
               %small
                 = t '.last_update', timestamp: t.updated_at
+
+  = paginate topics, param_name: page_param_name, remote: true
+
 - else
   .text-center
     = t '.topics_not_found'

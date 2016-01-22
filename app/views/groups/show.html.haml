@@ -33,10 +33,10 @@
       / Tab panes
       .tab-content
         #popular.tab-pane.active{role: 'tabpanel'}
-          = render partial: 'topics_list', locals: {topics: @group.topics.popular}
+          = render partial: 'topics_list', locals: {topics: @popular, page_param_name: 'page_popular'}
         #recent.tab-pane{role: 'tabpanel'}
-          = render partial: 'topics_list', locals: {topics: @group.topics.recent}
+          = render partial: 'topics_list', locals: {topics: @recent, page_param_name: 'page_recent'}
         #controversial.tab-pane{role: 'tabpanel'}
-          = render partial: 'topics_list', locals: {topics: @group.topics.controversial}
+          = render partial: 'topics_list', locals: {topics: @controversial, page_param_name: 'page_controversial'}
         #subgroups.tab-pane{role: 'tabpanel'}
-          = render partial: 'groups_list', locals: {groups: @group.children}
+          = render partial: 'groups_list', locals: {groups: @subgroups}
