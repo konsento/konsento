@@ -14,7 +14,7 @@ pt-BR:
     partials:
       offsidebar:
         profile: 'Perfil'
-        edit_profile: 'Perfil'
+        edit_profile: 'Editar Perfil'
       topnavbar:
         not_signed_up: 'Não é cadastrado?'
         sign_up: 'Cadastrar-se'
@@ -72,7 +72,7 @@ pt-BR:
     new:
       new_topic: 'Novo Tópico'
     show:
-      suggestions_to_selected_proposal: 'Sugestões para proposta selecionada'
+      suggestions_for_selected_proposal: 'Sugestões para proposta selecionada'
       consensus: 'Consenso'
       write_comment: 'Escreva um comentário'
 
