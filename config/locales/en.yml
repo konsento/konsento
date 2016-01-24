@@ -1,23 +1,137 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  actions: 'Actions'
+  'false': 'No'
+  'true': 'Yes'
+
+  crud:
+    confirm: 'Do you confirm this action?'
+
+  home: 'Home'
+
+  search_description: 'Type anything to search and hit enter...'
+
+  layouts:
+    partials:
+      offsidebar:
+        profile: 'Profile'
+        edit_profile: 'Edit Profile'
+      topnavbar:
+        not_signed_up: 'Not registered?'
+        sign_up: 'Sign up'
+
+  invitations:
+    index:
+      resend_email: 'Resend email '
+      remaining_invitations: 'Available_invitations: %{available_invitations}'
+
+  subscriptions:
+      subscribe_button:
+        subscribe: 'Subscribe'
+
+      unsubscribe_button:
+        unsubscribe: 'Unsubscribe'
+
+  groups:
+    show:
+      new_topic: 'New Topic'
+      subgroups: 'Subgroups'
+
+    topics_list:
+      proposals: 'proposal(s)'
+      participants: 'paticipant(s)'
+      last_update: 'Last update at %{timestamp}'
+      topics_not_found: 'There is no topics in this category'
+
+    groups_list:
+      subgroups: 'subgroup(s)'
+      topics: 'topic(s)'
+      created_at: 'Created at %{timestamp}'
+      groups_not_found: 'Não há grupos nesta categoria'
+
+  users:
+    edit:
+      title: 'Edit Profile'
+      description: 'Type a new password and confirm to change.'
+      retype_password: 'Retype password'
+
+  js:
+    proposals:
+      propose:
+        title: 'Write a proposal'
+
+  proposals:
+    proposal:
+      no_consensus: 'There is no consensus on this proposal yet'
+    propose:
+      original: 'Original'
+      new: 'New'
+
+  topics:
+    form:
+      add_proposal: 'Add Proposal'
+    new:
+      new_topic: 'New Topic'
+    show:
+      suggestions_to_selected_proposal: 'Suggestion for selected proposal'
+      consensus: 'Consensus'
+      write_comment: 'Write a comment'
+
+  comments:
+    form:
+      authenticate_to_comment: '%{sign_up_link} or %{sign_in_link} to comment.'
+      subscribe_to_comment: 'Subscribe the group to comment'
+
+  filters:
+    popular: 'Popular'
+    controversial: 'Controversial'
+    recents: 'Recents'
+
+  activerecord:
+    models:
+      group:
+        one: 'Group'
+        other: 'Groups'
+      topic:
+        one: 'Topic'
+        other: 'Topics'
+      proposal:
+        one: 'Proposal'
+        other: 'Proposals'
+      invitation:
+        one: 'Invitation'
+        other: 'Invitations'
+      requirement_value:
+        one: 'Requirement'
+        other: 'Requirements'
+      comment:
+        one: 'Coment'
+        other: 'Comments'
+
+    attributes:
+      topic:
+        title: 'Title'
+        tag_list: 'Tags'
+      proposal:
+        content: 'Content'
+      invitation:
+        email: 'Email'
+        registered: 'Registrado'
+      user:
+        email: 'Email'
+        username: 'User'
+        password: 'Password'
+        password_confirmation: 'Confirm the password'
+
+  simple_form:
+    hints:
+      invitation:
+        email: 'Split emails using comma to send multiple invitations at once.'
+
+  helpers:
+    submit:
+      proposal:
+        create: 'Propose'
+      invitation:
+        create: 'Invite'
+      comment:
+        create: 'Comment'
