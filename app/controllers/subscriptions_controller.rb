@@ -10,16 +10,16 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     @subscription.role = 'default'
     if @subscription.save
-      redirect_to @subscription.group, notice: 'Subscription was successfully created.'
+      redirect_to @subscription.subscriptable, notice: 'Subscription was successfully created.'
     else
-      redirect_to controller: 'requirement_values', action: 'new', group_id: @subscription.group.id, user_id: @subscription.user.id
+      redirect_to controller: 'requirement_values', action: 'new', group_id: @subscription.subscriptable.id, user_id: @subscription.user.id
     end
   end
 
   # DELETE /subscriptions/1
   def destroy
     @subscription.destroy
-    redirect_to @subscription.group, notice: 'Subscription was successfully destroyed.'
+    redirect_to @subscription.subscriptable, notice: 'Subscription was successfully destroyed.'
   end
 
   private
@@ -30,6 +30,6 @@ class SubscriptionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def subscription_params
-      params.require(:subscription).permit(:user_id, :group_id)
+      params.require(:subscription).permit(:user_id, :subscriptable_id, :subscriptable_type)
     end
 end

@@ -27,7 +27,7 @@ class RequirementValuesController < ApplicationController
       user_params[:requirement_values].each do |r|
         current_user.requirement_values.create(r)
       end
-      current_user.subscriptions.create(group: group, role: 'default')
+      current_user.subscriptions.create(subscriptable: group, role: 'default')
     end
     redirect_to group
   end

@@ -1,6 +1,7 @@
 = simple_form_for @subscription, class: 'mb-lg' do |f|
   = f.input :user_id, as: :hidden
-  = f.input :group_id, as: :hidden
+  = f.input :subscriptable_id, as: :hidden
+  = f.input :subscriptable_type, as: :hidden
   = button_tag(type: 'submit', class: "btn btn-xs btn-labeled btn-success pull-right") do
     %span.btn-label
       %i.fa.fa-plus
