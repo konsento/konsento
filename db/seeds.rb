@@ -11,6 +11,9 @@ ActiveRecord::Base.transaction do
   RequirementValue.create!(user: user3, join_requirement: join, value: '12345678902')
   RequirementValue.create!(user: user4, join_requirement: join, value: '12345678903')
 
+
+  team = Team.create(title: 'Team', public: true)
+
   group = Group.create!(
     parent: nil,
     title: "Global",
@@ -21,10 +24,10 @@ ActiveRecord::Base.transaction do
 
   group.join_requirements << join
 
-  user1.subscriptions.create!(group: group)
-  user2.subscriptions.create!(group: group)
-  user3.subscriptions.create!(group: group)
-  user4.subscriptions.create!(group: group)
+  user1.subscriptions.create!(subscriptable: group)
+  user2.subscriptions.create!(subscriptable: group)
+  user3.subscriptions.create!(subscriptable: group)
+  user4.subscriptions.create!(subscriptable: group)
 
   subgroup = Group.create!(
     parent: group,

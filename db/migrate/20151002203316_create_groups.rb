@@ -2,6 +2,7 @@ class CreateGroups < ActiveRecord::Migration
   def change
     create_table :groups do |t|
       t.references :parent, index: true
+      t.references :team, foreign_key: true
       t.string :title, null: false
       t.text :description
       t.float :total_votes_percent, null: false

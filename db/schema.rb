@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160119004732) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "parent_id"
+    t.integer  "team_id"
     t.string   "title",               null: false
     t.text     "description"
     t.float    "total_votes_percent", null: false
@@ -102,14 +103,16 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_index "requirement_values", ["user_id", "join_requirement_id"], name: "index_requirement_values_on_user_id_and_join_requirement_id", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "group_id",   null: false
+    t.integer  "user_id",            null: false
     t.string   "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "subscriptable_id"
+    t.string   "subscriptable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
-  add_index "subscriptions", ["user_id", "group_id"], name: "index_subscriptions_on_user_id_and_group_id", unique: true, using: :btree
+  add_index "subscriptions", ["subscriptable_type", "subscriptable_id"], name: "index_subscriptions_on_subscriptable_type_and_subscriptable_id", using: :btree
+  add_index "subscriptions", ["user_id", "subscriptable_id", "subscriptable_type"], name: "subscriptions_index", unique: true, using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -130,6 +133,11 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string  "title",                  null: false
+    t.boolean "public", default: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -170,6 +178,7 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "users"
   add_foreign_key "groups", "groups", column: "parent_id"
+  add_foreign_key "groups", "teams"
   add_foreign_key "groups_join_requirements", "groups"
   add_foreign_key "groups_join_requirements", "join_requirements"
   add_foreign_key "invitations", "users"
@@ -180,7 +189,6 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "references", "users"
   add_foreign_key "requirement_values", "join_requirements"
   add_foreign_key "requirement_values", "users"
-  add_foreign_key "subscriptions", "groups"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "topics", "groups"
   add_foreign_key "topics", "topics", column: "parent_id"
