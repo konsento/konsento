@@ -1,4 +1,17 @@
 .row
   .panel.panel-default
-    .panel-body
-      %h1 Konsento
+    %div{role: 'tabpanel'}
+      / Nav tabs
+      %ul.nav.nav-tabs{role: 'tablist'}
+        %li.active{role: 'presentation'}
+          %a{'aria-controls': 'groups', 'data-toggle': "tab", href: '#groups', role: 'tab'}
+            = Group.model_name.human(count: 2)
+        %li{role: 'presentation'}
+          %a{'aria-controls': 'teams', 'data-toggle': 'tab', href: '#teams', role: 'tab'}
+            = Team.model_name.human(count: 2)
+      / Tab panes
+      .tab-content
+        #groups.tab-pane.active{role: 'tabpanel'}
+          = render partial: "groups/groups_list", locals: {groups: @groups}
+        #teams.tab-pane{role: 'tabpanel'}
+          = render partial: "teams/teams_list", locals: {teams: @teams}
