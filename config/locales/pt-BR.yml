@@ -48,6 +48,11 @@ pt-BR:
       created_at: 'Criado em %{timestamp}'
       groups_not_found: 'Não há grupos nesta categoria'
 
+  teams:
+    teams_list:
+      created_at: 'Criado em %{timestamp}'
+      teams_not_found: 'Não há times'
+
   users:
     edit:
       title: 'Editar Perfil'
@@ -106,6 +111,9 @@ pt-BR:
       comment:
         one: 'Comentário'
         other: 'Comentários'
+      team:
+        one: 'Time'
+        other: 'Times'
 
     attributes:
       topic:

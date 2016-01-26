@@ -48,6 +48,11 @@ en:
       created_at: 'Created at %{timestamp}'
       groups_not_found: 'Não há grupos nesta categoria'
 
+  teams:
+    teams_list:
+      created_at: 'Created at %{timestamp}'
+      teams_not_found: 'There is no teams'
+
   users:
     edit:
       title: 'Edit Profile'
@@ -106,6 +111,9 @@ en:
       comment:
         one: 'Coment'
         other: 'Comments'
+      team:
+        one: 'Team'
+        other: 'Teams'
 
     attributes:
       topic:
