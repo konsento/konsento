@@ -12,10 +12,20 @@ ActiveRecord::Base.transaction do
   RequirementValue.create!(user: user4, join_requirement: join, value: '12345678903')
 
 
-  team = Team.create(title: 'Team', public: true)
+  team = Team.create(title: 'Sample Team', public: true)
+
+  team_group = Group.create!(
+    parent: nil,
+    team: team,
+    title: "Team group",
+    description: "Team group.",
+    total_votes_percent: 50,
+    agree_votes_percent: 50
+  )
 
   group = Group.create!(
     parent: nil,
+    team: nil,
     title: "Global",
     description: "Global group.",
     total_votes_percent: 50,
