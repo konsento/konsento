@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :join_requirements, through: :requirement_values
   has_many :topics
   has_many :invitations, inverse_of: :user, dependent: :destroy
-  has_many :groups, through: :subscriptions
+  has_many :groups, through: :subscriptions, source: :subscriptable, source_type: 'Group'
 
   before_create { |record| record.available_invitations = 10 }
 
