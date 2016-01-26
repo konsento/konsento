@@ -43,13 +43,6 @@ ActiveRecord::Schema.define(version: 20160119004732) do
 
   add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
 
-  create_table "groups_join_requirements", id: false, force: :cascade do |t|
-    t.integer "group_id",            null: false
-    t.integer "join_requirement_id", null: false
-  end
-
-  add_index "groups_join_requirements", ["group_id", "join_requirement_id"], name: "groups_join_requirements_index", unique: true, using: :btree
-
   create_table "invitations", force: :cascade do |t|
     t.integer  "user_id",                    null: false
     t.string   "email",                      null: false
@@ -101,6 +94,15 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   end
 
   add_index "requirement_values", ["user_id", "join_requirement_id"], name: "index_requirement_values_on_user_id_and_join_requirement_id", unique: true, using: :btree
+
+  create_table "requirements", force: :cascade do |t|
+    t.integer "join_requirement_id", null: false
+    t.integer "requirable_id"
+    t.string  "requirable_type"
+  end
+
+  add_index "requirements", ["requirable_id", "requirable_type", "join_requirement_id"], name: "requirements_index", unique: true, using: :btree
+  add_index "requirements", ["requirable_type", "requirable_id"], name: "index_requirements_on_requirable_type_and_requirable_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id",            null: false
@@ -179,8 +181,6 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "comments", "users"
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "groups", "teams"
-  add_foreign_key "groups_join_requirements", "groups"
-  add_foreign_key "groups_join_requirements", "join_requirements"
   add_foreign_key "invitations", "users"
   add_foreign_key "proposals", "proposals", column: "parent_id"
   add_foreign_key "proposals", "topics"
@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "references", "users"
   add_foreign_key "requirement_values", "join_requirements"
   add_foreign_key "requirement_values", "users"
+  add_foreign_key "requirements", "join_requirements"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "topics", "groups"
   add_foreign_key "topics", "topics", column: "parent_id"

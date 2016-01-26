@@ -10,7 +10,8 @@ class Group < ActiveRecord::Base
   belongs_to :teams
   has_many :subscriptions, as: :subscriptable
   has_many :topics
-  has_and_belongs_to_many :join_requirements
+  has_many :requirements, as: :requirable
+  has_many :join_requirements, through: :requirements
 
   def parents
     ancestry = [parent]
