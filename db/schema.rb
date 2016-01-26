@@ -137,8 +137,10 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "teams", force: :cascade do |t|
-    t.string  "title",                  null: false
-    t.boolean "public", default: false
+    t.string   "title",                      null: false
+    t.boolean  "public",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "topics", force: :cascade do |t|
