@@ -20,32 +20,33 @@
         %a{'data-search-open': '', href: '#'}
           %em.icon-magnifier
       - if signed_in?
-        / START Alert menu
-        %li.dropdown.dropdown-list
-          %a{'data-toggle': 'dropdown', href: '#'}
-            %em.icon-bell
-            .label.label-danger 1
-          / START Dropdown menu
-          %ul.dropdown-menu.animated.flipInX
-            %li
-              / START list group
-              .list-group
-                / list item
-                %a.list-group-item{href: '#'}
-                  .media-box
-                    .pull-left
-                      %em.fa.fa-comment.fa-2x
-                    .media-box-body.clearfix
-                      %p.m0 Novos comentários
-                      %p.m0.text-muted
-                        %small 10 novos comentários
-                / last list item
-                %a.list-group-item{href: '#'}
-                  %small Mais notificações
-                  %span.label.label-success.pull-right 0
-              / END list group
-          / END Dropdown menu
-        / END Alert menu
+        - if false
+          / START Alert menu
+          %li.dropdown.dropdown-list
+            %a{'data-toggle': 'dropdown', href: '#'}
+              %em.icon-bell
+              .label.label-danger 1
+            / START Dropdown menu
+            %ul.dropdown-menu.animated.flipInX
+              %li
+                / START list group
+                .list-group
+                  / list item
+                  %a.list-group-item{href: '#'}
+                    .media-box
+                      .pull-left
+                        %em.fa.fa-comment.fa-2x
+                      .media-box-body.clearfix
+                        %p.m0 Novos comentários
+                        %p.m0.text-muted
+                          %small 10 novos comentários
+                  / last list item
+                  %a.list-group-item{href: '#'}
+                    %small Mais notificações
+                    %span.label.label-success.pull-right 0
+                / END list group
+            / END Dropdown menu
+          / END Alert menu
         / START User button
         %li
           %a{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open', href: '#'}
