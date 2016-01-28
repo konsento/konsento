@@ -15,6 +15,9 @@
   .navbar-collapse.collapse
     / START Right Navbar
     %ul.nav.navbar-nav.navbar-right
+      %li
+        %a{href: 'http://about.konsento.org/', target: '_blank'}
+          = t '.about'
       / Search icon
       %li
         %a{'data-search-open': '', href: '#'}

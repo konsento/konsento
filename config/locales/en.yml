@@ -16,6 +16,7 @@ en:
         profile: 'Profile'
         edit_profile: 'Edit Profile'
       topnavbar:
+        about: 'About'
         not_signed_up: 'Not registered?'
         sign_up: 'Sign up'
 

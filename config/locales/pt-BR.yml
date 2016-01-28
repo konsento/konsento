@@ -16,6 +16,7 @@ pt-BR:
         profile: 'Perfil'
         edit_profile: 'Editar Perfil'
       topnavbar:
+        about: 'Sobre'
         not_signed_up: 'Não é cadastrado?'
         sign_up: 'Cadastrar-se'
 
