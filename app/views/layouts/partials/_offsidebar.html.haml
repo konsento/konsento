@@ -20,6 +20,11 @@
         %em.icon-pencil
         %span= t '.edit_profile'
     %li.item-link
+      = link_to teams_path do
+        %em.icon-people
+        %span
+          = Team.model_name.human(count: 2)
+    %li.item-link
       = link_to invitations_path do
         %em.icon-paper-plane
         %span
