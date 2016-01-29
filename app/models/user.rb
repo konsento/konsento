@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :invitations, inverse_of: :user, dependent: :destroy
   has_many :groups, through: :subscriptions, source: :subscriptable, source_type: 'Group'
+  has_many :teams, through: :subscriptions, source: :subscriptable, source_type: 'Team'
 
   before_create { |record| record.available_invitations = 10 }
 
