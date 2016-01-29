@@ -50,6 +50,9 @@ en:
       groups_not_found: 'Não há grupos nesta categoria'
 
   teams:
+    index:
+      edit: 'Edit'
+      invite: 'Invite'
     teams_list:
       created_at: 'Created at %{timestamp}'
       teams_not_found: 'There is no teams'
@@ -130,6 +133,9 @@ en:
         username: 'User'
         password: 'Password'
         password_confirmation: 'Confirm the password'
+      team:
+        title: 'Title'
+        public: 'Public'
 
   simple_form:
     hints:

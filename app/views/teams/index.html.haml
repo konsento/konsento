@@ -1,2 +1,27 @@
-%p
-  index#teams
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title= Team.model_name.human(count: 2)
+      .panel-body
+        .table-responsive
+          %table.table.table-condensed
+            %thead
+              %tr
+                %th= Team.human_attribute_name(:title)
+                %th= Team.human_attribute_name(:public)
+                %th= t 'actions'
+            %tbody
+              - @teams.each do |team|
+                %tr
+                  %td= team.title
+                  %td= t team.public.to_s
+                  %td
+                    = link_to '#', class: 'btn btn-info btn-xs btn-labeled' do
+                      .btn-label
+                        %em.icon-paper-plane
+                      = t '.invite'
+                    = link_to '#', class: 'btn btn-warning btn-xs btn-labeled' do
+                      .btn-label
+                        %em.icon-settings
+                      = t '.edit'
