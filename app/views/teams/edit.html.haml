@@ -7,6 +7,6 @@
         = simple_form_for @team do |f|
           = f.input :title
           = f.input :public
-          = f.association :join_requirements, collection: current_user.join_requirements
+          = f.association :join_requirements, collection: current_user.join_requirements, disabled: true
 
           = f.button :submit

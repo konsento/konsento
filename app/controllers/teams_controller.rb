@@ -32,7 +32,7 @@ class TeamsController < ApplicationController
 
   # PATCH/PUT /teams/1
   def update
-    @team.update(team_params)
+    @team.update(update_team_params)
     respond_with @team, location: -> { teams_url }
   end
 
@@ -46,5 +46,9 @@ class TeamsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def team_params
     params.require(:team).permit(:title, :public, {join_requirement_ids: []})
+  end
+
+  def update_team_params
+    params.require(:team).permit(:title, :public)
   end
 end
