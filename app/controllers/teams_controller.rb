@@ -22,13 +22,13 @@ class TeamsController < ApplicationController
   # POST /teams
   def create
     @team = Team.create_and_subscribe_admin(team_params, current_user)
-    respond_with @team
+    respond_with @team, location: -> { teams_url }
   end
 
   # PATCH/PUT /teams/1
   def update
     @team.update(team_params)
-    redirect_to action: 'index'
+    respond_with @team, location: -> { teams_url }
   end
 
   private
