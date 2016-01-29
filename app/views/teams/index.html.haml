@@ -4,6 +4,10 @@
       .panel-heading
         %h3.panel-title= Team.model_name.human(count: 2)
       .panel-body
+        = link_to new_team_path, class: 'btn btn-primary btn-xs btn-labeled pull-right' do
+          .btn-label
+            %em.icon-plus
+          = t '.new_team'
         .table-responsive
           %table.table.table-condensed
             %thead

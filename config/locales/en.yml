@@ -53,6 +53,7 @@ en:
     index:
       edit: 'Edit'
       invite: 'Invite'
+      new_team: 'New Team'
     teams_list:
       created_at: 'Created at %{timestamp}'
       teams_not_found: 'There is no teams'
