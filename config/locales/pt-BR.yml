@@ -58,6 +58,8 @@ pt-BR:
       teams_not_found: 'Não há times'
     new:
       new_team: 'Novo Time'
+    edit:
+      edit_team: 'Editar Time'
 
   users:
     edit:

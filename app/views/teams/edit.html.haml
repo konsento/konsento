@@ -1,0 +1,12 @@
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title= t '.edit_team'
+      .panel-body
+        = simple_form_for @team do |f|
+          = f.input :title
+          = f.input :public
+          = f.association :join_requirements, collection: current_user.join_requirements
+
+          = f.button :submit

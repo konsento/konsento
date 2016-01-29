@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   def update
     @team.update(team_params)
-    respond_with @team
+    redirect_to action: 'index'
   end
 
   private

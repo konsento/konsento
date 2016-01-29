@@ -56,6 +56,8 @@ en:
     teams_list:
       created_at: 'Created at %{timestamp}'
       teams_not_found: 'There is no teams'
+    edit:
+      edit_team: 'Edit Team'
 
   users:
     edit:
