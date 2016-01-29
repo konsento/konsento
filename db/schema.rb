@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20160119004732) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "parent_id"
-    t.integer  "team_id"
     t.string   "title",               null: false
     t.text     "description"
     t.float    "total_votes_percent", null: false
@@ -146,6 +145,7 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   create_table "topics", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "parent_id"
+    t.integer  "team_id"
     t.integer  "group_id",   null: false
     t.string   "title",      null: false
     t.datetime "created_at", null: false
@@ -182,7 +182,6 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "users"
   add_foreign_key "groups", "groups", column: "parent_id"
-  add_foreign_key "groups", "teams"
   add_foreign_key "invitations", "users"
   add_foreign_key "proposals", "proposals", column: "parent_id"
   add_foreign_key "proposals", "topics"
@@ -194,6 +193,7 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "requirements", "join_requirements"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "topics", "groups"
+  add_foreign_key "topics", "teams"
   add_foreign_key "topics", "topics", column: "parent_id"
   add_foreign_key "topics", "users"
   add_foreign_key "votes", "proposals"

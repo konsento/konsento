@@ -12,6 +12,7 @@ class Topic < ActiveRecord::Base
   belongs_to :group
   has_many :children, inverse_of: :parent, class_name: 'Topic', foreign_key: :parent_id
   belongs_to :parent, inverse_of: :children, class_name: 'Topic', foreign_key: :parent_id
+  belongs_to :team
   has_many :proposals, dependent: :destroy
   has_many :comments, as: :commentable
   has_many :participants, -> { uniq }, through: :proposals, source: :user

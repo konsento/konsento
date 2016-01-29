@@ -14,18 +14,8 @@ ActiveRecord::Base.transaction do
 
   team = Team.create(title: 'Sample Team', public: true)
 
-  team_group = Group.create!(
-    parent: nil,
-    team: team,
-    title: "Team group",
-    description: "Team group.",
-    total_votes_percent: 50,
-    agree_votes_percent: 50
-  )
-
   group = Group.create!(
     parent: nil,
-    team: nil,
     title: "Global",
     description: "Global group.",
     total_votes_percent: 50,
@@ -47,7 +37,7 @@ ActiveRecord::Base.transaction do
     agree_votes_percent: 50
   )
 
-  topic = Topic.create!(user: user1, group: group, title: "Sample Topic",
+  topic = Topic.create!(user: user1, group: group, title: "Sample Topic", team: nil,
     proposals_attributes: [
       {
         user: user1,

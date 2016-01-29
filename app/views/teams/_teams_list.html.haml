@@ -9,8 +9,8 @@
           .text-muted.text-sm
             %span
               %strong.mr-sm>
-                = t.groups.size
-                = Group.model_name.human(count: 2)
+                = t.subscriptions.size
+                = User.model_name.human(count: 2)
             %span.mh-sm
         %td.text-right.hidden-xs.hidden-sm
           .text-muted

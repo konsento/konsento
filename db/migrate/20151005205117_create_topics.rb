@@ -3,6 +3,7 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.references :user, null: false, foreign_key: true
       t.references :parent, index: true
+      t.references :team, foreign_key: true
       t.references :group, null:false, foreign_key: true
       t.string :title, null: false
       t.timestamps null: false

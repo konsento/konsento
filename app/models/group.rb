@@ -7,7 +7,6 @@ class Group < ActiveRecord::Base
 
   has_many :children, inverse_of: :parent, class_name: 'Group', foreign_key: :parent_id
   belongs_to :parent, inverse_of: :children, class_name: 'Group', foreign_key: :parent_id
-  belongs_to :team
   has_many :subscriptions, as: :subscriptable
   has_many :topics
   has_many :requirements, as: :requirable
