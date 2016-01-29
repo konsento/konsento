@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update]
 
   # GET /teams
   def index
@@ -21,38 +21,25 @@ class TeamsController < ApplicationController
 
   # POST /teams
   def create
-    @team = Team.new(team_params)
-
-    if @team.save
-      redirect_to @team, notice: 'Team was successfully created.'
-    else
-      render :new
-    end
+    @team = Team.create_and_subscribe_admin(team_params, current_user)
+    respond_with @team
   end
 
   # PATCH/PUT /teams/1
   def update
-    if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /teams/1
-  def destroy
-    @team.destroy
-    redirect_to teams_url, notice: 'Team was successfully destroyed.'
+    @team.update(team_params)
+    respond_with @team
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_team
-      @team = Team.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def team_params
-      params[:team]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_team
+    @team = Team.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def team_params
+    params.require(:team).permit(:title, :public, {join_requirement_ids: []})
+  end
 end
