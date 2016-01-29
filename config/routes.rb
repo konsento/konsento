@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Root
-  root 'main#index'
+  root 'groups#index'
 
   # Auth
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get '/search_proposals' => 'topics#search_proposals', on: :member
   end
 
-  resources :teams, only: [:show]
+  resources :teams, only: [:index, :show]
   resources :proposals, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
