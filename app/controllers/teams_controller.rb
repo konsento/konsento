@@ -4,6 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   def index
     @teams = Team.all
+    add_breadcrumb Team.model_name.human(count: 2)
   end
 
   # GET /teams/1
@@ -13,10 +14,14 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+      add_breadcrumb Team.model_name.human(count: 2), teams_path
+      add_breadcrumb t '.new_team'
   end
 
   # GET /teams/1/edit
   def edit
+    add_breadcrumb Team.model_name.human(count: 2), teams_path
+    add_breadcrumb t '.edit_team'
   end
 
   # POST /teams
