@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
-    @teams = Team.all
+    @teams = Team.all.order(created_at: :asc)
     add_breadcrumb Team.model_name.human(count: 2)
   end
 
