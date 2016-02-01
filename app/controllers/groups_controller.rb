@@ -25,9 +25,9 @@ class GroupsController < ApplicationController
       add_breadcrumb parent.title, group_path(parent)
     end
 
-    @popular = @group.topics.popular.page(params[:page_popular])
-    @controversial = @group.topics.controversial.page(params[:page_controversial])
-    @recent = @group.topics.recent.page(params[:page_recent])
+    @popular = @group.topics.for_user(current_user).popular.page(params[:page_popular])
+    @controversial = @group.topics.for_user(current_user).controversial.page(params[:page_controversial])
+    @recent = @group.topics.for_user(current_user).recent.page(params[:page_recent])
     @subgroups = @group.children.page(params[:page_subgroups])
 
     add_breadcrumb @group.title

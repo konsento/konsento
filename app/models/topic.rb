@@ -19,6 +19,15 @@ class Topic < ActiveRecord::Base
 
   accepts_nested_attributes_for :proposals, reject_if: :all_blank
 
+  scope :for_user, -> (user) do
+    joins(
+      'LEFT JOIN teams ON teams.id = topics.team_id'
+    ).where(
+      'team_id IS NULL OR teams.public = TRUE OR team_id IN (?)',
+      user.teams.pluck(:id)
+    ).order(team_id: :asc)
+  end
+
   scope :recent, -> { order(updated_at: :desc) }
 
   scope :popular, -> do
