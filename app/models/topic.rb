@@ -19,13 +19,18 @@ class Topic < ActiveRecord::Base
 
   accepts_nested_attributes_for :proposals, reject_if: :all_blank
 
-  scope :for_user, -> (user) do
-    joins(
-      'LEFT JOIN teams ON teams.id = topics.team_id'
-    ).where(
-      'team_id IS NULL OR teams.public = TRUE OR team_id IN (?)',
-      user.teams.pluck(:id)
-    ).order(team_id: :asc)
+  scope :for_user, -> (user = nil) do
+    query = joins('LEFT JOIN teams ON teams.id = topics.team_id')
+    w = 'team_id IS NULL OR teams.public = TRUE'
+
+    if user
+      w << ' OR team_id IN (?)'
+      query = query.where(w, user.teams.pluck(:id))
+    else
+      query = query.where(w)
+    end
+
+    query.order(team_id: :asc)
   end
 
   scope :recent, -> { order(updated_at: :desc) }
