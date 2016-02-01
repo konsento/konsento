@@ -52,7 +52,7 @@ class TopicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def topic_params
-      params.require(:topic).permit(:title, :tag_list, proposals_attributes: [
+      params.require(:topic).permit(:title, :team_id, :tag_list, proposals_attributes: [
         :id,
         :content,
         :_destroy

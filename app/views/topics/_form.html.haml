@@ -1,26 +1,18 @@
 = simple_form_for [@topic.group, @topic] do |f|
-  .row
-    .col-lg-12
-      = f.input :title, input_html: {autofocus: true}
-
-  .row
-    .col-lg-12
-      %h4= Proposal.model_name.human(count: 2)
-      %hr
-
-  .row
-    .col-lg-12
-      #proposals
-        = f.simple_fields_for :proposals do |proposal|
-          = render 'proposal_fields', f: proposal
-        .links
-          = link_to_add_association t('.add_proposal'), f, :proposals, class: 'btn btn-success btn-sm'
+  = f.input :title, input_html: {autofocus: true}
+  = f.association :team, collection: current_user.teams
+  
+  %h4= Proposal.model_name.human(count: 2)
   %hr
-  .row
-    .col-lg-12
-      = f.input :tag_list, input_html: {'data-role': 'tagsinput'}
 
-  .row
-    .col-lg-12
-      %hr
-      = f.button :submit
+  #proposals
+    = f.simple_fields_for :proposals do |proposal|
+      = render 'proposal_fields', f: proposal
+    .links
+      = link_to_add_association t('.add_proposal'), f, :proposals, class: 'btn btn-success btn-sm'
+
+  %hr
+  = f.input :tag_list, input_html: {'data-role': 'tagsinput'}
+
+  %hr
+  = f.button :submit
