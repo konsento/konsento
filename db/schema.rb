@@ -135,6 +135,17 @@ ActiveRecord::Schema.define(version: 20160119004732) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "team_invitations", force: :cascade do |t|
+    t.integer  "team_id",                    null: false
+    t.string   "email",                      null: false
+    t.string   "token",                      null: false
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "team_invitations", ["token"], name: "index_team_invitations_on_token", unique: true, using: :btree
+
   create_table "teams", force: :cascade do |t|
     t.string   "title",                      null: false
     t.boolean  "public",     default: false
