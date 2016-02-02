@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20160119004732) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "team_invitations", ["email", "team_id"], name: "index_team_invitations_on_email_and_team_id", unique: true, using: :btree
   add_index "team_invitations", ["token"], name: "index_team_invitations_on_token", unique: true, using: :btree
 
   create_table "teams", force: :cascade do |t|

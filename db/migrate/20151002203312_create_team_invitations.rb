@@ -7,5 +7,7 @@ class CreateTeamInvitations < ActiveRecord::Migration
       t.boolean :accepted, default: false
       t.timestamps null: false
     end
+
+    add_index :team_invitations, [:email, :team_id], unique: true
   end
 end
