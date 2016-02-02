@@ -17,9 +17,9 @@ class GroupsController < ApplicationController
 
   # GET /groups/1
   def show
-    @subscription = current_user.subscriptions.find_or_initialize_by(
-      subscriptable: @group
-    )
+    unless @subscription = Subscription.find_by(user: current_user, subscriptable: @group)
+      @subscription = Subscription.new(user: current_user, subscriptable: @group)
+    end
 
     @group.parents.each do |parent|
       add_breadcrumb parent.title, group_path(parent)
