@@ -7,6 +7,7 @@ pt-BR:
     confirm: 'Você tem certeza?'
 
   home: 'Início'
+  back: 'Voltar'
 
   search_description: 'Digite o que procura e aperte enter...'
 
@@ -63,6 +64,12 @@ pt-BR:
       edit_team: 'Editar Time'
     invitations:
       invite: 'Convidar'
+
+  team_invitations:
+    accept:
+      title: 'Convite para time'
+      description: 'Você foi convidado para participar do time ''%{team}'', deseja participar?'
+      accept: 'Aceitar'
 
   users:
     edit:

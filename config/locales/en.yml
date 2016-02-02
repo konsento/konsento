@@ -7,6 +7,7 @@ en:
     confirm: 'Do you confirm this action?'
 
   home: 'Home'
+  back: 'Back'
 
   search_description: 'Type anything to search and hit enter...'
 
@@ -63,6 +64,12 @@ en:
       edit_team: 'Edit Team'
     invitations:
       invite: 'Invite'
+
+  team_invitations:
+    accept:
+      title: 'Team Invitation'
+      description: 'You have been invited to join ''%{team}'' team, do you want to join?'
+      accept: 'Accept'
 
   users:
     edit:

@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   resources :teams, except: [:destroy] do
     get '/invitations' => 'teams#invitations', on: :member
   end
-  resources :team_invitations, only: [:create]
+  resources :team_invitations, only: [:create] do
+    get '/accept/:token' => 'team_invitations#accept', on: :collection, as: :accept
+  end
   resources :proposals, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
@@ -39,12 +41,12 @@ Rails.application.routes.draw do
 
   # Get
   get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'
-  get '/requirement_values/:group_id/:user_id/new', to: 'requirement_values#new'
+  get '/requirement_values/:requirable_type/:requirable_id/:user_id/new', to: 'requirement_values#new'
 
   get '/search', to: 'search#index'
 
   # Post
-  post '/requirement_values/:group_id/:user_id/', to: 'requirement_values#create', as: 'requirement_values'
+  post '/requirement_values/:requirable_type/:requirable_id/:user_id/', to: 'requirement_values#create', as: 'requirement_values'
 
   # JS
   namespace :js,  defaults: {format: :js} do

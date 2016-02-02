@@ -6,6 +6,11 @@ class TeamInvitationsController < ApplicationController
     redirect_to invitations_team_path(team)
   end
 
+  def accept
+    @team_invitation = TeamInvitation.find_by(token: params[:token])
+    @subscription = Subscription.new(user: current_user, subscriptable: @team_invitation.team)
+  end
+
   private
 
   def team_invitation_params

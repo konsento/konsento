@@ -10,9 +10,19 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     @subscription.role = 'default'
     if @subscription.save
-      redirect_to @subscription.subscriptable, notice: 'Subscription was successfully created.'
+      case @subscription.subscriptable_type
+        when 'Group'
+          redirect_to @subscription.subscriptable, notice: 'Subscription was successfully created.'
+        when 'Team'
+          TeamInvitation.find_by(email: current_user.email, team: @subscription.subscriptable).update(accepted: true)
+          redirect_to teams_path
+      end
     else
-      redirect_to controller: 'requirement_values', action: 'new', group_id: @subscription.subscriptable.id, user_id: @subscription.user.id
+      redirect_to controller: 'requirement_values',
+        action: 'new',
+        requirable_id: @subscription.subscriptable.id,
+        requirable_type: @subscription.subscriptable_type,
+        user_id: @subscription.user.id
     end
   end
 

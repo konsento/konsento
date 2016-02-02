@@ -1,0 +1,16 @@
+.row
+  .panel.panel-default.col-md-6.col-md-offset-3
+    .panel-body
+      %h2
+        .text-center
+          = t '.title'
+      %p
+        = t '.description', team: @team_invitation.team.title
+
+      = link_to t('back'), root_path, class:'btn btn-default pull-left col-md-6'
+      = simple_form_for @subscription, class: 'mb-lg' do |f|
+        = f.input :user_id, as: :hidden
+        = f.input :subscriptable_id, as: :hidden
+        = f.input :subscriptable_type, as: :hidden
+        = button_tag(type: 'submit', class: "btn btn-success pull-right col-md-6") do
+          = t '.accept'

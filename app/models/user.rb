@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   def requirement_values_attributes=(attributes)
   end
 
-  def empty_requirement_values_for(group)
-    empty_join_requirements = group.join_requirements - self.join_requirements
+  def empty_requirement_values_for(requirable)
+    empty_join_requirements = requirable.join_requirements - self.join_requirements
 
     empty_join_requirements.map do |jr|
       jr.requirement_values.build(user: self)

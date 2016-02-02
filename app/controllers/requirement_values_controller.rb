@@ -12,8 +12,8 @@ class RequirementValuesController < ApplicationController
 
   # GET /requirement_values/new
   def new
-    group = Group.find(params[:group_id])
-    current_user.empty_requirement_values = current_user.empty_requirement_values_for(group)
+    requirable = params[:requirable_type].constantize.find(params[:requirable_id])
+    current_user.empty_requirement_values = current_user.empty_requirement_values_for(requirable)
   end
 
   # GET /requirement_values/1/edit
@@ -22,14 +22,21 @@ class RequirementValuesController < ApplicationController
 
   # POST /requirement_values
   def create
-    group = Group.find(params[:group_id])
+    requirable = params[:requirable_type].constantize.find(params[:requirable_id])
     ActiveRecord::Base.transaction do
       user_params[:requirement_values].each do |r|
         current_user.requirement_values.create(r)
       end
-      current_user.subscriptions.create(subscriptable: group, role: 'default')
+      current_user.subscriptions.create(subscriptable: requirable, role: 'default')
     end
-    redirect_to group
+    
+    case requirable.model_name
+      when 'Group'
+        redirect_to requirable
+      when 'Team'
+        TeamInvitation.find_by(email: current_user.email, team: requirable).update(accepted: true)
+        redirect_to teams_path
+    end
   end
 
   # PATCH/PUT /requirement_values/1
