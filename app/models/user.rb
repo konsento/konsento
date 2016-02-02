@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
 
   validates :password, confirmation: true
 
+  def is_team_admin?(team)
+    subscription = Subscription.find_by(subscriptable: team, user: self)
+    subscription.role == 'admin'
+  end
+
   def requirement_values_attributes=(attributes)
   end
 

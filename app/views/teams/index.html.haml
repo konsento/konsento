@@ -22,14 +22,15 @@
                   %td= team.title
                   %td= t team.public.to_s
                   %td
-                    = link_to invitations_team_path(team), class: 'btn btn-info btn-xs btn-labeled' do
-                      .btn-label
-                        %em.icon-paper-plane
-                      = t '.invite'
-                    = link_to edit_team_path(team), class: 'btn btn-warning btn-xs btn-labeled' do
-                      .btn-label
-                        %em.icon-settings
-                      = t '.edit'
+                    - if current_user.is_team_admin?(team)
+                      = link_to invitations_team_path(team), class: 'btn btn-info btn-xs btn-labeled' do
+                        .btn-label
+                          %em.icon-paper-plane
+                        = t '.invite'
+                      = link_to edit_team_path(team), class: 'btn btn-warning btn-xs btn-labeled' do
+                        .btn-label
+                          %em.icon-settings
+                        = t '.edit'
 
         %h4= t '.pending_team_invitations'
         .table-responsive
