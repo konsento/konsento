@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   def search_topics
     @title = @group.title
     @q = search_params[:q].to_s.squish
-    @results = Topic.search(@q).where(group: @group).page(params[:topic_page])
+    @results = Topic.for_user(current_user).search(@q).where(group: @group).page(params[:topic_page])
 
     render 'search/index'
   end
