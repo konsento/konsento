@@ -24,10 +24,10 @@ ActiveRecord::Base.transaction do
 
   group.join_requirements << join
 
-  user1.subscriptions.create!(subscriptable: group)
-  user2.subscriptions.create!(subscriptable: group)
-  user3.subscriptions.create!(subscriptable: group)
-  user4.subscriptions.create!(subscriptable: group)
+  user1.subscriptions.create!(subscriptable: group, role: 'default')
+  user2.subscriptions.create!(subscriptable: group, role: 'default')
+  user3.subscriptions.create!(subscriptable: group, role: 'default')
+  user4.subscriptions.create!(subscriptable: group, role: 'default')
 
   subgroup = Group.create!(
     parent: group,
