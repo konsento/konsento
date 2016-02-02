@@ -12,6 +12,6 @@
     - if signed_in? && !@is_user_subscribed
       = t '.subscribe_to_comment'
     - unless signed_in?
-      - sign_up_link = link_to 'cadastro', sign_in_path
+      - sign_up_link = link_to 'cadastro', sign_up_path
       - sign_in_link = link_to 'entre', sign_in_path
       = t('.authenticate_to_comment', sign_up_link: sign_up_link, sign_in_link: sign_in_link).html_safe
