@@ -3,7 +3,11 @@ class TeamInvitation < ActiveRecord::Base
 
   belongs_to :team
 
-  validates :email, email: {strict_mode: true}
+  validates :email, email: {strict_mode: true}, uniqueness: {
+    scope: :team
+  }
+
+  validate :email_available
 
   scope :accepted, -> { where(accepted: true) }
   scope :not_accepted, -> { where(accepted: false) }
@@ -27,5 +31,11 @@ class TeamInvitation < ActiveRecord::Base
 
   def send_email
       TeamInvitationMailer.invite(self).deliver_later
+  end
+
+  def email_available
+    unless User.exists?(email: email)
+      errors.add(:email, 'Usuário não existe')
+    end
   end
 end
