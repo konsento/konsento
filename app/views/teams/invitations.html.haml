@@ -1,0 +1,32 @@
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+        = @team.title
+        = '-'
+        = t '.invite'
+      .panel-body
+        #invite-form
+          = simple_form_for @team_invitation do |f|
+            = f.input :team_id, as: :hidden
+            = f.label :email
+            .input-group
+              = f.input_field :email, class: 'form-control', autofocus: true
+              %span.input-group-btn
+                = f.button :submit
+            = f.hint :email
+
+        .table-responsive
+          %table.table.table-condensed
+            %thead
+              %tr
+                %th= User.human_attribute_name(:email)
+                %th= TeamInvitation.human_attribute_name(:accepted)
+                %th= t 'actions'
+            %tbody
+              - @team.team_invitations.each do |invitation|
+                %tr
+                  %td= invitation.email
+                  %td= t invitation.accepted.to_s
+                  %td= ''

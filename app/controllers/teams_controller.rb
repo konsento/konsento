@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update]
+  before_action :set_team, only: [:show, :edit, :update, :invitations]
 
   # GET /teams
   def index
@@ -34,6 +34,10 @@ class TeamsController < ApplicationController
   def update
     @team.update(update_team_params)
     respond_with @team, location: -> { teams_url }
+  end
+
+  def invitations
+    @team_invitation = TeamInvitation.new(team: @team)
   end
 
   private

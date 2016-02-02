@@ -21,7 +21,7 @@
                   %td= team.title
                   %td= t team.public.to_s
                   %td
-                    = link_to '#', class: 'btn btn-info btn-xs btn-labeled' do
+                    = link_to invitations_team_path(team), class: 'btn btn-info btn-xs btn-labeled' do
                       .btn-label
                         %em.icon-paper-plane
                       = t '.invite'

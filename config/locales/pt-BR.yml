@@ -61,6 +61,8 @@ pt-BR:
       new_team: 'Novo Time'
     edit:
       edit_team: 'Editar Time'
+    invitations:
+      invite: 'Convidar'
 
   users:
     edit:
@@ -139,6 +141,10 @@ pt-BR:
         username: 'Usuário'
         password: 'Senha'
         password_confirmation: 'Confirme a senha'
+      subscription:
+        role: 'Função'
+      team_invitation:
+        accepted: 'Aceito'
       team:
         title: 'Título'
         public: 'Público'
@@ -148,12 +154,16 @@ pt-BR:
     hints:
       invitation:
         email: 'Separe os emails com vírgula para enviar mais de um.'
+      team_invitation:
+        email: 'Separe os emails com vírgula para enviar mais de um.'
 
   helpers:
     submit:
       proposal:
         create: 'Propor'
       invitation:
+        create: 'Convidar'
+      team_invitation:
         create: 'Convidar'
       comment:
         create: 'Comentar'

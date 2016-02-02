@@ -61,6 +61,8 @@ en:
       new_team: 'New Team'
     edit:
       edit_team: 'Edit Team'
+    invitations:
+      invite: 'Invite'
 
   users:
     edit:
@@ -138,6 +140,10 @@ en:
         username: 'User'
         password: 'Password'
         password_confirmation: 'Confirm the password'
+      subscription:
+        role: 'Role'
+      team_invitation:
+        accepted: 'Accepted'
       team:
         title: 'Title'
         public: 'Public'
@@ -146,6 +152,8 @@ en:
     hints:
       invitation:
         email: 'Split emails using comma to send multiple invitations at once.'
+      team_invitation:
+        email: 'Split emails using comma to send multiple invitations at once.'
 
   helpers:
     submit:
@@ -153,5 +161,7 @@ en:
         create: 'Propose'
       invitation:
         create: 'Invite'
+      team_invitation:
+        create: 'Convidar'
       comment:
         create: 'Comment'

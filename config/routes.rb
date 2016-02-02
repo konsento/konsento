@@ -24,7 +24,10 @@ Rails.application.routes.draw do
     get '/search_proposals' => 'topics#search_proposals', on: :member
   end
 
-  resources :teams, except: [:destroy]
+  resources :teams, except: [:destroy] do
+    get '/invitations' => 'teams#invitations', on: :member
+  end
+  resources :team_invitations, only: [:create]
   resources :proposals, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
