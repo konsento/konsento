@@ -3,9 +3,7 @@
     .panel.panel-default
       .panel-heading
         %h3.panel-title
-        = @team.title
-        = '-'
-        = t '.invite'
+          = t '.invite_to_team', team: @team.title
       .panel-body
         #invite-form
           = simple_form_for @team_invitation do |f|

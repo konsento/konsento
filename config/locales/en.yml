@@ -66,7 +66,7 @@ en:
     edit:
       edit_team: 'Edit Team'
     invitations:
-      invite: 'Invite'
+      invite_to_team: 'Invite to ''%{team}'' team'
 
   team_invitations:
     accept:

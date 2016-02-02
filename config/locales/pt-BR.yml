@@ -66,7 +66,7 @@ pt-BR:
     edit:
       edit_team: 'Editar Time'
     invitations:
-      invite: 'Convidar'
+      invite_to_team: 'Convidar para o time ''%{team}'''
 
   team_invitations:
     accept:
