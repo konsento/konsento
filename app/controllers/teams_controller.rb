@@ -4,6 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   def index
     @teams = Team.all.order(created_at: :asc)
+    @pending_team_invitations = TeamInvitation.where(email: current_user.email, accepted: false)
     add_breadcrumb Team.model_name.human(count: 2)
   end
 

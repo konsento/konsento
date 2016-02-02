@@ -8,6 +8,7 @@
           .btn-label
             %em.icon-plus
           = t '.new_team'
+        %h4= t '.joined_teams'
         .table-responsive
           %table.table.table-condensed
             %thead
@@ -29,3 +30,20 @@
                       .btn-label
                         %em.icon-settings
                       = t '.edit'
+
+        %h4= t '.pending_team_invitations'
+        .table-responsive
+          %table.table.table-condensed
+            %thead
+              %tr
+                %th= Team.model_name.human
+                %th= t 'actions'
+            %tbody
+              - @pending_team_invitations.each do |team_invitation|
+                %tr
+                  %td= team_invitation.team.title
+                  %td
+                    = link_to accept_team_invitations_path(team_invitation.token), class: 'btn btn-success btn-xs btn-labeled' do
+                      .btn-label
+                        %em.icon-eye
+                      = t '.see_invitation'

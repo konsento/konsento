@@ -55,6 +55,9 @@ en:
       edit: 'Edit'
       invite: 'Invite'
       new_team: 'New Team'
+      joined_teams: 'Teams you''re in'
+      pending_team_invitations: 'Pending Team Invitations'
+      see_invitation: 'See Invitation'
     teams_list:
       created_at: 'Created at %{timestamp}'
       teams_not_found: 'There is no teams'
