@@ -31,6 +31,11 @@
                         .btn-label
                           %em.icon-settings
                         = t '.edit'
+                    - else
+                      = link_to leave_team_path(team), data: {confirm: t('crud.confirm')} , class: 'btn btn-danger btn-xs btn-labeled' do
+                        .btn-label
+                          %em.icon-close
+                        = t '.leave'
 
         %h4= t '.pending_team_invitations'
         .table-responsive

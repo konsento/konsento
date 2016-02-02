@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :invitations]
+  before_action :set_team, only: [:show, :edit, :update, :invitations, :leave]
 
   # GET /teams
   def index
@@ -39,6 +39,14 @@ class TeamsController < ApplicationController
 
   def invitations
     @team_invitation = TeamInvitation.new(team: @team)
+  end
+
+  def leave
+    ActiveRecord::Base.transaction do
+      Subscription.find_by(subscriptable: @team, user: current_user).destroy
+      TeamInvitation.find_by(team: @team, email: current_user.email).destroy
+    end
+    redirect_to teams_path
   end
 
   private

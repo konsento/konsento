@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :teams, except: [:destroy] do
     get '/invitations' => 'teams#invitations', on: :member
+    get '/leave' => 'teams#leave', on: :member, as: :leave
   end
   resources :team_invitations, only: [:create] do
     get '/accept/:token' => 'team_invitations#accept', on: :collection, as: :accept
