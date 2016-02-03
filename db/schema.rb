@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119004732) do
+ActiveRecord::Schema.define(version: 20160203214241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20160119004732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id",                         null: false
+    t.string  "key",                             null: false
+    t.json    "data",                            null: false
+    t.integer "notifiable_id"
+    t.string  "notifiable_type"
+    t.boolean "read",            default: false
+  end
+
+  add_index "notifications", ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id", using: :btree
 
   create_table "proposals", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -202,6 +213,7 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "comments", "users"
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "invitations", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "proposals", "proposals", column: "parent_id"
   add_foreign_key "proposals", "sections"
   add_foreign_key "proposals", "users"
