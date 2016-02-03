@@ -7,6 +7,9 @@
         = simple_form_for @team do |f|
           = f.input :title
           = f.input :public
-          = f.association :join_requirements, collection: current_user.join_requirements, disabled: true
+          %div
+            %label
+              = "#{RequirementValue.model_name.human(count: 2)}: "
+            = @team.join_requirements.pluck(:title).to_sentence
 
           = f.button :submit
