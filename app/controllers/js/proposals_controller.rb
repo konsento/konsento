@@ -1,5 +1,17 @@
 class Js::ProposalsController < ApplicationController
-  before_action :set_proposal, except: [:show_by_index]
+  before_action :set_proposal, except: [:index]
+
+  def index
+    topic = Topic.find(params[:topic_id])
+    section = topic.sections.find(params[:section_id])
+    consensus = [section.consensus]
+
+    @is_user_subscribed = topic.group.is_user_subscribed?(current_user)
+
+    @recent = section.proposals.recent - consensus
+    @popular = section.proposals.popular - consensus
+    @controversial = section.proposals.controversial - consensus
+  end
 
   def comments
     @comment = Comment.new(commentable: @proposal, user: current_user)
@@ -18,19 +30,6 @@ class Js::ProposalsController < ApplicationController
     @proposal.vote_disagree(current_user)
   end
 
-  def show_by_index
-    topic = Topic.find(params[:topic_id])
-
-    @is_user_subscribed = topic.group.is_user_subscribed?(current_user)
-
-    consensus = [topic.proposal_consensus(params[:proposal_index])]
-    @recent = topic.proposals.recent(params[:proposal_index]) - consensus
-    @popular = topic.proposals.popular(params[:proposal_index]) - consensus
-    @controversial = topic.proposals.controversial(params[:proposal_index]) - consensus
-
-    puts "\n\n\n\n\n#{@recent.size} #{@popular.size} #{@controversial.size}\n\n\n\n"
-  end
-
   def propose
     @new_proposal = @proposal.dup
     @new_proposal.user = current_user
@@ -38,6 +37,7 @@ class Js::ProposalsController < ApplicationController
   end
 
   private
+
   def set_proposal
     @proposal = Proposal.find(params[:id])
   end

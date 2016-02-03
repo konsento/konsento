@@ -14,14 +14,10 @@
           / Tab panes
           .tab-content
             #consensus.tab-pane.active{:role => "tabpanel"}
-              - @topic.proposals_count.times do |i|
-                - p = @topic.proposal_consensus(i)
-                = render partial: "proposals/proposal", locals: {proposal_index: i, proposal: p}
-
-
+              = render partial: @topic.sections
 
         .col-md-6
-          %p= t '.suggestions_for_selected_proposal'
+          %p= t '.suggestions_for_selected_section'
           / Nav tabs
           %ul.nav.nav-tabs{:role => "tablist"}
             %li.active{:role => "presentation"}

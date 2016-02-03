@@ -86,9 +86,11 @@ pt-BR:
       propose:
         title: 'Escrever nova proposta'
 
+  sections:
+    section:
+      no_consensus: 'Ainda não há consenso para esta seção'
+
   proposals:
-    proposal:
-      no_consensus: 'Ainda não há consenso para esta proposta'
     propose:
       original: 'Original'
       new: 'Nova'
@@ -99,7 +101,7 @@ pt-BR:
     new:
       new_topic: 'Novo Tópico'
     show:
-      suggestions_for_selected_proposal: 'Sugestões para proposta selecionada'
+      suggestions_for_selected_section: 'Sugestões para a seção selecionada'
       consensus: 'Consenso'
       write_comment: 'Escreva um comentário'
 

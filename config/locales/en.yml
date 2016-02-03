@@ -87,11 +87,13 @@ en:
         title: 'Write a proposal'
 
   proposals:
-    proposal:
-      no_consensus: 'There is no consensus on this proposal yet'
     propose:
       original: 'Original'
       new: 'New'
+
+  sections:
+    section:
+      no_consensus: 'There is no consensus on this proposal yet'
 
   topics:
     form:
@@ -99,7 +101,7 @@ en:
     new:
       new_topic: 'New Topic'
     show:
-      suggestions_to_selected_proposal: 'Suggestion for selected proposal'
+      suggestions_to_selected_section: 'Suggestion for selected section'
       consensus: 'Consensus'
       write_comment: 'Write a comment'
 

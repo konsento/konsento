@@ -1,0 +1,7 @@
+- consensus = section.consensus
+
+.section{'data-id': section.id}
+  - if consensus
+    = render partial: consensus
+  - else
+    %p.text-center= t '.no_consensus'

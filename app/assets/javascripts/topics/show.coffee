@@ -2,18 +2,18 @@ class @Konsento::Topic::Show
   constructor: (params) ->
 
   run: ->
-    @setProposalsClickEvent()
-    $('#consensus .proposal')[0].click()
+    @setSectionClickEvent()
+    $('#consensus .section')[0].click()
 
-  setProposalsClickEvent: ->
+  setSectionClickEvent: ->
     _this = @
-    $('#consensus .proposal').click (e) ->
+    $('#consensus .section').click (e) ->
       if(e.target.tagName == 'P' || e.target.tagName == 'DIV')
-        $('#consensus .proposal').removeClass('active')
+        $('#consensus .section').removeClass('active')
         $(this).addClass('active')
         topicId = $('#topic').data('topic-id')
-        proposalIndex = $(this).data('proposal-index')
-        _this.loadChildren(topicId, proposalIndex)
+        sectionId = $(this).data('id')
+        _this.loadChildren(topicId, sectionId)
 
-  loadChildren: (topicId, proposalIndex) ->
-    $.getScript "#{gon.rootUrl}js/proposals/#{topicId}/#{proposalIndex}"
+  loadChildren: (topicId, sectionId) ->
+    $.getScript "#{gon.rootUrl}js/topics/#{topicId}/sections/#{sectionId}/proposals"

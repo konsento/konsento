@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   def search_proposals
     @title = @topic.title
     @q = search_params[:q].to_s.squish
-    @results = Proposal.search(@q).where(topic: @topic).page(params[:proposal_page])
+    @results = @topic.proposals.search(@q).page(params[:proposal_page])
 
     render 'search/index'
   end
@@ -30,11 +30,13 @@ class TopicsController < ApplicationController
 
   # POST /groups/{group_id}/topics
   def create
-    @topic = Group.find(params[:group_id]).topics.create(topic_params) do |t|
+    group = Group.find(params[:group_id])
+
+    @topic = group.topics.create(topic_params.except(:proposals_attributes)) do |t|
       t.user = current_user
-      t.proposals.each_with_index do |p, i|
-        p.proposal_index = i
-        p.user = current_user
+      topic_params[:proposals_attributes].each_with_index do |(k, p), i|
+        s = t.sections.build(index: i)
+        s.proposals.build(user: current_user, content: p[:content])
       end
     end
 
@@ -45,21 +47,20 @@ class TopicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_topic
-      @topic = Topic.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def topic_params
-      params.require(:topic).permit(:title, :team_id, :tag_list, proposals_attributes: [
-        :id,
-        :content,
-        :_destroy
-      ])
-    end
+  def set_topic
+    @topic = Topic.find(params[:id])
+  end
 
-    def search_params
-      params.require(:search).permit(:q)
-    end
+  def topic_params
+    params.require(:topic).permit(:title, :team_id, :tag_list, proposals_attributes: [
+      :id,
+      :content,
+      :_destroy
+    ])
+  end
+
+  def search_params
+    params.require(:search).permit(:q)
+  end
 end
