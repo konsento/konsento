@@ -28,12 +28,15 @@ Rails.application.routes.draw do
     get '/invitations' => 'teams#invitations', on: :member
     get '/leave' => 'teams#leave', on: :member, as: :leave
   end
+
   resources :team_invitations, only: [:create] do
     get '/accept/:token' => 'team_invitations#accept', on: :collection, as: :accept
   end
+
   resources :proposals, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
+
   resources :invitations, only: [:index, :create] do
     post :send_email, on: :member
     get '/register/:token' => 'invitations#registration_form', on: :collection, as: :registration_form
@@ -43,7 +46,6 @@ Rails.application.routes.draw do
   # Get
   get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'
   get '/requirement_values/:requirable_type/:requirable_id/:user_id/new', to: 'requirement_values#new'
-
   get '/search', to: 'search#index'
 
   # Post
@@ -52,6 +54,8 @@ Rails.application.routes.draw do
   # JS
   namespace :js,  defaults: {format: :js} do
     resources :topics, only: [] do
+      resources :proposals, only: [:new, :create]
+
       resources :sections, only: [] do
         resources :proposals, only: [:index]
       end

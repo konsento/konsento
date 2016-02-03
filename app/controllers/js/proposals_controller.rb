@@ -1,5 +1,7 @@
 class Js::ProposalsController < ApplicationController
-  before_action :set_proposal, except: [:index]
+  respond_to :js
+
+  before_action :set_proposal, except: [:index, :new, :create]
 
   def index
     topic = Topic.find(params[:topic_id])
@@ -34,6 +36,43 @@ class Js::ProposalsController < ApplicationController
     @new_proposal = @proposal.dup
     @new_proposal.user = current_user
     @new_proposal.parent = @proposal
+  end
+
+  def new
+    topic = Topic.find(params[:topic_id])
+    section = topic.sections.build
+    @proposal = section.proposals.build
+  end
+
+  def create
+    topic = Topic.find(params[:topic_id])
+
+    topic.transaction do
+      if params[:next_section]
+        sections = topic.sections.where('index >= ?', params[:next_section]).map do |s|
+          i = s.index + 1
+          s.update!(index: nil)
+          [s, i]
+        end
+
+        sections.each { |s, i| s.update!(index: i) }
+
+        index = params[:next_section]
+      else
+        index = topic.sections.last.index + 1
+      end
+
+      section = topic.sections.build(index: index) do |s|
+        s.proposals.build(
+          content: params[:proposal][:content].squish,
+          user: current_user
+        )
+      end
+
+      section.save!
+    end
+
+    redirect_to topic
   end
 
   private

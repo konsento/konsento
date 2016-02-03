@@ -1,0 +1,4 @@
+$('.modal-title').html("<%= t '.title' %>")
+$('.modal-body').html("<%= escape_javascript(render partial: 'form') %>");
+$('#modal').modal('show');
+$('#modal').modal('handleUpdate');
