@@ -1,2 +1,3 @@
-- proposals.each do |p|
-	= render partial: 'proposals/proposal', locals: {proposal_index: nil, proposal: p}
+- proposals.each do |proposal|
+  = render partial: 'proposals/proposal', locals: {proposal: proposal}
+  %hr

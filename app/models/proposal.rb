@@ -6,56 +6,31 @@ class Proposal < ActiveRecord::Base
                   against: [:content]
 
   belongs_to :user
-  has_many :children, inverse_of: :parent, class_name: 'Proposal', foreign_key: :parent_id
   belongs_to :parent, inverse_of: :children, class_name: 'Proposal', foreign_key: :parent_id
-  belongs_to :topic, touch: true
+  belongs_to :section, inverse_of: :proposals, required: true, touch: true
+  has_many :children, inverse_of: :parent, class_name: 'Proposal', foreign_key: :parent_id
   has_many :votes
   has_many :references
   has_many :comments, as: :commentable
 
-  scope :recent, -> (index = nil) do
-    q = order(updated_at: :desc)
-    q = q.where(proposal_index: index) if index
-    q
+  delegate :topic, to: :section
+
+  scope :recent, -> { order(updated_at: :desc) }
+
+  scope :popular, -> do
+    joins('LEFT JOIN votes v ON v.proposal_id = proposals.id').
+    group('proposals.id').
+    order('COUNT(v.id) DESC')
   end
 
-  scope :popular, -> (index = nil) do
-    q = joins(:votes).group('proposals.id').order('COUNT(votes.id) DESC')
-    q = where(proposal_index: index) if index
-    q
-  end
-
-  scope :controversial, -> (index = nil) do
-    q = joins('LEFT JOIN votes agree ON (proposals.id = agree.proposal_id AND agree.opinion = 1)').
-        joins('LEFT JOIN votes disagree ON (proposals.id = disagree.proposal_id AND disagree.opinion = -1)').
-        group('proposals.id').
-        order('(LEAST(@SUM(agree.opinion), @SUM(disagree.opinion))/GREATEST(@SUM(agree.opinion), @SUM(disagree.opinion))) ASC')
-    q = q.where(proposal_index: index) if index
-    q
+  scope :controversial, -> do
+    joins('LEFT JOIN votes agree ON (proposals.id = agree.proposal_id AND agree.opinion = 1)').
+    joins('LEFT JOIN votes disagree ON (proposals.id = disagree.proposal_id AND disagree.opinion = -1)').
+    group('proposals.id').
+    order('(LEAST(@SUM(agree.opinion), @SUM(disagree.opinion))/GREATEST(@SUM(agree.opinion), @SUM(disagree.opinion))) ASC')
   end
 
   validates :content, presence: true
-
-  def popular
-    Proposal.where(
-      topic: self.topic,
-      proposal_index: self.proposal_index
-    ).where.not(id: self.id)
-  end
-
-  def controversial
-    Proposal.where(
-      topic: self.topic,
-      proposal_index: self.proposal_index
-    ).where.not(id: self.id)
-  end
-
-  def recent
-    Proposal.where(
-      topic: self.topic,
-      proposal_index: self.proposal_index
-    ).where.not(id: self.id)
-  end
 
   def vote_agree(user)
     self.vote(user, 1)

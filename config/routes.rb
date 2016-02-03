@@ -50,7 +50,12 @@ Rails.application.routes.draw do
 
   # JS
   namespace :js,  defaults: {format: :js} do
-    get '/proposals/:topic_id/:proposal_index', to: 'proposals#show_by_index'
+    resources :topics, only: [] do
+      resources :sections, only: [] do
+        resources :proposals, only: [:index]
+      end
+    end
+
     resources :proposals, only: [] do
       member do
         post :comments

@@ -102,12 +102,12 @@ textarea {
   }
 }
 
-#consensus .proposal:hover {
+#consensus .section:hover {
   background: #EAF6FF;
   cursor: pointer;
 }
 
-#consensus .proposal.active {
+#consensus .section.active {
   background: #DAECF9;
 }
 
@@ -115,7 +115,7 @@ textarea {
   margin-bottom: 20px;
 }
 
-.proposal {
+.section {
   margin-bottom: 15px;
   padding: 5px;
   border-bottom: 1px #eee solid;

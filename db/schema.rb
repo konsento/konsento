@@ -61,17 +61,15 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   end
 
   create_table "proposals", force: :cascade do |t|
-    t.integer  "user_id",        null: false
+    t.integer  "user_id",    null: false
     t.integer  "parent_id"
-    t.integer  "topic_id",       null: false
-    t.text     "content",        null: false
-    t.integer  "proposal_index", null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "section_id", null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "proposals", ["parent_id"], name: "index_proposals_on_parent_id", using: :btree
-  add_index "proposals", ["user_id", "parent_id", "topic_id"], name: "index_proposals_on_user_id_and_parent_id_and_topic_id", using: :btree
+  add_index "proposals", ["section_id", "parent_id", "user_id"], name: "index_proposals_on_section_id_and_parent_id_and_user_id", using: :btree
 
   create_table "references", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -102,6 +100,15 @@ ActiveRecord::Schema.define(version: 20160119004732) do
 
   add_index "requirements", ["requirable_id", "requirable_type", "join_requirement_id"], name: "requirements_index", unique: true, using: :btree
   add_index "requirements", ["requirable_type", "requirable_id"], name: "index_requirements_on_requirable_type_and_requirable_id", using: :btree
+
+  create_table "sections", force: :cascade do |t|
+    t.integer  "topic_id",   null: false
+    t.integer  "index",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sections", ["topic_id", "index"], name: "index_sections_on_topic_id_and_index", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id",            null: false
@@ -196,13 +203,14 @@ ActiveRecord::Schema.define(version: 20160119004732) do
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "invitations", "users"
   add_foreign_key "proposals", "proposals", column: "parent_id"
-  add_foreign_key "proposals", "topics"
+  add_foreign_key "proposals", "sections"
   add_foreign_key "proposals", "users"
   add_foreign_key "references", "proposals"
   add_foreign_key "references", "users"
   add_foreign_key "requirement_values", "join_requirements"
   add_foreign_key "requirement_values", "users"
   add_foreign_key "requirements", "join_requirements"
+  add_foreign_key "sections", "topics"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "topics", "groups"
   add_foreign_key "topics", "teams"
