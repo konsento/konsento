@@ -85,8 +85,11 @@ pt-BR:
     proposals:
       propose:
         title: 'Escrever nova proposta'
+      new:
+        title: 'Nova seção'
 
   sections:
+    add_section: 'Adicionar Seção'
     section:
       no_consensus: 'Ainda não há consenso para esta seção'
 

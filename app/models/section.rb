@@ -2,6 +2,8 @@ class Section < ActiveRecord::Base
   belongs_to :topic, inverse_of: :sections, required: true, touch: true
   has_many :proposals, inverse_of: :section, autosave: true, dependent: :destroy
 
+  default_scope { order(index: :asc) }
+
   def consensus
     total_votes_minimum_percent = topic.group.total_votes_percent
     agree_votes_minimum_percent = topic.group.agree_votes_percent

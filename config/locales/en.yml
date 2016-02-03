@@ -94,6 +94,7 @@ en:
   sections:
     section:
       no_consensus: 'There is no consensus on this proposal yet'
+    add_section: 'Add Section'
 
   topics:
     form:

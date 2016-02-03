@@ -1,3 +1,6 @@
+- if signed_in? && @is_user_subscribed
+  = link_to t('sections.add_section'), new_js_topic_proposal_path(section.topic, next_section: section.index), remote: true, class: 'btn btn-default btn-block add-section'
+
 - consensus = section.consensus
 
 .section{'data-id': section.id}
@@ -5,3 +8,4 @@
     = render partial: consensus
   - else
     %p.text-center= t '.no_consensus'
+
