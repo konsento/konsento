@@ -1,4 +1,5 @@
 class TeamInvitationsController < ApplicationController
+  before_action :require_login, only: [:create, :accept]
 
   def create
     team = Team.find(team_invitation_params[:team_id])
