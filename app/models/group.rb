@@ -11,6 +11,7 @@ class Group < ActiveRecord::Base
   has_many :topics
   has_many :requirements, as: :requirable
   has_many :join_requirements, through: :requirements
+  has_many :users, through: :subscriptions
 
   def parents
     ancestry = [parent]
