@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Root
-  root 'groups#index'
+  root 'groups#show', id: 1
 
   # Auth
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
