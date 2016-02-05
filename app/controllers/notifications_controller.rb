@@ -3,6 +3,7 @@ class NotificationsController < ApplicationController
   # GET /notifications
   def index
     @notifications = current_user.notifications
+    @notifications.unread.update_all(:read => true)
   end
 
   private
