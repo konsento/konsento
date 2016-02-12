@@ -1,13 +1,8 @@
-%h1 Listing notifications
-
-%table
-  %thead
-    %tr
-      %th
-
-  %tbody
-    - @notifications.each do |notification|
-      %tr
-        %td= notification.inspect
-
-%br
+.row
+  .col-md-12
+    .list-group.mb0
+      - @notifications.each do |notification|
+        = link_to link_for_notification(notification), class: 'list-group-item bt0' do
+          %span.label.label-info.pull-right= notification.notifiable.created_at
+          %em.fa.fa-fw.mr{class: icon_class_for_notification(notification)}
+          = message_for_notification(notification)

@@ -23,34 +23,23 @@
         %a{'data-search-open': '', href: '#'}
           %em.icon-magnifier
       - if signed_in?
-        - if false
-          / START Alert menu
-          %li.dropdown.dropdown-list
-            %a{'data-toggle': 'dropdown', href: '#'}
-              - if current_user.notifications.unread.any?
-                %em.icon-bell
-                .label.label-danger= current_user.notifications.unread.size
-              / START Dropdown menu
-              %ul.dropdown-menu.animated.fadeIn
-                %li
-                  / START list group
-                  .list-group
-                    = link_to '#', class: 'list-group-item' do
-                      .media-box
-                        .pull-left
-                          %em.fa.fa-comment.fa-2x
-                        .media-box-body.clearfix
-                          %p.m0 Novos comentários
-                          %p.m0.text-muted
-                            %small 10 novos comentários
-                    / last list item
-                    = link_to '#', class: 'list-group-item' do
-                      %small Mais notificações
-                      %span.label.label-success.pull-right 0
-                  / END list group
-              / END Dropdown menu
-          / END Alert menu
-        / START User button
+        / START Alert menu
+        %li.dropdown.dropdown-list
+          = link_to preview_js_notifications_path, remote: true, 'data-toggle' => 'dropdown', method: :post do
+            %em.icon-bell
+            - if current_user.notifications.unread.any?
+              .unread-notifications.label.label-danger= current_user.notifications.unread.size
+          / START Dropdown menu
+          %ul.dropdown-menu.animated.fadeIn
+            %li
+              / START list group
+              #notifications-box.list-group
+                #preview-notifications
+                = link_to notifications_path, class: 'list-group-item' do
+                  %small= t '.see_more'
+                  %span.unread-notifications.label.label-danger.pull-right
+              / END list group
+          / END Dropdown menu
         %li
           %a{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open', href: '#'}
             %em.icon-user

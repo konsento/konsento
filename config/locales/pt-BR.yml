@@ -9,6 +9,12 @@ pt-BR:
   home: 'Início'
   back: 'Voltar'
 
+  notification_messages:
+    new_topic: 'Um novo tópico no groupo %{group_title}.'
+    new_topic_comment: 'Um novo comentário no tópico %{topic_title}'
+    new_proposal_comment: 'Um novo comentário em uma proposta do tópico %{topic_title}'
+    team_invitation: 'Você recebeu um convite para o time %{team_title}'
+
   search_description: 'Digite o que procura e aperte enter...'
 
   layouts:
@@ -20,6 +26,7 @@ pt-BR:
         about: 'Sobre'
         not_signed_up: 'Não é cadastrado?'
         sign_up: 'Cadastrar-se'
+        see_more: 'Ver mais'
 
   invitations:
     index:
@@ -58,7 +65,7 @@ pt-BR:
       joined_teams: 'Times que você participa'
       pending_team_invitations: 'Convites pendentes para times'
       see_invitation: 'Ver convite'
-      leave: 'Sair' 
+      leave: 'Sair'
     teams_list:
       created_at: 'Criado em %{timestamp}'
       teams_not_found: 'Não há times'

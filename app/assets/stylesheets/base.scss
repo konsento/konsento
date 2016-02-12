@@ -43,12 +43,23 @@ textarea {
     resize: none;
 }
 ul.dropdown-menu {
-  min-width: 220px;
+  min-width: 260px;
 }
 
-.list-group {
+#notifications-box.list-group {
   margin-bottom: 0px !important;
+
+  .list-group-item.unread {
+    background: #d9f2fa;
+  }
+  .list-group-item:hover {
+    background: #fafbfc;
+  }
+  em {
+    margin: 10px 5px;
+  }
 }
+
 #brand:hover{
   text-decoration: none !important;
 }

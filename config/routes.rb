@@ -33,10 +33,10 @@ Rails.application.routes.draw do
     get '/accept/:token' => 'team_invitations#accept', on: :collection, as: :accept
   end
 
-  resources :proposals, only: [:create]
+  resources :proposals, only: [:show, :create]
   resources :subscriptions, only: [:create, :destroy]
   resources :comments, only: [:create]
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index, :show]
 
   resources :invitations, only: [:index, :create] do
     post :send_email, on: :member
@@ -59,6 +59,12 @@ Rails.application.routes.draw do
 
       resources :sections, only: [] do
         resources :proposals, only: [:index]
+      end
+    end
+
+    resources :notifications, only: [] do
+      collection do
+        post :preview
       end
     end
 

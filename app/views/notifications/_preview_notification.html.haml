@@ -1,0 +1,8 @@
+= link_to link_for_notification(notification), class: classes_for_preview_notification(notification) do
+  .media-box
+    .pull-left
+      %em.fa.fa-2x{class: icon_class_for_notification(notification)}
+    .media-box-body.clearfix
+      %p.m0= message_for_notification(notification)
+      %p.m0.text-muted
+        %small= notification.notifiable.created_at
