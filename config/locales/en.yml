@@ -96,6 +96,10 @@ en:
         title: 'New section'
 
   proposals:
+    show:
+      title: 'Propose to section %{section_index} on topic ''%{topic_title}'''
+      see_topic: 'See topic'
+      write_comment: 'Write a comment'
     propose:
       original: 'Original'
       new: 'New'

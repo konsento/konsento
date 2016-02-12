@@ -1,9 +1,14 @@
 class @Konsento::Topic::Show
   constructor: (params) ->
+    @params = params
 
   run: ->
     @setSectionClickEvent()
-    $('#consensus .section')[0].click()
+    
+    if @params.section_index?
+      $('#consensus .section')[@params.section_index].click()
+    else
+      $('#consensus .section')[0].click()
 
   setSectionClickEvent: ->
     _this = @

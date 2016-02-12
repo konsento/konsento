@@ -1,4 +1,11 @@
 class ProposalsController < ApplicationController
+  # GET /proposals/1
+  def show
+    @proposal = Proposal.find(params[:id])
+    @comment = Comment.new(commentable: @proposal, user: current_user)
+    @is_user_subscribed = @proposal.topic.group.is_user_subscribed?(current_user)
+  end
+
   # POST /proposals
   def create
     if @proposal = Proposal.create(proposal_params)

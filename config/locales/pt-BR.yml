@@ -101,6 +101,10 @@ pt-BR:
       no_consensus: 'Ainda não há consenso para esta seção'
 
   proposals:
+    show:
+      title: 'Proposta para a seção %{section_index} do tópico ''%{topic_title}'''
+      see_topic: 'Ver tópico'
+      write_comment: 'Escrever comentário'
     propose:
       original: 'Original'
       new: 'Nova'

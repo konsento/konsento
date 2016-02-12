@@ -1,0 +1,27 @@
+.row.top-panel-buttons
+  = link_to topic_path(@proposal.topic, section_index: @proposal.section.index), class: 'btn btn-xs btn-labeled btn-info pull-right clearfix' do
+    %span.btn-label
+      %i.fa.fa-eye
+    = t '.see_topic'
+
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title= t '.title', topic_title: @proposal.topic.title, section_index: @proposal.section.index.to_i + 1
+    .panel-body
+      %p= @proposal.content
+
+.row
+  .panel.panel-default
+    .panel-heading
+      %em.fa.fa-pencil.mr>
+      = t '.write_comment'
+    .panel-body
+      = render partial: "comments/form", locals: {commentable: @comment}
+
+.row
+  .panel.panel-default
+    .panel-heading= "#{@proposal.comments.size} #{Comment.model_name.human(count: 2)}"
+    .panel-body
+      - @proposal.comments.each do |c|
+        = render partial: "comments/comment", locals: {comment: c}
