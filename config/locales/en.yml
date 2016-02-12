@@ -9,6 +9,12 @@ en:
   home: 'Home'
   back: 'Back'
 
+  notification_messages:
+    new_topic: 'New topic on  %{group_title} group'
+    new_topic_comment: 'New comment on %{topic_title} topic'
+    new_proposal_comment: 'New comment in a proposal on %{topic_title} topic'
+    team_invitation: 'New invitation to %{team_title} team'
+
   search_description: 'Type anything to search and hit enter...'
 
   layouts:
@@ -86,6 +92,8 @@ en:
     proposals:
       propose:
         title: 'Write a proposal'
+      new:
+        title: 'New section'
 
   proposals:
     propose:
@@ -145,6 +153,7 @@ en:
       topic:
         title: 'Title'
         tag_list: 'Tags'
+        team: 'Team'
       proposal:
         content: 'Content'
       invitation:
@@ -162,6 +171,7 @@ en:
       team:
         title: 'Title'
         public: 'Public'
+        join_requirements: 'Requirements'
 
   simple_form:
     hints:
