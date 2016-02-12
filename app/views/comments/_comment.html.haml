@@ -5,7 +5,7 @@
   .media-body
     %h4#media-heading.media-heading
       %a{:href => ""}= comment.user.username
-      %small.timestamp= comment.created_at
+      %small.timestamp= time_ago_in_words(comment.created_at)
       %a.anchorjs-link{:href => "#media-heading"}
         %span.anchorjs-icon
     %p= comment.content

@@ -20,7 +20,7 @@
           %td.text-right.hidden-xs.hidden-sm
             .text-muted
               %small
-                = t '.created_at', timestamp: g.updated_at
+                = t '.created_at', timestamp: time_ago_in_words(g.updated_at)
 
   = paginate groups, param_name: 'page_subgroups', remote: true
 

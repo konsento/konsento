@@ -5,4 +5,4 @@
     .media-box-body.clearfix
       %p.m0= message_for_notification(notification)
       %p.m0.text-muted
-        %small= notification.notifiable.created_at
+        %small= time_ago_in_words(notification.notifiable.created_at)

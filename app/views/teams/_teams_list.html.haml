@@ -15,4 +15,4 @@
         %td.text-right.hidden-xs.hidden-sm
           .text-muted
             %small
-              = t '.created_at', timestamp: t.updated_at
+              = t '.created_at', timestamp: time_ago_in_words(t.updated_at)

@@ -25,7 +25,7 @@
           %td.text-right.hidden-xs.hidden-sm
             .text-muted
               %small
-                = t '.last_update', timestamp: t.updated_at
+                = t '.last_update', timestamp: time_ago_in_words(t.updated_at)
 
   = paginate topics, param_name: page_param_name, remote: true
 
