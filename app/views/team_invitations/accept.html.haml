@@ -5,7 +5,7 @@
         .text-center
           = t '.title'
       %p
-        = t '.description', team: @team_invitation.team.title
+        = t '.description_html', team: @team_invitation.team.title
 
       = link_to t('back'), root_path, class:'btn btn-default pull-left col-md-6'
       = simple_form_for @subscription, class: 'mb-lg' do |f|

@@ -10,10 +10,10 @@ pt-BR:
   back: 'Voltar'
 
   notification_messages:
-    new_topic: 'Um novo tópico no groupo %{group_title}.'
-    new_topic_comment: 'Um novo comentário no tópico %{topic_title}'
-    new_proposal_comment: 'Um novo comentário em uma proposta do tópico %{topic_title}'
-    team_invitation: 'Você recebeu um convite para o time %{team_title}'
+    new_topic_html: 'Um novo tópico no grupo <strong>%{group_title}</strong>'
+    new_topic_comment_html: 'Um novo comentário no tópico <strong>%{topic_title}</strong>'
+    new_proposal_comment_html: 'Um novo comentário em uma proposta do tópico <strong>%{topic_title}</strong>'
+    team_invitation_html: 'Você recebeu um convite para o time <strong>%{team_title}</strong>'
 
   search_description: 'Digite o que procura e aperte enter...'
 
@@ -79,7 +79,7 @@ pt-BR:
   team_invitations:
     accept:
       title: 'Convite para time'
-      description: 'Você foi convidado para participar do time ''%{team}'', deseja participar?'
+      description_html: 'Você foi convidado para participar do time <strong>%{team}</strong>, deseja participar?'
       accept: 'Aceitar'
 
   users:
@@ -102,7 +102,7 @@ pt-BR:
 
   proposals:
     show:
-      title: 'Proposta para a seção %{section_index} do tópico ''%{topic_title}'''
+      title_html: 'Proposta para a seção %{section_index} do tópico <em>%{topic_title}</em>'
       see_topic: 'Ver tópico'
       write_comment: 'Escrever comentário'
     propose:

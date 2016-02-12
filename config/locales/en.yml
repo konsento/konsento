@@ -10,10 +10,10 @@ en:
   back: 'Back'
 
   notification_messages:
-    new_topic: 'New topic on  %{group_title} group'
-    new_topic_comment: 'New comment on %{topic_title} topic'
-    new_proposal_comment: 'New comment in a proposal on %{topic_title} topic'
-    team_invitation: 'New invitation to %{team_title} team'
+    new_topic_html: 'New topic on  <strong>%{group_title}</strong> group'
+    new_topic_comment_html: 'New comment on <strong>%{topic_title}</strong> topic'
+    new_proposal_comment_html: 'New comment in a proposal on <strong>%{topic_title}</strong> topic'
+    team_invitation_html: 'New invitation to <strong>%{team_title}</strong> team'
 
   search_description: 'Type anything to search and hit enter...'
 
@@ -79,7 +79,7 @@ en:
   team_invitations:
     accept:
       title: 'Team Invitation'
-      description: 'You have been invited to join ''%{team}'' team, do you want to join?'
+      description_html: 'You have been invited to join <strong>%{team}</strong> team, do you want to join?'
       accept: 'Accept'
 
   users:
@@ -97,7 +97,7 @@ en:
 
   proposals:
     show:
-      title: 'Propose to section %{section_index} on topic ''%{topic_title}'''
+      title_html: 'Propose to section %{section_index} on topic <em>%{topic_title}</em>'
       see_topic: 'See topic'
       write_comment: 'Write a comment'
     propose:

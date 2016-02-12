@@ -1,6 +1,5 @@
 module NotificationsHelper
 
-  #TODO Fix
   def classes_for_notification(notification_read_was)
     if notification_read_was
       classes = 'list-group-item'
@@ -24,11 +23,11 @@ module NotificationsHelper
   def message_for_notification(notification)
     case notification.notifiable_type
     when 'Comment'
-      message = t 'notification_messages.' + notification.key, topic_title: notification.data['topic_title']
+      message = t 'notification_messages.' + notification.key + '_html', topic_title: notification.data['topic_title']
     when 'Topic'
-      message = t 'notification_messages.' + notification.key, group_title: notification.data['group_title']
+      message = t 'notification_messages.' + notification.key + '_html', group_title: notification.data['group_title']
     when 'TeamInvitation'
-      message = t 'notification_messages.' + notification.key, team_title: notification.data['team_title']
+      message = t 'notification_messages.' + notification.key + '_html', team_title: notification.data['team_title']
     end
     puts message
     message
