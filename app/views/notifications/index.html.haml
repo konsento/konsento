@@ -3,6 +3,6 @@
     #notifications-list.list-group.mb0
       - @notifications.each do |n|
         = link_to link_for_notification(n[:notification]), class: classes_for_notification(n[:read_was]) do
-          %span.label.label-info.pull-right= time_ago_in_words(n[:notification].notifiable.created_at)
+          %span.label.label-info.pull-right= time_ago_in_words(n[:notification].created_at)
           %em.fa.fa-fw.mr{class: icon_class_for_notification(n[:notification])}
           = message_for_notification(n[:notification])
