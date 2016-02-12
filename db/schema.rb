@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20160212202640) do
 
   create_table "sections", force: :cascade do |t|
     t.integer  "topic_id",   null: false
-    t.integer  "index",      null: false
+    t.integer  "index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
