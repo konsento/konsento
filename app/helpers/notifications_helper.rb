@@ -47,7 +47,11 @@ module NotificationsHelper
       when 'Topic'
         link = topic_path(notification.notifiable)
       when 'TeamInvitation'
-        link = accept_team_invitations_path(notification.notifiable.token)
+        if notification.notifiable.accepted
+          link = teams_path
+        else
+          link = accept_team_invitations_path(notification.notifiable.token)
+        end
       end
     else
       #TODO Create unavailable notification view
