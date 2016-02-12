@@ -1,5 +1,5 @@
 - if signed_in?
-  .row.subscribe-button
+  .row.top-panel-buttons
     - if @subscription.persisted?
       = render partial: 'subscriptions/unsubscribe_button'
       = link_to new_group_topic_path(@group), class: 'btn btn-primary btn-xs btn-labeled' do
