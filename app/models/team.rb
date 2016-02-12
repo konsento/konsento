@@ -16,7 +16,6 @@ class Team < ActiveRecord::Base
   end
 
   def subscribe_admin(user)
-    team_invitations.create(email: user.email, accepted:true)
     subscriptions.create(user: user, role: :admin)
   end
 end
