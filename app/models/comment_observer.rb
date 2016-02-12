@@ -14,6 +14,7 @@ class CommentObserver < ActiveRecord::Observer
     end
 
     users = comment.commentable.comments.group(:user_id).pluck(:user_id)
+    users << comment.commentable.user_id
     users.delete(comment.user_id)
 
     users.each do |user_id|
