@@ -35,18 +35,23 @@ module NotificationsHelper
   end
 
   def link_for_notification(notification)
-    case notification.notifiable_type
-    when 'Comment'
-      case notification.notifiable.commentable_type
+    if notification.notifiable
+      case notification.notifiable_type
+      when 'Comment'
+        case notification.notifiable.commentable_type
+        when 'Topic'
+          link = topic_path(notification.notifiable.commentable)
+        when 'Proposal'
+          link = proposal_path(notification.notifiable.commentable)
+        end
       when 'Topic'
-        link = topic_path(notification.notifiable.commentable)
-      when 'Proposal'
-        link = proposal_path(notification.notifiable.commentable)
+        link = topic_path(notification.notifiable)
+      when 'TeamInvitation'
+        link = accept_team_invitations_path(notification.notifiable.token)
       end
-    when 'Topic'
-      link = topic_path(notification.notifiable)
-    when 'TeamInvitation'
-      link = accept_team_invitations_path(notification.notifiable.token)
+    else
+      #TODO Create unavailable notification view
+      link = '#'
     end
     link
   end
