@@ -16,14 +16,14 @@ module SearchHelper
   end
 
   def search_result_title(result)
-    text, url = 
+    text, url =
       case result
       when Group
         [result.title, result]
       when Topic
         [result.title, result]
       when Proposal
-        [result.content, result.topic] # TODO: Link to proposal
+        [result.content, result]
       else
         raise
       end
@@ -32,7 +32,7 @@ module SearchHelper
   end
 
   def search_result_content(result)
-    text = 
+    text =
       case result
       when Group
         result.description.to_s
