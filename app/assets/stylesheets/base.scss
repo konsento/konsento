@@ -46,11 +46,17 @@ ul.dropdown-menu {
   min-width: 260px;
 }
 
+#notifications-list.list-group {
+  .list-group-item.unread {
+    background: #e8f6fa;
+  }
+}
+
 #notifications-box.list-group {
   margin-bottom: 0px !important;
 
   .list-group-item.unread {
-    background: #d9f2fa;
+    background: #e8f6fa;
   }
   .list-group-item:hover {
     background: #fafbfc;

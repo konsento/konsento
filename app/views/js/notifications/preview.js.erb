@@ -1,6 +1,6 @@
 $('#preview-notifications').html('')
 <% @notifications.each do |n| %>
-  $('#preview-notifications').append("<%= escape_javascript(render partial: 'notifications/preview_notification', locals: {notification: n}) %>");
+  $('#preview-notifications').append("<%= escape_javascript(render partial: 'notifications/preview_notification', locals: {notification: n[:notification], read_was: n[:read_was]}) %>");
 <% end %>
 
 <% if @unread_notifications_count > 0 %>

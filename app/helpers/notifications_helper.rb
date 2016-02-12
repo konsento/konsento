@@ -1,8 +1,8 @@
 module NotificationsHelper
 
   #TODO Fix
-  def classes_for_preview_notification(notification)
-    if notification.read_was
+  def classes_for_notification(notification_read_was)
+    if notification_read_was
       classes = 'list-group-item'
     else
       classes = 'list-group-item unread'
