@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203214241) do
+ActiveRecord::Schema.define(version: 20160212202640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,12 +61,14 @@ ActiveRecord::Schema.define(version: 20160203214241) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "user_id",                         null: false
-    t.string  "key",                             null: false
-    t.json    "data",                            null: false
-    t.integer "notifiable_id"
-    t.string  "notifiable_type"
-    t.boolean "read",            default: false
+    t.integer  "user_id",                         null: false
+    t.string   "key",                             null: false
+    t.json     "data",                            null: false
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.boolean  "read",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "notifications", ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id", using: :btree
@@ -114,7 +116,7 @@ ActiveRecord::Schema.define(version: 20160203214241) do
 
   create_table "sections", force: :cascade do |t|
     t.integer  "topic_id",   null: false
-    t.integer  "index"
+    t.integer  "index",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
