@@ -11,6 +11,8 @@ class NotificationsController < ApplicationController
         {notification: n, read_was: false}
       end
     end
+
+    add_breadcrumb Notification.model_name.human(count: 2)
   end
 
   private

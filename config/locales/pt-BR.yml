@@ -15,7 +15,6 @@ pt-BR:
     new_proposal_comment_html: 'Um novo comentário em uma proposta do tópico <strong>%{topic_title}</strong>'
     team_invitation_html: 'Você recebeu um convite para o time <strong>%{team_title}</strong>'
 
-  search_description: 'Digite o que procura e aperte enter...'
 
   layouts:
     partials:
@@ -27,6 +26,7 @@ pt-BR:
         not_signed_up: 'Não é cadastrado?'
         sign_up: 'Cadastrar-se'
         see_more: 'Ver mais'
+        search_description: 'Digite o que procura e aperte enter...'
 
   pages:
     unavailable_content:
@@ -92,6 +92,10 @@ pt-BR:
       description: 'Digite sua senha nos campos abaixo para alterá-la.'
       retype_password: 'Digite a senha novamente'
 
+  search:
+    index:
+      title: 'Buscar'
+
   js:
     proposals:
       propose:
@@ -156,6 +160,12 @@ pt-BR:
       team:
         one: 'Time'
         other: 'Times'
+      team_invitation:
+        one: 'Convite'
+        other: 'Convites'
+      notification:
+        one: 'Notificação'
+        other: 'Notificações'
 
     attributes:
       topic:

@@ -39,6 +39,9 @@ class TeamsController < ApplicationController
 
   def invitations
     @team_invitation = TeamInvitation.new(team: @team)
+
+    add_breadcrumb @team.title, team_path(@team)
+    add_breadcrumb TeamInvitation.model_name.human
   end
 
   def leave

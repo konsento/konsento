@@ -4,6 +4,7 @@ class RequirementValuesController < ApplicationController
 
   def index
     @requirement_values = current_user.requirement_values
+    add_breadcrumb RequirementValue.model_name.human(count: 2)
   end
 
   # GET /requirement_values/1

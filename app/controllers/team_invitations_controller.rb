@@ -10,6 +10,7 @@ class TeamInvitationsController < ApplicationController
   def accept
     @team_invitation = TeamInvitation.find_by(token: params[:token])
     @subscription = Subscription.new(user: current_user, subscriptable: @team_invitation.team)
+    add_breadcrumb TeamInvitation.model_name.human
   end
 
   private

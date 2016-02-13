@@ -156,6 +156,12 @@ en:
       team:
         one: 'Team'
         other: 'Teams'
+      team_invitatidon:
+        one: 'Team Invitation'
+        other: 'Team Invitations'
+      notification:
+        one: 'Notification'
+        other: 'Notifications'
 
     attributes:
       topic:

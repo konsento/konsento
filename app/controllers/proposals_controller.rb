@@ -4,6 +4,10 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     @comment = Comment.new(commentable: @proposal, user: current_user)
     @is_user_subscribed = @proposal.topic.group.is_user_subscribed?(current_user)
+
+    add_breadcrumb @proposal.topic.group.title, topic_path(@proposal.topic)
+    add_breadcrumb @proposal.topic.title, topic_path(@proposal.topic)
+    add_breadcrumb Proposal.model_name.human
   end
 
   # POST /proposals

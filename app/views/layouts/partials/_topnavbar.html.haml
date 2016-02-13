@@ -64,6 +64,6 @@
   / START Search form
   = simple_form_for :search, url: search_form_url, method: :get, html: {class: 'navbar-form'} do |f|
     .form-group.has-feedback
-      = f.input_field :q, class: 'form-control', placeholder: t('search_description')
+      = f.input_field :q, class: 'form-control', placeholder: t('.search_description')
       .fa.fa-times.form-control-feedback{'data-search-dismiss': true}
     = f.button :submit, 'Search', class: 'hidden'
