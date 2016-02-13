@@ -1,55 +1,60 @@
-.row
-  .col-lg-12
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title= Team.model_name.human(count: 2)
-      .panel-body
-        = link_to new_team_path, class: 'btn btn-primary btn-xs btn-labeled pull-right' do
-          .btn-label
-            %em.icon-plus
-          = t '.new_team'
-        %h4= t '.joined_teams'
-        .table-responsive
-          %table.table.table-condensed
-            %thead
-              %tr
-                %th= Team.human_attribute_name(:title)
-                %th= Team.human_attribute_name(:public)
-                %th= t 'actions'
-            %tbody
-              - @teams.each do |team|
-                %tr
-                  %td= team.title
-                  %td= t team.public.to_s
-                  %td
-                    - if current_user.is_team_admin?(team)
-                      = link_to invitations_team_path(team), class: 'btn btn-info btn-xs btn-labeled' do
-                        .btn-label
-                          %em.icon-paper-plane
-                        = t '.invite'
-                      = link_to edit_team_path(team), class: 'btn btn-warning btn-xs btn-labeled' do
-                        .btn-label
-                          %em.icon-settings
-                        = t '.edit'
-                    - else
-                      = link_to leave_team_path(team), data: {confirm: t('crud.confirm')} , class: 'btn btn-danger btn-xs btn-labeled' do
-                        .btn-label
-                          %em.icon-close
-                        = t '.leave'
+.row.top-panel-buttons
+  = link_to new_team_path, class: 'btn btn-primary btn-xs btn-labeled pull-right' do
+    .btn-label
+      %em.icon-plus
+    = t '.new_team'
 
-        %h4= t '.pending_team_invitations'
-        .table-responsive
-          %table.table.table-condensed
-            %thead
+
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title= t '.joined_teams'
+    .panel-body
+      .table-responsive
+        %table.table.table-condensed
+          %thead
+            %tr
+              %th= Team.human_attribute_name(:title)
+              %th= Team.human_attribute_name(:public)
+              %th= t 'actions'
+          %tbody
+            - @teams.each do |team|
               %tr
-                %th= Team.model_name.human
-                %th= t 'actions'
-            %tbody
-              - @pending_team_invitations.each do |team_invitation|
-                %tr
-                  %td= team_invitation.team.title
-                  %td
-                    = link_to accept_team_invitations_path(team_invitation.token), class: 'btn btn-success btn-xs btn-labeled' do
+                %td= team.title
+                %td= t team.public.to_s
+                %td
+                  - if current_user.is_team_admin?(team)
+                    = link_to invitations_team_path(team), class: 'btn btn-info btn-xs btn-labeled' do
                       .btn-label
-                        %em.icon-eye
-                      = t '.see_invitation'
+                        %em.icon-paper-plane
+                      = t '.invite'
+                    = link_to edit_team_path(team), class: 'btn btn-warning btn-xs btn-labeled' do
+                      .btn-label
+                        %em.icon-settings
+                      = t '.edit'
+                  - else
+                    = link_to leave_team_path(team), data: {confirm: t('crud.confirm')} , class: 'btn btn-danger btn-xs btn-labeled' do
+                      .btn-label
+                        %em.icon-close
+                      = t '.leave'
+
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title= t '.pending_team_invitations'
+    .panel-body
+      .table-responsive
+        %table.table.table-condensed
+          %thead
+            %tr
+              %th= Team.model_name.human
+              %th= t 'actions'
+          %tbody
+            - @pending_team_invitations.each do |team_invitation|
+              %tr
+                %td= team_invitation.team.title
+                %td
+                  = link_to accept_team_invitations_path(team_invitation.token), class: 'btn btn-success btn-xs btn-labeled' do
+                    .btn-label
+                      %em.icon-eye
+                    = t '.see_invitation'
