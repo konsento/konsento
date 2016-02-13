@@ -7,18 +7,10 @@ class RequirementValuesController < ApplicationController
     add_breadcrumb RequirementValue.model_name.human(count: 2)
   end
 
-  # GET /requirement_values/1
-  def show
-  end
-
   # GET /requirement_values/new
   def new
     requirable = params[:requirable_type].constantize.find(params[:requirable_id])
     current_user.empty_requirement_values = current_user.empty_requirement_values_for(requirable)
-  end
-
-  # GET /requirement_values/1/edit
-  def edit
   end
 
   # POST /requirement_values
@@ -30,7 +22,7 @@ class RequirementValuesController < ApplicationController
       end
       current_user.subscriptions.create(subscriptable: requirable, role: 'default')
     end
-    
+
     case requirable.model_name
       when 'Group'
         redirect_to requirable
