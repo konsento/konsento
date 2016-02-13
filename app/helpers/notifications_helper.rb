@@ -53,8 +53,7 @@ module NotificationsHelper
         end
       end
     else
-      #TODO Create unavailable notification view
-      link = '#'
+      link = unavailable_content_path
     end
     link
   end

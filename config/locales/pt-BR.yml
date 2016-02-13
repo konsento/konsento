@@ -28,6 +28,10 @@ pt-BR:
         sign_up: 'Cadastrar-se'
         see_more: 'Ver mais'
 
+  pages:
+    unavailable_content:
+      description: 'Este conteúdo não está mais disponível :('
+
   invitations:
     index:
       resend_email: 'Reenviar Email'

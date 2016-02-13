@@ -28,6 +28,10 @@ en:
         sign_up: 'Sign up'
         see_more: 'See more'
 
+  pages:
+    unavailable_content:
+      description: 'This content is no longer available :('
+
   invitations:
     index:
       resend_email: 'Resend email '
