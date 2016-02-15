@@ -22,8 +22,15 @@
       - if signed_in?
         / offsidebar
         %aside.offsidebar.hide= render partial: "layouts/partials/offsidebar"
+
       / Main section
       %section
+        .flash-messages
+          - flash.each do |key, message|
+            .alert.alert-info.alert-dismissible.fade.in{:role => "alert"}
+              %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+                %span{"aria-hidden" => "true"} ×
+              %strong= message
         / Page content
         .content-wrapper
           = yield

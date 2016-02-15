@@ -94,6 +94,14 @@ ul.dropdown-menu {
 
 }
 
+.flash-messages{
+  padding-top: 5px;
+
+  .alert{
+      margin: 5px 0px;
+  }
+}
+
 .content-wrapper{
   margin-top: 0px !important;
   border-top: none !important;
