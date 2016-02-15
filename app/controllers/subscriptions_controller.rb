@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
     if @subscription.save
       case @subscription.subscriptable_type
         when 'Group'
-          redirect_to @subscription.subscriptable, notice: 'Subscription was successfully created.'
+          respond_with @subscription.subscriptable
         when 'Team'
           TeamInvitation.find_by(email: current_user.email, team: @subscription.subscriptable).update(accepted: true)
           redirect_to teams_path
@@ -29,7 +29,7 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1
   def destroy
     @subscription.destroy
-    redirect_to @subscription.subscriptable, notice: 'Subscription was successfully destroyed.'
+    respond_with @subscription.subscriptable
   end
 
   private

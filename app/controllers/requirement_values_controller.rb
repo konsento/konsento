@@ -35,7 +35,7 @@ class RequirementValuesController < ApplicationController
   # PATCH/PUT /requirement_values/1
   def update
     if @requirement_value.update(requirement_value_params)
-      redirect_to @requirement_value, notice: 'Requirement value was successfully updated.'
+      respond_with @requirement_value
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class RequirementValuesController < ApplicationController
   # DELETE /requirement_values/1
   def destroy
     @requirement_value.destroy
-    redirect_to requirement_values_url, notice: 'Requirement value was successfully destroyed.'
+    redirect_to requirement_values_url
   end
 
   private

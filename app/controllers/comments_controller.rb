@@ -25,9 +25,9 @@ class CommentsController < ApplicationController
 
     if @comment.save
       if @comment.commentable.instance_of? Topic
-        redirect_to @comment.commentable, notice: 'Comment was successfully created.'
+        respond_with @comment.commentable
       else
-        redirect_to @comment.commentable.topic, notice: 'Comment was successfully created.'
+        respond_with @comment.commentable
       end
     end
   end
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
-      redirect_to @comment, notice: 'Comment was successfully updated.'
+      respond_with @comment
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   def destroy
     @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    redirect_to comments_url
   end
 
   private
