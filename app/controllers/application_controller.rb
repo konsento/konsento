@@ -7,17 +7,19 @@ class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
 
-  before_filter :add_root_breadcrumb
-  before_filter :set_locale
+  before_action :set_locale
+  before_action :offer_login
   before_action :set_js_data
+  before_action :add_root_breadcrumb
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   private
+
   def add_root_breadcrumb
-      add_breadcrumb t('home'), :root_path
+    add_breadcrumb t('home'), :root_path
   end
 
   def set_js_data
@@ -28,15 +30,19 @@ class ApplicationController < ActionController::Base
       params: params
     )
   end
+
   def set_locale
     locale = :en
     browser_locale = get_browser_lang.to_s
+
     if browser_locale == 'pt'
       browser_locale = 'pt-BR'
     end
+
     if I18n.available_locales.map(&:to_s).include? browser_locale
       locale = browser_locale
     end
+
     @curlang = I18n.locale = locale.to_s
   end
 
@@ -46,5 +52,16 @@ class ApplicationController < ActionController::Base
     else
       'en'
     end
+  end
+
+  def offer_login
+    if request.path == '/' && !signed_in? && !ignore_offer_login?
+      redirect_to sign_in_path(offer: true)
+    end
+  end
+
+  def ignore_offer_login?
+    cookies[:offer_login] = params[:offer_login] if params[:offer_login]
+    cookies[:offer_login].to_s == 'false'
   end
 end

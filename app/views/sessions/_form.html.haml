@@ -11,7 +11,11 @@
     .checkbox.c-checkbox.pull-left.mt0
       = f.input_field :remember, as: :boolean, inline_label: "Lembrar"
     .pull-right
-      = link_to "Esqueceu a senha?", new_password_path, class: 'text-muted'
+      = link_to 'Esqueceu a senha?', new_password_path, class: 'text-muted'
 
-  = link_to "Voltar", root_path, class:'btn btn-default pull-left col-md-6'
+  - if params[:offer] == 'true'
+    = link_to 'Navegar sem entrar', root_path(offer_login: false), class:'btn btn-default pull-left col-md-6'
+  - else
+    = link_to 'Voltar', root_path, class:'btn btn-default pull-left col-md-6'
+
   = f.button :submit, class: 'btn btn-success pull-right col-md-6'
