@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :require_login
   before_action :set_team, only: [:show, :edit, :update, :invitations, :leave]
 
   # GET /teams
