@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
                   ignoring: :accents,
                   against: [:title, :description]
 
-  friendly_id :title, use: :scoped, scope: [:parent]
+  friendly_id :title, use: [:scoped, :finders], scope: [:parent]
 
   has_many :children, inverse_of: :parent, class_name: 'Group', foreign_key: :parent_id
   belongs_to :parent, inverse_of: :children, class_name: 'Group', foreign_key: :parent_id
