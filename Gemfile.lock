@@ -90,6 +90,7 @@ GEM
     execjs (2.6.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.3.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gon (6.0.1)
@@ -246,6 +247,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   country_select
   friendly_id
+  geocoder
   gon
   haml-rails
   has_secure_token
