@@ -79,7 +79,7 @@ en:
       edit_team: 'Edit Team'
     invitations:
       invite_to_team: 'Invite people to %{team} team'
-      invitations_sent: 'Invitations sent'
+      invitations_sent: 'Invitations sent (%{invitations_count})'
 
   team_invitations:
     accept:
