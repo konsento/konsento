@@ -6,6 +6,13 @@ class Group < ActiveRecord::Base
                   ignoring: :accents,
                   against: [:title, :description]
 
+  pg_search_scope :suggestions,
+                  ignoring: :accents,
+                  against: [:title, :description],
+                  using: {
+                    tsearch: {any_word: true}
+                  }
+
   friendly_id :title, use: [:scoped, :finders], scope: [:parent]
 
   has_many :children, inverse_of: :parent, class_name: 'Group', foreign_key: :parent_id
@@ -15,6 +22,21 @@ class Group < ActiveRecord::Base
   has_many :requirements, as: :requirable
   has_many :join_requirements, through: :requirements
   has_many :users, through: :subscriptions
+
+  scope :suggestions_for_location, -> (location = nil) do
+    if location
+      q = [
+        location.city.presence,
+        location.state.presence,
+        location.country.presence,
+        location.country_code.presence
+      ].compact.join(' ')
+
+      suggestions(q)
+    else
+      none
+    end
+  end
 
   def parents
     ancestry = [parent]

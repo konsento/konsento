@@ -1,7 +1,28 @@
+- if signed_in?
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h4{style: 'width: 50%'}
+          = t '.subscribed_groups'
+      .panel-body
+        #subscribed-groups
+          = render partial: 'groups_list', locals: {groups: @subscribed_groups, page_param: 'page_subscribed_groups'}
+
+- if @suggested_groups.any?
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h4{style: 'width: 50%'}
+          = t '.suggested_groups'
+      .panel-body
+        #suggested-groups
+          = render partial: 'groups_list', locals: {groups: @suggested_groups, page_param: 'page_suggested_groups'}
+
 .row
   .panel.panel-default
     .panel-heading
-      %h4{:style => "width: 50%"}
-        = Group.model_name.human(count: 2)
+      %h4{style: 'width: 50%'}
+        = t '.all_groups'
     .panel-body
-      = render partial: "groups_list", locals: {groups: @groups}
+      #all-groups
+        = render partial: 'groups_list', locals: {groups: @groups, page_param: 'page_all_groups'}

@@ -47,6 +47,11 @@ en:
         unsubscribe: 'Unsubscribe'
 
   groups:
+    index:
+      subscribed_groups: 'Subscribed'
+      suggested_groups: 'Suggested groups'
+      all_groups: 'Todos'
+
     show:
       new_topic: 'New Topic'
       subgroups: 'Subgroups'

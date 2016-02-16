@@ -47,6 +47,11 @@ pt-BR:
         unsubscribe: 'Cancelar inscrição'
 
   groups:
+    index:
+      subscribed_groups: 'Inscrito'
+      suggested_groups: 'Grupos sugeridos'
+      all_groups: 'Todos'
+
     show:
       new_topic: 'Novo tópico'
       subgroups: 'Subgrupos'

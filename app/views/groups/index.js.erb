@@ -1,0 +1,3 @@
+$('#subscribed-groups').html("<%= escape_javascript render(partial: 'groups_list', locals: {groups: @subscribed_groups, page_param: 'page_subscribed_groups'}) %>");
+$('#suggested-groups').html("<%= escape_javascript render(partial: 'groups_list', locals: {groups: @suggested_groups, page_param: 'page_suggested_groups'}) %>");
+$('#all-groups').html("<%= escape_javascript render(partial: 'groups_list', locals: {groups: @groups, page_param: 'page_all_groups'}) %>");

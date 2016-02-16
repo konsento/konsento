@@ -1,4 +1,4 @@
-- if groups.size > 0
+- if groups.any?
   %table.table.table-striped
     %tbody
       - groups.each do |g|
@@ -22,7 +22,8 @@
               %small
                 = t '.created_at', timestamp: time_ago_in_words(g.updated_at)
 
-  = paginate groups, param_name: 'page_subgroups', remote: true
+  - page_param ||= 'page_subgroups'
+  = paginate groups, param_name: page_param, remote: true
 
 - else
   .text-center

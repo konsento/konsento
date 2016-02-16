@@ -3,7 +3,17 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    @groups = Group.where(parent: nil).page(params[:page_subgroups])
+    add_breadcrumb Group.model_name.human(count: 2), groups_path
+
+    @groups = Group.all.page(params[:page_all_groups])
+
+    @subscribed_groups = current_user.try(:groups) || Group.none
+    @subscribed_groups = @subscribed_groups.page(params[:page_subscribed_groups])
+
+    user_location = request.safe_location
+    @suggested_groups = Group.suggestions_for_location(user_location).
+      page(params[:page_suggested_groups]).
+      where.not(id: @subscribed_groups.pluck(:id))
   end
 
   # GET /groups/:parent/:child/:grandchild/...

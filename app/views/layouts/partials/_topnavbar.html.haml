@@ -22,6 +22,9 @@
       %li
         %a{'data-search-open': '', href: '#'}
           %em.icon-magnifier
+      %li
+        = link_to groups_path do
+          %em.icon-globe
       - if signed_in?
         / START Alert menu
         %li.dropdown.dropdown-list
