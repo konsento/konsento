@@ -40,7 +40,8 @@ class TeamsController < ApplicationController
   def invitations
     @team_invitation = TeamInvitation.new(team: @team)
 
-    add_breadcrumb @team.title, team_path(@team)
+    add_breadcrumb Team.model_name.human(count: 2), teams_path
+    add_breadcrumb @team.title
     add_breadcrumb TeamInvitation.model_name.human
   end
 
