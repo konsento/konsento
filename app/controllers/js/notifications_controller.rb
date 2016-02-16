@@ -11,7 +11,7 @@ class Js::NotificationsController < ApplicationController
         {notification: n, read_was: false}
       end
     end
-    puts @notifications.inspect
+
     @unread_notifications_count = current_user.notifications.unread.size
   end
 end

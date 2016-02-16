@@ -55,8 +55,6 @@ class RequirementValuesController < ApplicationController
 
     def is_user_valid
       if current_user.id.to_s != params[:user_id].to_s
-        puts current_user.id
-        puts params[:user_id]
         raise 'Invalid user'
       end
     end

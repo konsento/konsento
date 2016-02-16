@@ -29,7 +29,7 @@ module NotificationsHelper
     when 'TeamInvitation'
       message = t 'notification_messages.' + notification.key + '_html', team_title: notification.data['team_title']
     end
-    puts message
+
     message
   end
 
