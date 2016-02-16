@@ -4,7 +4,7 @@ module SearchHelper
       params[:action] == 'show' ||
       params[:action] == 'search_topics'
     )
-      search_topics_group_path(id: params[:id])
+      search_topics_group_path(id: @group.id)
     elsif params[:controller] == 'topics' && (
       params[:action] == 'show' ||
       params[:action] == 'search_proposals'
@@ -19,7 +19,7 @@ module SearchHelper
     text, url =
       case result
       when Group
-        [result.title, result]
+        [result.title, recursive_group_path(result)]
       when Topic
         [result.title, result]
       when Proposal

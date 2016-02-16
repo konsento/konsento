@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Root
-  root 'groups#show', id: 1
+  root 'groups#show'
 
   # Auth
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
 
   # Resouces
-  resources :groups do
+  resources :groups, except: [:show] do
     resources :topics, only: [:new, :create]
     get '/search_topics' => 'groups#search_topics', on: :member
   end
@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   end
 
   # Get
+  get '/groups/*groups', to: 'groups#show', as: :recursive_groups
   get '/unavailable_content', to: 'pages#unavailable_content', as: 'unavailable_content'
   get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'
   get '/requirement_values/:requirable_type/:requirable_id/:user_id/new', to: 'requirement_values#new'

@@ -1,28 +1,26 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :search_topics]
+  before_action :set_group, only: [:edit, :update, :destroy, :search_topics]
 
   # GET /groups
   def index
     @groups = Group.where(parent: nil).page(params[:page_subgroups])
   end
 
-  # GET /groups/1/search_topics
-  def search_topics
-    @title = @group.title
-    @q = search_params[:q].to_s.squish
-    @results = Topic.for_user(current_user).search(@q).where(group: @group).page(params[:topic_page])
-
-    render 'search/index'
-  end
-
-  # GET /groups/1
+  # GET /groups/:parent/:child/:grandchild/...
   def show
-    unless @subscription = Subscription.find_by(user: current_user, subscriptable: @group)
-      @subscription = Subscription.new(user: current_user, subscriptable: @group)
+    if params[:groups]
+      groups_slugs = params[:groups].split('/').last(Group.max_ancestry_size)
+
+      @group = groups_slugs.inject(nil) do |parent, slug|
+        add_breadcrumb parent.title, recursive_group_path(parent) if parent
+        Group.find_by!(parent: parent, slug: slug)
+      end
+    else
+      @group = Group.friendly.find('global')
     end
 
-    @group.parents.each do |parent|
-      add_breadcrumb parent.title, group_path(parent)
+    unless @subscription = Subscription.find_by(user: current_user, subscriptable: @group)
+      @subscription = Subscription.new(user: current_user, subscriptable: @group)
     end
 
     topics = @group.topics.for_user(current_user)
@@ -33,6 +31,15 @@ class GroupsController < ApplicationController
     @subgroups = @group.children.page(params[:page_subgroups])
 
     add_breadcrumb @group.title
+  end
+
+  # GET /groups/1/search_topics
+  def search_topics
+    @title = @group.title
+    @q = search_params[:q].to_s.squish
+    @results = Topic.for_user(current_user).search(@q).where(group: @group).page(params[:topic_page])
+
+    render 'search/index'
   end
 
   # GET /groups/new

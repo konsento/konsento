@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def recursive_group_path(group)
+    recursive_groups_path(group.parents.map(&:slug) + [group.slug])
+  end
+
+  helper_method :recursive_group_path
+
   private
 
   def add_root_breadcrumb
