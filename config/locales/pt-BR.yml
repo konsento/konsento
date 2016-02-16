@@ -78,7 +78,8 @@ pt-BR:
     edit:
       edit_team: 'Editar Time'
     invitations:
-      invite_to_team: 'Convidar para o time ''%{team}'''
+      invite_to_team: 'Convidar pessoas para o time %{team}'
+      invitations_sent: 'Convites enviados'
 
   team_invitations:
     accept:
