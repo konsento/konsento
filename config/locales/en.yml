@@ -35,7 +35,7 @@ en:
   invitations:
     index:
       resend_email: 'Resend email '
-      remaining_invitations: 'Available invitations to not registered users: %{available_invitations}'
+      remaining_invitations: 'Available invitations: %{available_invitations}'
 
   subscriptions:
       subscribe_button:
@@ -80,7 +80,7 @@ en:
     invitations:
       invite_to_team: 'Invite people to %{team} team'
       invitations_sent: 'Invitations sent (%{invitations_count})'
-      remaining_invitations: 'Available invitations: %{available_invitations}'
+      remaining_invitations: 'Available invitations to not registered users: %{available_invitations}'
 
   team_invitations:
     accept:
