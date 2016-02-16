@@ -80,6 +80,7 @@ pt-BR:
     invitations:
       invite_to_team: 'Convidar pessoas para o time %{team}'
       invitations_sent: 'Convites enviados (%{invitations_count})'
+      remaining_invitations: 'Convites restantes para usuários não cadastrados: %{available_invitations}'
 
   team_invitations:
     accept:
