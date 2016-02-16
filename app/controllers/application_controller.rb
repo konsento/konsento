@@ -63,6 +63,7 @@ class ApplicationController < ActionController::Base
   def offer_login
     if request.path != sign_in_path &&
        request.path != sign_up_path &&
+       request.request_method == 'GET' &&
        !signed_in? &&
        !ignore_offer_login?
       redirect_to sign_in_path(offer: true, referer: request.original_url)
