@@ -34,8 +34,10 @@ pt-BR:
 
   invitations:
     index:
+      invite_to_konsento: 'Convidar pessoas para o Kosento'
       resend_email: 'Reenviar Email'
       remaining_invitations: 'Convites restantes: %{available_invitations}'
+      invitations_sent: 'Convites enviados (%{invitations_count})'
 
   subscriptions:
       subscribe_button:

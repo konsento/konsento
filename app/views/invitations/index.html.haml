@@ -2,7 +2,7 @@
   .col-lg-12
     .panel.panel-default
       .panel-heading
-        %h3.panel-title= Invitation.model_name.human(count: 2)
+        %h3.panel-title= t '.invite_to_konsento'
       .panel-body
         #invite-form
           = simple_form_for Invitation.new do |f|
@@ -14,6 +14,12 @@
             = f.hint :email
           %p= t '.remaining_invitations', available_invitations: current_user.available_invitations
 
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title= t '.invitations_sent', invitations_count: @invitations.size
+      .panel-body
         .table-responsive
           %table.table.table-condensed
             %thead
