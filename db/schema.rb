@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212202640) do
+ActiveRecord::Schema.define(version: 20160215230040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,11 @@ ActiveRecord::Schema.define(version: 20160212202640) do
     t.float    "agree_votes_percent", null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "slug",                null: false
   end
 
   add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
+  add_index "groups", ["slug", "parent_id"], name: "index_groups_on_slug_and_parent_id", unique: true, using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.integer  "user_id",                    null: false

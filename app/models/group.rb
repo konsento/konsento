@@ -1,9 +1,12 @@
 class Group < ActiveRecord::Base
   include PgSearch
+  extend FriendlyId
 
   pg_search_scope :search,
                   ignoring: :accents,
                   against: [:title, :description]
+
+  friendly_id :title, use: :scoped, scope: [:parent]
 
   has_many :children, inverse_of: :parent, class_name: 'Group', foreign_key: :parent_id
   belongs_to :parent, inverse_of: :children, class_name: 'Group', foreign_key: :parent_id
@@ -16,14 +19,18 @@ class Group < ActiveRecord::Base
   def parents
     ancestry = [parent]
 
-    while ancestry.last.try(:parent) && ancestry.size <= 10
+    while ancestry.last.try(:parent) && ancestry.size <= self.class.max_ancestry_size
       ancestry << ancestry.last.parent
     end
 
-    ancestry.compact
+    ancestry.compact.reverse
   end
 
   def is_user_subscribed?(user)
     self.subscriptions.where(user: user).exists?
+  end
+
+  def self.max_ancestry_size
+    5
   end
 end
