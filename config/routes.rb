@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   end
 
   resources :proposals, only: [:show, :create]
-  resources :subscriptions, only: [:create, :destroy]
+  resources :subscriptions, only: [:create, :destroy, :update]
   resources :comments, only: [:create]
   resources :notifications, only: [:index, :show]
 

@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :require_login
-  before_action :set_team, only: [:show, :edit, :update, :invitations, :leave]
+  before_action :set_team, only: [:edit, :update, :invitations, :leave]
 
   # GET /teams
   def index
@@ -11,13 +11,17 @@ class TeamsController < ApplicationController
 
   # GET /teams/1
   def show
+    @team = current_user.teams.find(params[:id])
+    @subscriptions = @team.subscriptions.page(params[:page])
+    @is_admin = current_user.is_team_admin?(@team)
+    add_breadcrumb @team.title, @team
   end
 
   # GET /teams/new
   def new
     @team = Team.new
-      add_breadcrumb Team.model_name.human(count: 2), teams_path
-      add_breadcrumb t '.new_team'
+    add_breadcrumb Team.model_name.human(count: 2), teams_path
+    add_breadcrumb t '.new_team'
   end
 
   # GET /teams/1/edit
@@ -51,6 +55,7 @@ class TeamsController < ApplicationController
       Subscription.find_by(subscriptable: @team, user: current_user).destroy
       TeamInvitation.find_by(team: @team, email: current_user.email).destroy
     end
+
     redirect_to teams_path
   end
 

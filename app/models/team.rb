@@ -4,6 +4,7 @@ class Team < ActiveRecord::Base
   has_many :team_invitations
   has_many :requirements, as: :requirable
   has_many :join_requirements, through: :requirements
+  has_many :members, through: :subscriptions, source: :user
 
   accepts_nested_attributes_for :join_requirements, reject_if: :all_blank
 

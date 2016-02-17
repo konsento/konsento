@@ -26,6 +26,16 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def update
+    if @subscription.subscriptable_type == 'Team' &&
+       current_user.is_team_admin?(@subscription.subscriptable)
+      @subscription.update(subscription_update_params)
+      redirect_to @subscription.subscriptable
+    else
+      raise
+    end
+  end
+
   # DELETE /subscriptions/1
   def destroy
     @subscription.destroy
@@ -41,5 +51,9 @@ class SubscriptionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def subscription_params
       params.require(:subscription).permit(:user_id, :subscriptable_id, :subscriptable_type)
+    end
+   
+    def subscription_update_params
+      params.require(:subscription).permit(:role)
     end
 end
