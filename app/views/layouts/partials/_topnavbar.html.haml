@@ -21,15 +21,20 @@
       / Search icon
       %li
         %a{'data-search-open': '', href: '#'}
-          %em.icon-magnifier
+          %em.icon-magnifier.hidden-xs
+          %span.visible-xs-inline= t '.search_title'
+
       %li
         = link_to groups_path do
-          %em.icon-globe
+          %em.icon-globe.hidden-xs
+          %span.visible-xs-inline= t '.groups_title'
+
       - if signed_in?
         / START Alert menu
         %li.dropdown.dropdown-list
           = link_to preview_js_notifications_path, remote: true, 'data-toggle' => 'dropdown', method: :post do
-            %em.icon-bell
+            %em.icon-bell.hidden-xs
+            %span.visible-xs-inline= t '.notifications'
             - if current_user.notifications.unread.any?
               .unread-notifications.label.label-danger= current_user.notifications.unread.size
           / START Dropdown menu
@@ -45,12 +50,14 @@
           / END Dropdown menu
         %li
           %a{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open', href: '#'}
-            %em.icon-user
+            %em.icon-user.hidden-xs
+            %span.visible-xs-inline= t '.profile_title'
         / END User menu
       - else
         %li.dropdown.dropdown-list
           %a{'data-toggle': 'dropdown', href: '#'}
-            %em.icon-user
+            %em.icon-user.hidden-xs
+            %span.visible-xs-inline= t '.profile_title'
           %ul.dropdown-menu
             %li
               %a{href: sign_in_path}

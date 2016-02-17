@@ -26,6 +26,10 @@ pt-BR:
         not_signed_up: 'Não é cadastrado?'
         sign_up: 'Cadastrar-se'
         see_more: 'Ver mais'
+        profile_title: 'Perfil'
+        notifications: 'Notificações'
+        groups_title: 'Grupos'
+        search_title: 'Pesquisar'
         search_description: 'Digite o que procura e aperte enter...'
 
   pages:
