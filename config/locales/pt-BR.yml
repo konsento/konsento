@@ -1,4 +1,6 @@
 pt-BR:
+  locale_name: 'Português'
+
   actions: 'Ações'
   'false': 'Não'
   'true': 'Sim'
@@ -14,7 +16,6 @@ pt-BR:
     new_topic_comment_html: 'Um novo comentário no tópico <strong>%{topic_title}</strong>'
     new_proposal_comment_html: 'Um novo comentário em uma proposta do tópico <strong>%{topic_title}</strong>'
     team_invitation_html: 'Você recebeu um convite para o time <strong>%{team_title}</strong>'
-
 
   layouts:
     partials:

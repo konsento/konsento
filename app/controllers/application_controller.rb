@@ -37,27 +37,37 @@ class ApplicationController < ActionController::Base
     )
   end
 
+
   def set_locale
-    locale = :en
-    browser_locale = get_browser_lang.to_s
-
-    if browser_locale == 'pt'
-      browser_locale = 'pt-BR'
+    if language_change_necessary?
+      I18n.locale = the_new_locale
+      set_locale_cookie(I18n.locale)
+    else
+      use_locale_from_cookie
     end
-
-    if I18n.available_locales.map(&:to_s).include? browser_locale
-      locale = browser_locale
-    end
-
-    @curlang = I18n.locale = locale.to_s
   end
 
-  def get_browser_lang
-    if request.env['HTTP_ACCEPT_LANGUAGE'].to_s.length > 0
-      request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-    else
-      'en'
-    end
+  def language_change_necessary?
+    cookies.signed[:locale].nil? || params[:locale]
+  end
+
+  def the_new_locale
+    new_locale = (params[:locale] || extract_locale_from_accept_language_header)
+    I18n.available_locales.map(&:to_s).include?(new_locale) ? new_locale : I18n.default_locale.to_s
+  end
+
+  def set_locale_cookie(locale)
+    cookies.permanent.signed[:locale] = locale.to_s
+  end
+
+  def use_locale_from_cookie
+    I18n.locale = cookies.signed[:locale]
+  end
+
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].presence.to_s.scan(
+      /^[a-z]{2}\-[A-Z]{2}|^[a-z]{2}/
+    ).first
   end
 
   def offer_login
