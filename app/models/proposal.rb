@@ -50,7 +50,11 @@ class Proposal < ActiveRecord::Base
 
   def vote(user, opinion)
     vote = self.votes.find_or_initialize_by(user: user)
-    vote.update_attributes(opinion: opinion)
+    if vote.persisted? && vote.opinion == opinion
+      vote.destroy
+    else
+      vote.update_attributes(opinion: opinion)
+    end
     vote
   end
 end
