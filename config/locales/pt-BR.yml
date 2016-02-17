@@ -96,6 +96,11 @@ pt-BR:
       invite_to_team: 'Convidar pessoas para o time %{team}'
       invitations_sent: 'Convites enviados (%{invitations_count})'
       remaining_invitations: 'Convites restantes para usuários não cadastrados: %{available_invitations}'
+    show:
+      members: 'Membros de %{team}'
+      username: 'Usuário'
+      role: 'Função'
+      save: 'Salvar'
 
   team_invitations:
     accept:
@@ -144,6 +149,11 @@ pt-BR:
       suggestions_for_selected_section: 'Sugestões para a seção selecionada'
       consensus: 'Consenso'
       write_comment: 'Escreva um comentário'
+
+  subscription:
+    team_roles:
+      default: 'Padrão'
+      admin: 'Admin'
 
   comments:
     form:

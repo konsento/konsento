@@ -12,7 +12,8 @@ class SubscriptionsController < ApplicationController
     if @subscription.save
       case @subscription.subscriptable_type
         when 'Group'
-          respond_with @subscription.subscriptable
+          respond_with @subscription.subscriptable,
+          location: -> { recursive_group_path(@subscription.subscriptable) }
         when 'Team'
           TeamInvitation.find_by(email: current_user.email, team: @subscription.subscriptable).update(accepted: true)
           redirect_to teams_path
@@ -26,10 +27,21 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def update
+    if @subscription.subscriptable_type == 'Team' &&
+       current_user.is_team_admin?(@subscription.subscriptable)
+      @subscription.update(subscription_update_params)
+      redirect_to @subscription.subscriptable
+    else
+      raise
+    end
+  end
+
   # DELETE /subscriptions/1
   def destroy
     @subscription.destroy
-    respond_with @subscription.subscriptable
+    respond_with @subscription.subscriptable,
+    location: -> { recursive_group_path(@subscription.subscriptable) }
   end
 
   private
@@ -41,5 +53,9 @@ class SubscriptionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def subscription_params
       params.require(:subscription).permit(:user_id, :subscriptable_id, :subscriptable_type)
+    end
+   
+    def subscription_update_params
+      params.require(:subscription).permit(:role)
     end
 end

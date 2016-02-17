@@ -1,2 +1,25 @@
-%p
-  team
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title= t '.members', team: @team.title
+      .panel-body
+        .table-responsive
+          %table.table.table-hover.table-condensed
+            %tr
+              %th= t '.username'
+              %th= t '.role'
+            - @subscriptions.each do |subscription|
+              %tr
+                %td= subscription.user.username
+                - if @is_admin && subscription.user != current_user
+                  %td
+                    = simple_form_for subscription do |f|
+                      .col-lg-4
+                        = f.input :role, label: false, as: :select, collection: Subscription.roles_for_select, include_blank: false, selected: subscription.role
+                      .col-lg-4  
+                        = f.button :submit, t('.save')
+                - else
+                  %td= subscription.role
+
+        = paginate @subscriptions

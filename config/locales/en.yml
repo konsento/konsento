@@ -96,6 +96,11 @@ en:
       invite_to_team: 'Invite people to %{team} team'
       invitations_sent: 'Invitations sent (%{invitations_count})'
       remaining_invitations: 'Available invitations to not registered users: %{available_invitations}'
+    show:
+      members: 'Members of %{team}'
+      username: 'Username'
+      role: 'Role'
+      save: 'Save'
 
   team_invitations:
     accept:
@@ -140,6 +145,11 @@ en:
       suggestions_to_selected_section: 'Suggestion for selected section'
       consensus: 'Consensus'
       write_comment: 'Write a comment'
+
+  subscription:
+    team_roles:
+      default: 'Default'
+      admin: 'Admin'
 
   comments:
     form:
