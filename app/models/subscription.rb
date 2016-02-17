@@ -10,7 +10,7 @@ class Subscription < ActiveRecord::Base
   validates :user, uniqueness: {scope: [:subscriptable_id, :subscriptable_type]}
   validates :role, inclusion: {in: TEAM_ROLES}, if: -> (s) { s.subscriptable_type == 'Team' } 
   validate :user_has_join_requirements?
-  validate :left_with_at_least_one_admin?
+  validate :left_with_at_least_one_admin?, on: :update
 
   def self.roles_for_select
     TEAM_ROLES.map { |r| [I18n.t("subscription.team_roles.#{r}"), r] }

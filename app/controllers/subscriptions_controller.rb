@@ -12,7 +12,8 @@ class SubscriptionsController < ApplicationController
     if @subscription.save
       case @subscription.subscriptable_type
         when 'Group'
-          respond_with @subscription.subscriptable
+          respond_with @subscription.subscriptable,
+          location: -> { recursive_group_path(@subscription.subscriptable) }
         when 'Team'
           TeamInvitation.find_by(email: current_user.email, team: @subscription.subscriptable).update(accepted: true)
           redirect_to teams_path
@@ -39,7 +40,8 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1
   def destroy
     @subscription.destroy
-    respond_with @subscription.subscriptable
+    respond_with @subscription.subscriptable,
+    location: -> { recursive_group_path(@subscription.subscriptable) }
   end
 
   private
