@@ -129,6 +129,7 @@ en:
   topics:
     form:
       add_proposal: 'Add Proposal'
+      automatically_split_text: 'Automatically split a pasted text in proposals?'
     new:
       new_topic: 'New Topic'
     show:

@@ -1,7 +1,7 @@
 = simple_form_for [@topic.group, @topic] do |f|
   = f.input :title, input_html: {autofocus: true}
   = f.association :team, collection: current_user.teams
-  
+
   %h4= Proposal.model_name.human(count: 2)
   %hr
 
@@ -9,6 +9,9 @@
     = f.simple_fields_for :proposals do |proposal|
       = render 'proposal_fields', f: proposal
     .links
+      #automatically-split-text
+        %input{type: :checkbox, checked: true}
+          %span= t '.automatically_split_text'
       = link_to_add_association t('.add_proposal'), f, :proposals, class: 'btn btn-success btn-sm'
 
   %hr

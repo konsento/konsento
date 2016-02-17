@@ -5,6 +5,7 @@ class @Konsento::Topic::New
   run: ->
     @bindProposalEnterPress()
     @bindProposalRemoveButtonPress()
+    @bindPasteEvent()
 
   bindProposalEnterPress: ->
     textareaSelector = '.topic_proposals_content > textarea'
@@ -16,6 +17,24 @@ class @Konsento::Topic::New
         if $(@).val() != ''
           $('.add_fields').click()
           $(textareaSelector).last().focus()
+
+  bindPasteEvent: ->
+    textareaSelector = '.topic_proposals_content > textarea'
+    $("#proposals").bind 'paste', textareaSelector, (e) ->
+      if $("#automatically-split-text input").is(':checked')
+        e.preventDefault()
+        element = $('#' + e.target.id)
+        pastedData = e.originalEvent.clipboardData.getData('text')
+        proposals = pastedData.split('\n\n')
+        if element.val().length == 0
+          element.val('') #bug fixer
+          element.val(proposals[0]) # add first proposal
+          proposals.shift() #remove first proposal from array
+        if proposals.length > 0
+          for proposal in proposals
+            $('#proposals .add_fields').click()
+            $('#proposals textarea').last().append(proposal)
+
 
   bindProposalRemoveButtonPress: ->
     $('#proposals').on 'click', '.remove_fields', (e) ->

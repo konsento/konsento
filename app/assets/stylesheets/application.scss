@@ -126,6 +126,17 @@ ul.dropdown-menu {
   }
 }
 
+#automatically-split-text{
+  margin: 10px 0px;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background: #e8f6fa;
+
+  span{
+    padding: 0px 5px;
+  }
+}
+
 #consensus .section:hover {
   background: #EAF6FF;
   cursor: pointer;

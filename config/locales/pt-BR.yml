@@ -133,6 +133,7 @@ pt-BR:
   topics:
     form:
       add_proposal: 'Adicionar Proposta'
+      automatically_split_text: 'Dividir automaticamente um texto colado em propostas?'
     new:
       new_topic: 'Novo Tópico'
     show:
