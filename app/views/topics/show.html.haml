@@ -15,7 +15,7 @@
           .tab-content
             #consensus.tab-pane.active{:role => "tabpanel"}
               = render partial: @topic.sections
-              
+
               - if signed_in? && @is_user_subscribed
                 = link_to t('sections.add_section'), new_js_topic_proposal_path(@topic), remote: true, class: 'btn btn-default btn-block add-section'
 
@@ -31,7 +31,7 @@
                 = t 'filters.controversial'
             %li{:role => "presentation"}
               %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recent", :role => "tab"}
-                = t 'filters.recent'
+                = t 'filters.recents'
 
           / Tab panes
           .tab-content
