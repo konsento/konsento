@@ -32,6 +32,9 @@ pt-BR:
         groups_title: 'Grupos'
         search_title: 'Pesquisar'
         search_description: 'Digite o que procura e aperte enter...'
+      footer:
+        current_locale: 'Idioma: %{current_locale} -'
+        change: 'Alterar'
 
   pages:
     unavailable_content:

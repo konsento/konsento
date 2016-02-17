@@ -1,1 +1,16 @@
-%span Konsento © #{Time.zone.now.year}
+.row
+  .col-md-4.col-md-offset-4
+    %span= t '.current_locale', current_locale: t(:locale_name)
+    .dropup
+      %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
+        = t '.change'
+        %span.caret
+      %ul.dropdown-menu
+        - (I18n.available_locales - [locale]).each do |language|
+          %li
+            = link_to url_for(locale: language) do
+              = image_tag("flags/#{language}.png")
+              = t('locale_name', locale: language)
+  .col-md-4.col-md-offset-4
+    %span
+      = "Konsento © #{Time.zone.now.year}"

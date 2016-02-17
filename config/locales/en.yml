@@ -32,6 +32,9 @@ en:
         groups_title: 'Grupos'
         search_title: 'Search'
         search_description: 'Type anything to search and hit enter...'
+      footer:
+        current_locale: 'Locale: %{current_locale} -'
+        change: 'Change'
 
   pages:
     unavailable_content:
