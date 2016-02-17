@@ -29,6 +29,18 @@
           %em.icon-globe.hidden-xs
           %span.visible-xs-inline= t '.groups_title'
 
+      / Locale management
+      %li.dropdown
+        = link_to '#', class: 'dropdown-toggle', 'data-toggle': 'dropdown' do
+          = image_tag "flags/#{locale}.png", alt: t(:locale_name)
+          %span.caret
+        %ul.dropdown-menu
+          - (I18n.available_locales - [locale]).each do |language|
+            %li
+              = link_to url_for(locale: language) do
+                = image_tag("flags/#{language}.png")
+                = t('locale_name', locale: language)
+
       - if signed_in?
         / START Alert menu
         %li.dropdown.dropdown-list

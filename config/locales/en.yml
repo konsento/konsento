@@ -1,4 +1,6 @@
 en:
+  locale_name: 'English'
+
   actions: 'Actions'
   'false': 'No'
   'true': 'Yes'
@@ -14,7 +16,6 @@ en:
     new_topic_comment_html: 'New comment on <strong>%{topic_title}</strong> topic'
     new_proposal_comment_html: 'New comment in a proposal on <strong>%{topic_title}</strong> topic'
     team_invitation_html: 'New invitation to <strong>%{team_title}</strong> team'
-
 
   layouts:
     partials:
