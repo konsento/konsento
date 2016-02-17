@@ -58,7 +58,7 @@ en:
     index:
       subscribed_groups: 'Subscribed'
       suggested_groups: 'Suggested groups'
-      all_groups: 'Todos'
+      all_groups: 'All groups'
 
     show:
       new_topic: 'New Topic'
