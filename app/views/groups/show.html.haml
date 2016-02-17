@@ -17,19 +17,20 @@
   .panel.panel-default
     %div{role: 'tabpanel'}
       / Nav tabs
-      %ul.nav.nav-tabs{role: 'tablist'}
-        %li.active{role: 'presentation'}
-          %a{'aria-controls': 'popular', 'data-toggle': "tab", href: '#popular', role: 'tab'}
-            = t 'filters.popular'
-        %li{role: 'presentation'}
-          %a{'aria-controls': 'recent', 'data-toggle': 'tab', href: '#recent', role: 'tab'}
-            = t 'filters.recents'
-        %li{role: 'presentation'}
-          %a{'aria-controls': 'controversial', 'data-toggle': 'tab', href: '#controversial', role: 'tab'}
-            = t 'filters.controversial'
-        %li{role: 'presentation'}
-          %a{'aria-controls': 'subgroups', 'data-toggle': 'tab', href: '#subgroups', role: 'tab'}
-            = t '.subgroups'
+      %div.tabs-holder
+        %ul.nav.nav-tabs{role: 'tablist'}
+          %li.active{role: 'presentation'}
+            %a{'aria-controls': 'popular', 'data-toggle': "tab", href: '#popular', role: 'tab'}
+              = t 'filters.popular'
+          %li{role: 'presentation'}
+            %a{'aria-controls': 'recent', 'data-toggle': 'tab', href: '#recent', role: 'tab'}
+              = t 'filters.recents'
+          %li{role: 'presentation'}
+            %a{'aria-controls': 'controversial', 'data-toggle': 'tab', href: '#controversial', role: 'tab'}
+              = t 'filters.controversial'
+          %li{role: 'presentation'}
+            %a{'aria-controls': 'subgroups', 'data-toggle': 'tab', href: '#subgroups', role: 'tab'}
+              = t '.subgroups'
       / Tab panes
       .tab-content
         #popular.tab-pane.active{role: 'tabpanel'}

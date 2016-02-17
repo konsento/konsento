@@ -15,7 +15,6 @@ en:
     new_proposal_comment_html: 'New comment in a proposal on <strong>%{topic_title}</strong> topic'
     team_invitation_html: 'New invitation to <strong>%{team_title}</strong> team'
 
-  search_description: 'Type anything to search and hit enter...'
 
   layouts:
     partials:
@@ -27,6 +26,10 @@ en:
         not_signed_up: 'Not registered?'
         sign_up: 'Sign up'
         see_more: 'See more'
+        profile_title: 'Profile'
+        notifications: 'Notifications'
+        search_title: 'Search'
+        search_description: 'Type anything to search and hit enter...'
 
   pages:
     unavailable_content:
