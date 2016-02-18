@@ -6,13 +6,13 @@ class Js::ProposalsController < ApplicationController
   def index
     topic = Topic.find(params[:topic_id])
     section = topic.sections.find(params[:section_id])
-    consensus = [section.consensus]
 
     @is_user_subscribed = topic.group.is_user_subscribed?(current_user)
 
-    @recent = section.proposals.recent - consensus
-    @popular = section.proposals.popular - consensus
-    @controversial = section.proposals.controversial - consensus
+    proposals = section.proposals.where.not(id: section.consensus.try(:id))
+    @recent = proposals.recent.page(params[:recent_page])
+    @popular = proposals.popular.page(params[:popular_page])
+    @controversial = proposals.controversial.page(params[:controversial_page])
   end
 
   def comments

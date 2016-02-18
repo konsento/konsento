@@ -1,3 +1,5 @@
 - proposals.each do |proposal|
   = render partial: 'proposals/proposal', locals: {proposal: proposal}
   %hr
+
+= paginate proposals, param_name: page_param_name, remote: true
