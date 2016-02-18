@@ -51,8 +51,9 @@
   .panel.panel-default
     .panel-heading= "#{@topic.comments.size} #{Comment.model_name.human(count: 2)}"
     .panel-body
-      - @topic.comments.each do |c|
+      - @comments.each do |c|
         = render partial: "comments/comment", locals: {comment: c}
+      = paginate @comments, param_name: 'comments_page'
 
 - content_for :body_end do
   #modal.modal.fade.bs-example-modal-lg
