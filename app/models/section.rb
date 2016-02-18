@@ -31,6 +31,10 @@ class Section < ActiveRecord::Base
       end
     end
 
+    unless proposal
+      proposal = proposals.find_by(parent: nil)
+    end
+
     proposal
   end
 
