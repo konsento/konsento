@@ -23,5 +23,6 @@
   .panel.panel-default
     .panel-heading= "#{@proposal.comments.size} #{Comment.model_name.human(count: 2)}"
     .panel-body
-      - @proposal.comments.each do |c|
+      - @comments.each do |c|
         = render partial: "comments/comment", locals: {comment: c}
+      = paginate @comments
