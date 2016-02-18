@@ -1,4 +1,8 @@
 class Team < ActiveRecord::Base
+  extend FriendlyId
+
+  friendly_id :title, use: :slugged
+
   has_many :subscriptions, as: :subscriptable
   has_many :topics
   has_many :team_invitations
