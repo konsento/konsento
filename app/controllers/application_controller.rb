@@ -1,4 +1,4 @@
-require "application_responder"
+require 'application_responder'
 
 class ApplicationController < ActionController::Base
   include Clearance::Controller
@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_action :offer_login
   before_action :set_js_data
   before_action :add_root_breadcrumb
+  before_action :current_model
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -22,11 +23,13 @@ class ApplicationController < ActionController::Base
     url_params = []
     subdomain = nil
 
+    subdomain = current_model.slug if current_model.is_a?(Team)
+
     groups.each do |g|
       next if g.slug == 'global' # Global group doesn't show up in the url
-
+      
       # Level 1 groups go into the subdomain, not params
-      if Group.level_1.exists? g.id
+      if current_model.is_a?(Group) && Group.level_1.exists?(g.id)
         subdomain ||= g.slug
         next
       end
@@ -40,7 +43,8 @@ class ApplicationController < ActionController::Base
   def current_model
     @current_model ||= if request.subdomain.present?
       subdomain = request.subdomain
-      Group.level_1.find_by(slug: subdomain) || Team.friendly.find(subdomain)
+      Group.level_1.find_by(slug: subdomain) || 
+      current_user.accessible_teams.friendly.find(subdomain)
     else
       Group.friendly.find('global')
     end

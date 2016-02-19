@@ -28,8 +28,10 @@ class GroupsController < ApplicationController
       end
     elsif params[:id]
       @group = Group.friendly.find(params[:id])
-    else
+    elsif current_model.is_a?(Group)
       @group = current_model
+    else
+      @group = Group.friendly.find('global')
     end
 
     add_recursive_group_breadcrumbs @group

@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1
   def show
-    @team = current_user.teams.friendly.find(params[:id])
+    @team = current_user.accessible_teams.find_by(slug: params[:id])
     @subscriptions = @team.subscriptions.page(params[:page])
     @is_admin = current_user.is_team_admin?(@team)
     add_breadcrumb @team.title, @team

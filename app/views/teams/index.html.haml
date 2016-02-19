@@ -19,11 +19,15 @@
           %tbody
             - @teams.each do |team|
               %tr
-                %td= link_to team.title, team
+                %td= link_to team.title, root_url(subdomain: team.slug)
                 %td= t team.public.to_s
                 %td
+                  = link_to team_path(team), class: 'btn btn-info btn-xs btn-labeled' do
+                    .btn-label
+                      %em.icon-eye
+                    = t '.details'
                   - if current_user.is_team_admin?(team)
-                    = link_to invitations_team_path(team), class: 'btn btn-info btn-xs btn-labeled' do
+                    = link_to invitations_team_path(team), class: 'btn btn-primary btn-xs btn-labeled' do
                       .btn-label
                         %em.icon-paper-plane
                       = t '.invite'

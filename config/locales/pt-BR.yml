@@ -85,6 +85,7 @@ pt-BR:
       pending_team_invitations: 'Convites pendentes para times'
       see_invitation: 'Ver convite'
       leave: 'Sair'
+      details: 'Detalhes'
     teams_list:
       created_at: 'Criado em %{timestamp}'
       teams_not_found: 'Não há times'

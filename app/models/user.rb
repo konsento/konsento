@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
       jr.requirement_values.build(user: self)
     end
   end
+
+  def accessible_teams
+    Team.accessible_for(self)
+  end
 end
