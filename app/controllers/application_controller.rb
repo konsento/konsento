@@ -23,7 +23,16 @@ class ApplicationController < ActionController::Base
     recursive_groups_path(slugs)
   end
 
-  helper_method :recursive_group_path
+  def current_model
+    @current_model ||= if request.subdomain
+      subdomain = request.subdomain
+      Group.countries.find_by(slug: subdomain) || Team.friendly.find(subdomain)
+    else
+      Group.friendly.find('global')
+    end
+  end
+
+  helper_method :recursive_group_path, :current_model
 
   private
 
