@@ -1,6 +1,6 @@
 .row
-  .col-lg-12
-    .nested-fields
-      = f.input :content, label: false
+  .nested-fields
+    .col-md-11.col-xs-8
+      = f.input :content, label: false, input_html: { rows: 1 }
+    .col-md-1.col-xs-4
       = link_to_remove_association 'Remover', f, class: 'btn btn-danger btn-xs'
-      %hr

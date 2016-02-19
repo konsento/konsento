@@ -3,9 +3,15 @@ class @Konsento::Topic::New
     @params = params
 
   run: ->
+    @bindProposalsTextareaAutoSizeEvent()
     @bindProposalEnterPress()
     @bindProposalRemoveButtonPress()
     @bindPasteEvent()
+
+  bindProposalsTextareaAutoSizeEvent: ->
+    $('#proposals textarea').textareaAutoSize()
+    $('#proposals').bind 'DOMSubtreeModified', ->
+      $('#proposals textarea').textareaAutoSize()
 
   bindProposalEnterPress: ->
     textareaSelector = '.topic_proposals_content > textarea'
@@ -34,6 +40,9 @@ class @Konsento::Topic::New
           for proposal in proposals
             $('#proposals .add_fields').click()
             $('#proposals textarea').last().append(proposal)
+        $('#proposals textarea').trigger('input') #trigger event to auto ajust height
+        $('#proposals textarea').last().focus()
+
 
 
   bindProposalRemoveButtonPress: ->

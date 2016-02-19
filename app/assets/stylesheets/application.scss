@@ -44,6 +44,12 @@ ul.dropdown-menu {
   min-width: 260px;
 }
 
+#proposals {
+  .topic_proposals_content{
+    margin-bottom: 5px;
+  }
+}
+
 #notifications-list.list-group {
   .list-group-item.unread {
     background: #e8f6fa;
