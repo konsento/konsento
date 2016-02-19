@@ -13,6 +13,8 @@ class Proposal < ActiveRecord::Base
   has_many :references
   has_many :comments, as: :commentable
 
+  after_create :vote_agree_for_author
+
   delegate :topic, to: :section
 
   scope :recent, -> { order(updated_at: :desc) }
@@ -46,6 +48,10 @@ class Proposal < ActiveRecord::Base
 
   def vote_for_user(user)
     self.votes.find_or_initialize_by(user: user)
+  end
+
+  def vote_agree_for_author
+      self.vote_agree(self.user)
   end
 
   def vote(user, opinion)
