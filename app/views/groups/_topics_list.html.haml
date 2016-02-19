@@ -19,8 +19,9 @@
                   = t '.participants'
 
             - if t.team
-              %span.label.label-success
-                = t.team.title
+              = link_to root_url(subdomain: t.team.slug) do
+                %span.label.label-success
+                  = t.team.title
 
           %td.text-right.hidden-xs.hidden-sm
             .text-muted

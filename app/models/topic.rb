@@ -31,7 +31,7 @@ class Topic < ActiveRecord::Base
       query = query.where(w)
     end
 
-    query.order(team_id: :asc)
+    query
   end
 
   scope :recent, -> { order(updated_at: :desc) }
