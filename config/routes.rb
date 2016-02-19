@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
 
   # Resouces
-  resources :groups, except: [:show] do
+  resources :groups do
     resources :topics, only: [:new, :create]
     get '/search_topics' => 'groups#search_topics', on: :member
   end
@@ -80,5 +80,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/*groups', to: 'groups#show', as: :recursive_groups
+  get '/(*groups)', to: 'groups#show', as: :recursive_groups
 end

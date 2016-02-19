@@ -17,7 +17,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def recursive_group_path(group)
-    recursive_groups_path(group.parents.map(&:slug) + [group.slug])
+    slugs = group.parents.map(&:slug)
+    slugs.delete('global')
+    slugs << group.slug unless group.slug == 'global'
+    recursive_groups_path(slugs)
   end
 
   helper_method :recursive_group_path

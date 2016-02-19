@@ -20,11 +20,14 @@ class GroupsController < ApplicationController
   def show
     if params[:groups]
       groups_slugs = params[:groups].split('/').last(Group.max_ancestry_size)
+      groups_slugs.unshift('global') unless groups_slugs.first == 'global'
 
       @group = groups_slugs.inject(nil) do |parent, slug|
         add_breadcrumb parent.title, recursive_group_path(parent) if parent
         Group.find_by!(parent: parent, slug: slug)
       end
+    elsif params[:id]
+      @group = Group.friendly.find(params[:id])
     else
       @group = Group.friendly.find('global')
     end
