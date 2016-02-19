@@ -35,21 +35,22 @@ class Proposal < ActiveRecord::Base
   validates :content, presence: true
 
   def vote_agree(user)
-    self.vote(user, 1)
+    vote(user, 1)
   end
 
   def vote_abstain(user)
-    self.vote(user, 0)
+    vote(user, 0)
   end
 
   def vote_disagree(user)
-    self.vote(user, -1)
+    vote(user, -1)
   end
 
   def vote_for_user(user)
     self.votes.find_or_initialize_by(user: user)
   end
-
+  
+  private
   def vote_agree_for_author
       self.vote_agree(self.user)
   end
