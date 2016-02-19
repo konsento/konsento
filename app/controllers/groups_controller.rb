@@ -16,7 +16,6 @@ class GroupsController < ApplicationController
       where.not(id: @subscribed_groups.pluck(:id))
   end
 
-  # GET /groups/:parent/:child/:grandchild/...
   def show
     if params[:groups]
       groups_slugs = params[:groups].split('/').last(Group.max_ancestry_size)
@@ -34,25 +33,28 @@ class GroupsController < ApplicationController
       @group = Group.friendly.find('global')
     end
 
-    add_recursive_group_breadcrumbs @group
-
-    unless @subscription = Subscription.find_by(user: current_user, subscriptable: @group)
-      @subscription = Subscription.new(user: current_user, subscriptable: @group)
-    end
+    @subscription = @group.subscriptions.find_or_initialize_by(user: current_user)
 
     topics = @group.topics.for_user(current_user)
+    topics = topics.where(team: current_model) if current_model.is_a?(Team)
 
     @popular = topics.popular.page(params[:page_popular])
     @controversial = topics.controversial.page(params[:page_controversial])
     @recent = topics.recent.page(params[:page_recent])
     @subgroups = @group.children.page(params[:page_subgroups])
+
+    add_recursive_group_breadcrumbs @group
   end
 
   # GET /groups/1/search_topics
   def search_topics
     @title = @group.title
     @q = search_params[:q].to_s.squish
-    @results = Topic.for_user(current_user).search(@q).where(group: @group).page(params[:topic_page])
+
+    @results = Topic.for_user(current_user).
+               search(@q).
+               where(group: @group).
+               page(params[:topic_page])
 
     render 'search/index'
   end
@@ -68,42 +70,33 @@ class GroupsController < ApplicationController
 
   # POST /groups
   def create
-    @group = Group.new(group_params)
-
-    if @group.save
-      respond_with @group
-    else
-      render :new
-    end
+    @group = Group.create(group_params)
+    respond_with @group
   end
 
   # PATCH/PUT /groups/1
   def update
-    if @group.update(group_params)
-      respond_with @group
-    else
-      render :edit
-    end
+    @group.update(group_params)
+    respond_with @group
   end
 
   # DELETE /groups/1
   def destroy
     @group.destroy
-    redirect_to groups_url
+    respond_with @group
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def group_params
-      params[:group]
-    end
+  def set_group
+    @group = Group.find(params[:id])
+  end
 
-    def search_params
-      params.require(:search).permit(:q)
-    end
+  def group_params
+    params.require(:group).permit()
+  end
+
+  def search_params
+    params.require(:search).permit(:q)
+  end
 end
