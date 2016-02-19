@@ -7,6 +7,6 @@ class AddSlugToTeams < ActiveRecord::Migration
   end
 
   def down
-    drop_column :teams, :slug
+    remove_column :teams, :slug
   end
 end

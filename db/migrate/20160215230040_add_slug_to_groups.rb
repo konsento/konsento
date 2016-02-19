@@ -7,6 +7,6 @@ class AddSlugToGroups < ActiveRecord::Migration
   end
 
   def down
-    drop_column :groups, :slug
+    remove_column :groups, :slug
   end
 end
