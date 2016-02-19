@@ -20,17 +20,19 @@ class GroupsController < ApplicationController
   def show
     if params[:groups]
       groups_slugs = params[:groups].split('/').last(Group.max_ancestry_size)
+      groups_slugs.unshift(current_model.slug) if current_model.is_a? Group
       groups_slugs.unshift('global') unless groups_slugs.first == 'global'
 
       @group = groups_slugs.inject(nil) do |parent, slug|
-        add_breadcrumb parent.title, recursive_group_path(parent) if parent
         Group.find_by!(parent: parent, slug: slug)
       end
     elsif params[:id]
       @group = Group.friendly.find(params[:id])
     else
-      @group = Group.friendly.find('global')
+      @group = current_model
     end
+
+    add_recursive_group_breadcrumbs @group
 
     unless @subscription = Subscription.find_by(user: current_user, subscriptable: @group)
       @subscription = Subscription.new(user: current_user, subscriptable: @group)
@@ -42,8 +44,6 @@ class GroupsController < ApplicationController
     @controversial = topics.controversial.page(params[:page_controversial])
     @recent = topics.recent.page(params[:page_recent])
     @subgroups = @group.children.page(params[:page_subgroups])
-
-    add_breadcrumb @group.title
   end
 
   # GET /groups/1/search_topics

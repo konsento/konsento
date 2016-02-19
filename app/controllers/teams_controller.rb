@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1
   def show
-    @team = current_user.teams.find(params[:id])
+    @team = current_user.teams.friendly.find(params[:id])
     @subscriptions = @team.subscriptions.page(params[:page])
     @is_admin = current_user.is_team_admin?(@team)
     add_breadcrumb @team.title, @team
@@ -63,7 +63,7 @@ class TeamsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_team
-    @team = Team.find(params[:id])
+    @team = Team.friendly.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

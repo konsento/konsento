@@ -17,19 +17,41 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def recursive_group_path(group)
-    slugs = group.parents.map(&:slug)
-    slugs.delete('global')
-    slugs << group.slug unless group.slug == 'global'
-    recursive_groups_path(slugs)
+    groups = group.parents
+    groups << group
+    url_params = []
+    subdomain = nil
+
+    groups.each do |g|
+      next if g.slug == 'global' # Global group doesn't show up in the url
+
+      # Level 1 groups go into the subdomain, not params
+      if Group.level_1.exists? g.id
+        subdomain ||= g.slug
+        next
+      end
+
+      url_params << g.slug # The rest are url params
+    end
+
+    recursive_groups_url(url_params, subdomain: subdomain)
   end
 
   def current_model
-    @current_model ||= if request.subdomain
+    @current_model ||= if request.subdomain.present?
       subdomain = request.subdomain
-      Group.countries.find_by(slug: subdomain) || Team.friendly.find(subdomain)
+      Group.level_1.find_by(slug: subdomain) || Team.friendly.find(subdomain)
     else
       Group.friendly.find('global')
     end
+  end
+
+  def add_recursive_group_breadcrumbs(group)
+    group.parents.each do |parent|
+      add_breadcrumb parent.title, recursive_group_path(parent)
+    end
+
+    add_breadcrumb group.title, recursive_group_path(group)
   end
 
   helper_method :recursive_group_path, :current_model
@@ -37,7 +59,7 @@ class ApplicationController < ActionController::Base
   private
 
   def add_root_breadcrumb
-    add_breadcrumb t('home'), :root_path
+    add_breadcrumb t('home'), root_url(subdomain: nil)
   end
 
   def set_js_data
