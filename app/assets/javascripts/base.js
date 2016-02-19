@@ -25,6 +25,9 @@
 //= require moment/min/moment-with-locales
 //--- Bootstrap Tagsinput
 //= require bootstrap-tagsinput/dist/bootstrap-tagsinput
+//= require moment/min/moment-with-locales
+//--- Js Auto Size
+//= require textarea-autosize
 
 $(document).ready(function(){
   moment.locale('pt-BR');
