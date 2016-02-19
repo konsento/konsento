@@ -44,7 +44,8 @@ class ApplicationController < ActionController::Base
     @current_model ||= if request.subdomain.present?
       subdomain = request.subdomain
       Group.level_1.find_by(slug: subdomain) || 
-      Team.accessible_for(current_user).friendly.find(subdomain)
+      Team.accessible_for(current_user).find_by(slug: subdomain) ||
+      redirect_to(root_url(subdomain: nil))
     else
       Group.friendly.find('global')
     end
@@ -95,7 +96,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale_cookie(locale)
-    cookies.permanent.signed[:locale] = locale.to_s
+    cookies.permanent.signed[:locale] = {
+      value: locale.to_s,
+      domain: ".#{request.domain}"
+    }
   end
 
   def use_locale_from_cookie

@@ -1,8 +1,14 @@
 Clearance.configure do |config|
   config.allow_sign_up = true
-  # config.cookie_domain = 'konsento.org'
+
+  if Rails.env.production?
+    config.cookie_domain = '.konsento.org'
+  else
+    config.cookie_domain = '.konsento.dev'
+  end
+
   # config.cookie_expiration = lambda { |cookies| 1.year.from_now.utc }
-  # config.cookie_name = 'konsento_remember_token'
+  config.cookie_name = 'konsento_remember_token'
   # config.cookie_path = '/'
   config.routes = false
   # config.httponly = false
