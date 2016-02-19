@@ -119,7 +119,13 @@ class ApplicationController < ActionController::Base
   end
 
   def ignore_offer_login?
-    cookies[:offer_login] = params[:offer_login] if params[:offer_login]
+    if params[:offer_login]
+      cookies[:offer_login] = {
+        value: params[:offer_login],
+        domain: ".#{request.domain}"
+      }
+    end
+
     cookies[:offer_login].to_s == 'false'
   end
 end
