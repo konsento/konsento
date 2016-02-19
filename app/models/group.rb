@@ -23,6 +23,12 @@ class Group < ActiveRecord::Base
   has_many :join_requirements, through: :requirements
   has_many :users, through: :subscriptions
 
+  scope :level_0, -> { where(parent: nil) }
+  scope :level_1, -> { where(parent: level_0) }
+  scope :level_2, -> { where(parent: level_1) }
+  scope :level_3, -> { where(parent: level_2) }
+  scope :level_4, -> { where(parent: level_3) }
+
   scope :suggestions_for_location, -> (location = nil) do
     if location
       q = [
