@@ -10,9 +10,13 @@ class Team < ActiveRecord::Base
   has_many :join_requirements, through: :requirements
   has_many :members, through: :subscriptions, source: :user
 
-  scope :accessible_for, -> (user) do
-    joins("LEFT JOIN subscriptions ON subscriptions.subscriptable_id = teams.id AND subscriptions.subscriptable_type = 'Team'").
-    where('teams.public = true OR subscriptions.user_id = ?', user.id)
+  scope :accessible_for, -> (user = nil) do
+    if user
+      joins("LEFT JOIN subscriptions ON subscriptions.subscriptable_id = teams.id AND subscriptions.subscriptable_type = 'Team'").
+      where('teams.public = true OR subscriptions.user_id = ?', user.id)
+    else
+      where(public: true)
+    end
   end
 
   accepts_nested_attributes_for :join_requirements, reject_if: :all_blank

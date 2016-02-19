@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :require_login
-  before_action :set_team, only: [:edit, :update, :invitations, :leave]
+  before_action :set_team, only: [:show, :edit, :update, :invitations, :leave]
 
   # GET /teams
   def index
@@ -11,7 +11,6 @@ class TeamsController < ApplicationController
 
   # GET /teams/1
   def show
-    @team = current_user.accessible_teams.find_by(slug: params[:id])
     @subscriptions = @team.subscriptions.page(params[:page])
     @is_admin = current_user.is_team_admin?(@team)
     add_breadcrumb @team.title, @team
@@ -63,7 +62,7 @@ class TeamsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_team
-    @team = Team.friendly.find(params[:id])
+    @team = Team.accessible_for(current_user).friendly.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

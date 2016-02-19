@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     @current_model ||= if request.subdomain.present?
       subdomain = request.subdomain
       Group.level_1.find_by(slug: subdomain) || 
-      current_user.accessible_teams.friendly.find(subdomain)
+      Team.accessible_for(current_user).friendly.find(subdomain)
     else
       Group.friendly.find('global')
     end
