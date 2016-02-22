@@ -1,6 +1,27 @@
 .proposal
   %p= proposal.content
-  .text-right
+  .visible-xs.buttons
+    .btn-group.btn-group-justified
+      = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do
+        %i.icon-speech
+        = proposal.comments.count
+      .btn-group
+        %button.btn.btn-labeled.btn-default{:type => "button"}
+          %i.icon-people
+          = proposal.votes.count
+      - if signed_in? && @is_user_subscribed
+        = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
+          %i.icon-pencil
+    - if signed_in? && @is_user_subscribed
+      .btn-group.btn-group-justified
+        - user_vote = proposal.vote_for_user(current_user)
+        = link_to agree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 1) do
+          %i.icon-like
+        = link_to abstain_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 0) do
+          %i.icon-options
+        = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) do
+          %i.icon-dislike
+  .text-right.hidden-xs
     .btn-group
       = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do
         %span.btn-label>

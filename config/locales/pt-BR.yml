@@ -91,6 +91,9 @@ pt-BR:
       teams_not_found: 'Não há times'
     new:
       new_team: 'Novo Time'
+      join_requirements: 'Requerimentos'
+    join_requirement_list:
+      add: 'Adicionar'
     edit:
       edit_team: 'Editar Time'
     invitations:
@@ -125,6 +128,13 @@ pt-BR:
         title: 'Escrever nova proposta'
       new:
         title: 'Nova seção'
+    join_requirements:
+      new:
+        title: 'Novo requerimento'
+      form:
+        title: 'Título'
+        value: 'Valor'
+        submit: 'Criar Requerimento'
 
   sections:
     add_section: 'Adicionar Seção'

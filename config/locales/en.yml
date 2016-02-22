@@ -91,6 +91,9 @@ en:
       teams_not_found: 'There is no teams'
     new:
       new_team: 'New Team'
+      join_requirements: 'Requirements'
+    join_requirement_list:
+      add: 'Add'
     edit:
       edit_team: 'Edit Team'
     invitations:
@@ -121,6 +124,9 @@ en:
         title: 'Write a proposal'
       new:
         title: 'New section'
+    join_requirements:
+      new:
+        title: 'Novo requerimento'
 
   proposals:
     show:

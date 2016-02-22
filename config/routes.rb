@@ -69,6 +69,9 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :join_requirements, only: [:new, :create]
+    get 'join_requirements/reload_requirements', to: 'join_requirements#reload_requirements', defaults: { format: 'html' }
+
     resources :proposals, only: [] do
       member do
         post :comments

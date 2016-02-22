@@ -22,16 +22,17 @@
         .col-md-6
           %p= t '.suggestions_for_selected_section'
           / Nav tabs
-          %ul.nav.nav-tabs{:role => "tablist"}
-            %li.active{:role => "presentation"}
-              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"}
-                = t 'filters.popular'
-            %li{:role => "presentation"}
-              %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#controversial", :role => "tab"}
-                = t 'filters.controversial'
-            %li{:role => "presentation"}
-              %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recent", :role => "tab"}
-                = t 'filters.recents'
+          %div.tabs-holder
+            %ul.nav.nav-tabs{:role => "tablist"}
+              %li.active{:role => "presentation"}
+                %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#popular", :role => "tab"}
+                  = t 'filters.popular'
+              %li{:role => "presentation"}
+                %a{"aria-controls" => "top", "data-toggle" => "tab", :href => "#controversial", :role => "tab"}
+                  = t 'filters.controversial'
+              %li{:role => "presentation"}
+                %a{"aria-controls" => "recents", "data-toggle" => "tab", :href => "#recent", :role => "tab"}
+                  = t 'filters.recents'
 
           / Tab panes
           .tab-content

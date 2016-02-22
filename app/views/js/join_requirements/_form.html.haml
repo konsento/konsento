@@ -1,0 +1,4 @@
+= simple_form_for @join_requirement, url: js_join_requirements_path(), :method => :post, :remote => true do |f|
+  = f.input :title, label: t('.title'), input_html: { autofocus: true }
+  = f.input :value, label: t('.value'), input_html: { value: "" }
+  = f.button :submit, t('.submit')
