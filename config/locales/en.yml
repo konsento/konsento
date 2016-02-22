@@ -92,6 +92,7 @@ en:
     new:
       new_team: 'New Team'
       join_requirements: 'Requirements'
+      join_requirements_placeholder: 'Search requirements...'
     join_requirement_list:
       add: 'Add'
     edit:

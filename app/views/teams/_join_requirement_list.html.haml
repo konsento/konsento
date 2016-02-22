@@ -7,6 +7,5 @@
   %div.col-xs-6.col-sm-3.col-md-2
     %div.each-join-requirement
       %span= jr.title
-      -# = f.input_field :join_requirement_ids, as: :boolean, input_html: { value: jr.id }, label: false
       %label
         = check_box_tag("team[join_requirement_ids][]", jr.id, false, options = {})

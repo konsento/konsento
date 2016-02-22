@@ -7,7 +7,7 @@
         = simple_form_for @team do |f|
           = f.input :title
           = f.input :public
-          = f.input :join_requirement_name, input_html: { value: "" }, label: t('.join_requirements')
+          = f.input :join_requirement_name, input_html: { value: "" }, label: t('.join_requirements'), placeholder: t('.join_requirements_placeholder')
           %div.join-requirements-holder.row
             = render partial: 'join_requirement_list'
 

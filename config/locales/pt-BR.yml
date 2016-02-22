@@ -92,6 +92,7 @@ pt-BR:
     new:
       new_team: 'Novo Time'
       join_requirements: 'Requerimentos'
+      join_requirements_placeholder: 'Buscar requerimento...'
     join_requirement_list:
       add: 'Adicionar'
     edit:
