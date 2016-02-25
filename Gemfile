@@ -30,6 +30,8 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_girl'
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :development do
