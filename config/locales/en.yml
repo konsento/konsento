@@ -41,6 +41,10 @@ en:
   pages:
     unavailable_content:
       description: 'This content is no longer available :('
+    help:
+      title: 'Help'
+      about:
+        title: 'About'
 
   invitations:
     index:

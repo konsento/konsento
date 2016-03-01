@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
   # Get
   get '/unavailable_content', to: 'pages#unavailable_content', as: 'unavailable_content'
+  get '/help', to: 'pages#help', as: 'help'
+  get '/help/:topic', to: 'pages#help', as: 'help_topic'
   get '/requirement_values', to: 'requirement_values#index', as: 'index_requirement_values'
   get '/requirement_values/:requirable_type/:requirable_id/:user_id/new', to: 'requirement_values#new'
   get '/search', to: 'search#index'

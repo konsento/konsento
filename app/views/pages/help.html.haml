@@ -1,0 +1,28 @@
+.row
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-xs-12.col-sm-3
+          .help-menu
+            .title
+              %h4
+                = t('.title')
+            .list
+              .each-topic
+                = link_to t('.home'), help_path
+              - @topics.each do |topic|
+                .each-topic
+                  = link_to t('.'+topic+'.title'), help_topic_path(topic)
+        .col-xs-12.col-sm-9
+          - if @topic.blank?
+            %h3
+              = t('pages.help.title')
+            %div
+              %p
+                = t('pages.help.content')
+          - else
+            %h3
+              = t('pages.help.'+@topic+'.title')
+            %div
+              %p
+                = t('pages.help.'+@topic+'.content')

@@ -32,6 +32,7 @@ pt-BR:
         profile_title: 'Perfil'
         notifications: 'Notificações'
         groups_title: 'Grupos'
+        help_title: 'Ajuda'
         search_title: 'Pesquisar'
         search_description: 'Digite o que procura e aperte enter...'
       footer:
@@ -41,6 +42,34 @@ pt-BR:
   pages:
     unavailable_content:
       description: 'Este conteúdo não está mais disponível :('
+    help:
+      title: 'Ajuda'
+      home: 'Início'
+      content: 'Bem vindo à ajuda! Clique nos tópicos ao lado para saber mais.'
+      access:
+        title: 'Acessando o sistema'
+        content: 'Para ter acesso ao sistema, é preciso se cadastrar. O cadastro é feito de maneira simples através de uma página acessível através da página de login. Uma vez cadastrado, é possível se autenticar no software usando as mesmas credenciais.'
+      topics:
+        title: 'Tópicos'
+        content: 'A base do sistema são os tópicos. Qualquer usuário pode criar um tópico, que representa uma ideia a ser discutida. Os tópicos estão localizados em grupos, que por sua vez podem ser subgrupos de outros grupos.'
+      sections:
+        title: 'Seções'
+        content: 'Os tópicos estão separados em seções. Cada seção é um parágrafo e os usuários acompanhando o tópico em questão podem enviar comentários (tanto para a seção quanto para o tópico), além de poder votar e sugerir correções. Os votos são podem ser positivos, onde o usuário concorda com o que foi proposto, negativos, onde ele discorda, e neutros. Todos os votos das seções e das sugestões são computados e uma vez que uma sugestão apresenta uma relação de votos melhor que a seção inicial, ela a substutui, tornando-se assim o consenso atual.'
+      tabs:
+        title: 'Abas'
+        content: 'Os toṕicos dos grupos estão separados em abas. Cada aba ordena os tópicos de uma maneira. A aba padrão, Popular, os ordena pela quantidade de interações que existe no tópico, como comentários, votos e propostas. Já a aba Recentes, lista inicialmente os tópicos cuja data de envio está mais próxima da data atual, em ordem crescente. Por fim, a aba Controversos ordena os tópicos pela igualdade entre votos positivos e negativos - quanto mais próximas as quantidades de votos, mais ao topo. Já a aba Subgrupos apresenta os subgrupos do grupo atual, e serve como ferramenta de navegação.'
+      teams:
+        title: 'Times'
+        content: 'Os times são formados por grupos de usuários. Ao criar um time, você torná-lo privado e convidar somente um grupo seleto de pessoas. Na navegação dos tópicos, somente integrantes do grupo poderão ver tópicos criados por outros integrantes.'
+      groups:
+        title: 'Grupos'
+        content: 'Os grupos são as separações geográficas dos tópicos. Por exemplo, se você mora em Vila Velha, você pode se interessar em se inscrever no grupos Brasil, Espírito Santo e Vila Velha. Os grupos têm a finalidade de facilitar a discussão de tópicos locais.'
+      # tabs:
+      #   title: ''
+      #   content: ''
+      # tabs:
+      #   title: ''
+      #   content: ''
 
   invitations:
     index:

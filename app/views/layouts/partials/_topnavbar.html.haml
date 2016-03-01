@@ -29,6 +29,11 @@
           %em.icon-globe.hidden-xs
           %span.visible-xs-inline= t '.groups_title'
 
+      %li
+        = link_to help_path do
+          %em.icon-support.hidden-xs
+          %span.visible-xs-inline= t '.help_title'
+
       - if signed_in?
         / START Alert menu
         %li.dropdown.dropdown-list
