@@ -93,19 +93,19 @@ ActiveRecord::Base.transaction do
     )
   end
 
-  Vote.create!(user: user1, proposal: Proposal.first, opinion: 1)
-  Vote.create!(user: user1, proposal: Proposal.first.children.first, opinion: 1)
-  Vote.create!(user: user1, proposal: Proposal.first.children.second, opinion: 0)
+  proposal1 = topic.sections.first.proposals.first
+  proposal2 = topic.sections.second.proposals.first
+  proposal3 = topic.sections.third.proposals.first
 
-  Vote.create!(user: user2, proposal: Proposal.first, opinion: -1)
-  Vote.create!(user: user2, proposal: Proposal.first.children.first, opinion: 1)
-  Vote.create!(user: user2, proposal: Proposal.first.children.second, opinion: 0)
+  Vote.create!(user: user2, proposal: proposal1, opinion: -1)
+  Vote.create!(user: user2, proposal: proposal2, opinion: 1)
+  Vote.create!(user: user2, proposal: proposal3, opinion: 0)
 
-  Vote.create!(user: user3, proposal: Proposal.first, opinion: 1)
-  Vote.create!(user: user3, proposal: Proposal.first.children.first, opinion: 1)
-  Vote.create!(user: user3, proposal: Proposal.first.children.second, opinion: -1)
+  Vote.create!(user: user3, proposal: proposal1, opinion: 1)
+  Vote.create!(user: user3, proposal: proposal2, opinion: 1)
+  Vote.create!(user: user3, proposal: proposal3, opinion: -1)
 
-  Vote.create!(user: user4, proposal: Proposal.first, opinion: 0)
-  Vote.create!(user: user4, proposal: Proposal.first.children.first, opinion: -1)
-  Vote.create!(user: user4, proposal: Proposal.first.children.second, opinion: -1)
+  Vote.create!(user: user4, proposal: proposal1, opinion: 0)
+  Vote.create!(user: user4, proposal: proposal2, opinion: -1)
+  Vote.create!(user: user4, proposal: proposal3, opinion: -1)
 end
