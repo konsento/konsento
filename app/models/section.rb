@@ -1,6 +1,9 @@
 class Section < ActiveRecord::Base
   belongs_to :topic, inverse_of: :sections, required: true, touch: true
   has_many :proposals, inverse_of: :section, autosave: true, dependent: :destroy
+  validates :topic, presence: true
+  validates :index, presence: true
+  validates :index, numericality: { only_integer: true }
 
   default_scope { order(index: :asc) }
 
