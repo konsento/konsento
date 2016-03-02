@@ -27,6 +27,11 @@ module Konsento
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Observers
     config.active_record.observers = [:user_observer, :comment_observer, :topic_observer, :team_invitation_observer]
+    
+    # ActiveJob
+    config.active_job.queue_adapter = :delayed_job
   end
 end
