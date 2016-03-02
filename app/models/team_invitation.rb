@@ -8,6 +8,9 @@ class TeamInvitation < ActiveRecord::Base
   }
 
   validate :email_cannot_be_subscribed, on: :create
+  validates :team, presence: true
+  validates :token, presence: true
+  validates :accepted, presence: true
 
   scope :accepted, -> { where(accepted: true) }
   scope :not_accepted, -> { where(accepted: false) }
