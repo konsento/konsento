@@ -83,6 +83,7 @@ GEM
       countries (~> 1.2.0)
       sort_alphabetical (~> 1.0)
     currencies (0.4.2)
+    daemons (1.2.3)
     debug_inspector (0.0.2)
     delayed_job (4.1.1)
       activesupport (>= 3.0, < 5.0)
@@ -276,6 +277,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.1.0)
   country_select
+  daemons
   delayed_job_active_record
   factory_girl_rails
   friendly_id
