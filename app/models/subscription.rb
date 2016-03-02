@@ -7,8 +7,10 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :subscriptable, polymorphic: true, touch: true
 
-  validates :user, uniqueness: {scope: [:subscriptable_id, :subscriptable_type]}
-  validates :role, inclusion: {in: TEAM_ROLES}, if: -> (s) { s.subscriptable_type == 'Team' } 
+  validates :user, presence: true, uniqueness: {scope: [:subscriptable_id, :subscriptable_type]}
+  validates :subscriptable, presence: true
+  validates :role, inclusion: {in: TEAM_ROLES}, if: -> (s) { s.subscriptable_type == 'Team' }
+  validates :role, presence: true
   validate :user_has_join_requirements?
   validate :left_with_at_least_one_admin?, on: :update
 
