@@ -14,7 +14,8 @@
           / Tab panes
           .tab-content
             #consensus.tab-pane.active{:role => "tabpanel"}
-              = render partial: @topic.sections
+              = render partial: @sections
+              = paginate @sections, param_name: 'sections_page', window: 0
 
               - if signed_in? && @is_user_subscribed
                 = link_to t('sections.add_section'), new_js_topic_proposal_path(@topic), remote: true, class: 'btn btn-default btn-block add-section'

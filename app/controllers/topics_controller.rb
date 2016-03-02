@@ -17,6 +17,7 @@ class TopicsController < ApplicationController
     add_breadcrumb @topic.title, topic_path(@topic)
     @comment = Comment.new(commentable: @topic, user: current_user)
     @comments = @topic.comments.page(params[:comments_page])
+    @sections = @topic.sections.page(params[:sections_page])
     @is_user_subscribed = @topic.group.is_user_subscribed?(current_user)
   end
 
