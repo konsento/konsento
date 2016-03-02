@@ -43,4 +43,7 @@ bower.json
 # Storage
 /uploads/*
 
+# Byebug
+.byebug_history
+
 !.keep
