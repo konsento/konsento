@@ -23,6 +23,11 @@ class Group < ActiveRecord::Base
   has_many :join_requirements, through: :requirements
   has_many :users, through: :subscriptions
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :total_votes_percent, numericality: true
+  validates :agree_votes_percent, numericality: true
+
   scope :level_0, -> { where(parent: nil) }
   scope :level_1, -> { where(parent: level_0) }
   scope :level_2, -> { where(parent: level_1) }
