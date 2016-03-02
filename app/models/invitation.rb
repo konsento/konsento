@@ -9,6 +9,9 @@ class Invitation < ActiveRecord::Base
   }
 
   validate :email_available
+  validates :email, presence: true
+  validates :token, presence: true
+  validates :registered, presence: true
 
   scope :registered, -> { where(registered: true) }
   scope :not_registered, -> { where(registered: false) }
