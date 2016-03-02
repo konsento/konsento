@@ -13,6 +13,8 @@ class Proposal < ActiveRecord::Base
   has_many :references
   has_many :comments, as: :commentable
 
+  validates :user, presence: true
+
   after_create :vote_agree_for_author
 
   delegate :topic, to: :section
@@ -49,7 +51,7 @@ class Proposal < ActiveRecord::Base
   def vote_for_user(user)
     self.votes.find_or_initialize_by(user: user)
   end
-  
+
   private
   def vote_agree_for_author
       self.vote_agree(self.user)
