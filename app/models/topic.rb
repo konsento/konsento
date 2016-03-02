@@ -18,6 +18,10 @@ class Topic < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :participants, -> { uniq }, through: :proposals, source: :user
 
+  validate :user_is_subscribed_to_group
+  validates :title, presence: true
+  validates :group, presence: true
+
   accepts_nested_attributes_for :proposals, reject_if: :all_blank
 
   scope :for_user, -> (user = nil) do
@@ -41,9 +45,6 @@ class Topic < ActiveRecord::Base
   end
 
   scope :controversial, -> { joins(:proposals).group('topics.id').order('COUNT(proposals.id) DESC') }
-
-  validates :title, presence: true
-  validate :user_is_subscribed_to_group
 
   private
 
