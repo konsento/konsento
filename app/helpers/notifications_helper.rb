@@ -16,7 +16,10 @@ module NotificationsHelper
       icon_class = 'fa-list'
     when 'TeamInvitation'
       icon_class = 'fa-send-o'
+    else
+      icon_class = 'fa-circle-o'
     end
+
     icon_class
   end
 
@@ -28,6 +31,8 @@ module NotificationsHelper
       message = t 'notification_messages.' + notification.key + '_html', group_title: notification.data['group_title']
     when 'TeamInvitation'
       message = t 'notification_messages.' + notification.key + '_html', team_title: notification.data['team_title']
+    else
+      message = t 'notification_messages.' + notification.key + '_html'
     end
 
     message

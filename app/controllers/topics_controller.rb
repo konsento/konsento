@@ -33,12 +33,26 @@ class TopicsController < ApplicationController
   def create
     group = Group.find(params[:group_id])
 
-    @topic = group.topics.create(topic_params.except(:proposals_attributes)) do |t|
-      t.user = current_user
+    @topic = group.topics.build(
+      topic_params.except(:proposals_attributes, :auto_split_text)
+    ) { |t| t.user = current_user }
+
+    if process_topic_in_background?
+      if @topic.valid?
+        CreateTopicJob.perform_later(topic_params.merge(
+          group_id: params[:group_id],
+          user_id: current_user.id
+        ))
+
+        return redirect_to recursive_group_path(group), flash: {alert: t('.processing_in_the_background')}
+      end
+    else
       topic_params[:proposals_attributes].each_with_index do |(k, p), i|
-        s = t.sections.build(index: i)
+        s = @topic.sections.build(index: i)
         s.proposals.build(user: current_user, content: p[:content])
       end
+
+      @topic.save
     end
 
     add_breadcrumb @topic.group.title, group_path(@topic.group)
@@ -54,14 +68,25 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:title, :team_id, :tag_list, proposals_attributes: [
-      :id,
-      :content,
-      :_destroy
-    ])
+    params.require(:topic).permit(
+      :title,
+      :team_id,
+      :auto_split_text,
+      :tag_list,
+      proposals_attributes: [
+        :id,
+        :content,
+        :_destroy
+      ]
+    )
   end
 
   def search_params
     params.require(:search).permit(:q)
+  end
+
+  def process_topic_in_background?
+    topic_params[:auto_split_text] == 'on' &&
+    topic_params[:proposals_attributes].any? { |(k, p)| p[:content].each_line.count > 100 }
   end
 end

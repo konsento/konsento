@@ -16,6 +16,8 @@ en:
     new_topic_comment_html: 'New comment on <strong>%{topic_title}</strong> topic'
     new_proposal_comment_html: 'New comment in a proposal on <strong>%{topic_title}</strong> topic'
     team_invitation_html: 'New invitation to <strong>%{team_title}</strong> team'
+    topic_processed_html: 'Your new topic finished processing'
+    topic_processing_error_html: 'There was an error while processing your topic, please, try again'
 
   layouts:
     partials:
@@ -146,13 +148,15 @@ en:
   topics:
     form:
       add_proposal: 'Add Proposal'
-      automatically_split_text: 'Automatically split a pasted text in proposals?'
+      automatically_split_text_html: 'Automatically split a pasted text in proposals?<br><strong>Texts that are too big will be pasted in full and be processed after the form submission.</strong>'
     new:
       new_topic: 'New Topic'
     show:
       suggestions_to_selected_section: 'Suggestion for selected section'
       consensus: 'Consensus'
       write_comment: 'Write a comment'
+    create:
+      processing_in_the_background: "Your topic is being processed, we'll notify you when it's ready!"
 
   subscription:
     team_roles:

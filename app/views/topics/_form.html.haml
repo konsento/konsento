@@ -10,8 +10,8 @@
       = render 'proposal_fields', f: proposal
     .links
       #automatically-split-text
-        %input{type: :checkbox, checked: true}
-          %span= t '.automatically_split_text'
+        %input{type: :checkbox, checked: true, name: 'topic[auto_split_text]'}
+          %span= t '.automatically_split_text_html'
       = link_to_add_association t('.add_proposal'), f, :proposals, class: 'btn btn-success btn-sm'
 
   %hr

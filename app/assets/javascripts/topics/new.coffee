@@ -28,22 +28,23 @@ class @Konsento::Topic::New
     textareaSelector = '.topic_proposals_content > textarea'
     $("#proposals").bind 'paste', textareaSelector, (e) ->
       if $("#automatically-split-text input").is(':checked')
-        e.preventDefault()
-        element = $('#' + e.target.id)
-        pastedData = e.originalEvent.clipboardData.getData('text')
-        proposals = pastedData.split('\n\n')
-        if element.val().length == 0
-          element.val('') #bug fixer
-          element.val(proposals[0]) # add first proposal
-          proposals.shift() #remove first proposal from array
-        if proposals.length > 0
-          for proposal in proposals
-            $('#proposals .add_fields').click()
-            $('#proposals textarea').last().append(proposal)
-        $('#proposals textarea').trigger('input') #trigger event to auto ajust height
-        $('#proposals textarea').last().focus()
+        text = e.originalEvent.clipboardData.getData('text')
+        proposals = text.split('\n\n')
 
+        if proposals.length < 100
+          e.preventDefault()
+          element = $('#' + e.target.id)
+          if element.val().length == 0
+            element.val('') # bug fixer
+            element.val(proposals[0]) # add first proposal
+            proposals.shift() # remove first proposal from array
+          if proposals.length > 0
+            for proposal in proposals
+              $('#proposals .add_fields').click()
+              $('#proposals textarea').last().append(proposal)
+          $('#proposals textarea').last().focus()
 
+      $('#proposals textarea').trigger('input') # trigger event to auto ajust height
 
   bindProposalRemoveButtonPress: ->
     $('#proposals').on 'click', '.remove_fields', (e) ->
