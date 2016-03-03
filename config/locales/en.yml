@@ -42,27 +42,27 @@ en:
     unavailable_content:
       description: 'This content is no longer available :('
     help:
-      title: 'Help'
-      home: 'Home'
-      content: 'Welcome to the help page! Click on the links on the left to know more about each topic.'
+      title: "Help"
+      home: "Home"
+      content: "Welcome to the help page! Click on the links on the left to know more about each topic."
       access:
-        title: 'Accessing the software'
-        content: 'To access the software, you must first sign up. The registration is made in a easy way through a page accessible via the login page. Once signed up, you can use the same credentials to login.'
+        title: "Accessing the software"
+        content: "To access the software, you must first sign up. The registration is made in a easy way through a page accessible via the login page. Once signed up, you can use the same credentials to login."
       topics:
-        title: 'Topics'
-        content: 'The basis of the software are the topics. Any user can create a topic, which represents an idea to be discussed. Topics are located in groups, which may be inside another group (therefore being a subgroup).'
+        title: "Topics"
+        content: "The basis of the software are the topics. Any user can create a topic, which represents an idea to be discussed. Topics are located in groups, which may be inside another group (therefore being a subgroup)."
       sections:
-        title: 'Paragraphs'
-        content: 'Topics are separeted in paragraphs. Users following a topic may send comments (for both topic and paragraph), vote and send suggestions. A vote can be positive (you agree with what's written), negative (you disagree) or neutral. All votes are computated and once a suggestion surpasses the initial proposal, the former replaces the latter, becoming the current consensus.'
+        title: "Paragraphs"
+        content: "Topics are separeted in paragraphs. Users following a topic may send comments (for both topic and paragraph), vote and send suggestions. A vote can be positive (you agree with what's written), negative (you disagree) or neutral. All votes are computated and once a suggestion surpasses the initial proposal, the former replaces the latter, becoming the current consensus."
       tabs:
-        title: 'Tabs'
-        content: 'Topics are separeted in tabs. Each tab orders the topics in a way. The default tab, Trending, order the topics by its popularity (like comments, votes, etc). The Recent tab orders them putting the most recent first. And the Controversial tab orders the topics by the upvote/downvote ratio. The closer one is to another, the upper the topic is. The Subgroups tab lists the subgroups on the current group.'
+        title: "Tabs"
+        content: "Topics are separeted in tabs. Each tab orders the topics in a way. The default tab, Trending, order the topics by its popularity (like comments, votes, etc). The Recent tab orders them putting the most recent first. And the Controversial tab orders the topics by the upvote/downvote ratio. The closer one is to another, the upper the topic is. The Subgroups tab lists the subgroups on the current group."
       teams:
-        title: 'Teams'
-        content: 'Teams are formed by groups of users. By creating a team, you may set it as a private team and invite people to join it. Private topics are listed only to teammates.'
+        title: "Teams"
+        content: "Teams are formed by groups of users. By creating a team, you may set it as a private team and invite people to join it. Private topics are listed only to teammates."
       groups:
-        title: 'Groups'
-        content: 'Groups are a geographical separation of topics. For instance, if you live in New York, you may find interest in subscribing to the US and New York groups. A group's finality is to facilitate topics navigation and scoping.'
+        title: "Groups"
+        content: "Groups are a geographical separation of topics. For instance, if you live in New York, you may find interest in subscribing to the US and New York groups. A group's finality is to facilitate topics navigation and scoping."
 
   invitations:
     index:
