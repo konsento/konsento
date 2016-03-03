@@ -9,9 +9,7 @@
         %button.btn.btn-labeled.btn-default{:type => "button"}
           %i.icon-people
           = proposal.votes.count
-      - if signed_in? && @is_user_subscribed
-        = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
-          %i.icon-pencil
+
     - if signed_in? && @is_user_subscribed
       .btn-group.btn-group-justified
         - user_vote = proposal.vote_for_user(current_user)
@@ -21,12 +19,18 @@
           %i.icon-options
         = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) do
           %i.icon-dislike
-      - if proposal.section.consensus == proposal
-        .btn-group.btn-group-justified
+
+    - if signed_in? && @is_user_subscribed
+      .btn-group.btn-group-justified
+        = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
+          %i.icon-pencil
+        - if proposal.section.consensus == proposal
           = link_to new_js_topic_proposal_path(proposal.topic, next_section: proposal.section.index), remote: true, class: 'btn btn-default propose-button' do
-            %i.fa.fa-angle-double-up
+            %span
+              %i.fa.fa-angle-double-up
           = link_to new_js_topic_proposal_path(proposal.topic, next_section: (proposal.section.index + 1)), remote: true, class: 'btn btn-default propose-button' do
-            %i.fa.fa-angle-double-down
+            %span
+              %i.fa.fa-angle-double-down
   .text-right.hidden-xs
     .btn-group
       = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do
@@ -49,11 +53,12 @@
         = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) do
           %span
             %i.icon-dislike
-      = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
-        %span
-          %i.icon-pencil
-      - if proposal.section.consensus == proposal
-        .btn-group
+
+      .btn-group
+        = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
+          %span
+            %i.icon-pencil
+        - if proposal.section.consensus == proposal
           = link_to new_js_topic_proposal_path(proposal.topic, next_section: proposal.section.index), remote: true, class: 'btn btn-default propose-button' do
             %span
               %i.fa.fa-angle-double-up

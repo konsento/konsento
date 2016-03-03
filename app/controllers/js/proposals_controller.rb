@@ -51,7 +51,8 @@ class Js::ProposalsController < ApplicationController
       if params[:next_section]
         sections = topic.sections.where('index >= ?', params[:next_section]).map do |s|
           i = s.index + 1
-          s.update!(index: nil)
+          s.index = nil
+          s.save!(validate: false)
           [s, i]
         end
 
