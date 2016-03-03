@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :email, presence: true
   validates :password, presence: true, confirmation: true
-  validates :available_invitations, numericality: { only_integer: true }
+  validates :available_invitations, numericality: { only_integer: true, allow_blank: true }
 
   def is_team_admin?(team)
     subscription = Subscription.find_by(subscriptable: team, user: self)
