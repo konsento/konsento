@@ -11,7 +11,7 @@ class Team < ActiveRecord::Base
   has_many :members, through: :subscriptions, source: :user
 
   validates :title, presence: true
-  validates :public, presence: true
+  validates :public, inclusion: { in: [true, false] }
 
   scope :accessible_for, -> (user = nil) do
     if user
