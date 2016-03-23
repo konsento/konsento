@@ -3,8 +3,11 @@ class @Konsento::Topic::Show
     @params = params
 
   run: ->
+    @setResizeEvent()
+    $(window).resize()
+
     @setSectionClickEvent()
-    
+
     if @params.section_index?
       $('#consensus .section')[@params.section_index].click()
     else
@@ -22,3 +25,13 @@ class @Konsento::Topic::Show
 
   loadChildren: (topicId, sectionId) ->
     $.getScript "#{gon.rootUrl}js/topics/#{topicId}/sections/#{sectionId}/proposals"
+
+  setResizeEvent: ->
+    $(window).resize ->
+      if($(window).width() > 976)
+        margin = 100
+        windowHeight = $(window).height()
+        $('#consensus').height(windowHeight - margin)
+        $('#proposals').height(windowHeight - margin)
+      else
+        #sadasd

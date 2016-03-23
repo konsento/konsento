@@ -12,8 +12,8 @@
                 = t '.consensus'
 
           / Tab panes
-          .tab-content
-            #consensus.tab-pane.active{:role => "tabpanel"}
+          .tab-content#consensus
+            .tab-pane.active{:role => "tabpanel"}
               = render partial: @sections
 
               - if signed_in? && @is_user_subscribed
@@ -37,7 +37,7 @@
                   = t 'filters.recents'
 
           / Tab panes
-          .tab-content
+          .tab-content#proposals
             #popular.tab-pane.active{:role => "tabpanel"}
             #controversial.tab-pane{:role => "tabpanel"}
             #recent.tab-pane{:role => "tabpanel"}

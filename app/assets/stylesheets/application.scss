@@ -147,6 +147,14 @@ ul.dropdown-menu {
   }
 }
 
+#consensus {
+  overflow-y: auto;
+}
+
+#proposals {
+  overflow-y: auto;
+}
+
 #consensus .section:hover {
   background: #EAF6FF;
   cursor: pointer;
