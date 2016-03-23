@@ -175,6 +175,15 @@ pt-BR:
     propose:
       original: 'Original'
       new: 'Nova'
+    proposal:
+      comments_count: 'Comentários'
+      participants: 'Participantes'
+      agree: 'Concordar'
+      abstain: 'Neutro'
+      disagree: 'Discordar'
+      propose: 'Propor mudança'
+      section_before: 'Inserir parágrafo antes'
+      section_after: 'Inserir parágrafo depois'
 
   topics:
     form:

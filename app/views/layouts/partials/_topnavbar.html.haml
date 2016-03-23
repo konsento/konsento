@@ -20,24 +20,24 @@
           = t '.about'
       / Search icon
       %li
-        %a{'data-search-open': '', href: '#'}
+        %a{'data-search-open': '', href: '#', class: 'has-tooltip', 'data-placement': 'bottom', title: t('.search_title')}
           %em.icon-magnifier.hidden-xs
           %span.visible-xs-inline= t '.search_title'
 
       %li
-        = link_to groups_path do
+        = link_to groups_path, {class: 'has-tooltip', 'data-placement': 'bottom', title: t('.groups_title')} do
           %em.icon-globe.hidden-xs
           %span.visible-xs-inline= t '.groups_title'
 
       %li
-        = link_to help_path do
+        = link_to help_path, {class: 'has-tooltip', 'data-placement': 'bottom', title: t('.help_title')} do
           %em.icon-support.hidden-xs
           %span.visible-xs-inline= t '.help_title'
 
       - if signed_in?
         / START Alert menu
         %li.dropdown.dropdown-list
-          = link_to preview_js_notifications_path, remote: true, 'data-toggle' => 'dropdown', method: :post do
+          = link_to preview_js_notifications_path, remote: true, 'data-toggle' => 'dropdown', class: 'has-tooltip', 'data-placement': 'bottom', title: t('.notifications'), method: :post do
             %em.icon-bell.hidden-xs
             %span.visible-xs-inline= t '.notifications'
             - if current_user.notifications.unread.any?
@@ -48,13 +48,13 @@
               / START list group
               #notifications-box.list-group
                 #preview-notifications
-                = link_to notifications_path, class: 'list-group-item' do
+                = link_to notifications_path, class: 'list-group-item has-tooltip' do
                   %small= t '.see_more'
                   %span.unread-notifications.label.label-danger.pull-right
               / END list group
           / END Dropdown menu
         %li
-          %a{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open', href: '#'}
+          %a{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open', href: '#', class: 'has-tooltip', 'data-placement': 'bottom', title: t('.profile_title')}
             %em.icon-user.hidden-xs
             %span.visible-xs-inline= t '.profile_title'
         / END User menu

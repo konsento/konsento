@@ -161,6 +161,15 @@ en:
     propose:
       original: 'Original'
       new: 'New'
+    proposal:
+      comments_count: 'Comments'
+      participants: 'Participants'
+      agree: 'Agree'
+      abstain: 'Abstain'
+      disagree: 'Disagree'
+      propose: 'Propose change'
+      section_before: 'Add paragraph before'
+      section_after: 'Add paragraph after'
 
   sections:
     section:

@@ -35,6 +35,8 @@ $(document).ready(function(){
   // Initialize Chosen
   $('.chosen-select').chosen();
 
+  $('.has-tooltip').tooltip();
+
   $("#team_join_requirement_name").keyup(function () {
     v = $(this).val();
     $("div.each-join-requirement").each(function () {
