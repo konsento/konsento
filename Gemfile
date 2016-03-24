@@ -22,6 +22,7 @@ gem 'meta-tags'
 gem 'pg'
 gem 'pg_search'
 gem 'pry-rails'
+gem 'puma', '~> 3.2.0'
 gem 'rails-i18n', '~> 4.0'
 gem 'rails-observers'
 gem 'responders'
@@ -52,5 +53,4 @@ end
 
 # Production
 group :production do
-  gem 'puma', '~> 2.16.0'
 end
