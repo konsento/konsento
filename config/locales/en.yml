@@ -31,7 +31,8 @@ en:
         see_more: 'See more'
         profile_title: 'Profile'
         notifications: 'Notifications'
-        groups_title: 'Grupos'
+        groups_title: 'Groups'
+        help_title: 'Help'
         search_title: 'Search'
         search_description: 'Type anything to search and hit enter...'
       footer:

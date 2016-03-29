@@ -1,0 +1,278 @@
+es:
+  locale_name: 'Español'
+
+  actions: 'Acciones'
+  'false': 'No'
+  'true': 'Si'
+
+  crud:
+    confirm: 'Confirma esta acción?'
+
+  home: 'Inicio'
+  back: 'Atrás'
+
+  notification_messages:
+    new_topic_html: 'Nuevo tema en <strong>%{group_title}</strong>'
+    new_topic_comment_html: 'Nuevo comentario en <strong>%{topic_title}</strong>'
+    new_proposal_comment_html: 'Nuevo comentario en una propuesta <strong>%{topic_title}</strong>'
+    team_invitation_html: 'Nueva invitación a <strong>%{team_title}</strong>'
+    topic_processed_html: 'Su nuevo tema fue procesado'
+    topic_processing_error_html: 'Hubo un error mientras se procesaba su tema, por favor, inténtelo de nuevo'
+
+  layouts:
+    partials:
+      offsidebar:
+        profile: 'Perfil'
+        edit_profile: 'Editar perfil'
+      topnavbar:
+        about: 'Sobre'
+        not_signed_up: '¿No está registrado?'
+        sign_up: 'Registrarse'
+        see_more: 'Conocer más'
+        profile_title: 'Perfil'
+        notifications: 'Notificaciones'
+        groups_title: 'Grupos'
+        help_title: 'Ayuda'
+        search_title: 'Buscar'
+        search_description: ' Escribir y pulsar Enter para buscar...'
+      footer:
+        current_locale: 'Idioma: %{current_locale} -'
+        change: 'Cambiar'
+
+  pages:
+    unavailable_content:
+      description: 'Este contenido ya o esta disponible :('
+    help:
+      title: "Ayuda"
+      home: "Inicio"
+      content: "¡Bienvenido a nuestra página de asistencia! Haga click en los links de la izquierda para saber más sobre cada tema."
+      access:
+        title: "Acceso al programa"
+        content: "Para acceder al programa, primero debe registrarse. Para registrarse puede hacerlo fácilmente a través de la página para iniciar sesión. Una vez registrado, usted puede usar el mismo nombre para iniciar sesión."
+      topics:
+        title: "Tema"
+        content: " La base del programa son los temas. Cualquier usuario puede crear un tema, que represente una idea para ser tratada y comentada. Los temas se dividen en grupos, que puede encontrarse dentro de otro grupo (por lo tanto sería un subgrupo)."
+      sections:
+        title: "Parrafos"
+        content: "Los temas son separados en párrafos. Los usuarios que siguen un tema pueden mandar sus comentarios (tanto en el tema como en el párrafo ), votar y enviar sugerencias. Un voto puede ser positivo (es decir, está de acuerdo con lo escrito), o negativo (no está de acuerdo) o neutral. Todos los votos serán computerizados y una vez que una sugerencia supera la primera propuesta, el creador reemplaza la última propuesta, convirtiéndose en la discusión más actualizada."
+      tabs:
+        title: "Etiquetas"
+        content: "Los temas son separados en etiquetas. Cada etiqueta es ordena los temas de una forma. La etiqueta, Tendencias, ordena los temas por su popularidad (por comentarios, votos, etc). Las Etiquetas Recientes se ordenan poniendo primero los más recientes. La Etiqueta Polémicos ordenan los temas por el ratio de votos positivos/votos negativos. Cuanto más cerca esté, más arriba se encontrará el tema. Y por último la etiqueta de Subgrupos ordena los subgrupos del grupo en el que se encuentra."
+      teams:
+        title: "Equipos"
+        content: "Los equipos son formados por grupos de usuarios. Mediante la creación de equipos, usted puede configurarlo como equipo privado e invitar a más gente en ese grupo. Los temas privados solo aparecerán solo para aquellas personas que formen parte de ese grupo."
+      groups:
+        title: "Grupos"
+        content: " Los grupos separan los grupos geográficamente. Por ejemplo, si vive en Nueva York, usted podría estar interesado en suscribirse en los grupos de USA y Nueva York. La finalidad de un grupo es facilitar la navegación a través de los temas."
+
+  invitations:
+    index:
+      invite_to_konsento: 'Invitar a Konsento'
+      resend_email: 'Reenviar email '
+      remaining_invitations: 'Invitaciones disponibles: %{available_invitations}'
+      invitations_sent: 'Invitación enviada (%{invitations_count})'
+
+  subscriptions:
+      subscribe_button:
+        subscribe: 'Suscribirse'
+
+      unsubscribe_button:
+        unsubscribe: 'Eliminar suscripción'
+
+  groups:
+    index:
+      subscribed_groups: 'Suscrito'
+      suggested_groups: 'Grupos sugeridos'
+      all_groups: 'Todos los grupos'
+
+    show:
+      new_topic: 'Nuevo tema'
+      subgroups: 'Subgrupos'
+
+    topics_list:
+      proposals: 'propuesta(s)'
+      participants: 'participantes(s)'
+      last_update: 'Última actualización %{timestamp}'
+      topics_not_found: 'No hay temas en esta categoría'
+
+    groups_list:
+      subgroups: 'subgrupo(s)'
+      topics: 'tema(s)'
+      created_at: 'Creado %{timestamp}'
+      groups_not_found: 'No hay grupos en esta categoría'
+
+  teams:
+    index:
+      edit: 'Editar'
+      invite: 'Invitar'
+      new_team: 'Nuevo Equipo'
+      joined_teams: 'Equipos a los que pertenece'
+      pending_team_invitations: 'Invitaciones de Equipo pendientes'
+      see_invitation: 'Ver invitación'
+      leave: 'Salir'
+      details: 'Detalles'
+    teams_list:
+      created_at: 'Creado %{timestamp}'
+      teams_not_found: 'No hay equipos'
+    new:
+      new_team: 'Nuevo equipo'
+      join_requirements: 'Requisitos'
+      join_requirements_placeholder: 'Buscar requisitos…'
+    join_requirement_list:
+      add: 'Añadir'
+    edit:
+      edit_team: 'Editar Equipo'
+    invitations:
+      invite_to_team: 'Invitar gente a %{team} team'
+      invitations_sent: 'Invitaciones enviadas (%{invitations_count})'
+      remaining_invitations: 'Invitaciones disponibles para usuarios no registrados: %{available_invitations}'
+    show:
+      members: 'Miembros de %{team}'
+      username: 'Nombre de Usuario'
+      role: 'Oficio'
+      save: 'Guardar'
+
+  team_invitations:
+    accept:
+      title: 'Invitación a equipo'
+      description_html: 'Usted a sido invitado a formar parte de <strong>%{team}</strong> este equipo, ¿quieres unirte?'
+      accept: 'Aceptar'
+
+  users:
+    edit:
+      title: 'Editar Perfil'
+      description: 'Escribe una nueva contraseña y confirma los cambios.'
+      retype_password: 'Reescribir contraseña'
+
+  js:
+    proposals:
+      propose:
+        title: 'Escribir propuesta'
+      new:
+        title: 'Nueva sección'
+    join_requirements:
+      new:
+        title: 'Nuevo Requisito'
+
+  proposals:
+    show:
+      title_html: 'Propuesta de sección %{section_index} en tema <em>%{topic_title}</em>'
+      see_topic: 'Ver Tema'
+      write_comment: 'Escribir comentario'
+    propose:
+      original: 'Original'
+      new: 'Nuevo'
+    proposal:
+      comments_count: 'Comentario'
+      participants: 'Participantes'
+      agree: 'De acuerdo'
+      abstain: 'Abstenerse'
+      disagree: 'No estoy de acuerdo'
+      propose: 'Proponer cambio'
+      section_before: 'Añadir párrafo antes'
+      section_after: 'Añadir párrafo después'
+
+  sections:
+    section:
+      no_consensus: 'Todavía no hay una consenso sobre ésta propuesta'
+    add_section: 'Añadir sección'
+
+  topics:
+    form:
+      add_proposal: 'Añadir propuesta'
+      automatically_split_text_html: '¿Dividir automáticamente un texto pegado en la propuesta?<br><strong> Los textos que sean demasiado grandes serán pegados totalmente serán procesados después de ser enviado.</strong>'
+    new:
+      new_topic: 'Nuevo Tema'
+    show:
+      suggestions_to_selected_section: 'Sugerencias para la sección seleccionada'
+      consensus: 'Consenso'
+      write_comment: 'Escribir un comentario'
+    create:
+      processing_in_the_background: "Su tema ha sido procesado, !Se lo notificaremos cuando esté listo!"
+
+  subscription:
+    team_roles:
+      default: 'Por defecto'
+      admin: 'Administrador'
+
+  comments:
+    form:
+      authenticate_to_comment: '%{sign_up_link} or %{sign_in_link} para comentar.'
+      subscribe_to_comment: 'Suscribirse al grupo para comentar'
+
+  filters:
+    popular: 'Popular'
+    controversial: 'Polémico'
+    recents: 'Recientes'
+
+  activerecord:
+    models:
+      group:
+        one: 'Grupo'
+        other: 'Grupos'
+      topic:
+        one: 'Tema'
+        other: 'Temas'
+      proposal:
+        one: 'Propuesta'
+        other: 'Propuestas'
+      invitation:
+        one: 'Invitación'
+        other: 'Invitaciones'
+      requirement_value:
+        one: 'Requerimiento'
+        other: 'Requerimientos'
+      comment:
+        one: 'Comentario'
+        other: 'Comentarios'
+      team:
+        one: 'Tema'
+        other: 'Temas'
+      team_invitatidon:
+        one: 'Invitación Equipo'
+        other: 'Invitaciones del Equipo'
+      notification:
+        one: 'Notificación'
+        other: 'Notificaciones'
+
+    attributes:
+      topic:
+        title: 'Titulo'
+        tag_list: 'Etiquetas'
+        team: 'Equipo'
+      proposal:
+        content: 'Contenido'
+      invitation:
+        email: 'Email'
+        registered: 'Registrado'
+      user:
+        email: 'Email'
+        username: 'Usuario'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmar contraseña'
+      subscription:
+        role: 'Oficio'
+      team_invitation:
+        accepted: 'Aceptado'
+      team:
+        title: 'Titulo'
+        public: 'Publico'
+        join_requirements: 'Requisitos'
+
+  simple_form:
+    hints:
+      invitation:
+        email: 'Separar emails usando una coma para enviar varias invitaciones de una sola vez.'
+      team_invitation:
+        email: 'Separar emails usando una coma para enviar varias invitaciones de una sola vez.'
+
+  helpers:
+    submit:
+      proposal:
+        create: 'Propuesta'
+      invitation:
+        create: 'Invitar'
+      team_invitation:
+        create: 'Invitar'
+      comment:
+        create: 'Comentario'

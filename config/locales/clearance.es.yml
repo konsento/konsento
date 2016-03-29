@@ -1,0 +1,49 @@
+---
+es:
+  clearance_mailer:
+    change_password:
+      closing: Si usted no necesita esto, puede ignorar este email. Su contraseña no ha sido alterada.
+      link_text: Cambiar contraseña
+      opening: "Alguien, probablemente usted, pidió que le mandáramos el link para modificar su contraseña:"
+  flashes:
+    failure_after_create: email o contraseña incorrectos.
+    failure_after_update: la contraseña no puede estar en blanco.
+    failure_when_forbidden: Por favor compruebe la dirección de URL  o intente enviar el formulario de nuevo.
+  helpers:
+    label:
+      password:
+        email: Correo electrónico
+      password_reset:
+        password: Elegir contraseña
+    submit:
+      password:
+        submit: Reiniciar contraseña
+      password_reset:
+        submit: Guardar esta contraseña
+      session:
+        submit: Registrarse
+      user:
+        create: Registarse
+  layouts:
+    application:
+      sign_in: Registrarse
+      sign_out: Salir
+  passwords:
+    create:
+      description: Recibirá un email en los próximos minutos. En este correo tendrá las instrucciones para modificar su contraseña.
+    edit:
+      description: Su contraseña ha sido reincida. Elija una nueva contraseña más adelante.
+      title: Cambiar su contraseña
+    new:
+      description: Si quiere recibir un email para reiniciar su contraseña, por favor introduzca su correo electrónico.
+      title: Reiniciar su contraseña
+  sessions:
+    form:
+      forgot_password: ¿Olvidó su contraseña?
+      sign_up: Registrarse
+    new:
+      title: Registrarse
+  users:
+    new:
+      sign_in: Registrarse
+      title: Registrarse
