@@ -11,7 +11,8 @@ class @Konsento::Topic::Show
     if @params.section_index?
       $('#consensus .section')[@params.section_index].click()
     else
-      $('#consensus .section')[0].click()
+      if window.innerWidth >= 768
+        $('#consensus .section')[0].click()
 
   setSectionClickEvent: ->
     _this = @

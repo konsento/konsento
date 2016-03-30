@@ -37,6 +37,11 @@ $(document).ready(function(){
 
   $('.has-tooltip').tooltip();
 
+  $(".hide-suggestions").click(function () {
+    $("#topic .suggestions").css({left: "150%"});
+    return false;
+  })
+
   $("#team_join_requirement_name").keyup(function () {
     v = $(this).val();
     $("div.each-join-requirement").each(function () {

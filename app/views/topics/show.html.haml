@@ -3,7 +3,7 @@
     .panel-body
       #topic{'data-topic-id' => @topic.id}
         %h1= @topic.title
-        .col-md-6
+        .col-md-6.consensus
           %p= Topic.model_name.human
           / Nav tabs
           %ul.nav.nav-tabs{:role => "tablist"}
@@ -21,7 +21,11 @@
 
               = paginate @sections, param_name: 'sections_page', window: 0
 
-        .col-md-6
+        .col-md-6.suggestions
+          .visible-xs
+            %a{href: "#", class: "hide-suggestions"}
+              %i{class: "fa fa-long-arrow-left"}
+              Voltar
           %p= t '.suggestions_for_selected_section'
           / Nav tabs
           %div.tabs-holder

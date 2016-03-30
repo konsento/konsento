@@ -1,3 +1,6 @@
 $('#recent').html("<%= escape_javascript(render partial: 'proposals/list', locals: {proposals: @recent, page_param_name: 'recent_page'}) %>");
 $('#popular').html("<%= escape_javascript(render partial: 'proposals/list', locals: {proposals: @popular, page_param_name: 'popular_page'}) %>");
 $('#controversial').html("<%= escape_javascript(render partial: 'proposals/list', locals: {proposals: @controversial, page_param_name: 'controversial_page'}) %>");
+if(window.innerWidth <= 767) {
+  $("#topic .suggestions").css({left: "5%"})
+}

@@ -280,6 +280,10 @@ footer {
   }
 }
 
+.col-md-6.suggestions {
+  left: 0;
+}
+
 @media screen and (max-width: $screen-xs) {
   .tab-content {
     padding: 0;
@@ -287,8 +291,27 @@ footer {
   }
 
   #topic {
+    position: relative;
+
     .col-md-6 {
       padding: 0;
+    }
+
+    .col-md-6.suggestions {
+      position: absolute;
+      overflow: scroll;
+      top: 49px;
+      left: 150%;
+      height: 100%;
+      width: 100%;
+      padding-left: 10px;
+      border-left: 5px solid #ddd;
+      background-color: #fff;
+      -webkit-transition: all 500ms ease;
+      -moz-transition: all 500ms ease;
+      -ms-transition: all 500ms ease;
+      -o-transition: all 500ms ease;
+      transition: all 500ms ease;
     }
 
     h1 + .col-md-6 {
