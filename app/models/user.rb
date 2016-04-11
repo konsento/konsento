@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include Clearance::User
   attr_accessor :empty_requirement_values
 
+  has_many :authentications, :dependent => :destroy
   has_many :subscriptions
   has_many :votes
   has_many :comments
@@ -40,4 +41,33 @@ class User < ActiveRecord::Base
   def accessible_teams
     Team.accessible_for(self)
   end
+
+  def self.create_with_auth_and_hash(authentication, auth_hash)
+    create! do |u|
+      u.username = User.generate_username_by_name(auth_hash["info"]["name"])
+      u.email = auth_hash["extra"]["raw_info"]["email"]
+      u.password = SecureRandom.hex(32)
+      u.authentications << (authentication)
+    end
+  end
+
+  def self.generate_username_by_name(name)
+    username = I18n.transliterate(name).gsub(/[^0-9A-Za-z]/, '')
+
+    loop do
+      suffix = rand(1..999).to_s
+      if User.where(username: username + suffix).blank?
+        username = username + suffix
+        break
+      end
+    end
+
+    username
+  end
+
+  def fb_token
+    x = self.authentications.where(provider: :facebook).first
+    return x.token unless x.nil?
+  end
+
 end

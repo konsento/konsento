@@ -13,6 +13,8 @@
     .pull-right
       = link_to 'Esqueceu a senha?', new_password_path, class: 'text-muted'
 
+  = link_to 'Entrar com Facebook', '/auth/facebook', class: 'btn btn-primary col-md-12 mb10'
+
   - if params[:offer] == 'true'
     = link_to 'Navegar sem entrar', previous_path(offer_login: false), class:'btn btn-default pull-left col-md-6'
   - else

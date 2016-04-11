@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
   get '/sign_up' => 'users#new', as: 'sign_up'
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
+  get '/auth/:provider/callback', to: 'sessions#create_from_omniauth'
 
   # Resouces
   resources :groups do
