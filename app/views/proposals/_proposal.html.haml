@@ -1,5 +1,10 @@
 .proposal
   %p= proposal.content
+  .references
+    - proposal.references.each do |reference|
+      .small
+        %strong= reference[:title].upcase + "."
+        = "<" + reference[:content] + ">"
   .visible-xs.buttons
     .btn-group.btn-group-justified
       = link_to comments_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-labeled btn-default' do

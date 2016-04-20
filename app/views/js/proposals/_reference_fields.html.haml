@@ -1,0 +1,7 @@
+.row.nested-fields
+  .col-lg-5
+    = f.input :title, label: t('.title')
+  .col-lg-5
+    = f.input :content, label: t('.content')
+  .col-lg-2
+    = link_to_remove_association t('.remove'), f

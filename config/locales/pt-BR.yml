@@ -154,6 +154,10 @@ pt-BR:
         title: 'Escrever nova proposta'
       new:
         title: 'Nova seção'
+      reference_fields:
+        title: 'Título'
+        content: 'Link para referência'
+        remove: 'Remover'
     join_requirements:
       new:
         title: 'Novo requerimento'
@@ -175,6 +179,7 @@ pt-BR:
     propose:
       original: 'Original'
       new: 'Nova'
+      references: 'Referências'
     proposal:
       comments_count: 'Comentários'
       participants: 'Participantes'

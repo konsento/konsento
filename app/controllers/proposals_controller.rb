@@ -13,14 +13,32 @@ class ProposalsController < ApplicationController
 
   # POST /proposals
   def create
-    if @proposal = Proposal.create(proposal_params)
-      redirect_to @proposal.topic
+    # if @proposal = Proposal.create(proposal_params)
+    #   redirect_to @proposal.topic
+    # end
+
+    @proposal = Proposal.create!({
+      user_id: proposal_params[:user_id],
+      parent_id: proposal_params[:parent_id],
+      section_id: proposal_params[:section_id],
+      content: proposal_params[:content]
+    })
+
+    proposal_params[:references_attributes].each do |key, reference|
+      Reference.create!({
+        proposal_id: @proposal[:id],
+        user_id: proposal_params[:user_id],
+        title: reference[:title],
+        content: reference[:content]
+      })
     end
+
+    redirect_to @proposal.topic
   end
 
   private
 
   def proposal_params
-    params.require(:proposal).permit(:user_id, :parent_id, :section_id, :content)
+    params.require(:proposal).permit(:user_id, :parent_id, :section_id, :content, references_attributes: [:id, :title, :content, :_destroy])
   end
 end

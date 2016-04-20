@@ -10,5 +10,11 @@
   = f.input :section_id, as: :hidden
   .form-group
     = f.input :content, as: :text, id: 'post-comment', class: 'form-control', input_html: {rows: 4}, label: false
+  %h4
+    = t '.references'
+  .form-group
+    = f.simple_fields_for :references do |r|
+      = render 'reference_fields', f: r
+      = link_to_add_association 'Adicionar', f, :references
   .form-group
     = f.button :submit, class: 'btn btn-effect-ripple btn-primary'

@@ -12,6 +12,7 @@ class Proposal < ActiveRecord::Base
   has_many :votes
   has_many :references
   has_many :comments, as: :commentable
+  accepts_nested_attributes_for :references
 
   validates :user, presence: true
 

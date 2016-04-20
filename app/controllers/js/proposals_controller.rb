@@ -36,6 +36,7 @@ class Js::ProposalsController < ApplicationController
     @new_proposal = @proposal.dup
     @new_proposal.user = current_user
     @new_proposal.parent = @proposal
+    @new_proposal.references.build
   end
 
   def new
