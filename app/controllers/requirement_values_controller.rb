@@ -24,7 +24,7 @@ class RequirementValuesController < ApplicationController
     end
 
     case requirable.model_name
-      when 'Group'
+      when 'Location'
         redirect_to requirable
       when 'Team'
         TeamInvitation.find_by(email: current_user.email, team: requirable).update(accepted: true)

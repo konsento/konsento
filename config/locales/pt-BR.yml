@@ -12,7 +12,7 @@ pt-BR:
   back: 'Voltar'
 
   notification_messages:
-    new_topic_html: 'Um novo tópico no grupo <strong>%{group_title}</strong>'
+    new_topic_html: 'Um novo tópico na localização <strong>%{location_title}</strong>'
     new_topic_comment_html: 'Um novo comentário no tópico <strong>%{topic_title}</strong>'
     new_proposal_comment_html: 'Um novo comentário em uma proposta do tópico <strong>%{topic_title}</strong>'
     team_invitation_html: 'Você recebeu um convite para o time <strong>%{team_title}</strong>'
@@ -31,7 +31,7 @@ pt-BR:
         see_more: 'Ver mais'
         profile_title: 'Perfil'
         notifications: 'Notificações'
-        groups_title: 'Grupos'
+        locations_title: 'Localizações'
         help_title: 'Ajuda'
         search_title: 'Pesquisar'
         search_description: 'Digite o que procura e aperte enter...'
@@ -51,19 +51,19 @@ pt-BR:
         content: 'Para ter acesso ao sistema, é preciso se cadastrar. O cadastro é feito de maneira simples através de uma página acessível através da página de login. Uma vez cadastrado, é possível se autenticar no software usando as mesmas credenciais.'
       topics:
         title: 'Tópicos'
-        content: 'A base do sistema são os tópicos. Qualquer usuário pode criar um tópico, que representa uma ideia a ser discutida. Os tópicos estão localizados em grupos, que por sua vez podem ser subgrupos de outros grupos.'
+        content: 'A base do sistema são os tópicos. Qualquer usuário pode criar um tópico, que representa uma ideia a ser discutida. Os tópicos estão localizados em localizações, que por sua vez podem ser sublocalizações de outros localizações.'
       sections:
         title: 'Parágrafos'
         content: 'Os tópicos estão separados em parágrafos. Usuários acompanhando o tópico em questão podem enviar comentários (tanto para as sugestões quanto para o tópico), além de poder votar e fazer novas sugestões. Os votos podem ser positivos, onde o usuário concorda com o que foi proposto, negativos, onde ele discorda, ou neutros. Todos os votos das sugestões são computados e uma vez que uma sugestão apresenta uma relação de votos melhor que a sugestão inicial, ela a substutui, tornando-se assim o consenso atual.'
       tabs:
         title: 'Abas'
-        content: 'Os tópicos dos grupos estão separados em abas. Cada aba ordena os tópicos de uma maneira. A aba padrão, Popular, os ordena pela quantidade de interações que existe no tópico, como comentários, votos e propostas. Já a aba Recentes, lista inicialmente os tópicos cuja data de envio está mais próxima da data atual, em ordem crescente. Por fim, a aba Controversos ordena os tópicos pela igualdade entre votos positivos e negativos - quanto mais próximas as quantidades de votos, mais ao topo. Já a aba Subgrupos apresenta os subgrupos do grupo atual, e serve como ferramenta de navegação.'
+        content: 'Os tópicos dos localizações estão separados em abas. Cada aba ordena os tópicos de uma maneira. A aba padrão, Popular, os ordena pela quantidade de interações que existe no tópico, como comentários, votos e propostas. Já a aba Recentes, lista inicialmente os tópicos cuja data de envio está mais próxima da data atual, em ordem crescente. Por fim, a aba Controversos ordena os tópicos pela igualdade entre votos positivos e negativos - quanto mais próximas as quantidades de votos, mais ao topo. Já a aba Sublocalizações apresenta os sublocalizações do localização atual, e serve como ferramenta de navegação.'
       teams:
         title: 'Times'
-        content: 'Os times são formados por grupos de usuários. Ao criar um time, você pode torná-lo privado e convidar somente um grupo seleto de pessoas. Na navegação dos tópicos, somente integrantes do grupo poderão ver tópicos criados por outros integrantes.'
-      groups:
-        title: 'Grupos'
-        content: 'Os grupos são as separações geográficas dos tópicos. Por exemplo, se você mora em Vila Velha, você pode se interessar em se inscrever no grupos Brasil, Espírito Santo e Vila Velha. Os grupos têm a finalidade de facilitar a discussão de tópicos locais.'
+        content: 'Os times são formados por localizações de usuários. Ao criar um time, você pode torná-lo privado e convidar somente um localização seleto de pessoas. Na navegação dos tópicos, somente integrantes do localização poderão ver tópicos criados por outros integrantes.'
+      locations:
+        title: 'Localizações'
+        content: 'Os localizações são as separações geográficas dos tópicos. Por exemplo, se você mora em Vila Velha, você pode se interessar em se inscrever na localizações Brasil, Espírito Santo e Vila Velha. Os localizações têm a finalidade de facilitar a discussão de tópicos locais.'
 
   invitations:
     index:
@@ -79,15 +79,15 @@ pt-BR:
       unsubscribe_button:
         unsubscribe: 'Cancelar inscrição'
 
-  groups:
+  locations:
     index:
-      subscribed_groups: 'Inscrito'
-      suggested_groups: 'Grupos sugeridos'
-      all_groups: 'Todos'
+      subscribed_locations: 'Inscrito'
+      suggested_locations: 'Localizações sugeridos'
+      all_locations: 'Todos'
 
     show:
       new_topic: 'Novo tópico'
-      subgroups: 'Subgrupos'
+      sublocations: 'Sublocalizações'
 
     topics_list:
       proposals: 'proposta(s)'
@@ -95,11 +95,11 @@ pt-BR:
       last_update: 'Última atualização em %{timestamp}'
       topics_not_found: 'Não há tópicos nesta categoria'
 
-    groups_list:
-      subgroups: 'subgrupos(s)'
+    locations_list:
+      sublocations: 'sublocalizações(s)'
       topics: 'tópicos(s)'
       created_at: 'Criado em %{timestamp}'
-      groups_not_found: 'Não há grupos nesta categoria'
+      locations_not_found: 'Não há localizações nesta categoria'
 
   teams:
     index:
@@ -211,7 +211,7 @@ pt-BR:
   comments:
     form:
       authenticate_to_comment: 'Faça seu %{sign_up_link} ou %{sign_in_link} para comentar.'
-      subscribe_to_comment: 'Se inscreva no grupo para comentar'
+      subscribe_to_comment: 'Se inscreva na localização para comentar'
 
   filters:
     popular: 'Popular'
@@ -220,9 +220,9 @@ pt-BR:
 
   activerecord:
     models:
-      group:
-        one: 'Grupo'
-        other: 'Grupos'
+      location:
+        one: 'Localização'
+        other: 'Localizações'
       topic:
         one: 'Tópico'
         other: 'Tópicos'

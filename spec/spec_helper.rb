@@ -44,7 +44,7 @@ RSpec.configure do |config|
 # with RSpec, but feel free to customize to your heart's content.
 =begin
   # These two settings work together to allow you to limit a spec run
-  # to individual examples or groups you care about by tagging them with
+  # to individual examples or locations you care about by tagging them with
   # `:focus` metadata. When nothing is tagged with `:focus`, all examples
   # get run.
   config.filter_run :focus
@@ -72,7 +72,7 @@ RSpec.configure do |config|
     config.default_formatter = 'doc'
   end
 
-  # Print the 10 slowest examples and example groups at the
+  # Print the 10 slowest examples and example locations at the
   # end of the spec run, to help surface which specs are running
   # particularly slow.
   config.profile_examples = 10

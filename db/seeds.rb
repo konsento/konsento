@@ -13,30 +13,30 @@ ActiveRecord::Base.transaction do
 
   team = Team.create(title: 'Sample Team', public: true)
 
-  group = Group.create!(
+  location = Location.create!(
     parent: nil,
     title: "Global",
-    description: "Global group",
+    description: "Global location",
     total_votes_percent: 50,
     agree_votes_percent: 50
   )
 
-  group.join_requirements << join
+  location.join_requirements << join
 
-  user1.subscriptions.create!(subscriptable: group, role: 'default')
-  user2.subscriptions.create!(subscriptable: group, role: 'default')
-  user3.subscriptions.create!(subscriptable: group, role: 'default')
-  user4.subscriptions.create!(subscriptable: group, role: 'default')
+  user1.subscriptions.create!(subscriptable: location, role: 'default')
+  user2.subscriptions.create!(subscriptable: location, role: 'default')
+  user3.subscriptions.create!(subscriptable: location, role: 'default')
+  user4.subscriptions.create!(subscriptable: location, role: 'default')
 
-  subgroup = Group.create!(
-    parent: group,
+  sublocation = Location.create!(
+    parent: location,
     title: "National",
-    description: "Global subgroup",
+    description: "Global sublocation",
     total_votes_percent: 50,
     agree_votes_percent: 50
   )
 
-  topic = Topic.create!(user: user1, group: group, title: "Sample Topic", team: nil) do |t|
+  topic = Topic.create!(user: user1, location: location, title: "Sample Topic", team: nil) do |t|
     s1 = t.sections.build(index: 0)
     s2 = t.sections.build(index: 1)
     s3 = t.sections.build(index: 2)

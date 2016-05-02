@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :topic do
     user
-    group
+    location
     title 'Topic'
   end
 

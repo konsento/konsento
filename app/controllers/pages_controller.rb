@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     add_breadcrumb I18n.t('pages.help.title'), help_path
     @topics = [
       "access",
-      "groups", 
+      "locations", 
       "sections",
       "tabs",
       "teams",

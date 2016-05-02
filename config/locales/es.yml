@@ -12,7 +12,7 @@ es:
   back: 'Atrás'
 
   notification_messages:
-    new_topic_html: 'Nuevo tema en <strong>%{group_title}</strong>'
+    new_topic_html: 'Nuevo tema en <strong>%{location_title}</strong>'
     new_topic_comment_html: 'Nuevo comentario en <strong>%{topic_title}</strong>'
     new_proposal_comment_html: 'Nuevo comentario en una propuesta <strong>%{topic_title}</strong>'
     team_invitation_html: 'Nueva invitación a <strong>%{team_title}</strong>'
@@ -31,7 +31,7 @@ es:
         see_more: 'Conocer más'
         profile_title: 'Perfil'
         notifications: 'Notificaciones'
-        groups_title: 'Grupos'
+        locations_title: 'Localizaciónes'
         help_title: 'Ayuda'
         search_title: 'Buscar'
         search_description: ' Escribir y pulsar Enter para buscar...'
@@ -51,19 +51,19 @@ es:
         content: "Para acceder al programa, primero debe registrarse. Para registrarse puede hacerlo fácilmente a través de la página para iniciar sesión. Una vez registrado, usted puede usar el mismo nombre para iniciar sesión."
       topics:
         title: "Tema"
-        content: " La base del programa son los temas. Cualquier usuario puede crear un tema, que represente una idea para ser tratada y comentada. Los temas se dividen en grupos, que puede encontrarse dentro de otro grupo (por lo tanto sería un subgrupo)."
+        content: " La base del programa son los temas. Cualquier usuario puede crear un tema, que represente una idea para ser tratada y comentada. Los temas se dividen en localizaciónes, que puede encontrarse dentro de otro localización (por lo tanto sería un sublocalización)."
       sections:
         title: "Parrafos"
         content: "Los temas son separados en párrafos. Los usuarios que siguen un tema pueden mandar sus comentarios (tanto en el tema como en el párrafo ), votar y enviar sugerencias. Un voto puede ser positivo (es decir, está de acuerdo con lo escrito), o negativo (no está de acuerdo) o neutral. Todos los votos serán computerizados y una vez que una sugerencia supera la primera propuesta, el creador reemplaza la última propuesta, convirtiéndose en la discusión más actualizada."
       tabs:
         title: "Etiquetas"
-        content: "Los temas son separados en etiquetas. Cada etiqueta es ordena los temas de una forma. La etiqueta, Tendencias, ordena los temas por su popularidad (por comentarios, votos, etc). Las Etiquetas Recientes se ordenan poniendo primero los más recientes. La Etiqueta Polémicos ordenan los temas por el ratio de votos positivos/votos negativos. Cuanto más cerca esté, más arriba se encontrará el tema. Y por último la etiqueta de Subgrupos ordena los subgrupos del grupo en el que se encuentra."
+        content: "Los temas son separados en etiquetas. Cada etiqueta es ordena los temas de una forma. La etiqueta, Tendencias, ordena los temas por su popularidad (por comentarios, votos, etc). Las Etiquetas Recientes se ordenan poniendo primero los más recientes. La Etiqueta Polémicos ordenan los temas por el ratio de votos positivos/votos negativos. Cuanto más cerca esté, más arriba se encontrará el tema. Y por último la etiqueta de Sublocalizaciónes ordena los sublocalizaciónes del localización en el que se encuentra."
       teams:
         title: "Equipos"
-        content: "Los equipos son formados por grupos de usuarios. Mediante la creación de equipos, usted puede configurarlo como equipo privado e invitar a más gente en ese grupo. Los temas privados solo aparecerán solo para aquellas personas que formen parte de ese grupo."
-      groups:
-        title: "Grupos"
-        content: " Los grupos separan los grupos geográficamente. Por ejemplo, si vive en Nueva York, usted podría estar interesado en suscribirse en los grupos de USA y Nueva York. La finalidad de un grupo es facilitar la navegación a través de los temas."
+        content: "Los equipos son formados por localizaciónes de usuarios. Mediante la creación de equipos, usted puede configurarlo como equipo privado e invitar a más gente en ese localización. Los temas privados solo aparecerán solo para aquellas personas que formen parte de ese localización."
+      locations:
+        title: "Localizaciónes"
+        content: " Los localizaciónes separan los localizaciónes geográficamente. Por ejemplo, si vive en Nueva York, usted podría estar interesado en suscribirse en los localizaciónes de USA y Nueva York. La finalidad de un localización es facilitar la navegación a través de los temas."
 
   invitations:
     index:
@@ -79,15 +79,15 @@ es:
       unsubscribe_button:
         unsubscribe: 'Eliminar suscripción'
 
-  groups:
+  locations:
     index:
-      subscribed_groups: 'Suscrito'
-      suggested_groups: 'Grupos sugeridos'
-      all_groups: 'Todos los grupos'
+      subscribed_locations: 'Suscrito'
+      suggested_locations: 'Localizaciónes sugeridos'
+      all_locations: 'Todos los localizaciónes'
 
     show:
       new_topic: 'Nuevo tema'
-      subgroups: 'Subgrupos'
+      sublocations: 'Sublocalizaciónes'
 
     topics_list:
       proposals: 'propuesta(s)'
@@ -95,11 +95,11 @@ es:
       last_update: 'Última actualización %{timestamp}'
       topics_not_found: 'No hay temas en esta categoría'
 
-    groups_list:
-      subgroups: 'subgrupo(s)'
+    locations_list:
+      sublocations: 'sublocalización(s)'
       topics: 'tema(s)'
       created_at: 'Creado %{timestamp}'
-      groups_not_found: 'No hay grupos en esta categoría'
+      locations_not_found: 'No hay localizaciónes en esta categoría'
 
   teams:
     index:
@@ -198,7 +198,7 @@ es:
   comments:
     form:
       authenticate_to_comment: '%{sign_up_link} or %{sign_in_link} para comentar.'
-      subscribe_to_comment: 'Suscribirse al grupo para comentar'
+      subscribe_to_comment: 'Suscribirse al localización para comentar'
 
   filters:
     popular: 'Popular'
@@ -207,9 +207,9 @@ es:
 
   activerecord:
     models:
-      group:
-        one: 'Grupo'
-        other: 'Grupos'
+      location:
+        one: 'Localización'
+        other: 'Localizaciónes'
       topic:
         one: 'Tema'
         other: 'Temas'

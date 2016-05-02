@@ -1,0 +1,3 @@
+$('#subscribed-locations').html("<%= escape_javascript render(partial: 'locations_list', locals: {locations: @subscribed_locations, page_param: 'page_subscribed_locations'}) %>");
+$('#suggested-locations').html("<%= escape_javascript render(partial: 'locations_list', locals: {locations: @suggested_locations, page_param: 'page_suggested_locations'}) %>");
+$('#all-locations').html("<%= escape_javascript render(partial: 'locations_list', locals: {locations: @locations, page_param: 'page_all_locations'}) %>");

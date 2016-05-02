@@ -1,4 +1,4 @@
-= simple_form_for [@topic.group, @topic] do |f|
+= simple_form_for [@topic.location, @topic] do |f|
   = f.input :title, input_html: {autofocus: true}
   = f.association :team, collection: current_user.teams
 

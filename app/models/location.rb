@@ -1,4 +1,4 @@
-class Group < ActiveRecord::Base
+class Location < ActiveRecord::Base
   include PgSearch
   extend FriendlyId
 
@@ -15,8 +15,8 @@ class Group < ActiveRecord::Base
 
   friendly_id :title, use: [:scoped, :finders], scope: [:parent]
 
-  has_many :children, inverse_of: :parent, class_name: 'Group', foreign_key: :parent_id
-  belongs_to :parent, inverse_of: :children, class_name: 'Group', foreign_key: :parent_id
+  has_many :children, inverse_of: :parent, class_name: 'Location', foreign_key: :parent_id
+  belongs_to :parent, inverse_of: :children, class_name: 'Location', foreign_key: :parent_id
   has_many :subscriptions, as: :subscriptable
   has_many :topics
   has_many :requirements, as: :requirable

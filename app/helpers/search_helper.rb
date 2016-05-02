@@ -1,10 +1,10 @@
 module SearchHelper
   def search_form_url
-    if params[:controller] == 'groups' && (
+    if params[:controller] == 'locations' && (
       params[:action] == 'show' ||
       params[:action] == 'search_topics'
     )
-      search_topics_group_path(id: @group.id)
+      search_topics_location_path(id: @location.id)
     elsif params[:controller] == 'topics' && (
       params[:action] == 'show' ||
       params[:action] == 'search_proposals'
@@ -18,8 +18,8 @@ module SearchHelper
   def search_result_title(result)
     text, url =
       case result
-      when Group
-        [result.title, recursive_group_path(result)]
+      when Location
+        [result.title, recursive_location_path(result)]
       when Topic
         [result.title, result]
       when Proposal
@@ -34,7 +34,7 @@ module SearchHelper
   def search_result_content(result)
     text =
       case result
-      when Group
+      when Location
         result.description.to_s
       when Topic
         result.proposals.first.try(:content).to_s

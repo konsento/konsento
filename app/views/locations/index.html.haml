@@ -1,0 +1,28 @@
+- if signed_in?
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h4{style: 'width: 50%'}
+          = t '.subscribed_locations'
+      .panel-body
+        #subscribed-locations
+          = render partial: 'locations_list', locals: {locations: @subscribed_locations, page_param: 'page_subscribed_locations'}
+
+- if @suggested_locations.any?
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h4{style: 'width: 50%'}
+          = t '.suggested_locations'
+      .panel-body
+        #suggested-locations
+          = render partial: 'locations_list', locals: {locations: @suggested_locations, page_param: 'page_suggested_locations'}
+
+.row
+  .panel.panel-default
+    .panel-heading
+      %h4{style: 'width: 50%'}
+        = t '.all_locations'
+    .panel-body
+      #all-locations
+        = render partial: 'locations_list', locals: {locations: @locations, page_param: 'page_all_locations'}

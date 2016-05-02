@@ -12,7 +12,7 @@ en:
   back: 'Back'
 
   notification_messages:
-    new_topic_html: 'New topic on  <strong>%{group_title}</strong> group'
+    new_topic_html: 'New topic on  <strong>%{location_title}</strong> location'
     new_topic_comment_html: 'New comment on <strong>%{topic_title}</strong> topic'
     new_proposal_comment_html: 'New comment in a proposal on <strong>%{topic_title}</strong> topic'
     team_invitation_html: 'New invitation to <strong>%{team_title}</strong> team'
@@ -31,7 +31,7 @@ en:
         see_more: 'See more'
         profile_title: 'Profile'
         notifications: 'Notifications'
-        groups_title: 'Groups'
+        locations_title: 'Locations'
         help_title: 'Help'
         search_title: 'Search'
         search_description: 'Type anything to search and hit enter...'
@@ -51,19 +51,19 @@ en:
         content: "To access the software, you must first sign up. The registration is made in a easy way through a page accessible via the login page. Once signed up, you can use the same credentials to login."
       topics:
         title: "Topics"
-        content: "The basis of the software are the topics. Any user can create a topic, which represents an idea to be discussed. Topics are located in groups, which may be inside another group (therefore being a subgroup)."
+        content: "The basis of the software are the topics. Any user can create a topic, which represents an idea to be discussed. Topics are located in locations, which may be inside another location (therefore being a sublocation)."
       sections:
         title: "Paragraphs"
         content: "Topics are separeted in paragraphs. Users following a topic may send comments (for both topic and paragraph), vote and send suggestions. A vote can be positive (you agree with what's written), negative (you disagree) or neutral. All votes are computated and once a suggestion surpasses the initial proposal, the former replaces the latter, becoming the current consensus."
       tabs:
         title: "Tabs"
-        content: "Topics are separeted in tabs. Each tab orders the topics in a way. The default tab, Trending, order the topics by its popularity (like comments, votes, etc). The Recent tab orders them putting the most recent first. And the Controversial tab orders the topics by the upvote/downvote ratio. The closer one is to another, the upper the topic is. The Subgroups tab lists the subgroups on the current group."
+        content: "Topics are separeted in tabs. Each tab orders the topics in a way. The default tab, Trending, order the topics by its popularity (like comments, votes, etc). The Recent tab orders them putting the most recent first. And the Controversial tab orders the topics by the upvote/downvote ratio. The closer one is to another, the upper the topic is. The Sublocations tab lists the sublocations on the current location."
       teams:
         title: "Teams"
-        content: "Teams are formed by groups of users. By creating a team, you may set it as a private team and invite people to join it. Private topics are listed only to teammates."
-      groups:
-        title: "Groups"
-        content: "Groups are a geographical separation of topics. For instance, if you live in New York, you may find interest in subscribing to the US and New York groups. A group's finality is to facilitate topics navigation and scoping."
+        content: "Teams are formed by locations of users. By creating a team, you may set it as a private team and invite people to join it. Private topics are listed only to teammates."
+      locations:
+        title: "Locations"
+        content: "Locations are a geographical separation of topics. For instance, if you live in New York, you may find interest in subscribing to the US and New York locations. A location's finality is to facilitate topics navigation and scoping."
 
   invitations:
     index:
@@ -79,15 +79,15 @@ en:
       unsubscribe_button:
         unsubscribe: 'Unsubscribe'
 
-  groups:
+  locations:
     index:
-      subscribed_groups: 'Subscribed'
-      suggested_groups: 'Suggested groups'
-      all_groups: 'All groups'
+      subscribed_locations: 'Subscribed'
+      suggested_locations: 'Suggested locations'
+      all_locations: 'All locations'
 
     show:
       new_topic: 'New Topic'
-      subgroups: 'Subgroups'
+      sublocations: 'Sublocations'
 
     topics_list:
       proposals: 'proposal(s)'
@@ -95,11 +95,11 @@ en:
       last_update: 'Last update at %{timestamp}'
       topics_not_found: 'There is no topics in this category'
 
-    groups_list:
-      subgroups: 'subgroup(s)'
+    locations_list:
+      sublocations: 'sublocation(s)'
       topics: 'topic(s)'
       created_at: 'Created at %{timestamp}'
-      groups_not_found: 'Não há grupos nesta categoria'
+      locations_not_found: 'Não há grupos nesta categoria'
 
   teams:
     index:
@@ -198,7 +198,7 @@ en:
   comments:
     form:
       authenticate_to_comment: '%{sign_up_link} or %{sign_in_link} to comment.'
-      subscribe_to_comment: 'Subscribe the group to comment'
+      subscribe_to_comment: 'Subscribe the location to comment'
 
   filters:
     popular: 'Popular'
@@ -207,9 +207,9 @@ en:
 
   activerecord:
     models:
-      group:
-        one: 'Group'
-        other: 'Groups'
+      location:
+        one: 'Location'
+        other: 'Locations'
       topic:
         one: 'Topic'
         other: 'Topics'

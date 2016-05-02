@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Root
-  root 'groups#show'
+  root 'locations#show'
 
   # Auth
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create_from_omniauth'
 
   # Resouces
-  resources :groups do
+  resources :locations do
     resources :topics, only: [:new, :create]
-    get '/search_topics' => 'groups#search_topics', on: :member
+    get '/search_topics' => 'locations#search_topics', on: :member
   end
 
   resources :topics, only: [:show] do
@@ -86,5 +86,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/(*groups)', to: 'groups#show', as: :recursive_groups
+  get '/(*locations)', to: 'locations#show', as: :recursive_locations
 end

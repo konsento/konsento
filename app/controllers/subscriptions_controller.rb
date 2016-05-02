@@ -11,9 +11,9 @@ class SubscriptionsController < ApplicationController
     @subscription.role = 'default'
     if @subscription.save
       case @subscription.subscriptable_type
-        when 'Group'
+        when 'Location'
           respond_with @subscription.subscriptable,
-          location: -> { recursive_group_path(@subscription.subscriptable) }
+          location: -> { recursive_location_path(@subscription.subscriptable) }
         when 'Team'
           TeamInvitation.find_by(email: current_user.email, team: @subscription.subscriptable).update(accepted: true)
           redirect_to teams_path
@@ -41,7 +41,7 @@ class SubscriptionsController < ApplicationController
   def destroy
     @subscription.destroy
     respond_with @subscription.subscriptable,
-    location: -> { recursive_group_path(@subscription.subscriptable) }
+    location: -> { recursive_location_path(@subscription.subscriptable) }
   end
 
   private
@@ -54,7 +54,7 @@ class SubscriptionsController < ApplicationController
     def subscription_params
       params.require(:subscription).permit(:user_id, :subscriptable_id, :subscriptable_type)
     end
-   
+
     def subscription_update_params
       params.require(:subscription).permit(:role)
     end

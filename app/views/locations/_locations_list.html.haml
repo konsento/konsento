@@ -1,17 +1,17 @@
-- if groups.any?
+- if locations.any?
   %table.table.table-striped
     %tbody
-      - groups.each do |g|
+      - locations.each do |g|
         %tr
           %td
             %h4
-              =link_to recursive_group_path(g) do
+              =link_to recursive_location_path(g) do
                 %strong= g.title
             .text-muted.text-sm
               %span
                 %strong.mr-sm>
                   = g.children.size
-                  = t '.subgroups'
+                  = t '.sublocations'
               %span.mh-sm
               %span
                 %strong.mr-sm>
@@ -22,9 +22,9 @@
               %small
                 = t '.created_at', timestamp: time_ago_in_words(g.updated_at)
 
-  - page_param ||= 'page_subgroups'
-  = paginate groups, param_name: page_param, remote: true
+  - page_param ||= 'page_sublocations'
+  = paginate locations, param_name: page_param, remote: true
 
 - else
   .text-center
-    = t '.groups_not_found'
+    = t '.locations_not_found'

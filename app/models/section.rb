@@ -8,14 +8,14 @@ class Section < ActiveRecord::Base
   default_scope { order(index: :asc) }
 
   def consensus
-    total_votes_minimum_percent = topic.group.total_votes_percent
-    agree_votes_minimum_percent = topic.group.agree_votes_percent
+    total_votes_minimum_percent = topic.location.total_votes_percent
+    agree_votes_minimum_percent = topic.location.agree_votes_percent
 
     proposal = nil
     users_votes_count = proposals.joins(:votes).group('votes.user_id').size.size
-    group_subscriptions_count = topic.group.subscriptions.count
+    location_subscriptions_count = topic.location.subscriptions.count
 
-    total_votes_percent = (users_votes_count * 100) / group_subscriptions_count
+    total_votes_percent = (users_votes_count * 100) / location_subscriptions_count
 
     if total_votes_percent > total_votes_minimum_percent
       proposals_in_consensus = []

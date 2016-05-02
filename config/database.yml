@@ -3,8 +3,8 @@ default: &default
   host: localhost
   encoding: unicode
   pool: 10
-  username: postgres
-  password: root
+  username: konsento
+  password: konsento
 
 development: &development
   <<: *default

@@ -17,19 +17,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def recursive_group_path(group)
-    groups = group.parents
-    groups << group
+  def recursive_location_path(location)
+    locations = location.parents
+    locations << location
     url_params = []
     subdomain = nil
 
     subdomain = current_model.slug if current_model.is_a?(Team)
 
-    groups.each do |g|
-      next if g.slug == 'global' # Global group doesn't show up in the url
-      
-      # Level 1 groups go into the subdomain, not params
-      if current_model.is_a?(Group) && Group.level_1.exists?(g.id)
+    locations.each do |g|
+      next if g.slug == 'global' # Global location doesn't show up in the url
+
+      # Level 1 locations go into the subdomain, not params
+      if current_model.is_a?(Location) && Location.level_1.exists?(g.id)
         subdomain ||= g.slug
         next
       end
@@ -37,29 +37,29 @@ class ApplicationController < ActionController::Base
       url_params << g.slug # The rest are url params
     end
 
-    recursive_groups_url(url_params, subdomain: subdomain)
+    recursive_locations_url(url_params, subdomain: subdomain)
   end
 
   def current_model
     @current_model ||= if request.subdomain.present?
       subdomain = request.subdomain
-      Group.level_1.find_by(slug: subdomain) || 
+      Location.level_1.find_by(slug: subdomain) ||
       Team.accessible_for(current_user).find_by(slug: subdomain) ||
       redirect_to(root_url(subdomain: nil))
     else
-      Group.friendly.find('global')
+      Location.friendly.find('global')
     end
   end
 
-  def add_recursive_group_breadcrumbs(group)
-    group.parents.each do |parent|
-      add_breadcrumb parent.title, recursive_group_path(parent)
+  def add_recursive_location_breadcrumbs(location)
+    location.parents.each do |parent|
+      add_breadcrumb parent.title, recursive_location_path(parent)
     end
 
-    add_breadcrumb group.title, recursive_group_path(group)
+    add_breadcrumb location.title, recursive_location_path(location)
   end
 
-  helper_method :recursive_group_path, :current_model
+  helper_method :recursive_location_path, :current_model
 
   private
 

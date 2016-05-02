@@ -57,20 +57,6 @@ ActiveRecord::Schema.define(version: 20160419021936) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "groups", force: :cascade do |t|
-    t.integer  "parent_id"
-    t.string   "title",               null: false
-    t.text     "description"
-    t.float    "total_votes_percent", null: false
-    t.float    "agree_votes_percent", null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "slug",                null: false
-  end
-
-  add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
-  add_index "groups", ["slug", "parent_id"], name: "index_groups_on_slug_and_parent_id", unique: true, using: :btree
-
   create_table "invitations", force: :cascade do |t|
     t.integer  "user_id",                    null: false
     t.string   "email",                      null: false
@@ -88,6 +74,20 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.string   "title",               null: false
+    t.text     "description"
+    t.float    "total_votes_percent", null: false
+    t.float    "agree_votes_percent", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "slug",                null: false
+  end
+
+  add_index "locations", ["parent_id"], name: "index_locations_on_parent_id", using: :btree
+  add_index "locations", ["slug", "parent_id"], name: "index_locations_on_slug_and_parent_id", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id",                         null: false
@@ -207,17 +207,17 @@ ActiveRecord::Schema.define(version: 20160419021936) do
   add_index "teams", ["slug"], name: "index_teams_on_slug", unique: true, using: :btree
 
   create_table "topics", force: :cascade do |t|
-    t.integer  "user_id",    null: false
+    t.integer  "user_id",     null: false
     t.integer  "parent_id"
     t.integer  "team_id"
-    t.integer  "group_id",   null: false
-    t.string   "title",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "location_id", null: false
+    t.string   "title",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "topics", ["parent_id"], name: "index_topics_on_parent_id", using: :btree
-  add_index "topics", ["user_id", "parent_id", "group_id"], name: "index_topics_on_user_id_and_parent_id_and_group_id", unique: true, using: :btree
+  add_index "topics", ["user_id", "parent_id", "location_id"], name: "index_topics_on_user_id_and_parent_id_and_location_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                          null: false
@@ -245,8 +245,8 @@ ActiveRecord::Schema.define(version: 20160419021936) do
 
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "users"
-  add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "invitations", "users"
+  add_foreign_key "locations", "locations", column: "parent_id"
   add_foreign_key "notifications", "users"
   add_foreign_key "proposals", "proposals", column: "parent_id"
   add_foreign_key "proposals", "sections"
@@ -258,7 +258,7 @@ ActiveRecord::Schema.define(version: 20160419021936) do
   add_foreign_key "requirements", "join_requirements"
   add_foreign_key "sections", "topics"
   add_foreign_key "subscriptions", "users"
-  add_foreign_key "topics", "groups"
+  add_foreign_key "topics", "locations"
   add_foreign_key "topics", "teams"
   add_foreign_key "topics", "topics", column: "parent_id"
   add_foreign_key "topics", "users"

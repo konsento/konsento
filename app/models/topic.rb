@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
   acts_as_taggable
 
   belongs_to :user
-  belongs_to :group
+  belongs_to :location
   belongs_to :parent, inverse_of: :children, class_name: 'Topic', foreign_key: :parent_id
   belongs_to :team
   has_many :children, inverse_of: :parent, class_name: 'Topic', foreign_key: :parent_id
@@ -18,9 +18,9 @@ class Topic < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :participants, -> { uniq }, through: :proposals, source: :user
 
-  validate :user_is_subscribed_to_group
+  validate :user_is_subscribed_to_location
   validates :title, presence: true
-  validates :group, presence: true
+  validates :location, presence: true
 
   accepts_nested_attributes_for :proposals, reject_if: :all_blank
 
@@ -47,10 +47,9 @@ class Topic < ActiveRecord::Base
   scope :controversial, -> { joins(:proposals).group('topics.id').order('COUNT(proposals.id) DESC') }
 
   private
-
-  def user_is_subscribed_to_group
-    unless user.groups.include?(group)
-      errors.add(:base, 'User must be subscribed to group')
+    def user_is_subscribed_to_location
+      unless user.locations.include?(location)
+        errors.add(:base, 'User must be subscribed to location')
+      end
     end
-  end
 end

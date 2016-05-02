@@ -28,7 +28,7 @@ module NotificationsHelper
     when 'Comment'
       message = t 'notification_messages.' + notification.key + '_html', topic_title: notification.data['topic_title']
     when 'Topic'
-      message = t 'notification_messages.' + notification.key + '_html', group_title: notification.data['group_title']
+      message = t 'notification_messages.' + notification.key + '_html', location_title: notification.data['location_title']
     when 'TeamInvitation'
       message = t 'notification_messages.' + notification.key + '_html', team_title: notification.data['team_title']
     else

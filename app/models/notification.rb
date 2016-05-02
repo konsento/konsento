@@ -26,7 +26,7 @@ class Notification < ActiveRecord::Base
       }
     end
 
-    users = comment.commentable.comments.group(:user_id).pluck(:user_id)
+    users = comment.commentable.comments.location(:user_id).pluck(:user_id)
     users << comment.commentable.user_id
     users.delete(comment.user_id)
 
@@ -56,8 +56,8 @@ class Notification < ActiveRecord::Base
 
   def self.notify_topic(topic)
     key = 'new_topic'
-    data = { 'group_title' => topic.group.title }
-    users = topic.group.users.pluck(:id)
+    data = { 'location_title' => topic.location.title }
+    users = topic.location.users.pluck(:id)
     users.delete(topic.user_id)
 
     users.each do |user_id|

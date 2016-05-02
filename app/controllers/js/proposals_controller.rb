@@ -7,7 +7,7 @@ class Js::ProposalsController < ApplicationController
     topic = Topic.find(params[:topic_id])
     section = topic.sections.find(params[:section_id])
 
-    @is_user_subscribed = topic.group.is_user_subscribed?(current_user)
+    @is_user_subscribed = topic.location.is_user_subscribed?(current_user)
 
     proposals = section.proposals.where.not(id: section.consensus.try(:id))
     @recent = proposals.recent.page(params[:recent_page])
@@ -17,7 +17,7 @@ class Js::ProposalsController < ApplicationController
 
   def comments
     @comment = Comment.new(commentable: @proposal, user: current_user)
-    @is_user_subscribed = @proposal.topic.group.is_user_subscribed?(current_user)
+    @is_user_subscribed = @proposal.topic.location.is_user_subscribed?(current_user)
   end
 
   def agree

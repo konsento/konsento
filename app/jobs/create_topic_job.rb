@@ -2,9 +2,9 @@ class CreateTopicJob < ActiveJob::Base
   queue_as :create_topic
 
   def perform(params)
-    group = Group.find(params[:group_id])
+    location = Location.find(params[:location_id])
 
-    topic = group.topics.create!(
+    topic = location.topics.create!(
       params.except(:proposals_attributes, :auto_split_text)
     ) do |t|
       i = 0

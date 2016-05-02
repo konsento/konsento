@@ -3,7 +3,7 @@ class SearchController < ApplicationController
     @q = search_params[:q].to_s.squish
     @results = {
       topics: Topic.for_user(current_user).search(@q).page(params[:topic_page]),
-      groups: Group.search(@q).page(params[:group_page])
+      locations: Location.search(@q).page(params[:location_page])
     }
 
     add_breadcrumb t '.title'

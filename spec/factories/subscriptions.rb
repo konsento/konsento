@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :subscription do
     user
     role 'default'
-    trait :group_subscription do
-      association :subscriptable, factory: :group
+    trait :location_subscription do
+      association :subscriptable, factory: :location
     end
     trait :team_subscription do
       association :subscriptable, factory: :team

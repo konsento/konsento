@@ -1,6 +1,6 @@
-class CreateGroups < ActiveRecord::Migration
+class CreateLocations < ActiveRecord::Migration
   def change
-    create_table :groups do |t|
+    create_table :locations do |t|
       t.references :parent, index: true
       t.string :title, null: false
       t.text :description
@@ -9,6 +9,6 @@ class CreateGroups < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_foreign_key :groups, :groups, column: :parent_id
+    add_foreign_key :locations, :locations, column: :parent_id
   end
 end
