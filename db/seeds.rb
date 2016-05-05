@@ -9,7 +9,7 @@ ActiveRecord::Base.transaction do
   RequirementValue.create!(user: user1, join_requirement: join, value: '12345678900')
   RequirementValue.create!(user: user2, join_requirement: join, value: '12345678901')
   RequirementValue.create!(user: user3, join_requirement: join, value: '12345678902')
-  RequirementValue.create!(user: user4, join_requirement: join, value: '12345678903')
+  # RequirementValue.create!(user: user4, join_requirement: join, value: '12345678903')
 
   team = Team.create(title: 'Sample Team', public: true)
 
@@ -26,7 +26,7 @@ ActiveRecord::Base.transaction do
   user1.subscriptions.create!(subscriptable: location, role: 'default')
   user2.subscriptions.create!(subscriptable: location, role: 'default')
   user3.subscriptions.create!(subscriptable: location, role: 'default')
-  user4.subscriptions.create!(subscriptable: location, role: 'default')
+  # user4.subscriptions.create!(subscriptable: location, role: 'default')
 
   sublocation = Location.create!(
     parent: location,
@@ -105,7 +105,7 @@ ActiveRecord::Base.transaction do
   Vote.create!(user: user3, proposal: proposal2, opinion: 1)
   Vote.create!(user: user3, proposal: proposal3, opinion: -1)
 
-  Vote.create!(user: user4, proposal: proposal1, opinion: 0)
-  Vote.create!(user: user4, proposal: proposal2, opinion: -1)
-  Vote.create!(user: user4, proposal: proposal3, opinion: -1)
+  # Vote.create!(user: user4, proposal: proposal1, opinion: 0)
+  # Vote.create!(user: user4, proposal: proposal2, opinion: -1)
+  # Vote.create!(user: user4, proposal: proposal3, opinion: -1)
 end

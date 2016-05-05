@@ -46,27 +46,27 @@
         %span.btn-label>
           %i.icon-people
         = proposal.votes.count
-    - if signed_in? && @is_user_subscribed
-      .btn-group
-        - user_vote = proposal.vote_for_user(current_user)
-        = link_to agree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 1) + ' has-tooltip', 'data-placement': 'top', title: t('.agree') do
-          %span
-            %i.icon-like
-        = link_to abstain_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 0) + ' has-tooltip', 'data-placement': 'top', title: t('.abstain') do
-          %span
-            %i.icon-options
-        = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) + ' has-tooltip', 'data-placement': 'top', title: t('.disagree') do
-          %span
-            %i.icon-dislike
+    / - if signed_in? && @is_user_subscribed
+    .btn-group
+      - user_vote = proposal.vote_for_user(current_user)
+      = link_to agree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 1) + ' has-tooltip', 'data-placement': 'top', title: t('.agree') do
+        %span
+          %i.icon-like
+      = link_to abstain_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, 0) + ' has-tooltip', 'data-placement': 'top', title: t('.abstain') do
+        %span
+          %i.icon-options
+      = link_to disagree_js_proposal_path(proposal), method: :post, remote: true, class: classes_for_vote_button(proposal, -1) + ' has-tooltip', 'data-placement': 'top', title: t('.disagree') do
+        %span
+          %i.icon-dislike
 
-      .btn-group
-        = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.propose') do
+    .btn-group
+      = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.propose') do
+        %span
+          %i.icon-pencil
+      - if proposal.section.consensus == proposal
+        = link_to new_js_topic_proposal_path(proposal.topic, next_section: proposal.section.index), remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.section_before') do
           %span
-            %i.icon-pencil
-        - if proposal.section.consensus == proposal
-          = link_to new_js_topic_proposal_path(proposal.topic, next_section: proposal.section.index), remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.section_before') do
-            %span
-              %i.fa.fa-angle-double-up
-          = link_to new_js_topic_proposal_path(proposal.topic, next_section: (proposal.section.index + 1)), remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.section_after') do
-            %span
-              %i.fa.fa-angle-double-down
+            %i.fa.fa-angle-double-up
+        = link_to new_js_topic_proposal_path(proposal.topic, next_section: (proposal.section.index + 1)), remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.section_after') do
+          %span
+            %i.fa.fa-angle-double-down

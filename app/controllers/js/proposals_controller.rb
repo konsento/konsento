@@ -21,28 +21,43 @@ class Js::ProposalsController < ApplicationController
   end
 
   def agree
-    @proposal.vote_agree(current_user)
+    @result = user_is_able_to_perform_action
+    if @result == "just_subscribed" || @result == "able"
+      @proposal.vote_agree(current_user)
+    end
   end
 
   def abstain
-    @proposal.vote_abstain(current_user)
+    @result = user_is_able_to_perform_action
+    if @result == "just_subscribed" || @result == "able"
+      @proposal.vote_abstain(current_user)
+    end
   end
 
   def disagree
-    @proposal.vote_disagree(current_user)
+    @result = user_is_able_to_perform_action
+    if @result == "just_subscribed" || @result == "able"
+      @proposal.vote_disagree(current_user)
+    end
   end
 
   def propose
-    @new_proposal = @proposal.dup
-    @new_proposal.user = current_user
-    @new_proposal.parent = @proposal
-    @new_proposal.references.build
+    @result = user_is_able_to_perform_action
+    if @result == "just_subscribed" || @result == "able"
+      @new_proposal = @proposal.dup
+      @new_proposal.user = current_user
+      @new_proposal.parent = @proposal
+      @new_proposal.references.build
+    end
   end
 
   def new
-    topic = Topic.find(params[:topic_id])
-    section = topic.sections.build
-    @proposal = section.proposals.build
+    @result = user_is_able_to_perform_action
+    if @result == "just_subscribed" || @result == "able"
+      topic = Topic.find(params[:topic_id])
+      section = topic.sections.build
+      @proposal = section.proposals.build
+    end
   end
 
   def create
@@ -78,8 +93,59 @@ class Js::ProposalsController < ApplicationController
   end
 
   private
+    def set_proposal
+      @proposal = Proposal.find(params[:id])
+    end
 
-  def set_proposal
-    @proposal = Proposal.find(params[:id])
-  end
+    def user_is_able_to_perform_action
+      if signed_in?
+        unless @proposal.blank?
+          if @proposal.topic.location.is_user_subscribed?(current_user)
+            return "able"
+          else
+            @subscription = @proposal.topic.location.subscriptions.find_or_initialize_by(user: current_user)
+            @subscription.role = 'default'
+
+            if @subscription.save
+              return "just_subscribed"
+            else
+              @redirect_url = url_for(
+                controller: '/requirement_values',
+                action: 'new',
+                requirable_id: @subscription.subscriptable.id,
+                requirable_type: @subscription.subscriptable_type,
+                user_id: @subscription.user.id
+              )
+              return "not_able_to_subscribe"
+            end
+          end
+        else
+          topic = Topic.find(params[:topic_id])
+          unless topic.blank?
+            if topic.location.is_user_subscribed?(current_user)
+              return "able"
+            else
+              @subscription = topic.location.subscriptions.find_or_initialize_by(user: current_user)
+              @subscription.role = 'default'
+
+              if @subscription.save
+                return "just_subscribed"
+              else
+                @redirect_url = url_for(
+                  controller: '/requirement_values',
+                  action: 'new',
+                  requirable_id: @subscription.subscriptable.id,
+                  requirable_type: @subscription.subscriptable_type,
+                  user_id: @subscription.user.id
+                )
+                return "not_able_to_subscribe"
+              end
+            end
+          end
+        end
+      else
+        @redirect_url = sign_in_path
+        return "not_logged"
+      end
+    end
 end

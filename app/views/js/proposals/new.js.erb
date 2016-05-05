@@ -1,4 +1,19 @@
-$('.modal-title').html("<%= t '.title' %>")
-$('.modal-body').html("<%= escape_javascript(render partial: 'form') %>");
+<% if @result == "not_logged" || @result == "not_able_to_subscribe" %>
+  $('.modal-title').html("<%= t('js.proposals.action_error_title') %>")
+  $('.modal-body').html('');
+  $('.modal-body').append("<%= t('js.proposals.action_error_messages.' + @result) %>");
+  $('.modal-body').append('<br /><br />');
+  $('.modal-body').append('<%= t("js.proposals.resolve_error_messages." + @result, link: link_to(t("js.proposals.resolve_error_messages.click_here"), @redirect_url)).html_safe %>');
+<% else %>
+  $('.modal-title').html("<%= t '.title' %>")
+  $('.modal-body').html("<%= escape_javascript(render partial: 'form') %>");
+<% end %>
+
+<% if @result == "just_subscribed" %>
+  $('.alert-body').html('');
+  $('.alert-body').append("<div><%= t('js.proposals.just_subscribed') %></div>");
+  $('.alert').slideDown();
+<% end %>
+
 $('#modal').modal('show');
 $('#modal').modal('handleUpdate');

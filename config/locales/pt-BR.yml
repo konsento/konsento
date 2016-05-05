@@ -150,6 +150,17 @@ pt-BR:
 
   js:
     proposals:
+      action_error_title: 'Não é possível realizar essa ação'
+      action_error_messages:
+        not_logged: 'Para prosseguir, é necessário entrar.'
+        not_able_to_subscribe: 'Você não possui os requisitos para se inscrever no grupo.'
+      resolve_error_messages:
+        click_here: "Clique aqui"
+        not_logged: "%{link} para entrar."
+        not_able_to_subscribe: "%{link} para preencher os requisitos."
+      just_subscribed: "Você foi inscrito neste grupo."
+      voted: "Seu voto foi computado."
+
       propose:
         title: 'Escrever nova proposta'
       new:
