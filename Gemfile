@@ -43,7 +43,7 @@ end
 
 group :development do
   # Deploying
-  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano', '~> 3.4.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano3-delayed-job', '~> 1.6'
