@@ -10,7 +10,7 @@ class TeamInvitation < ActiveRecord::Base
   validate :email_cannot_be_subscribed, on: :create
   validates :team, presence: true
   validates :token, presence: true
-  validates :accepted, presence: true
+  validates :accepted, inclusion: {in: [true, false]}
 
   scope :accepted, -> { where(accepted: true) }
   scope :not_accepted, -> { where(accepted: false) }
@@ -35,7 +35,7 @@ class TeamInvitation < ActiveRecord::Base
   end
 
   def send_email
-      TeamInvitationMailer.invite(self).deliver_later
+    TeamInvitationMailer.invite(self).deliver_later
   end
 
   def email_cannot_be_subscribed
@@ -47,10 +47,14 @@ class TeamInvitation < ActiveRecord::Base
 
   private
   def self.create_team_invitation(email, team)
-    team_invitation = team.team_invitations.create(email: email)
-    if team_invitation.persisted?
-      team_invitation.send_email
-    end
+    team_invitation = team.team_invitations.create(
+      email: email,
+      accepted: false,
+      token: SecureRandom.hex
+    )
+
+    team_invitation.send_email if team_invitation.persisted?
+
     team_invitation
   end
 end
