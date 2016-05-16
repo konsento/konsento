@@ -15,7 +15,7 @@ class Topic < ActiveRecord::Base
   has_many :children, inverse_of: :parent, class_name: 'Topic', foreign_key: :parent_id
   has_many :sections, inverse_of: :topic, autosave: true, dependent: :destroy
   has_many :proposals, through: :sections
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :participants, -> { uniq }, through: :proposals, source: :user
 
   validate :user_is_subscribed_to_location
