@@ -32,8 +32,6 @@ class Notification < ActiveRecord::Base
     users.delete(comment.user_id)
     users.uniq!
 
-    puts "\n\n\n\n #{users} \n\n\n\n"
-
     users.each do |user_id|
       Notification.create(
         user_id: user_id,
