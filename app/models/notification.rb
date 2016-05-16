@@ -2,7 +2,8 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :notifiable, polymorphic: true, touch: true
 
-  validates :user, :key, :data, :notifiable, :read, presence: true
+  validates :user, :key, :data, :notifiable, presence: true
+  validates :read, inclusion: {in: [true, false]}
 
   scope :read, -> { where(read: true) }
   scope :unread, -> { where(read: false) }
@@ -26,16 +27,20 @@ class Notification < ActiveRecord::Base
       }
     end
 
-    users = comment.commentable.comments.location(:user_id).pluck(:user_id)
+    users = comment.commentable.comments.group(:user_id).pluck(:user_id)
     users << comment.commentable.user_id
     users.delete(comment.user_id)
+    users.uniq!
+
+    puts "\n\n\n\n #{users} \n\n\n\n"
 
     users.each do |user_id|
       Notification.create(
         user_id: user_id,
         key: key,
         data: data,
-        notifiable: comment
+        notifiable: comment,
+        read: false
       )
     end
   end
