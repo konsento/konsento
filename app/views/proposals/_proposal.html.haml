@@ -29,7 +29,7 @@
       .btn-group.btn-group-justified
         = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button' do
           %i.icon-pencil
-        - if proposal.section.consensus == proposal
+        - if proposal.section.consensus(true) == proposal
           = link_to new_js_topic_proposal_path(proposal.topic, next_section: proposal.section.index), remote: true, class: 'btn btn-default propose-button' do
             %span
               %i.fa.fa-angle-double-up
@@ -63,7 +63,7 @@
       = link_to propose_js_proposal_path(proposal), method: :post, remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.propose') do
         %span
           %i.icon-pencil
-      - if proposal.section.consensus == proposal
+      - if proposal.section.consensus(true) == proposal
         = link_to new_js_topic_proposal_path(proposal.topic, next_section: proposal.section.index), remote: true, class: 'btn btn-default propose-button has-tooltip', 'data-placement': 'top', title: t('.section_before') do
           %span
             %i.fa.fa-angle-double-up

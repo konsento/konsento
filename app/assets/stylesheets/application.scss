@@ -157,7 +157,7 @@ ul.dropdown-menu {
   }
 }
 
-#consensus {
+#consensus-wrapper {
   overflow-y: auto;
 }
 
@@ -165,12 +165,12 @@ ul.dropdown-menu {
   overflow-y: auto;
 }
 
-#consensus .section:hover {
+#consensus-wrapper .section:hover {
   background: #EAF6FF;
   cursor: pointer;
 }
 
-#consensus .section.active {
+#consensus-wrapper .section.active {
   background: #DAECF9;
 }
 

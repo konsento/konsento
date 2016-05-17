@@ -8,8 +8,12 @@ class Js::ProposalsController < ApplicationController
     section = topic.sections.find(params[:section_id])
 
     @is_user_subscribed = topic.location.is_user_subscribed?(current_user)
-
-    proposals = section.proposals.where.not(id: section.consensus.try(:id))
+    include_suggested = params[:include_suggested]
+    if include_suggested == "true"
+      proposals = section.proposals.where.not(id: section.consensus(true).try(:id))
+    else
+      proposals = section.proposals.where.not(id: section.consensus(false).try(:id))
+    end
     @recent = proposals.recent.page(params[:recent_page])
     @popular = proposals.popular.page(params[:popular_page])
     @controversial = proposals.controversial.page(params[:controversial_page])

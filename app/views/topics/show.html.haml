@@ -10,20 +10,28 @@
         .col-md-6.consensus
           %p= Topic.model_name.human
           / Nav tabs
-          %ul.nav.nav-tabs{:role => "tablist"}
+          %ul.nav.nav-tabs#consensus-nav-tabs{:role => "tablist"}
             %li.active{:role => "presentation"}
+              %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#argumentation", :role => "tab"}
+                = 'Discusão'
+            %li{:role => "presentation"}
               %a{"aria-controls" => "popular", "data-toggle" => "tab", :href => "#consensus", :role => "tab"}
                 = t '.consensus'
 
           / Tab panes
-          .tab-content#consensus
-            .tab-pane.active{:role => "tabpanel"}
-              = render partial: @sections
-
+          .tab-content#consensus-wrapper
+            #argumentation.tab-pane.active{:role => "tabpanel"}
+              = render partial: @sections, locals: {include_suggested: true}
+            #consensus.tab-pane{:role => "tabpanel"}
+              = render partial: @consensus, locals: {include_suggested: false}
               - if signed_in? && @is_user_subscribed
                 / = link_to t('sections.add_section'), new_js_topic_proposal_path(@topic), remote: true, class: 'btn btn-default btn-block add-section'
+          #argumentation-pagination
+            = paginate @sections, param_name: 'sections_page', window: 0
+          #consensus-pagination
+            = paginate @consensus, param_name: 'consensus_page', window: 0
 
-              = paginate @sections, param_name: 'sections_page', window: 0
+
 
         .col-md-6.suggestions
           .visible-xs

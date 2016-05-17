@@ -7,7 +7,7 @@ class Section < ActiveRecord::Base
 
   default_scope { order(index: :asc) }
 
-  def consensus
+  def consensus(include_suggested)
     total_votes_minimum_percent = topic.location.total_votes_percent
     agree_votes_minimum_percent = topic.location.agree_votes_percent
 
@@ -34,7 +34,7 @@ class Section < ActiveRecord::Base
       end
     end
 
-    unless proposal
+    if include_suggested && !proposal
       proposal = proposals.joins(:votes).group(:id).order('SUM(votes.opinion) DESC').first
     end
 

@@ -18,6 +18,7 @@ class TopicsController < ApplicationController
     @comment = Comment.new(commentable: @topic, user: current_user)
     @comments = @topic.comments.page(params[:comments_page])
     @sections = @topic.sections.page(params[:sections_page])
+    @consensus = @topic.sections.page(params[:consensus_page])
     @is_user_subscribed = @topic.location.is_user_subscribed?(current_user)
   end
 

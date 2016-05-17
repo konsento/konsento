@@ -7,32 +7,44 @@ class @Konsento::Topic::Show
     $(window).resize()
 
     @setSectionClickEvent()
+    @setConsensusNavTabEvent()
 
     if @params.section_index?
-      $('#consensus .section')[@params.section_index].click()
+      $('#consensus-wrapper .section')[@params.section_index].click()
     else
       if window.innerWidth >= 768
-        $('#consensus .section')[0].click()
+        $('#consensus-wrapper .section')[0].click()
 
   setSectionClickEvent: ->
     _this = @
-    $('#consensus .section').click (e) ->
+    $('#consensus-wrapper .section').click (e) ->
       if(e.target.tagName == 'P' || e.target.tagName == 'DIV')
-        $('#consensus .section').removeClass('active')
+        $('#consensus-wrapper .section').removeClass('active')
         $(this).addClass('active')
         topicId = $('#topic').data('topic-id')
         sectionId = $(this).data('id')
-        _this.loadChildren(topicId, sectionId)
+        rootTabId = $(this).parent().attr("id")
+        includeSuggested = (rootTabId == "argumentation")
+        _this.loadChildren(topicId, sectionId, includeSuggested)
 
-  loadChildren: (topicId, sectionId) ->
-    $.getScript "#{gon.rootUrl}js/topics/#{topicId}/sections/#{sectionId}/proposals"
+  loadChildren: (topicId, sectionId, includeSuggested) ->
+    $.getScript "#{gon.rootUrl}js/topics/#{topicId}/sections/#{sectionId}/proposals/?include_suggested=#{includeSuggested}"
 
   setResizeEvent: ->
     $(window).resize ->
       if($(window).width() > 976)
         margin = 100
         windowHeight = $(window).height()
-        $('#consensus').height(windowHeight - margin)
+        $('#consensus-wrapper').height(windowHeight - margin)
         $('#proposals').height(windowHeight - margin)
       else
         #sadasd
+
+  setConsensusNavTabEvent: ->
+    $('#consensus-pagination').hide();
+    $('#consensus-nav-tabs a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
+      target = $(e.target).attr('href')
+      # activated tab
+      $('#argumentation-pagination, #consensus-pagination').hide();
+      $(target+"-pagination").show();
+      return
