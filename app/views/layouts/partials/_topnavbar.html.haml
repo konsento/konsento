@@ -8,7 +8,7 @@
       %span.icon-bar
       %span.icon-bar
     - if signed_in?
-      %button.profile.navbar-toggle{'data-target': '.navbar-collapse', 'data-toggle': 'dropdown',  type: 'button'}
+      %button.profile.navbar-toggle{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open',  type: 'button'}
         %span.sr-only Toggle navigation
         %span.icon-user
     - else
