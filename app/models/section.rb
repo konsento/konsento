@@ -35,7 +35,7 @@ class Section < ActiveRecord::Base
     end
 
     unless proposal
-      proposal = proposals.find_by(parent: nil)
+      proposal = proposals.joins(:votes).group(:id).order('SUM(votes.opinion) DESC').first
     end
 
     proposal
