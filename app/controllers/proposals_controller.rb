@@ -25,7 +25,7 @@ class ProposalsController < ApplicationController
     })
 
     proposal_params[:references_attributes].each do |key, reference|
-      Reference.create!({
+      Reference.create({
         proposal_id: @proposal[:id],
         user_id: proposal_params[:user_id],
         title: reference[:title],
