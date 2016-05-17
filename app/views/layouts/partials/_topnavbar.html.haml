@@ -7,9 +7,18 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
+    - if signed_in?
+      %button.profile.navbar-toggle{'data-target': '.navbar-collapse', 'data-toggle': 'dropdown',  type: 'button'}
+        %span.sr-only Toggle navigation
+        %span.icon-user
+    - else
+      %a.profile.navbar-toggle{href: sign_in_path, type: 'button'}
+        %span.sr-only Toggle navigation
+        %span.icon-user
     = link_to root_path, id: 'brand' do
       %img{alt: 'Konsento', src: image_path('konsento-logo.png')}
       .name Konsento
+
   / END navbar header
   / START Nav wrapper
   .navbar-collapse.collapse
@@ -53,14 +62,14 @@
                   %span.unread-notifications.label.label-danger.pull-right
               / END list group
           / END Dropdown menu
-        %li
+        %li.hidden-xs
           %a{'data-no-persist': 'true', 'data-toggle-state': 'offsidebar-open', href: '#', class: 'has-tooltip', 'data-placement': 'bottom', title: t('.profile_title')}
             %em.icon-user.hidden-xs
             %span.visible-xs-inline= t '.profile_title'
         / END User menu
       - else
         %li.dropdown.dropdown-list
-          %a{'data-toggle': 'dropdown', href: '#'}
+          %a#lol{'data-toggle': 'dropdown', href: '#'}
             %em.icon-user.hidden-xs
             %span.visible-xs-inline= t '.profile_title'
           %ul.dropdown-menu
