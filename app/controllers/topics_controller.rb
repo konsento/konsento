@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy, :search_proposals]
+  before_action :set_topic, only: [:edit, :update, :destroy, :search_proposals]
   before_action :require_login, only: [:new, :create]
 
   # GET /topics/1/search_proposals
@@ -13,6 +13,8 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
+    @topic = Topic.for_user(current_user).find(params[:id])
+
     add_breadcrumb @topic.location.title, recursive_location_path(@topic.location)
     add_breadcrumb @topic.title, topic_path(@topic)
     @comment = Comment.new(commentable: @topic, user: current_user)
