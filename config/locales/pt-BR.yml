@@ -212,6 +212,7 @@ pt-BR:
       argumentation: 'Discussão'
       consensus: 'Consenso'
       write_comment: 'Escreva um comentário'
+      sign_in_to_access: 'Você precisa entrar para acessar esta página'
     create:
       processing_in_the_background: 'Seu tópico está sendo processado, te notificaremos quando estiver pronto!'
 

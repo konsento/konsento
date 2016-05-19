@@ -187,6 +187,7 @@ en:
       suggestions_to_selected_section: 'Suggestion for selected section'
       consensus: 'Consensus'
       write_comment: 'Write a comment'
+      sign_in_to_access: 'You need to sign in to access this page'
     create:
       processing_in_the_background: "Your topic is being processed, we'll notify you when it's ready!"
 

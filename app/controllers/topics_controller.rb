@@ -22,6 +22,13 @@ class TopicsController < ApplicationController
     @sections = @topic.sections.page(params[:sections_page])
     @consensus = @topic.sections.page(params[:consensus_page])
     @is_user_subscribed = @topic.location.is_user_subscribed?(current_user)
+  rescue ActiveRecord::RecordNotFound
+    unless signed_in?
+      flash[:notice] = t '.sign_in_to_access'
+      return redirect_to sign_in_path(referer: request.original_url)
+    end
+
+    raise
   end
 
   # GET /locations/{location_id}/topics/new
