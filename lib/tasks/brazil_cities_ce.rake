@@ -191,7 +191,7 @@ namespace :utils do
       ]
       gl = Location.find_by(title: "Global", parent: nil)
       br = Location.find_by(title: "Brasil", parent: gl)
-      st = Location.find_by(title: "Ceara", parent: br)
+      st = Location.find_by(title: "Ceará", parent: br)
 
       cities.each do |city|
         Location.create!(
