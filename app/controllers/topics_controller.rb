@@ -25,7 +25,8 @@ class TopicsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     unless signed_in?
       flash[:notice] = t '.sign_in_to_access'
-      return redirect_to sign_in_path(referer: request.original_url)
+      session[:return_to] = request.original_fullpath
+      return redirect_to sign_in_path
     end
 
     raise
