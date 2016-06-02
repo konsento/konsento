@@ -22,13 +22,10 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.new(comment_params)
-
     if @comment.save
-      if @comment.commentable.instance_of? Topic
-        respond_with @comment.commentable
-      else
-        respond_with @comment.commentable
-      end
+      redirect_to @comment.commentable
+    else
+      redirect_to :back, notice: @comment.errors.full_messages.join(" \n")
     end
   end
 

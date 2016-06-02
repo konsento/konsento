@@ -14,14 +14,33 @@
     = stylesheet_link_tag 'application', media: 'all', id: "maincss"
     = csrf_meta_tags
 
-    %script
+    :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-60734376-2', 'auto');
+      ga('require', 'linkid');
       ga('send', 'pageview');
+
+    / Facebook Conversion Code for TrackingFB
+    :javascript
+      (function() {
+      var _fbq = window._fbq || (window._fbq = []);
+      if (!_fbq.loaded) {
+      var fbds = document.createElement('script');
+      fbds.async = true;
+      fbds.src = 'https://connect.facebook.net/en_US/fbds.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(fbds, s);
+      _fbq.loaded = true;
+      }
+      })();
+      window._fbq = window._fbq || [];
+      window._fbq.push(['track', '6021671157011', {'value':'0.00','currency':'BRL'}]);
+    %noscript
+      %img{:alt => "", :height => "1", :src => "https://www.facebook.com/tr?ev=6021671157011&cd[value]=0.00&cd[currency]=BRL&noscript=1", :style => "display:none", :width => "1"}/
   %body.layout-h
     .wrapper
       / top navbar

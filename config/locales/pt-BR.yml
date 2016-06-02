@@ -284,6 +284,8 @@ pt-BR:
         title: 'Título'
         public: 'Público'
         join_requirements: 'Requerimentos'
+      comment:
+        content: 'Conteúdo do comentário'
 
   simple_form:
     hints:
@@ -302,3 +304,6 @@ pt-BR:
         create: 'Convidar'
       comment:
         create: 'Comentar'
+
+  errors:
+    format: "%{attribute} %{message}."
