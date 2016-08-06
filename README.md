@@ -8,3 +8,9 @@ http://about.konsento.org/
 
 See live: 
 http://kosento.org
+
+## License
+Konsento is licensed under the [MIT License](https://github.com/konsento/konsento/blob/master/LICENSE.md).
+
+## Contributing
+See our [guidelines for contributing to the project](https://github.com/konsento/konsento/blob/master/CONTRIBUTING.md).
