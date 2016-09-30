@@ -10,8 +10,8 @@ The first thing you should do is to find where to help.
 #### GitHub issues
 The easiest way to find where to help is to check for [open issues in the repository](https://github.com/konsento/konsento/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20), or open one yourself if you find any bug.
 
-#### Trello
-We have a [board on Trello](https://trello.com/b/SjeyftZd/konsento) where we keep everything that needs to be done, just pick a task, discuss it and work on it!
+#### GitHub project
+You can check the progress of the issues on the GitHub [project](https://github.com/konsento/konsento/projects/1).
 
 #### Facebook group
 If you have any question or suggestion, you can always post it on [our facebook group](https://www.facebook.com/groups/dddcp/) and discuss about it with everyone interested, before committing yourself into making changes to the source code.
