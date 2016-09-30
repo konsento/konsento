@@ -29,7 +29,7 @@ Fork the repository so you can make the changes, just click the fork button at t
 Create a new local branch in your local clone and make some changes using your favorite code editor or IDE. Remember to change or create the respective tests, they’ll need to pass for your changes to be accepted.
 
 #### Commit, push and pull request
-Now commit the changes you’ve made, push to you fork of the repository and create a pull request.
+Now commit the changes you’ve made, push to your fork of the repository and create a pull request.
 We use [Travis CI](https://travis-ci.org/), so when your pull request is created all tests will be automatically run, if any of them don’t pass you’ll have to check what’s wrong, fix it, commit and push before you changes can be merged.
 
 Feel free to comment on the pull request with questions to any of the repo admins.
