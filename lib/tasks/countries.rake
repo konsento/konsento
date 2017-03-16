@@ -203,7 +203,6 @@ namespace :utils do
       "Srbija",
       "Sri Lanka",
       "Status Civitatis Vaticanæ",
-      "Status Civitatis Vaticanæ",
       "Suomen Tasavalta",
       "Suriname",
       "Suriyah",
