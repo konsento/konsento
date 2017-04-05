@@ -29,7 +29,7 @@ class @Konsento::Topic::New
     $("#proposals").bind 'paste', textareaSelector, (e) ->
       if $("#automatically-split-text input").is(':checked')
         text = e.originalEvent.clipboardData.getData('text')
-        proposals = text.split('\n\n')
+        proposals = text.match(/[^.\r\n]*/g)
 
         if proposals.length < 100
           e.preventDefault()
@@ -40,8 +40,9 @@ class @Konsento::Topic::New
             proposals.shift() # remove first proposal from array
           if proposals.length > 0
             for proposal in proposals
-              $('#proposals .add_fields').click()
-              $('#proposals textarea').last().append(proposal)
+              if proposal.length > 0
+                $('#proposals .add_fields').click()
+                $('#proposals textarea').last().append(proposal)
           $('#proposals textarea').last().focus()
 
       $('#proposals textarea').trigger('input') # trigger event to auto ajust height
