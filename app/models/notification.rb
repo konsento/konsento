@@ -2,7 +2,7 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :notifiable, polymorphic: true, touch: true
 
-  validates :user, :key, :data, :notifiable, presence: true
+  validates :user, :key, :notifiable, presence: true
   validates :read, inclusion: {in: [true, false]}
 
   scope :read, -> { where(read: true) }
