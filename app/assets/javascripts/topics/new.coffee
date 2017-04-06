@@ -29,7 +29,7 @@ class @Konsento::Topic::New
     $("#proposals").bind 'paste', textareaSelector, (e) ->
       if $("#automatically-split-text input").is(':checked')
         text = e.originalEvent.clipboardData.getData('text')
-        proposals = text.match(/[^.\r\n]*/g)
+        proposals = text.match(/[^\r\n]*/g)
 
         if proposals.length < 100
           e.preventDefault()
