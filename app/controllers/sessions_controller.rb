@@ -25,4 +25,9 @@ class SessionsController < Clearance::SessionsController
     sign_in(user)
     redirect_to root_url
   end
+
+  private
+  def url_after_create
+    cookies[:referer_url] ? cookies[:referer_url] : root_path
+  end
 end

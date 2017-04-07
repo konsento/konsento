@@ -118,7 +118,8 @@ class ApplicationController < ActionController::Base
        request.request_method == 'GET' &&
        !signed_in? &&
        !ignore_offer_login?
-      redirect_to sign_in_path(offer: true, referer: request.original_url)
+      cookies[:referer_url] = request.original_url
+      redirect_to sign_in_path(offer: true)
     end
   end
 

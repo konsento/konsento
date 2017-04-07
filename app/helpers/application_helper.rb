@@ -1,7 +1,7 @@
 module ApplicationHelper
   def previous_path(options = {})
-    path = if params[:referer]
-      params[:referer]
+    path = if cookies[:referer_url]
+      cookies[:referer_url]
     else
       root_path
     end

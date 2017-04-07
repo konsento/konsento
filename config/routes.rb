@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # Root
   root 'locations#show'
 
+  resource  :session,
+  :controller => 'sessions',
+  :only => [:new, :create, :destroy]
+
   # Auth
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
   resource :session, controller: 'clearance/sessions', only: [:create]
