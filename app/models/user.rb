@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Clearance::User
   attr_accessor :empty_requirement_values
 
@@ -15,7 +15,15 @@ class User < ActiveRecord::Base
   has_many :locations, through: :subscriptions, source: :subscriptable, source_type: 'Location'
   has_many :teams, through: :subscriptions, source: :subscriptable, source_type: 'Team'
 
-  before_create { |record| record.available_invitations = 10 }
+  before_create { |user| user.available_invitations = 10 }
+
+  after_create do |user|
+    team_invitations = TeamInvitation.where(email: user.email)
+
+    team_invitations.each do |team_invitation|
+      Notification.notify(team_invitation)
+    end
+  end
 
   validates :username, presence: true
   validates :email, presence: true

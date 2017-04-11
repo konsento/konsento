@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -24,22 +23,20 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.string   "token",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
-
-  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",          null: false
     t.integer  "parent_id"
     t.text     "content",          null: false
-    t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.integer  "commentable_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+    t.index ["parent_id"], name: "index_comments_on_parent_id", using: :btree
   end
-
-  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
-  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -53,9 +50,8 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.integer  "user_id",                    null: false
@@ -64,10 +60,9 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.boolean  "registered", default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["email"], name: "index_invitations_on_email", unique: true, using: :btree
+    t.index ["token"], name: "index_invitations_on_token", unique: true, using: :btree
   end
-
-  add_index "invitations", ["email"], name: "index_invitations_on_email", unique: true, using: :btree
-  add_index "invitations", ["token"], name: "index_invitations_on_token", unique: true, using: :btree
 
   create_table "join_requirements", force: :cascade do |t|
     t.string   "title"
@@ -84,23 +79,21 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "slug",                null: false
+    t.index ["parent_id"], name: "index_locations_on_parent_id", using: :btree
+    t.index ["slug", "parent_id"], name: "index_locations_on_slug_and_parent_id", unique: true, using: :btree
   end
-
-  add_index "locations", ["parent_id"], name: "index_locations_on_parent_id", using: :btree
-  add_index "locations", ["slug", "parent_id"], name: "index_locations_on_slug_and_parent_id", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id",                         null: false
     t.string   "key",                             null: false
     t.json     "data",                            null: false
-    t.integer  "notifiable_id"
     t.string   "notifiable_type"
+    t.integer  "notifiable_id"
     t.boolean  "read",            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id", using: :btree
   end
-
-  add_index "notifications", ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id", using: :btree
 
   create_table "proposals", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -109,9 +102,8 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.text     "content",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["section_id", "parent_id", "user_id"], name: "index_proposals_on_section_id_and_parent_id_and_user_id", using: :btree
   end
-
-  add_index "proposals", ["section_id", "parent_id", "user_id"], name: "index_proposals_on_section_id_and_parent_id_and_user_id", using: :btree
 
   create_table "references", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -120,9 +112,8 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.string   "content",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id", "proposal_id"], name: "index_references_on_user_id_and_proposal_id", using: :btree
   end
-
-  add_index "references", ["user_id", "proposal_id"], name: "index_references_on_user_id_and_proposal_id", using: :btree
 
   create_table "requirement_values", force: :cascade do |t|
     t.integer  "user_id",             null: false
@@ -130,59 +121,53 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.string   "value",               null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.index ["user_id", "join_requirement_id"], name: "index_requirement_values_on_user_id_and_join_requirement_id", unique: true, using: :btree
   end
-
-  add_index "requirement_values", ["user_id", "join_requirement_id"], name: "index_requirement_values_on_user_id_and_join_requirement_id", unique: true, using: :btree
 
   create_table "requirements", force: :cascade do |t|
     t.integer "join_requirement_id", null: false
-    t.integer "requirable_id"
     t.string  "requirable_type"
+    t.integer "requirable_id"
+    t.index ["requirable_id", "requirable_type", "join_requirement_id"], name: "requirements_index", unique: true, using: :btree
+    t.index ["requirable_type", "requirable_id"], name: "index_requirements_on_requirable_type_and_requirable_id", using: :btree
   end
-
-  add_index "requirements", ["requirable_id", "requirable_type", "join_requirement_id"], name: "requirements_index", unique: true, using: :btree
-  add_index "requirements", ["requirable_type", "requirable_id"], name: "index_requirements_on_requirable_type_and_requirable_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
     t.integer  "topic_id",   null: false
     t.integer  "index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["topic_id", "index"], name: "index_sections_on_topic_id_and_index", unique: true, using: :btree
   end
-
-  add_index "sections", ["topic_id", "index"], name: "index_sections_on_topic_id_and_index", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id",            null: false
     t.string   "role"
-    t.integer  "subscriptable_id"
     t.string   "subscriptable_type"
+    t.integer  "subscriptable_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["subscriptable_type", "subscriptable_id"], name: "index_subscriptions_on_subscriptable_type_and_subscriptable_id", using: :btree
+    t.index ["user_id", "subscriptable_id", "subscriptable_type"], name: "subscriptions_index", unique: true, using: :btree
   end
-
-  add_index "subscriptions", ["subscriptable_type", "subscriptable_id"], name: "index_subscriptions_on_subscriptable_type_and_subscriptable_id", using: :btree
-  add_index "subscriptions", ["user_id", "subscriptable_id", "subscriptable_type"], name: "subscriptions_index", unique: true, using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
-    t.integer  "taggable_id"
     t.string   "taggable_type"
-    t.integer  "tagger_id"
+    t.integer  "taggable_id"
     t.string   "tagger_type"
+    t.integer  "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
   end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "team_invitations", force: :cascade do |t|
     t.integer  "team_id",                    null: false
@@ -191,10 +176,9 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.boolean  "accepted",   default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["email", "team_id"], name: "index_team_invitations_on_email_and_team_id", unique: true, using: :btree
+    t.index ["token"], name: "index_team_invitations_on_token", unique: true, using: :btree
   end
-
-  add_index "team_invitations", ["email", "team_id"], name: "index_team_invitations_on_email_and_team_id", unique: true, using: :btree
-  add_index "team_invitations", ["token"], name: "index_team_invitations_on_token", unique: true, using: :btree
 
   create_table "teams", force: :cascade do |t|
     t.string   "title",                      null: false
@@ -202,9 +186,8 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "slug",                       null: false
+    t.index ["slug"], name: "index_teams_on_slug", unique: true, using: :btree
   end
-
-  add_index "teams", ["slug"], name: "index_teams_on_slug", unique: true, using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -214,10 +197,9 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.string   "title",       null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["parent_id"], name: "index_topics_on_parent_id", using: :btree
+    t.index ["user_id", "parent_id", "location_id"], name: "index_topics_on_user_id_and_parent_id_and_location_id", unique: true, using: :btree
   end
-
-  add_index "topics", ["parent_id"], name: "index_topics_on_parent_id", using: :btree
-  add_index "topics", ["user_id", "parent_id", "location_id"], name: "index_topics_on_user_id_and_parent_id_and_location_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                          null: false
@@ -228,10 +210,9 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.integer  "available_invitations"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
+    t.index ["username"], name: "index_users_on_username", using: :btree
   end
-
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -239,9 +220,8 @@ ActiveRecord::Schema.define(version: 20160419021936) do
     t.integer  "opinion",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id", "proposal_id"], name: "index_votes_on_user_id_and_proposal_id", unique: true, using: :btree
   end
-
-  add_index "votes", ["user_id", "proposal_id"], name: "index_votes_on_user_id_and_proposal_id", unique: true, using: :btree
 
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "users"

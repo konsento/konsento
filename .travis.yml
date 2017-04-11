@@ -1,11 +1,15 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.3.0
+  - 2.4.0
 before_script:
   - psql -c "CREATE USER konsento WITH CREATEDB SUPERUSER PASSWORD 'konsento';" -U postgres
 script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
+  code_climate:
+    repo_token: $CODE_CLIMATE_TOKEN
+after_success:
+  - bundle exec codeclimate-test-reporter

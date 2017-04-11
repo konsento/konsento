@@ -1,4 +1,4 @@
-class Subscription < ActiveRecord::Base
+class Subscription < ApplicationRecord
   TEAM_ROLES = [
     'default',
     'admin'

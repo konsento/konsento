@@ -1,4 +1,4 @@
-class Proposal < ActiveRecord::Base
+class Proposal < ApplicationRecord
   include PgSearch
 
   pg_search_scope :search,

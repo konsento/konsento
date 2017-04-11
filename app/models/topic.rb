@@ -1,4 +1,4 @@
-class Topic < ActiveRecord::Base
+class Topic < ApplicationRecord
   include PgSearch
 
   pg_search_scope :search,
@@ -16,11 +16,13 @@ class Topic < ActiveRecord::Base
   has_many :sections, inverse_of: :topic, autosave: true, dependent: :destroy
   has_many :proposals, through: :sections
   has_many :comments, as: :commentable, dependent: :destroy
-  has_many :participants, -> { uniq }, through: :proposals, source: :user
+  has_many :participants, -> { distinct }, through: :proposals, source: :user
 
   validate :user_is_subscribed_to_location
   validates :title, presence: true
   validates :location, presence: true
+
+  after_create { |topic| Notification.notify(topic) }
 
   accepts_nested_attributes_for :proposals, reject_if: :all_blank
 

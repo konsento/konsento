@@ -1,4 +1,4 @@
-class RequirementValue < ActiveRecord::Base
+class RequirementValue < ApplicationRecord
   belongs_to :user
   belongs_to :join_requirement
 

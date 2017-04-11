@@ -1,4 +1,4 @@
-class CreateTopicJob < ActiveJob::Base
+class CreateTopicJob < ApplicationJob
   queue_as :create_topic
 
   def perform(params)

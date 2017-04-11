@@ -1,4 +1,4 @@
-class TeamInvitation < ActiveRecord::Base
+class TeamInvitation < ApplicationRecord
   has_secure_token
 
   belongs_to :team
@@ -14,6 +14,8 @@ class TeamInvitation < ActiveRecord::Base
 
   scope :accepted, -> { where(accepted: true) }
   scope :not_accepted, -> { where(accepted: false) }
+
+  after_create { |team_invitation| Notification.notify(team_invitation) }
 
   def self.invite_emails(emails, team, user)
     emails = emails.split(',') unless emails.respond_to? :to_ary

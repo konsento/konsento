@@ -1,4 +1,4 @@
-class Invitation < ActiveRecord::Base
+class Invitation < ApplicationRecord
   has_secure_token
 
   belongs_to :user, inverse_of: :invitations, required: true

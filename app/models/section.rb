@@ -1,4 +1,4 @@
-class Section < ActiveRecord::Base
+class Section < ApplicationRecord
   belongs_to :topic, inverse_of: :sections, required: true, touch: true
   has_many :proposals, inverse_of: :section, autosave: true, dependent: :destroy
   validates :topic, presence: true

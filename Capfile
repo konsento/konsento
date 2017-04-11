@@ -4,12 +4,18 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
-# Include tasks from other gems included in your Gemfile
-require 'capistrano/rails'
+require 'capistrano/scm/git'
+install_plugin Capistrano::SCM::Git
+
 require 'capistrano/rbenv'
+require 'capistrano/bundler'
+require 'capistrano/rails/migrations'
+require 'capistrano/rails/assets'
+
 require 'capistrano/puma'
-require 'capistrano/puma/workers'
-require 'capistrano/puma/jungle'
+install_plugin Capistrano::Puma
+install_plugin Capistrano::Puma::Workers
+
 require 'capistrano/delayed_job'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

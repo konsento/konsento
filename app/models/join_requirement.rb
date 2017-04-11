@@ -1,4 +1,4 @@
-class JoinRequirement < ActiveRecord::Base
+class JoinRequirement < ApplicationRecord
   has_many :requirements
   has_many :requirement_values
   has_many :users, through: :requirement_values
