@@ -51,7 +51,7 @@ class TopicsController < ApplicationController
 
     if process_topic_in_background?
       if @topic.valid?
-        CreateTopicJob.perform_later(topic_params.merge(
+        CreateTopicJob.perform_later(topic_params.to_h.merge(
           location_id: params[:location_id],
           user_id: current_user.id
         ))
@@ -59,7 +59,7 @@ class TopicsController < ApplicationController
         return redirect_to recursive_location_path(location), flash: {alert: t('.processing_in_the_background')}
       end
     else
-      topic_params[:proposals_attributes].each_with_index do |(k, p), i|
+      topic_params[:proposals_attributes].to_h.each_with_index do |(k, p), i|
         s = @topic.sections.build(index: i)
         s.proposals.build(user: current_user, content: p[:content])
       end
@@ -99,6 +99,6 @@ class TopicsController < ApplicationController
 
   def process_topic_in_background?
     topic_params[:auto_split_text] == 'on' &&
-    topic_params[:proposals_attributes].any? { |(k, p)| p[:content].each_line.count > 100 }
+    topic_params[:proposals_attributes].to_h.any? { |(k, p)| p[:content].each_line.count > 100 }
   end
 end
