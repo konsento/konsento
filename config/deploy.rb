@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.8.0'
+lock '3.8.1'
 
 set :application, 'konsento'
 set :repo_url, 'git@github.com:konsento/konsento.git'
@@ -10,7 +10,7 @@ set :linked_dirs, ld
 set :linked_files, %w[.rbenv-vars]
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.4.0'
+set :rbenv_ruby, '2.4.1'
 
 rbenv_prefix = "RBENV_ROOT=#{fetch(:rbenv_path)}"
 rbenv_prefix << " RBENV_VERSION=#{fetch(:rbenv_ruby)}"

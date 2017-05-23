@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.4.1'
 
-gem 'rails', '5.0.2'
+gem 'rails', '5.0.3'
 
 gem 'acts-as-taggable-on'
 gem 'bower-rails'

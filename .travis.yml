@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.4.0
+  - 2.4.1
 before_script:
   - psql -c "CREATE USER konsento WITH CREATEDB SUPERUSER PASSWORD 'konsento';" -U postgres
 script:
