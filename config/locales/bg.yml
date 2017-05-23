@@ -1,0 +1,279 @@
+bg:
+  locale_name: 'Български'
+
+  actions: 'Действия'
+  'false': 'Не'
+  'true': 'Да'
+
+  crud:
+    confirm: 'Потвърждавате ли това действие?'
+
+  home: 'Начало'
+  back: 'Назад'
+
+  notification_messages:
+    new_topic_html: 'Нова тема по локация <strong>%{location_title}</strong> локация'
+    new_topic_comment_html: 'Нов коментар по <strong>%{topic_title}</strong> тема'
+    new_proposal_comment_html: 'Нов коментар в предложение по <strong>%{topic_title}</strong> тема'
+    team_invitation_html: 'Нова покана към <strong>%{team_title}</strong> отбор'
+    topic_processed_html: 'Приключи обработка по Ваша нова тема'
+    topic_processing_error_html: 'Имаше грешка по време на обработка на Ваша тема,моля опитайте отново'
+
+  layouts:
+    partials:
+      offsidebar:
+        profile: 'Профил'
+        edit_profile: 'Редактирай профил'
+      topnavbar:
+        about: 'Относно'
+        not_signed_up: 'Не сте регистриран?'
+        sign_up: 'Впишете се'
+        see_more: 'Вижте още'
+        profile_title: 'Профил'
+        notifications: 'Уведомления'
+        locations_title: 'Локации'
+        help_title: 'Помощ'
+        search_title: 'Търси'
+        search_description: 'Въведете търсена дума и натиснете enter...'
+      footer:
+        current_locale: 'Местен: %{current_locale} -'
+        change: 'Промени'
+
+  pages:
+    unavailable_content:
+      description: 'Това съдържание вече не е на разположение :('
+    help:
+      title: "Помощ"
+      home: "Начало"
+      content: "Добре дошли в Помощ! Кликнете върху връзка в ляво, за да разберете повече по тема."
+      access:
+        title: "Свързвам със софтуера"
+        content: "За да се свържете със софтуера първо трябва да се впишете. Регистрацията е лесна посредством страницата за вписване."
+      topics:
+        title: "Теми"
+        content: "Темите са основни структури на а в други локации (подлокации)."
+      sections:
+        title: "Параграфи"
+        content: "Темите са разделеини на параграфи. Потребители, които следват дадена тема могат да коментират върху тема и параграф, гласуват и правят предложения. Може да зададете положителен вот, отрицателен вот или неутрален вот. Извършва се изчисление на вота и ако дадено  предложение бъде одобрено, то замества предишното и представлява консенсус."
+      tabs:
+        title: "Раздели"
+        content: "Темите са разпределени по раздели. Раздела по подразбиране. Раздела по подразбиране “Популярни”, подрежда темите по тяхната популярност(коментари,гласуване и т.н.). Съответно “Актуални”- най- новите теми, “Противоречиви”- според съотношението на гласовете “за” и “против”. Раздела “Подлокации- показва съответните подлокации."
+      teams:
+        title: "Отбори"
+        content: "Отборите се формират според локацията на потребителите. Може да създадете частен отбор и да поканите други да се присъединят."
+      locations:
+        title: "Локации"
+        content: "Локациите представляват разделение на темите по географски принцип за ориентация и по лесна навигация и абонамент за дадена тема."
+
+  invitations:
+    index:
+      invite_to_konsento: 'Поканете други в Konsento'
+      resend_email: 'Препрати имейл'
+      remaining_invitations: 'Възможни покани: %{available_invitations}'
+      invitations_sent: 'Изпратени покани (%{invitations_count})'
+
+  subscriptions:
+      subscribe_button:
+        subscribe: 'Абонирай'
+
+      unsubscribe_button:
+        unsubscribe: 'Отпиши'
+
+  locations:
+    index:
+      subscribed_locations: 'Абониран'
+      suggested_locations: 'Предложени локации'
+      all_locations: 'Всички локации'
+
+    show:
+      new_topic: 'Нова тема'
+      sublocations: 'Подлокации'
+
+    topics_list:
+      proposals: 'Предложение(я)'
+      participants: 'Участник(ци)'
+      last_update: 'Последна промяна %{timestamp}'
+      topics_not_found: 'Няма налични теми в тази категория'
+
+    locations_list:
+      sublocations: 'подлокация(и)'
+      topics: 'тема(и)'
+      created_at: 'Създаден на %{timestamp}'
+      locations_not_found: 'Няма налични групи в тази категория'
+
+  teams:
+    index:
+      edit: 'Редактирай'
+      invite: 'Покани'
+      new_team: 'Нов отбор'
+      joined_teams: 'Отбори, в които участвате'
+      pending_team_invitations: 'Чакащи покани от отбор'
+      see_invitation: 'Виж покана'
+      leave: 'Напусни'
+      details: 'Детайли'
+    teams_list:
+      created_at: 'Създаден на %{timestamp}'
+      teams_not_found: 'Няма отбор'
+    new:
+      new_team: 'Нов отбор'
+      join_requirements: 'Изисквания'
+      join_requirements_placeholder: 'Търси изисквания...'
+    join_requirement_list:
+      add: 'Добави'
+    edit:
+      edit_team: 'Редактирай отбор'
+    invitations:
+      invite_to_team: 'Поканени хора към %{team} отбор'
+      invitations_sent: 'Изпратени покани (%{invitations_count})'
+      remaining_invitations: 'Възможни покани за нерегистрирани потребители: %{available_invitations}'
+    show:
+      members: 'Членове на %{team}'
+      username: 'Потребителско име'
+      role: 'Роля'
+      save: 'Запази'
+
+  team_invitations:
+    accept:
+      title: 'Отбор покана'
+      description_html: 'Поканени сте да се присъедините към <strong>%{team}</strong> отбор, съгласни ли сте?'
+      accept: 'Приеми'
+
+  users:
+    edit:
+      title: 'Редактиране на профил'
+      description: 'Въведете нова парола и потвърдете промяната.'
+      retype_password: 'Повтори парола'
+
+  js:
+    proposals:
+      propose:
+        title: 'Напиши предложение'
+      new:
+        title: 'Нова секция'
+    join_requirements:
+      new:
+        title: 'Ново изискване'
+
+  proposals:
+    show:
+      title_html: 'Предложи в секция %{section_index} тема <em>%{topic_title}</em>'
+      see_topic: 'Виж тема'
+      write_comment: 'Напиши коментар'
+    propose:
+      original: 'Оригинал'
+      new: 'Нов'
+    proposal:
+      comments_count: 'Коментари'
+      participants: 'Участници'
+      agree: ‘Съгласен'
+      abstain: 'Въздържал се'
+      disagree: 'Несъгласен'
+      propose: 'Предложи промяна'
+      section_before: 'Добави параграф преди'
+      section_after: 'Добави параграф след'
+
+  sections:
+    section:
+      no_consensus: 'Върху това предложение все още няма консенсус'
+    add_section: 'Добави секция'
+
+  topics:
+    form:
+      add_proposal: 'Добави предложение'
+      automatically_split_text_html: 'Автоматично разделяне на поставен текст?<br><strong>По-дълги текстове ще бъдат обработени по-късно.</strong>'
+    new:
+      new_topic: 'Нова тема'
+    show:
+      suggestions_to_selected_section: 'Предложение за избраната секция'
+      consensus: 'Консенсус'
+      write_comment: 'Напишете коментар'
+      sign_in_to_access: 'За достъп до страницата трябва да се впишете'
+    create:
+      processing_in_the_background: "Вашата тема се обработва и ще бъдете уведомени за резултата!"
+
+  subscription:
+    team_roles:
+      default: 'Подразбиране'
+      admin: 'Админ'
+
+  comments:
+    form:
+      authenticate_to_comment: '%{sign_up_link} or %{sign_in_link} to comment.'
+      subscribe_to_comment: 'Абонамент за локация'
+
+  filters:
+    popular: 'Популярно'
+    controversial: 'Противоречие'
+    recents: 'Последно'
+
+  activerecord:
+    models:
+      location:
+        one: 'Локация'
+        other: 'Локации'
+      topic:
+        one: 'Тема'
+        other: 'Теми'
+      proposal:
+        one: 'Предложение'
+        other: 'Предложения'
+      invitation:
+        one: 'Покана'
+        other: 'Покани'
+      requirement_value:
+        one: 'Изискване'
+        other: 'Изисквания'
+      comment:
+        one: 'Коментар'
+        other: 'Коментари'
+      team:
+        one: ‘Отбор'
+        other: 'Отбори'
+      team_invitatidon:
+        one: 'Отбор покана'
+        other: 'Отбор покани'
+      notification:
+        one: 'Уведомление'
+        other: 'Уведомления'
+
+    attributes:
+      topic:
+        title: 'Заглавие'
+        tag_list: 'Тагове'
+        team: 'Отбор'
+      proposal:
+        content: 'Съдържание'
+      invitation:
+        email: 'И-мейл'
+        registered: 'Регистриран'
+      user:
+        email: 'И-мейл'
+        username: 'Потребител'
+        password: 'Парола'
+        password_confirmation: 'Потвърдете паролата'
+      subscription:
+        role: 'Роля'
+      team_invitation:
+        accepted: 'Прието'
+      team:
+        title: 'Заглавие'
+        public: 'Публика'
+        join_requirements: 'Изисквания'
+
+  simple_form:
+    hints:
+      invitation:
+        email: 'Разделете и-мейлите със запетайка за множество покани.'
+      team_invitation:
+        email: 'Разделете и-мейлите със запетайка за множество покани.'
+
+  helpers:
+    submit:
+      proposal:
+        create: 'Предложи'
+      invitation:
+        create: 'Покани'
+      team_invitation:
+        create: 'Convidar'
+      comment:
+        create: 'Коментар'
